@@ -1,0 +1,694 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3EA40562274736440E682BDD /* libPods-JJControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E718575862E4A786EFD47144 /* libPods-JJControl.a */; };
+		84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1ABF62050DE08005F028A /* AppDelegate.m */; };
+		84B1ABFA2050DE08005F028A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1ABF92050DE08005F028A /* ViewController.m */; };
+		84B1ABFD2050DE08005F028A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFB2050DE08005F028A /* Main.storyboard */; };
+		84B1ABFF2050DE08005F028A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFE2050DE08005F028A /* Assets.xcassets */; };
+		84B1AC022050DE08005F028A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1AC002050DE08005F028A /* LaunchScreen.storyboard */; };
+		84B1AC052050DE08005F028A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC042050DE08005F028A /* main.m */; };
+		84B1AC0F2050DE08005F028A /* JJControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC0E2050DE08005F028A /* JJControlTests.m */; };
+		84B1AC1A2050DE08005F028A /* JJControlUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC192050DE08005F028A /* JJControlUITests.m */; };
+		FABD6C35652F4D54E2A4DF90 /* libPods-JJControlTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F60C49A65A78122C5F926BD5 /* libPods-JJControlTests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84B1AC0B2050DE08005F028A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84B1ABEA2050DE08005F028A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84B1ABF12050DE08005F028A;
+			remoteInfo = JJControl;
+		};
+		84B1AC162050DE08005F028A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84B1ABEA2050DE08005F028A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84B1ABF12050DE08005F028A;
+			remoteInfo = JJControl;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6CCF6077A4B32890BA60222A /* Pods-JJControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJControl/Pods-JJControl.release.xcconfig"; sourceTree = "<group>"; };
+		7A49B1E052B158A11924C475 /* Pods-JJControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJControl/Pods-JJControl.debug.xcconfig"; sourceTree = "<group>"; };
+		84B1ABF22050DE08005F028A /* JJControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84B1ABF52050DE08005F028A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		84B1ABF62050DE08005F028A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		84B1ABF82050DE08005F028A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		84B1ABF92050DE08005F028A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		84B1ABFC2050DE08005F028A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		84B1ABFE2050DE08005F028A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84B1AC012050DE08005F028A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		84B1AC032050DE08005F028A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84B1AC042050DE08005F028A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		84B1AC0A2050DE08005F028A /* JJControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84B1AC0E2050DE08005F028A /* JJControlTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJControlTests.m; sourceTree = "<group>"; };
+		84B1AC102050DE08005F028A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84B1AC152050DE08005F028A /* JJControlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJControlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84B1AC192050DE08005F028A /* JJControlUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJControlUITests.m; sourceTree = "<group>"; };
+		84B1AC1B2050DE08005F028A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E1E090301D0EE65464692C2 /* libPods-JJControlUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJControlUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FF19B07AEB2ED139E7CA732 /* Pods-JJControlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AA4192CE4AD5263CDDD4FEED /* Pods-JJControlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests.release.xcconfig"; sourceTree = "<group>"; };
+		E718575862E4A786EFD47144 /* libPods-JJControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJControl.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F60C49A65A78122C5F926BD5 /* libPods-JJControlTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJControlTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84B1ABEF2050DE08005F028A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EA40562274736440E682BDD /* libPods-JJControl.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84B1AC072050DE08005F028A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FABD6C35652F4D54E2A4DF90 /* libPods-JJControlTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84B1AC122050DE08005F028A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0ED8EF2DF59EBADCCB34E5C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7A49B1E052B158A11924C475 /* Pods-JJControl.debug.xcconfig */,
+				6CCF6077A4B32890BA60222A /* Pods-JJControl.release.xcconfig */,
+				8FF19B07AEB2ED139E7CA732 /* Pods-JJControlTests.debug.xcconfig */,
+				AA4192CE4AD5263CDDD4FEED /* Pods-JJControlTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		84B1ABE92050DE08005F028A = {
+			isa = PBXGroup;
+			children = (
+				84B1ABF42050DE08005F028A /* JJControl */,
+				84B1AC0D2050DE08005F028A /* JJControlTests */,
+				84B1AC182050DE08005F028A /* JJControlUITests */,
+				84B1ABF32050DE08005F028A /* Products */,
+				0ED8EF2DF59EBADCCB34E5C3 /* Pods */,
+				8A509C6CC68EACD28F3B2325 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		84B1ABF32050DE08005F028A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84B1ABF22050DE08005F028A /* JJControl.app */,
+				84B1AC0A2050DE08005F028A /* JJControlTests.xctest */,
+				84B1AC152050DE08005F028A /* JJControlUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84B1ABF42050DE08005F028A /* JJControl */ = {
+			isa = PBXGroup;
+			children = (
+				84B1ABF52050DE08005F028A /* AppDelegate.h */,
+				84B1ABF62050DE08005F028A /* AppDelegate.m */,
+				84B1ABF82050DE08005F028A /* ViewController.h */,
+				84B1ABF92050DE08005F028A /* ViewController.m */,
+				84B1ABFB2050DE08005F028A /* Main.storyboard */,
+				84B1ABFE2050DE08005F028A /* Assets.xcassets */,
+				84B1AC002050DE08005F028A /* LaunchScreen.storyboard */,
+				84B1AC032050DE08005F028A /* Info.plist */,
+				84B1AC042050DE08005F028A /* main.m */,
+			);
+			path = JJControl;
+			sourceTree = "<group>";
+		};
+		84B1AC0D2050DE08005F028A /* JJControlTests */ = {
+			isa = PBXGroup;
+			children = (
+				84B1AC0E2050DE08005F028A /* JJControlTests.m */,
+				84B1AC102050DE08005F028A /* Info.plist */,
+			);
+			path = JJControlTests;
+			sourceTree = "<group>";
+		};
+		84B1AC182050DE08005F028A /* JJControlUITests */ = {
+			isa = PBXGroup;
+			children = (
+				84B1AC192050DE08005F028A /* JJControlUITests.m */,
+				84B1AC1B2050DE08005F028A /* Info.plist */,
+			);
+			path = JJControlUITests;
+			sourceTree = "<group>";
+		};
+		8A509C6CC68EACD28F3B2325 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E718575862E4A786EFD47144 /* libPods-JJControl.a */,
+				8E1E090301D0EE65464692C2 /* libPods-JJControlUITests.a */,
+				F60C49A65A78122C5F926BD5 /* libPods-JJControlTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84B1ABF12050DE08005F028A /* JJControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84B1AC1E2050DE08005F028A /* Build configuration list for PBXNativeTarget "JJControl" */;
+			buildPhases = (
+				D80D412132BE84D6EAAF7C89 /* [CP] Check Pods Manifest.lock */,
+				84B1ABEE2050DE08005F028A /* Sources */,
+				84B1ABEF2050DE08005F028A /* Frameworks */,
+				84B1ABF02050DE08005F028A /* Resources */,
+				1ACD804B54F857F39D084591 /* [CP] Embed Pods Frameworks */,
+				3FAED88C4404AFFD3D51A88B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JJControl;
+			productName = JJControl;
+			productReference = 84B1ABF22050DE08005F028A /* JJControl.app */;
+			productType = "com.apple.product-type.application";
+		};
+		84B1AC092050DE08005F028A /* JJControlTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84B1AC212050DE08005F028A /* Build configuration list for PBXNativeTarget "JJControlTests" */;
+			buildPhases = (
+				92F491C7734F504008600B90 /* [CP] Check Pods Manifest.lock */,
+				84B1AC062050DE08005F028A /* Sources */,
+				84B1AC072050DE08005F028A /* Frameworks */,
+				84B1AC082050DE08005F028A /* Resources */,
+				C1EE8D07FA0A39C05A2CC84D /* [CP] Embed Pods Frameworks */,
+				70480113708CE78C70DCA2D8 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84B1AC0C2050DE08005F028A /* PBXTargetDependency */,
+			);
+			name = JJControlTests;
+			productName = JJControlTests;
+			productReference = 84B1AC0A2050DE08005F028A /* JJControlTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		84B1AC142050DE08005F028A /* JJControlUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84B1AC242050DE08005F028A /* Build configuration list for PBXNativeTarget "JJControlUITests" */;
+			buildPhases = (
+				84B1AC112050DE08005F028A /* Sources */,
+				84B1AC122050DE08005F028A /* Frameworks */,
+				84B1AC132050DE08005F028A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84B1AC172050DE08005F028A /* PBXTargetDependency */,
+			);
+			name = JJControlUITests;
+			productName = JJControlUITests;
+			productReference = 84B1AC152050DE08005F028A /* JJControlUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84B1ABEA2050DE08005F028A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = admin;
+				TargetAttributes = {
+					84B1ABF12050DE08005F028A = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					84B1AC092050DE08005F028A = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 84B1ABF12050DE08005F028A;
+					};
+					84B1AC142050DE08005F028A = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 84B1ABF12050DE08005F028A;
+					};
+				};
+			};
+			buildConfigurationList = 84B1ABED2050DE08005F028A /* Build configuration list for PBXProject "JJControl" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 84B1ABE92050DE08005F028A;
+			productRefGroup = 84B1ABF32050DE08005F028A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84B1ABF12050DE08005F028A /* JJControl */,
+				84B1AC092050DE08005F028A /* JJControlTests */,
+				84B1AC142050DE08005F028A /* JJControlUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84B1ABF02050DE08005F028A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84B1AC022050DE08005F028A /* LaunchScreen.storyboard in Resources */,
+				84B1ABFF2050DE08005F028A /* Assets.xcassets in Resources */,
+				84B1ABFD2050DE08005F028A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84B1AC082050DE08005F028A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84B1AC132050DE08005F028A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1ACD804B54F857F39D084591 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JJControl/Pods-JJControl-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3FAED88C4404AFFD3D51A88B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JJControl/Pods-JJControl-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70480113708CE78C70DCA2D8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92F491C7734F504008600B90 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C1EE8D07FA0A39C05A2CC84D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D80D412132BE84D6EAAF7C89 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84B1ABEE2050DE08005F028A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84B1ABFA2050DE08005F028A /* ViewController.m in Sources */,
+				84B1AC052050DE08005F028A /* main.m in Sources */,
+				84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84B1AC062050DE08005F028A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84B1AC0F2050DE08005F028A /* JJControlTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84B1AC112050DE08005F028A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84B1AC1A2050DE08005F028A /* JJControlUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84B1AC0C2050DE08005F028A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84B1ABF12050DE08005F028A /* JJControl */;
+			targetProxy = 84B1AC0B2050DE08005F028A /* PBXContainerItemProxy */;
+		};
+		84B1AC172050DE08005F028A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84B1ABF12050DE08005F028A /* JJControl */;
+			targetProxy = 84B1AC162050DE08005F028A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		84B1ABFB2050DE08005F028A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84B1ABFC2050DE08005F028A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		84B1AC002050DE08005F028A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84B1AC012050DE08005F028A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84B1AC1C2050DE08005F028A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		84B1AC1D2050DE08005F028A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84B1AC1F2050DE08005F028A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A49B1E052B158A11924C475 /* Pods-JJControl.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F42QK2HDRU;
+				INFOPLIST_FILE = JJControl/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.li.JJControl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84B1AC202050DE08005F028A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CCF6077A4B32890BA60222A /* Pods-JJControl.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F42QK2HDRU;
+				INFOPLIST_FILE = JJControl/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.li.JJControl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		84B1AC222050DE08005F028A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FF19B07AEB2ED139E7CA732 /* Pods-JJControlTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F42QK2HDRU;
+				INFOPLIST_FILE = JJControlTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.li.JJControlTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JJControl.app/JJControl";
+			};
+			name = Debug;
+		};
+		84B1AC232050DE08005F028A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA4192CE4AD5263CDDD4FEED /* Pods-JJControlTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F42QK2HDRU;
+				INFOPLIST_FILE = JJControlTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.li.JJControlTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JJControl.app/JJControl";
+			};
+			name = Release;
+		};
+		84B1AC252050DE08005F028A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F42QK2HDRU;
+				INFOPLIST_FILE = JJControlUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.li.JJControlUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JJControl;
+			};
+			name = Debug;
+		};
+		84B1AC262050DE08005F028A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F42QK2HDRU;
+				INFOPLIST_FILE = JJControlUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.li.JJControlUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JJControl;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84B1ABED2050DE08005F028A /* Build configuration list for PBXProject "JJControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84B1AC1C2050DE08005F028A /* Debug */,
+				84B1AC1D2050DE08005F028A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84B1AC1E2050DE08005F028A /* Build configuration list for PBXNativeTarget "JJControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84B1AC1F2050DE08005F028A /* Debug */,
+				84B1AC202050DE08005F028A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84B1AC212050DE08005F028A /* Build configuration list for PBXNativeTarget "JJControlTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84B1AC222050DE08005F028A /* Debug */,
+				84B1AC232050DE08005F028A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84B1AC242050DE08005F028A /* Build configuration list for PBXNativeTarget "JJControlUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84B1AC252050DE08005F028A /* Debug */,
+				84B1AC262050DE08005F028A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84B1ABEA2050DE08005F028A /* Project object */;
+}

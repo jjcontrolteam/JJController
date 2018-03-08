@@ -1,0 +1,17 @@
+source 'https://github.com/CocoaPods/Specs.git'
+ 
+platform :ios, '8.0'
+
+
+target :’JJControl' do
+
+pod 'MQTTClient' 
+pod ‘CocoaAsyncSocket’ 
+
+end
+
+target 'JJControlTests'  do
+ 
+ pod 'KIF', '~> 3.0', :configurations => ['Debug']
+
+end
