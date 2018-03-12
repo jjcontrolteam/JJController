@@ -18,6 +18,12 @@
 		84B1AC1A2050DE08005F028A /* JJControlUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC192050DE08005F028A /* JJControlUITests.m */; };
 		84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8AD2054C2C900BF112C /* JJServiceInterface.m */; };
 		84FAE8C92056158300BF112C /* BDUMD5Crypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8C82056158300BF112C /* BDUMD5Crypt.m */; };
+		84FAE8EF20565E4C00BF112C /* intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84FAE8EE20565E4C00BF112C /* intro.mp4 */; };
+		84FAE8F220565ED800BF112C /* GuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8F120565ED800BF112C /* GuideController.m */; };
+		84FAE8F420565EF300BF112C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FAE8F320565EF200BF112C /* MediaPlayer.framework */; };
+		84FAE8F62056665D00BF112C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FAE8F52056665D00BF112C /* AVFoundation.framework */; };
+		84FAE8FA20566BF900BF112C /* JJCtrlConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8F920566BF900BF112C /* JJCtrlConfig.m */; };
+		84FAE8FD205671F600BF112C /* NavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8FC205671F600BF112C /* NavController.m */; };
 		FABD6C35652F4D54E2A4DF90 /* libPods-JJControlTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F60C49A65A78122C5F926BD5 /* libPods-JJControlTests.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +67,15 @@
 		84FAE8AD2054C2C900BF112C /* JJServiceInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJServiceInterface.m; sourceTree = "<group>"; };
 		84FAE8C72056158300BF112C /* BDUMD5Crypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BDUMD5Crypt.h; sourceTree = "<group>"; };
 		84FAE8C82056158300BF112C /* BDUMD5Crypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BDUMD5Crypt.m; sourceTree = "<group>"; };
+		84FAE8EE20565E4C00BF112C /* intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.mp4; sourceTree = "<group>"; };
+		84FAE8F020565ED800BF112C /* GuideController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuideController.h; sourceTree = "<group>"; };
+		84FAE8F120565ED800BF112C /* GuideController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuideController.m; sourceTree = "<group>"; };
+		84FAE8F320565EF200BF112C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		84FAE8F52056665D00BF112C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		84FAE8F820566BF900BF112C /* JJCtrlConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJCtrlConfig.h; sourceTree = "<group>"; };
+		84FAE8F920566BF900BF112C /* JJCtrlConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJCtrlConfig.m; sourceTree = "<group>"; };
+		84FAE8FB205671F600BF112C /* NavController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavController.h; sourceTree = "<group>"; };
+		84FAE8FC205671F600BF112C /* NavController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavController.m; sourceTree = "<group>"; };
 		8E1E090301D0EE65464692C2 /* libPods-JJControlUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJControlUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF19B07AEB2ED139E7CA732 /* Pods-JJControlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA4192CE4AD5263CDDD4FEED /* Pods-JJControlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FAE8F62056665D00BF112C /* AVFoundation.framework in Frameworks */,
+				84FAE8F420565EF300BF112C /* MediaPlayer.framework in Frameworks */,
 				3EA40562274736440E682BDD /* libPods-JJControl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,10 +149,16 @@
 			isa = PBXGroup;
 			children = (
 				84FAE8AB2054C2A700BF112C /* JJControlService */,
+				84FAE8F720566BE400BF112C /* Config */,
 				84B1ABF52050DE08005F028A /* AppDelegate.h */,
 				84B1ABF62050DE08005F028A /* AppDelegate.m */,
 				84B1ABF82050DE08005F028A /* ViewController.h */,
 				84B1ABF92050DE08005F028A /* ViewController.m */,
+				84FAE8F020565ED800BF112C /* GuideController.h */,
+				84FAE8F120565ED800BF112C /* GuideController.m */,
+				84FAE8FB205671F600BF112C /* NavController.h */,
+				84FAE8FC205671F600BF112C /* NavController.m */,
+				84FAE8EE20565E4C00BF112C /* intro.mp4 */,
 				84B1ABFB2050DE08005F028A /* Main.storyboard */,
 				84B1ABFE2050DE08005F028A /* Assets.xcassets */,
 				84B1AC002050DE08005F028A /* LaunchScreen.storyboard */,
@@ -174,9 +197,20 @@
 			path = JJControlService;
 			sourceTree = "<group>";
 		};
+		84FAE8F720566BE400BF112C /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				84FAE8F820566BF900BF112C /* JJCtrlConfig.h */,
+				84FAE8F920566BF900BF112C /* JJCtrlConfig.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		8A509C6CC68EACD28F3B2325 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84FAE8F52056665D00BF112C /* AVFoundation.framework */,
+				84FAE8F320565EF200BF112C /* MediaPlayer.framework */,
 				E718575862E4A786EFD47144 /* libPods-JJControl.a */,
 				8E1E090301D0EE65464692C2 /* libPods-JJControlUITests.a */,
 				F60C49A65A78122C5F926BD5 /* libPods-JJControlTests.a */,
@@ -298,6 +332,7 @@
 			files = (
 				84B1AC022050DE08005F028A /* LaunchScreen.storyboard in Resources */,
 				84B1ABFF2050DE08005F028A /* Assets.xcassets in Resources */,
+				84FAE8EF20565E4C00BF112C /* intro.mp4 in Resources */,
 				84B1ABFD2050DE08005F028A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,7 +451,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FAE8F220565ED800BF112C /* GuideController.m in Sources */,
 				84B1ABFA2050DE08005F028A /* ViewController.m in Sources */,
+				84FAE8FA20566BF900BF112C /* JJCtrlConfig.m in Sources */,
+				84FAE8FD205671F600BF112C /* NavController.m in Sources */,
 				84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */,
 				84B1AC052050DE08005F028A /* main.m in Sources */,
 				84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */,

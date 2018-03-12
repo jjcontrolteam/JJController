@@ -20,9 +20,10 @@
 @end
 
 @implementation ViewController
-
+ 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     // Do any additional setup after loading the view, typically from a nib.
     UIScrollView *scrollView_  = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height-200)];
     [scrollView_ setShowsVerticalScrollIndicator:NO];
