@@ -16,6 +16,8 @@
 		84B1AC052050DE08005F028A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC042050DE08005F028A /* main.m */; };
 		84B1AC0F2050DE08005F028A /* JJControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC0E2050DE08005F028A /* JJControlTests.m */; };
 		84B1AC1A2050DE08005F028A /* JJControlUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC192050DE08005F028A /* JJControlUITests.m */; };
+		84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8AD2054C2C900BF112C /* JJServiceInterface.m */; };
+		84FAE8C92056158300BF112C /* BDUMD5Crypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8C82056158300BF112C /* BDUMD5Crypt.m */; };
 		FABD6C35652F4D54E2A4DF90 /* libPods-JJControlTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F60C49A65A78122C5F926BD5 /* libPods-JJControlTests.a */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,10 @@
 		84B1AC152050DE08005F028A /* JJControlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJControlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B1AC192050DE08005F028A /* JJControlUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJControlUITests.m; sourceTree = "<group>"; };
 		84B1AC1B2050DE08005F028A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84FAE8AC2054C2C900BF112C /* JJServiceInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJServiceInterface.h; sourceTree = "<group>"; };
+		84FAE8AD2054C2C900BF112C /* JJServiceInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJServiceInterface.m; sourceTree = "<group>"; };
+		84FAE8C72056158300BF112C /* BDUMD5Crypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BDUMD5Crypt.h; sourceTree = "<group>"; };
+		84FAE8C82056158300BF112C /* BDUMD5Crypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BDUMD5Crypt.m; sourceTree = "<group>"; };
 		8E1E090301D0EE65464692C2 /* libPods-JJControlUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJControlUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF19B07AEB2ED139E7CA732 /* Pods-JJControlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA4192CE4AD5263CDDD4FEED /* Pods-JJControlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 		84B1ABF42050DE08005F028A /* JJControl */ = {
 			isa = PBXGroup;
 			children = (
+				84FAE8AB2054C2A700BF112C /* JJControlService */,
 				84B1ABF52050DE08005F028A /* AppDelegate.h */,
 				84B1ABF62050DE08005F028A /* AppDelegate.m */,
 				84B1ABF82050DE08005F028A /* ViewController.h */,
@@ -154,6 +161,17 @@
 				84B1AC1B2050DE08005F028A /* Info.plist */,
 			);
 			path = JJControlUITests;
+			sourceTree = "<group>";
+		};
+		84FAE8AB2054C2A700BF112C /* JJControlService */ = {
+			isa = PBXGroup;
+			children = (
+				84FAE8AC2054C2C900BF112C /* JJServiceInterface.h */,
+				84FAE8AD2054C2C900BF112C /* JJServiceInterface.m */,
+				84FAE8C72056158300BF112C /* BDUMD5Crypt.h */,
+				84FAE8C82056158300BF112C /* BDUMD5Crypt.m */,
+			);
+			path = JJControlService;
 			sourceTree = "<group>";
 		};
 		8A509C6CC68EACD28F3B2325 /* Frameworks */ = {
@@ -399,8 +417,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B1ABFA2050DE08005F028A /* ViewController.m in Sources */,
+				84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */,
 				84B1AC052050DE08005F028A /* main.m in Sources */,
 				84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */,
+				84FAE8C92056158300BF112C /* BDUMD5Crypt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

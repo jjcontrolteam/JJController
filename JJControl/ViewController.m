@@ -7,8 +7,15 @@
 //
 
 #import "ViewController.h"
+#import "JJServiceInterface.h"
+#import "BDUMD5Crypt.h"
+#import<CommonCrypto/CommonDigest.h>
 
-@interface ViewController ()
+
+#define KEY_MAC     @"HmacMD5"
+#define encryptKey  @"gaoyusong"
+
+@interface ViewController ()<JJServiceDelegate>
 
 @end
 
@@ -31,13 +38,42 @@
     
     [self.view addSubview:scrollView_];
     
-    [scrollView_ setDelegate:self];
+ //   [scrollView_ setDelegate:self];
     [scrollView_ setAccessibilityLabel:@"List"];
     [scrollView_ setAccessibilityIdentifier:@"List Value"];
     
     [scrollView_ setIsAccessibilityElement:YES];
+    
+    JJServiceInterface *service = [JJServiceInterface share];
+    service.delegate = self;
+    
+    
+   
 }
 
+-(void)createTopicFinished{
+    JJServiceInterface *service = [JJServiceInterface share];
+ //   NSString *pwd = @"123456";
+    
+    NSString *result =[BDUMD5Crypt HMACMD5WithString:encryptKey WithKey:KEY_MAC] ;
+    
+    NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1002,\"user\": \"13911112222\",\"password\": %@,\"smscode\": 1234}" , result];
+    
+    [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request"];
+}
+
+-(void)receiveJson:(NSDictionary*)dict
+{
+    NSLog(@"%@",dict);
+    
+}
+-(void)connectFinished{
+    
+}
+-(void)disconnect{
+    
+}
+ 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
