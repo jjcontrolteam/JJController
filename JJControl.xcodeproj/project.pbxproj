@@ -26,6 +26,10 @@
 		84FAE8FD205671F600BF112C /* NavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8FC205671F600BF112C /* NavController.m */; };
 		84FAE92A20579C2400BF112C /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE92920579C2400BF112C /* LoginController.m */; };
 		84FAEEA12057AEAC00BF112C /* JJControlResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84FAEEA02057AEAC00BF112C /* JJControlResource.bundle */; };
+		84FAEEB02057B5DB00BF112C /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEEAF2057B5DB00BF112C /* RegisterController.m */; };
+		84FAEEB32057B5ED00BF112C /* OtherLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEEB22057B5ED00BF112C /* OtherLoginController.m */; };
+		84FAEEB62057B60600BF112C /* ForgetPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEEB52057B60600BF112C /* ForgetPwdController.m */; };
+		84FAEEB92057D94900BF112C /* UserBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEEB82057D94900BF112C /* UserBaseController.m */; };
 		FABD6C35652F4D54E2A4DF90 /* libPods-JJControlTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F60C49A65A78122C5F926BD5 /* libPods-JJControlTests.a */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +87,14 @@
 		84FAED412057AC2C00BF112C /* JJControlResource.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJControlResource.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FAED432057AC2C00BF112C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84FAEEA02057AEAC00BF112C /* JJControlResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JJControlResource.bundle; sourceTree = "<group>"; };
+		84FAEEAE2057B5DB00BF112C /* RegisterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
+		84FAEEAF2057B5DB00BF112C /* RegisterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
+		84FAEEB12057B5ED00BF112C /* OtherLoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherLoginController.h; sourceTree = "<group>"; };
+		84FAEEB22057B5ED00BF112C /* OtherLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherLoginController.m; sourceTree = "<group>"; };
+		84FAEEB42057B60600BF112C /* ForgetPwdController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetPwdController.h; sourceTree = "<group>"; };
+		84FAEEB52057B60600BF112C /* ForgetPwdController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdController.m; sourceTree = "<group>"; };
+		84FAEEB72057D94900BF112C /* UserBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserBaseController.h; sourceTree = "<group>"; };
+		84FAEEB82057D94900BF112C /* UserBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserBaseController.m; sourceTree = "<group>"; };
 		8E1E090301D0EE65464692C2 /* libPods-JJControlUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJControlUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF19B07AEB2ED139E7CA732 /* Pods-JJControlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA4192CE4AD5263CDDD4FEED /* Pods-JJControlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,10 +182,18 @@
 				84B1ABF62050DE08005F028A /* AppDelegate.m */,
 				84B1ABF82050DE08005F028A /* ViewController.h */,
 				84B1ABF92050DE08005F028A /* ViewController.m */,
+				84FAEEB72057D94900BF112C /* UserBaseController.h */,
+				84FAEEB82057D94900BF112C /* UserBaseController.m */,
 				84FAE8F020565ED800BF112C /* GuideController.h */,
 				84FAE8F120565ED800BF112C /* GuideController.m */,
 				84FAE92820579C2400BF112C /* LoginController.h */,
 				84FAE92920579C2400BF112C /* LoginController.m */,
+				84FAEEAE2057B5DB00BF112C /* RegisterController.h */,
+				84FAEEAF2057B5DB00BF112C /* RegisterController.m */,
+				84FAEEB12057B5ED00BF112C /* OtherLoginController.h */,
+				84FAEEB22057B5ED00BF112C /* OtherLoginController.m */,
+				84FAEEB42057B60600BF112C /* ForgetPwdController.h */,
+				84FAEEB52057B60600BF112C /* ForgetPwdController.m */,
 				84FAE8FB205671F600BF112C /* NavController.h */,
 				84FAE8FC205671F600BF112C /* NavController.m */,
 				84FAE8EE20565E4C00BF112C /* intro.mp4 */,
@@ -508,10 +528,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FAEEB92057D94900BF112C /* UserBaseController.m in Sources */,
 				84FAE8F220565ED800BF112C /* GuideController.m in Sources */,
+				84FAEEB32057B5ED00BF112C /* OtherLoginController.m in Sources */,
+				84FAEEB62057B60600BF112C /* ForgetPwdController.m in Sources */,
 				84B1ABFA2050DE08005F028A /* ViewController.m in Sources */,
 				84FAE8FA20566BF900BF112C /* JJCtrlConfig.m in Sources */,
 				84FAE8FD205671F600BF112C /* NavController.m in Sources */,
+				84FAEEB02057B5DB00BF112C /* RegisterController.m in Sources */,
 				84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */,
 				84B1AC052050DE08005F028A /* main.m in Sources */,
 				84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */,

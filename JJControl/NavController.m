@@ -23,9 +23,14 @@
     [super viewDidLoad];
     [self setToolbarHidden:YES];
     [self setNavigationBarHidden:YES];
+   
+   
+    
     GuideController *guide = [[GuideController alloc]init];
     [self setViewControllers:@[guide]];
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

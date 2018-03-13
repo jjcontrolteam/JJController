@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-   NSString* _moviePath=[[NSBundle mainBundle]pathForResource:@"intro" ofType:@"mp4"];
+    NSString* _moviePath=[[NSBundle mainBundle]pathForResource:@"intro" ofType:@"mp4"];
    
     NSURL * videoURL = [NSURL fileURLWithPath:_moviePath];
     

@@ -7,7 +7,8 @@
 //
 
 #import "LoginController.h"
-
+#import "RegisterController.h"
+#import "OtherLoginController.h"
 @interface LoginController ()<UITextFieldDelegate>
 {
     UITextField *nameField_;
@@ -52,17 +53,19 @@
     [nameField_.layer setBorderWidth:1];
     [nameField_.layer setCornerRadius:4];
     [nameField_.layer setMasksToBounds:YES];
+    [nameField_ setDelegate:self];
     [self.view addSubview:nameField_];
     
     
     pwdField_ = [[UITextField alloc]initWithFrame:CGRectMake(40,self.view.frame.size.height/2+60,self.view.frame.size.width-80,45)];
-    NSAttributedString *attri1 = [[NSAttributedString alloc] initWithString:@"账号" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:24], NSParagraphStyleAttributeName:style}];
+    NSAttributedString *attri1 = [[NSAttributedString alloc] initWithString:@"密码" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:24], NSParagraphStyleAttributeName:style}];
     pwdField_.attributedPlaceholder = attri1;
     [pwdField_ setBackgroundColor:[UIColor clearColor]];
     [pwdField_.layer setBorderColor:[UIColor whiteColor].CGColor];
     [pwdField_.layer setBorderWidth:1];
     [pwdField_.layer setCornerRadius:4];
     [pwdField_.layer setMasksToBounds:YES];
+    [pwdField_ setDelegate:self];
     [self.view addSubview:pwdField_];
     
     loginBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -80,7 +83,7 @@
     registerBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
     registerBtn_.frame =CGRectMake(53,self.view.frame.size.height/2+170,40,35);
     [registerBtn_ setBackgroundColor:[UIColor clearColor]];
-    [registerBtn_ addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
+    [registerBtn_ addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
     [registerBtn_ setTitle:@"注册" forState:UIControlStateNormal];
     [registerBtn_ setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [registerBtn_.titleLabel setFont:[UIFont systemFontOfSize:16]];
@@ -90,7 +93,7 @@
     loginOtherBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
     loginOtherBtn_.frame =CGRectMake(93,self.view.frame.size.height/2+170,150,35);
     [loginOtherBtn_ setBackgroundColor:[UIColor clearColor]];
-    [loginOtherBtn_ addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
+    [loginOtherBtn_ addTarget:self action:@selector(loginOtherAction:) forControlEvents:UIControlEventTouchUpInside];
     [loginOtherBtn_ setTitle:@"|  登陆体验账号  |" forState:UIControlStateNormal];
     [loginOtherBtn_ setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [loginOtherBtn_.titleLabel setFont:[UIFont systemFontOfSize:16]];
@@ -110,12 +113,24 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    
+    [self resetView:0.0];
 }
 
 -(void)loginAction:(id)sender{
     
 }
+
+-(void)loginOtherAction:(id)sender{
+    OtherLoginController *login=[[OtherLoginController alloc]init];
+    [self.navigationController pushViewController:login animated:YES];
+}
+
+-(void)registerAction:(id)sender{
+    RegisterController *registerCtrl = [[RegisterController alloc]init];
+    [self.navigationController pushViewController:registerCtrl animated:YES];
+}
+
+ 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -1,5 +1,5 @@
 //
-//  LoginController.h
+//  UserBaseController.h
 //  JJControl
 //
 //  Created by admin on 2018/3/13.
@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserBaseController.h"
-@interface LoginController : UserBaseController
 
+@interface UserBaseController : UIViewController<UITextFieldDelegate>
+-(void)resetView:(float)move;
 @end
