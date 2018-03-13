@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "ViewController.h"
+#import "LoginController.h"
 @interface GuideController (){
     UIButton *startBtn_;
 }
@@ -55,7 +56,7 @@
 
 -(void)startAction:(id)sender{
     
-    ViewController *viewctrl = [[ViewController alloc]init];
+    LoginController *viewctrl = [[LoginController alloc]init];
     [self.navigationController pushViewController:viewctrl animated:NO];
 }
 
