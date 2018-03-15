@@ -9,6 +9,8 @@
 #import "LoginController.h"
 #import "RegisterController.h"
 #import "OtherLoginController.h"
+#import "MainTabBarController.h"
+
 @interface LoginController ()<UITextFieldDelegate>
 {
     UITextField *nameField_;
@@ -117,7 +119,8 @@
 }
 
 -(void)loginAction:(id)sender{
-    
+    MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
+    [self.navigationController pushViewController:mainTabbarController animated:YES];
 }
 
 -(void)loginOtherAction:(id)sender{

@@ -16,6 +16,19 @@
 		84B1AC052050DE08005F028A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC042050DE08005F028A /* main.m */; };
 		84B1AC0F2050DE08005F028A /* JJControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC0E2050DE08005F028A /* JJControlTests.m */; };
 		84B1AC1A2050DE08005F028A /* JJControlUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC192050DE08005F028A /* JJControlUITests.m */; };
+		84F1E8B6205A6D9F00828549 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E8B5205A6D9F00828549 /* MainTabBarController.m */; };
+		84F1E8BA205A6E1C00828549 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E8B9205A6E1C00828549 /* HomeController.m */; };
+		84F1E8BD205A6E3000828549 /* RoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E8BC205A6E3000828549 /* RoomController.m */; };
+		84F1E8C0205A6E7B00828549 /* CategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E8BF205A6E7B00828549 /* CategoryController.m */; };
+		84F1E8C3205A6E9600828549 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E8C2205A6E9600828549 /* SettingController.m */; };
+		84F1E8DC205A773400828549 /* type_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1E8D4205A773300828549 /* type_on@2x.png */; };
+		84F1E8DD205A773400828549 /* room_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1E8D5205A773300828549 /* room_on@2x.png */; };
+		84F1E8DE205A773400828549 /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1E8D6205A773300828549 /* setting@2x.png */; };
+		84F1E8DF205A773400828549 /* type@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1E8D7205A773300828549 /* type@2x.png */; };
+		84F1E8E0205A773400828549 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1E8D8205A773300828549 /* home@2x.png */; };
+		84F1E8E1205A773400828549 /* room@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1E8D9205A773300828549 /* room@2x.png */; };
+		84F1E8E2205A773400828549 /* home_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1E8DA205A773300828549 /* home_on@2x.png */; };
+		84F1E8E3205A773400828549 /* setting_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1E8DB205A773300828549 /* setting_on@2x.png */; };
 		84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8AD2054C2C900BF112C /* JJServiceInterface.m */; };
 		84FAE8C92056158300BF112C /* BDUMD5Crypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8C82056158300BF112C /* BDUMD5Crypt.m */; };
 		84FAE8EF20565E4C00BF112C /* intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84FAE8EE20565E4C00BF112C /* intro.mp4 */; };
@@ -69,6 +82,24 @@
 		84B1AC152050DE08005F028A /* JJControlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJControlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B1AC192050DE08005F028A /* JJControlUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJControlUITests.m; sourceTree = "<group>"; };
 		84B1AC1B2050DE08005F028A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84F1E8B4205A6D9F00828549 /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		84F1E8B5205A6D9F00828549 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
+		84F1E8B8205A6E1C00828549 /* HomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
+		84F1E8B9205A6E1C00828549 /* HomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
+		84F1E8BB205A6E3000828549 /* RoomController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomController.h; sourceTree = "<group>"; };
+		84F1E8BC205A6E3000828549 /* RoomController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomController.m; sourceTree = "<group>"; };
+		84F1E8BE205A6E7B00828549 /* CategoryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryController.h; sourceTree = "<group>"; };
+		84F1E8BF205A6E7B00828549 /* CategoryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryController.m; sourceTree = "<group>"; };
+		84F1E8C1205A6E9600828549 /* SettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
+		84F1E8C2205A6E9600828549 /* SettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
+		84F1E8D4205A773300828549 /* type_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_on@2x.png"; sourceTree = "<group>"; };
+		84F1E8D5205A773300828549 /* room_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "room_on@2x.png"; sourceTree = "<group>"; };
+		84F1E8D6205A773300828549 /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting@2x.png"; sourceTree = "<group>"; };
+		84F1E8D7205A773300828549 /* type@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type@2x.png"; sourceTree = "<group>"; };
+		84F1E8D8205A773300828549 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
+		84F1E8D9205A773300828549 /* room@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "room@2x.png"; sourceTree = "<group>"; };
+		84F1E8DA205A773300828549 /* home_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_on@2x.png"; sourceTree = "<group>"; };
+		84F1E8DB205A773300828549 /* setting_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_on@2x.png"; sourceTree = "<group>"; };
 		84FAE8AC2054C2C900BF112C /* JJServiceInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJServiceInterface.h; sourceTree = "<group>"; };
 		84FAE8AD2054C2C900BF112C /* JJServiceInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJServiceInterface.m; sourceTree = "<group>"; };
 		84FAE8C72056158300BF112C /* BDUMD5Crypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BDUMD5Crypt.h; sourceTree = "<group>"; };
@@ -176,6 +207,7 @@
 		84B1ABF42050DE08005F028A /* JJControl */ = {
 			isa = PBXGroup;
 			children = (
+				84F1E8B3205A6D5B00828549 /* HomePage */,
 				84FAE8AB2054C2A700BF112C /* JJControlService */,
 				84FAE8F720566BE400BF112C /* Config */,
 				84B1ABF52050DE08005F028A /* AppDelegate.h */,
@@ -223,6 +255,31 @@
 				84B1AC1B2050DE08005F028A /* Info.plist */,
 			);
 			path = JJControlUITests;
+			sourceTree = "<group>";
+		};
+		84F1E8B3205A6D5B00828549 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				84F1E8DA205A773300828549 /* home_on@2x.png */,
+				84F1E8D8205A773300828549 /* home@2x.png */,
+				84F1E8D5205A773300828549 /* room_on@2x.png */,
+				84F1E8D9205A773300828549 /* room@2x.png */,
+				84F1E8DB205A773300828549 /* setting_on@2x.png */,
+				84F1E8D6205A773300828549 /* setting@2x.png */,
+				84F1E8D4205A773300828549 /* type_on@2x.png */,
+				84F1E8D7205A773300828549 /* type@2x.png */,
+				84F1E8B4205A6D9F00828549 /* MainTabBarController.h */,
+				84F1E8B5205A6D9F00828549 /* MainTabBarController.m */,
+				84F1E8B8205A6E1C00828549 /* HomeController.h */,
+				84F1E8B9205A6E1C00828549 /* HomeController.m */,
+				84F1E8BB205A6E3000828549 /* RoomController.h */,
+				84F1E8BC205A6E3000828549 /* RoomController.m */,
+				84F1E8BE205A6E7B00828549 /* CategoryController.h */,
+				84F1E8BF205A6E7B00828549 /* CategoryController.m */,
+				84F1E8C1205A6E9600828549 /* SettingController.h */,
+				84F1E8C2205A6E9600828549 /* SettingController.m */,
+			);
+			path = HomePage;
 			sourceTree = "<group>";
 		};
 		84FAE8AB2054C2A700BF112C /* JJControlService */ = {
@@ -399,11 +456,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F1E8E2205A773400828549 /* home_on@2x.png in Resources */,
+				84F1E8DF205A773400828549 /* type@2x.png in Resources */,
 				84FAEEA12057AEAC00BF112C /* JJControlResource.bundle in Resources */,
 				84B1AC022050DE08005F028A /* LaunchScreen.storyboard in Resources */,
 				84B1ABFF2050DE08005F028A /* Assets.xcassets in Resources */,
+				84F1E8DC205A773400828549 /* type_on@2x.png in Resources */,
 				84FAE8EF20565E4C00BF112C /* intro.mp4 in Resources */,
 				84B1ABFD2050DE08005F028A /* Main.storyboard in Resources */,
+				84F1E8DE205A773400828549 /* setting@2x.png in Resources */,
+				84F1E8DD205A773400828549 /* room_on@2x.png in Resources */,
+				84F1E8E3205A773400828549 /* setting_on@2x.png in Resources */,
+				84F1E8E0205A773400828549 /* home@2x.png in Resources */,
+				84F1E8E1205A773400828549 /* room@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,7 +601,12 @@
 				84FAE8FA20566BF900BF112C /* JJCtrlConfig.m in Sources */,
 				84FAE8FD205671F600BF112C /* NavController.m in Sources */,
 				84FAEEB02057B5DB00BF112C /* RegisterController.m in Sources */,
+				84F1E8BA205A6E1C00828549 /* HomeController.m in Sources */,
+				84F1E8C0205A6E7B00828549 /* CategoryController.m in Sources */,
+				84F1E8C3205A6E9600828549 /* SettingController.m in Sources */,
+				84F1E8B6205A6D9F00828549 /* MainTabBarController.m in Sources */,
 				84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */,
+				84F1E8BD205A6E3000828549 /* RoomController.m in Sources */,
 				84B1AC052050DE08005F028A /* main.m in Sources */,
 				84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */,
 				84FAE8C92056158300BF112C /* BDUMD5Crypt.m in Sources */,
