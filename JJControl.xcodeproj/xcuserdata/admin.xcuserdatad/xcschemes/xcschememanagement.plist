@@ -4,25 +4,44 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>JJCResource.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
 		<key>JJControl.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
 		<key>JJControlResource.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>84B1ABF12050DE08005F028A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84B1AC092050DE08005F028A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84B1AC142050DE08005F028A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>84FAE9302057A78700BF112C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84FAED402057AC2C00BF112C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

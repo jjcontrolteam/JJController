@@ -19,6 +19,5 @@
 + (instancetype)share;
 -(void)sendMsg:(NSData*)data toTopic:(NSString*)topic;
 + (NSString *)jsonStringWithDictionary:(NSDictionary *)dict;
-+(NSDictionary *)jsonDictWithString:(NSString *)string;
-+ (NSString *)macSignWithText:(NSString *)text secretKey:(NSString *)secretKey;
++(NSDictionary *)jsonDictWithString:(NSString *)string; 
 @end

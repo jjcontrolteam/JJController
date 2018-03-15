@@ -38,13 +38,20 @@ static JJServiceInterface * _singleton;
 -(instancetype)init{
     self = [super init];
     if (self) {
+        
+        
+        
         MQTTCFSocketTransport *transport = [[MQTTCFSocketTransport alloc] init];
         
         transport.host = @"106.14.200.212";
         
         transport.port = 1883 ;
         
+       // transport.voip=YES;
+        
         session = [[MQTTSession alloc] init];
+        
+       // session.voip = YES;
         
         session.transport = transport;
         
@@ -69,16 +76,7 @@ static JJServiceInterface * _singleton;
                     }});
                 }
             }];
-           
-          /*  [[self class] subScribeTopic:session toTopic:@"13911112222" callback:^(bool success) {
-                
-            }];
-            [[self class] subScribeTopic:session toTopic:@"v1/cloud/13911112222/response" callback:^(bool success) {
-               
-            }];*/
-            
-            
-            //  [[self class] subScribeTopic:session toTopic:@"v1/cloud/client_id/response"];
+          
             
         });
     });
@@ -105,7 +103,7 @@ static JJServiceInterface * _singleton;
           retained:(BOOL)retained
                mid:(unsigned int)mid {
     // this is one of the delegate callbacks
-    if (data) {
+  /*  if (data) {
         NSString *val = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         if (val) {
            NSDictionary *dict =  [[self class]jsonDictWithString:val];
@@ -113,14 +111,14 @@ static JJServiceInterface * _singleton;
                 [_delegate receiveJson:dict];
             }
         }
-    }
+    }*/
 }
 
 -(void)sendMsg:(NSData*)data toTopic:(NSString*)topic{
-    [session publishAndWaitData:data
+ /*   [session publishAndWaitData:data
                         onTopic:topic
                          retain:NO
-                            qos:MQTTQosLevelAtLeastOnce];
+                            qos:MQTTQosLevelExactlyOnce];*/
     
 }
 

@@ -10,7 +10,7 @@
 #import "RegisterController.h"
 #import "OtherLoginController.h"
 #import "MainTabBarController.h"
-
+#import "ViewController.h"
 @interface LoginController ()<UITextFieldDelegate>
 {
     UITextField *nameField_;
@@ -36,6 +36,14 @@
     UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
     effectview.frame = self.view.bounds;
     [viewbk addSubview:effectview];
+    
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(40, self.view.frame.size.height/2-110, CGRectGetWidth(self.view.frame)-80, 30)];
+    [titleLabel setText:@"Welcome"];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    [titleLabel setNumberOfLines:0];
+    [titleLabel setFont:[UIFont systemFontOfSize:22]];
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:titleLabel];
     
     UILabel *content = [[UILabel alloc]initWithFrame:CGRectMake(40, self.view.frame.size.height/2-80, CGRectGetWidth(self.view.frame)-80, 80)];
     [content setText:@"Internet of things will change the world at the turn of this century"];
@@ -121,6 +129,10 @@
 -(void)loginAction:(id)sender{
     MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
     [self.navigationController pushViewController:mainTabbarController animated:YES];
+/*
+    ViewController *login=[[ViewController alloc]init];
+    [self.navigationController pushViewController:login animated:YES];
+*/
 }
 
 -(void)loginOtherAction:(id)sender{

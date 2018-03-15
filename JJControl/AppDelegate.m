@@ -9,7 +9,10 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-
+{
+    
+}
+@property(nonatomic,assign) UIBackgroundTaskIdentifier backgroundTaskIdentifier;
 @end
 
 @implementation AppDelegate
@@ -17,6 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+  //  [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
     return YES;
 }
 
@@ -30,8 +34,28 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    self.backgroundTaskIdentifier =[application beginBackgroundTaskWithExpirationHandler:^(void) {
+        // 清理工作需要在主线程中用同步的方式来进行
+        [self endBackgroundTask];
+    }];
+    
 }
-
+- (void) endBackgroundTask{
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+    __block typeof(self) weakSelf= self;
+    dispatch_async(mainQueue, ^(void) {
+        AppDelegate *strongSelf = weakSelf;
+        if (strongSelf != nil){
+            // 每个对 beginBackgroundTaskWithExpirationHandler:方法的调用,必须要相应的调用 endBackgroundTask:方法。这样，来告诉应用程序你已经执行完成了。
+            // 也就是说,我们向 iOS 要更多时间来完成一个任务,那么我们必须告诉 iOS 你什么时候能完成那个任务。
+            // 也就是要告诉应用程序：“好借好还”嘛。
+            // 标记指定的后台任务完成
+            [[UIApplication sharedApplication] endBackgroundTask:weakSelf.backgroundTaskIdentifier];
+            // 销毁后台任务标识符
+            weakSelf.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
+        }
+    });
+}
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
