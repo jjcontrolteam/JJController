@@ -8,11 +8,11 @@
 
 #import "RoomCollectionView.h"
 #import "BaseDataSource.h"
-#import "BaseDataDelegate.h"
+#import "RoomDataDelegate.h"
 #import "RoomCollectionCell.h"
-
+#import "RoomCollectionReusable.h"
 static NSString *indentifer=@"RoomTableViewCell";
-  
+static NSString *reusableindentifer=@"RoomCollectionReusable";
 @interface RoomCollectionView(){
     BaseDataSource *_dataSource ;
     BaseDataDelegate *_delegate;
@@ -21,12 +21,14 @@ static NSString *indentifer=@"RoomTableViewCell";
 @implementation RoomCollectionView
 
 -(void)buildUI:(id)myDataSourceBlock withDelegate:(id)myDelegateBlock{
+    [self setBackgroundColor:[UIColor colorWithWhite:0.33333 alpha:1.0]];
     [self registerClass:[RoomCollectionCell class] forCellWithReuseIdentifier:indentifer];
-   
-     _dataSource = [[BaseDataSource alloc]initWithItems:@[@"aaa"] cellIdentifier:indentifer andCallBack:myDataSourceBlock];
+    [self registerClass:[RoomCollectionReusable class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reusableindentifer];
+    
+     _dataSource = [[BaseDataSource alloc]initWithItems:@[@"aaa",@"aaa",@"aaa",@"aaa",@"aaa"]  cellIdentifier:indentifer headerIdentifier:reusableindentifer footerIdentifier:nil  andCallBack:myDataSourceBlock];
      self.dataSource = _dataSource;
     
-     _delegate = [[BaseDataDelegate alloc]initWithItems:@[@"aaa"]  andCallBack:myDelegateBlock];
+     _delegate = [[RoomDataDelegate alloc]initWithItems:@[@"aaa",@"aaa",@"aaa",@"aaa",@"aaa"]  andCallBack:myDelegateBlock];
      self.delegate = _delegate; 
 }
 

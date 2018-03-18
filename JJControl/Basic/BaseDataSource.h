@@ -11,5 +11,5 @@
 
 typedef void (^cellBlock)(id cell , id data);
 @interface BaseDataSource : NSObject<UICollectionViewDataSource>
--(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier andCallBack:(cellBlock)block;
+-(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier headerIdentifier:(NSString *)header footerIdentifier:(NSString *)footer andCallBack:(cellBlock)block;
 @end

@@ -10,6 +10,8 @@
 @interface BaseDataSource(){
     NSArray *_items;
     NSString       *_identifier;
+    NSString       *_header;
+    NSString       *_footer;
     cellBlock      callBlock;
 }
 @end
@@ -17,12 +19,14 @@
 -(void)dealloc{
     callBlock = nil;
 }
--(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier andCallBack:(cellBlock)block{
+-(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier headerIdentifier:(NSString *)header footerIdentifier:(NSString *)footer andCallBack:(cellBlock)block{
     
     self = [super init];
     if (self) {
         _items = [NSMutableArray arrayWithArray:array];
         _identifier = identifier;
+        _header = header;
+        _footer = footer;
         callBlock = block;
     }
     return self;
@@ -52,4 +56,21 @@
     }
     return cell;
 }
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableView =nil;
+    
+    if (kind ==UICollectionElementKindSectionHeader) {
+        //定制头部视图的内容
+        UICollectionReusableView *headerV = (UICollectionReusableView *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:_header  forIndexPath:indexPath];
+        reusableView = headerV;
+    }
+    if (kind ==UICollectionElementKindSectionFooter){
+        UICollectionReusableView *headerV = (UICollectionReusableView *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:_footer  forIndexPath:indexPath];
+        reusableView = headerV;
+    }
+    return reusableView;
+}
+
 @end

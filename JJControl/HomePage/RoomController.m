@@ -10,23 +10,29 @@
 #import "BaseCollectionLayout.h"
 #import "RoomCollectionView.h"
 @interface RoomController ()
-
+{
+    RoomCollectionView *conview;
+}
 @end
 
 @implementation RoomController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:YES];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor orangeColor];
     self.title = @"房间";
-    BaseCollectionLayout *layout =[[BaseCollectionLayout alloc]init];
-    layout.itemSize = CGSizeMake(self.view.frame.size.width, 160);
-    RoomCollectionView *conview = [[RoomCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout];
+    UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
+    conview = [[RoomCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout];
     [self.view addSubview:conview];
-   // [conview reloadData];
+   
+    
 }
-
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [conview reloadData];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

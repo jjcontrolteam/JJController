@@ -17,7 +17,7 @@
 {
     [super prepareLayout];
     //水平滚动
-    self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.scrollDirection = UICollectionViewScrollDirectionVertical;
     //
     CGFloat margin = (self.collectionView.frame.size.width - self.itemSize.width) / 2;
     self.collectionView.contentInset = UIEdgeInsetsMake(0, margin, 0, margin);
@@ -31,7 +31,7 @@
  */
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
 {
-    return YES;
+    return NO;
 }
 
 

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3EA40562274736440E682BDD /* libPods-JJControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E718575862E4A786EFD47144 /* libPods-JJControl.a */; };
 		84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1ABF62050DE08005F028A /* AppDelegate.m */; };
-		84B1ABFA2050DE08005F028A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1ABF92050DE08005F028A /* ViewController.m */; };
 		84B1ABFD2050DE08005F028A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFB2050DE08005F028A /* Main.storyboard */; };
 		84B1ABFF2050DE08005F028A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFE2050DE08005F028A /* Assets.xcassets */; };
 		84B1AC022050DE08005F028A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1AC002050DE08005F028A /* LaunchScreen.storyboard */; };
@@ -32,23 +31,26 @@
 		84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8AD2054C2C900BF112C /* JJServiceInterface.m */; };
 		84FAE8C92056158300BF112C /* BDUMD5Crypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8C82056158300BF112C /* BDUMD5Crypt.m */; };
 		84FAE8EF20565E4C00BF112C /* intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84FAE8EE20565E4C00BF112C /* intro.mp4 */; };
-		84FAE8F220565ED800BF112C /* GuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8F120565ED800BF112C /* GuideController.m */; };
 		84FAE8F420565EF300BF112C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FAE8F320565EF200BF112C /* MediaPlayer.framework */; };
 		84FAE8F62056665D00BF112C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FAE8F52056665D00BF112C /* AVFoundation.framework */; };
 		84FAE8FA20566BF900BF112C /* JJCtrlConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8F920566BF900BF112C /* JJCtrlConfig.m */; };
-		84FAE8FD205671F600BF112C /* NavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8FC205671F600BF112C /* NavController.m */; };
-		84FAE92A20579C2400BF112C /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE92920579C2400BF112C /* LoginController.m */; };
 		84FAEEA12057AEAC00BF112C /* JJControlResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84FAEEA02057AEAC00BF112C /* JJControlResource.bundle */; };
-		84FAEEB02057B5DB00BF112C /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEEAF2057B5DB00BF112C /* RegisterController.m */; };
-		84FAEEB32057B5ED00BF112C /* OtherLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEEB22057B5ED00BF112C /* OtherLoginController.m */; };
-		84FAEEB62057B60600BF112C /* ForgetPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEEB52057B60600BF112C /* ForgetPwdController.m */; };
-		84FAEEB92057D94900BF112C /* UserBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEEB82057D94900BF112C /* UserBaseController.m */; };
 		84FAEF89205AB0D900BF112C /* BaseDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEF88205AB0D900BF112C /* BaseDataSource.m */; };
 		84FAEF8C205AB40B00BF112C /* BaseDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEF8B205AB40B00BF112C /* BaseDataDelegate.m */; };
 		84FAEF8F205ABC9D00BF112C /* BaseCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEF8E205ABC9D00BF112C /* BaseCollectionLayout.m */; };
 		84FAEF92205ABD0D00BF112C /* BaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEF91205ABD0D00BF112C /* BaseCollectionView.m */; };
 		84FAEFA1205ABE3C00BF112C /* RoomCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFA0205ABE3C00BF112C /* RoomCollectionView.m */; };
 		84FAEFA4205AC2BA00BF112C /* RoomCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFA3205AC2BA00BF112C /* RoomCollectionCell.m */; };
+		84FAEFEB205E9C8200BF112C /* RoomDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFEA205E9C8200BF112C /* RoomDataDelegate.m */; };
+		84FAEFEE205E9FA800BF112C /* RoomCollectionReusable.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFED205E9FA800BF112C /* RoomCollectionReusable.m */; };
+		84FAF000205EAF6A00BF112C /* ForgetPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFF1205EAF6A00BF112C /* ForgetPwdController.m */; };
+		84FAF001205EAF6A00BF112C /* GuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFF3205EAF6A00BF112C /* GuideController.m */; };
+		84FAF002205EAF6A00BF112C /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFF5205EAF6A00BF112C /* LoginController.m */; };
+		84FAF003205EAF6A00BF112C /* NavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFF7205EAF6A00BF112C /* NavController.m */; };
+		84FAF004205EAF6A00BF112C /* OtherLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFF9205EAF6A00BF112C /* OtherLoginController.m */; };
+		84FAF005205EAF6A00BF112C /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFFB205EAF6A00BF112C /* RegisterController.m */; };
+		84FAF006205EAF6A00BF112C /* UserBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFFD205EAF6A00BF112C /* UserBaseController.m */; };
+		84FAF007205EAF6A00BF112C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFFF205EAF6A00BF112C /* ViewController.m */; };
 		FABD6C35652F4D54E2A4DF90 /* libPods-JJControlTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F60C49A65A78122C5F926BD5 /* libPods-JJControlTests.a */; };
 /* End PBXBuildFile section */
 
@@ -75,8 +77,6 @@
 		84B1ABF22050DE08005F028A /* JJControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B1ABF52050DE08005F028A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84B1ABF62050DE08005F028A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		84B1ABF82050DE08005F028A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		84B1ABF92050DE08005F028A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		84B1ABFC2050DE08005F028A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84B1ABFE2050DE08005F028A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84B1AC012050DE08005F028A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -111,27 +111,13 @@
 		84FAE8C72056158300BF112C /* BDUMD5Crypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BDUMD5Crypt.h; sourceTree = "<group>"; };
 		84FAE8C82056158300BF112C /* BDUMD5Crypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BDUMD5Crypt.m; sourceTree = "<group>"; };
 		84FAE8EE20565E4C00BF112C /* intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.mp4; sourceTree = "<group>"; };
-		84FAE8F020565ED800BF112C /* GuideController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuideController.h; sourceTree = "<group>"; };
-		84FAE8F120565ED800BF112C /* GuideController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuideController.m; sourceTree = "<group>"; };
 		84FAE8F320565EF200BF112C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		84FAE8F52056665D00BF112C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		84FAE8F820566BF900BF112C /* JJCtrlConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJCtrlConfig.h; sourceTree = "<group>"; };
 		84FAE8F920566BF900BF112C /* JJCtrlConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJCtrlConfig.m; sourceTree = "<group>"; };
-		84FAE8FB205671F600BF112C /* NavController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavController.h; sourceTree = "<group>"; };
-		84FAE8FC205671F600BF112C /* NavController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavController.m; sourceTree = "<group>"; };
-		84FAE92820579C2400BF112C /* LoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
-		84FAE92920579C2400BF112C /* LoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		84FAED412057AC2C00BF112C /* JJControlResource.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJControlResource.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FAED432057AC2C00BF112C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84FAEEA02057AEAC00BF112C /* JJControlResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JJControlResource.bundle; sourceTree = "<group>"; };
-		84FAEEAE2057B5DB00BF112C /* RegisterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
-		84FAEEAF2057B5DB00BF112C /* RegisterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
-		84FAEEB12057B5ED00BF112C /* OtherLoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherLoginController.h; sourceTree = "<group>"; };
-		84FAEEB22057B5ED00BF112C /* OtherLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherLoginController.m; sourceTree = "<group>"; };
-		84FAEEB42057B60600BF112C /* ForgetPwdController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetPwdController.h; sourceTree = "<group>"; };
-		84FAEEB52057B60600BF112C /* ForgetPwdController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdController.m; sourceTree = "<group>"; };
-		84FAEEB72057D94900BF112C /* UserBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserBaseController.h; sourceTree = "<group>"; };
-		84FAEEB82057D94900BF112C /* UserBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserBaseController.m; sourceTree = "<group>"; };
 		84FAEF87205AB0D900BF112C /* BaseDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDataSource.h; sourceTree = "<group>"; };
 		84FAEF88205AB0D900BF112C /* BaseDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDataSource.m; sourceTree = "<group>"; };
 		84FAEF8A205AB40B00BF112C /* BaseDataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDataDelegate.h; sourceTree = "<group>"; };
@@ -144,6 +130,26 @@
 		84FAEFA0205ABE3C00BF112C /* RoomCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomCollectionView.m; sourceTree = "<group>"; };
 		84FAEFA2205AC2BA00BF112C /* RoomCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomCollectionCell.h; sourceTree = "<group>"; };
 		84FAEFA3205AC2BA00BF112C /* RoomCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomCollectionCell.m; sourceTree = "<group>"; };
+		84FAEFE9205E9C8200BF112C /* RoomDataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomDataDelegate.h; sourceTree = "<group>"; };
+		84FAEFEA205E9C8200BF112C /* RoomDataDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomDataDelegate.m; sourceTree = "<group>"; };
+		84FAEFEC205E9FA800BF112C /* RoomCollectionReusable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomCollectionReusable.h; sourceTree = "<group>"; };
+		84FAEFED205E9FA800BF112C /* RoomCollectionReusable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomCollectionReusable.m; sourceTree = "<group>"; };
+		84FAEFF0205EAF6A00BF112C /* ForgetPwdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdController.h; sourceTree = "<group>"; };
+		84FAEFF1205EAF6A00BF112C /* ForgetPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdController.m; sourceTree = "<group>"; };
+		84FAEFF2205EAF6A00BF112C /* GuideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideController.h; sourceTree = "<group>"; };
+		84FAEFF3205EAF6A00BF112C /* GuideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideController.m; sourceTree = "<group>"; };
+		84FAEFF4205EAF6A00BF112C /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		84FAEFF5205EAF6A00BF112C /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		84FAEFF6205EAF6A00BF112C /* NavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavController.h; sourceTree = "<group>"; };
+		84FAEFF7205EAF6A00BF112C /* NavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavController.m; sourceTree = "<group>"; };
+		84FAEFF8205EAF6A00BF112C /* OtherLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherLoginController.h; sourceTree = "<group>"; };
+		84FAEFF9205EAF6A00BF112C /* OtherLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherLoginController.m; sourceTree = "<group>"; };
+		84FAEFFA205EAF6A00BF112C /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
+		84FAEFFB205EAF6A00BF112C /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
+		84FAEFFC205EAF6A00BF112C /* UserBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBaseController.h; sourceTree = "<group>"; };
+		84FAEFFD205EAF6A00BF112C /* UserBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBaseController.m; sourceTree = "<group>"; };
+		84FAEFFE205EAF6A00BF112C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		84FAEFFF205EAF6A00BF112C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8E1E090301D0EE65464692C2 /* libPods-JJControlUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJControlUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF19B07AEB2ED139E7CA732 /* Pods-JJControlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA4192CE4AD5263CDDD4FEED /* Pods-JJControlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -229,25 +235,10 @@
 				84FAEF85205AAD3800BF112C /* Room */,
 				84F1E8B3205A6D5B00828549 /* HomePage */,
 				84FAE8AB2054C2A700BF112C /* JJControlService */,
+				84FAEFEF205EAF6A00BF112C /* LoginAndGuide */,
 				84FAE8F720566BE400BF112C /* Config */,
 				84B1ABF52050DE08005F028A /* AppDelegate.h */,
 				84B1ABF62050DE08005F028A /* AppDelegate.m */,
-				84B1ABF82050DE08005F028A /* ViewController.h */,
-				84B1ABF92050DE08005F028A /* ViewController.m */,
-				84FAEEB72057D94900BF112C /* UserBaseController.h */,
-				84FAEEB82057D94900BF112C /* UserBaseController.m */,
-				84FAE8F020565ED800BF112C /* GuideController.h */,
-				84FAE8F120565ED800BF112C /* GuideController.m */,
-				84FAE92820579C2400BF112C /* LoginController.h */,
-				84FAE92920579C2400BF112C /* LoginController.m */,
-				84FAEEAE2057B5DB00BF112C /* RegisterController.h */,
-				84FAEEAF2057B5DB00BF112C /* RegisterController.m */,
-				84FAEEB12057B5ED00BF112C /* OtherLoginController.h */,
-				84FAEEB22057B5ED00BF112C /* OtherLoginController.m */,
-				84FAEEB42057B60600BF112C /* ForgetPwdController.h */,
-				84FAEEB52057B60600BF112C /* ForgetPwdController.m */,
-				84FAE8FB205671F600BF112C /* NavController.h */,
-				84FAE8FC205671F600BF112C /* NavController.m */,
 				84FAE8EE20565E4C00BF112C /* intro.mp4 */,
 				84FAEEA02057AEAC00BF112C /* JJControlResource.bundle */,
 				84B1ABFB2050DE08005F028A /* Main.storyboard */,
@@ -335,8 +326,12 @@
 			children = (
 				84FAEF9F205ABE3C00BF112C /* RoomCollectionView.h */,
 				84FAEFA0205ABE3C00BF112C /* RoomCollectionView.m */,
+				84FAEFE9205E9C8200BF112C /* RoomDataDelegate.h */,
+				84FAEFEA205E9C8200BF112C /* RoomDataDelegate.m */,
 				84FAEFA2205AC2BA00BF112C /* RoomCollectionCell.h */,
 				84FAEFA3205AC2BA00BF112C /* RoomCollectionCell.m */,
+				84FAEFEC205E9FA800BF112C /* RoomCollectionReusable.h */,
+				84FAEFED205E9FA800BF112C /* RoomCollectionReusable.m */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -355,6 +350,30 @@
 			);
 			path = Basic;
 			sourceTree = "<group>";
+		};
+		84FAEFEF205EAF6A00BF112C /* LoginAndGuide */ = {
+			isa = PBXGroup;
+			children = (
+				84FAEFF0205EAF6A00BF112C /* ForgetPwdController.h */,
+				84FAEFF1205EAF6A00BF112C /* ForgetPwdController.m */,
+				84FAEFF2205EAF6A00BF112C /* GuideController.h */,
+				84FAEFF3205EAF6A00BF112C /* GuideController.m */,
+				84FAEFF4205EAF6A00BF112C /* LoginController.h */,
+				84FAEFF5205EAF6A00BF112C /* LoginController.m */,
+				84FAEFF6205EAF6A00BF112C /* NavController.h */,
+				84FAEFF7205EAF6A00BF112C /* NavController.m */,
+				84FAEFF8205EAF6A00BF112C /* OtherLoginController.h */,
+				84FAEFF9205EAF6A00BF112C /* OtherLoginController.m */,
+				84FAEFFA205EAF6A00BF112C /* RegisterController.h */,
+				84FAEFFB205EAF6A00BF112C /* RegisterController.m */,
+				84FAEFFC205EAF6A00BF112C /* UserBaseController.h */,
+				84FAEFFD205EAF6A00BF112C /* UserBaseController.m */,
+				84FAEFFE205EAF6A00BF112C /* ViewController.h */,
+				84FAEFFF205EAF6A00BF112C /* ViewController.m */,
+			);
+			name = LoginAndGuide;
+			path = JJControl/LoginAndGuide;
+			sourceTree = SOURCE_ROOT;
 		};
 		8A509C6CC68EACD28F3B2325 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -640,29 +659,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FAEFA4205AC2BA00BF112C /* RoomCollectionCell.m in Sources */,
-				84FAEEB92057D94900BF112C /* UserBaseController.m in Sources */,
+				84FAEFEB205E9C8200BF112C /* RoomDataDelegate.m in Sources */,
 				84FAEF92205ABD0D00BF112C /* BaseCollectionView.m in Sources */,
-				84FAE8F220565ED800BF112C /* GuideController.m in Sources */,
-				84FAEEB32057B5ED00BF112C /* OtherLoginController.m in Sources */,
-				84FAEEB62057B60600BF112C /* ForgetPwdController.m in Sources */,
 				84FAEFA1205ABE3C00BF112C /* RoomCollectionView.m in Sources */,
-				84B1ABFA2050DE08005F028A /* ViewController.m in Sources */,
 				84FAEF89205AB0D900BF112C /* BaseDataSource.m in Sources */,
+				84FAF003205EAF6A00BF112C /* NavController.m in Sources */,
+				84FAF007205EAF6A00BF112C /* ViewController.m in Sources */,
 				84FAE8FA20566BF900BF112C /* JJCtrlConfig.m in Sources */,
-				84FAE8FD205671F600BF112C /* NavController.m in Sources */,
-				84FAEEB02057B5DB00BF112C /* RegisterController.m in Sources */,
+				84FAF006205EAF6A00BF112C /* UserBaseController.m in Sources */,
+				84FAEFEE205E9FA800BF112C /* RoomCollectionReusable.m in Sources */,
+				84FAF005205EAF6A00BF112C /* RegisterController.m in Sources */,
 				84F1E8BA205A6E1C00828549 /* HomeController.m in Sources */,
 				84FAEF8F205ABC9D00BF112C /* BaseCollectionLayout.m in Sources */,
 				84F1E8C0205A6E7B00828549 /* CategoryController.m in Sources */,
+				84FAF000205EAF6A00BF112C /* ForgetPwdController.m in Sources */,
 				84F1E8C3205A6E9600828549 /* SettingController.m in Sources */,
 				84F1E8B6205A6D9F00828549 /* MainTabBarController.m in Sources */,
 				84FAEF8C205AB40B00BF112C /* BaseDataDelegate.m in Sources */,
+				84FAF002205EAF6A00BF112C /* LoginController.m in Sources */,
+				84FAF004205EAF6A00BF112C /* OtherLoginController.m in Sources */,
+				84FAF001205EAF6A00BF112C /* GuideController.m in Sources */,
 				84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */,
 				84F1E8BD205A6E3000828549 /* RoomController.m in Sources */,
 				84B1AC052050DE08005F028A /* main.m in Sources */,
 				84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */,
 				84FAE8C92056158300BF112C /* BDUMD5Crypt.m in Sources */,
-				84FAE92A20579C2400BF112C /* LoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 typedef void (^cellDelegateBlock)(id data);
-@interface BaseDataDelegate : NSObject<UICollectionViewDelegate>
+@interface BaseDataDelegate : NSObject<UICollectionViewDelegateFlowLayout>
 -(instancetype)initWithItems:(NSArray *)array  andCallBack:(cellDelegateBlock)block;
 @end
