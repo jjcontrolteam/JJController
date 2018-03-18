@@ -12,7 +12,7 @@
 #import "RoomCollectionCell.h"
 
 static NSString *indentifer=@"RoomTableViewCell";
-
+  
 @interface RoomCollectionView(){
     BaseDataSource *_dataSource ;
     BaseDataDelegate *_delegate;
