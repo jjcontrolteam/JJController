@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EC341EF20600DCE007F4B8C /* CategoryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC341EE20600DCE007F4B8C /* CategoryCollectionView.m */; };
+		2EC341F220600E73007F4B8C /* CategoryDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC341F120600E73007F4B8C /* CategoryDataDelegate.m */; };
+		2EC341F520600EBA007F4B8C /* CategoryCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC341F420600EBA007F4B8C /* CategoryCollectionCell.m */; };
 		3EA40562274736440E682BDD /* libPods-JJControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E718575862E4A786EFD47144 /* libPods-JJControl.a */; };
 		84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1ABF62050DE08005F028A /* AppDelegate.m */; };
 		84B1ABFD2050DE08005F028A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFB2050DE08005F028A /* Main.storyboard */; };
@@ -72,6 +75,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EC341ED20600DCE007F4B8C /* CategoryCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionView.h; sourceTree = "<group>"; };
+		2EC341EE20600DCE007F4B8C /* CategoryCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionView.m; sourceTree = "<group>"; };
+		2EC341F020600E73007F4B8C /* CategoryDataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryDataDelegate.h; sourceTree = "<group>"; };
+		2EC341F120600E73007F4B8C /* CategoryDataDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDataDelegate.m; sourceTree = "<group>"; };
+		2EC341F320600EBA007F4B8C /* CategoryCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionCell.h; sourceTree = "<group>"; };
+		2EC341F420600EBA007F4B8C /* CategoryCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionCell.m; sourceTree = "<group>"; };
 		6CCF6077A4B32890BA60222A /* Pods-JJControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJControl/Pods-JJControl.release.xcconfig"; sourceTree = "<group>"; };
 		7A49B1E052B158A11924C475 /* Pods-JJControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJControl/Pods-JJControl.debug.xcconfig"; sourceTree = "<group>"; };
 		84B1ABF22050DE08005F028A /* JJControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +213,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2EC341EC20600D45007F4B8C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				2EC341ED20600DCE007F4B8C /* CategoryCollectionView.h */,
+				2EC341EE20600DCE007F4B8C /* CategoryCollectionView.m */,
+				2EC341F020600E73007F4B8C /* CategoryDataDelegate.h */,
+				2EC341F120600E73007F4B8C /* CategoryDataDelegate.m */,
+				2EC341F320600EBA007F4B8C /* CategoryCollectionCell.h */,
+				2EC341F420600EBA007F4B8C /* CategoryCollectionCell.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		84B1ABE92050DE08005F028A = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +253,7 @@
 		84B1ABF42050DE08005F028A /* JJControl */ = {
 			isa = PBXGroup;
 			children = (
+				2EC341EC20600D45007F4B8C /* Category */,
 				84FAEF86205AAD8D00BF112C /* Basic */,
 				84FAEF85205AAD3800BF112C /* Room */,
 				84F1E8B3205A6D5B00828549 /* HomePage */,
@@ -666,6 +689,7 @@
 			files = (
 				84FAEFA4205AC2BA00BF112C /* RoomCollectionCell.m in Sources */,
 				84FAEFEB205E9C8200BF112C /* RoomDataDelegate.m in Sources */,
+				2EC341EF20600DCE007F4B8C /* CategoryCollectionView.m in Sources */,
 				84FAEF92205ABD0D00BF112C /* BaseCollectionView.m in Sources */,
 				84FAEFA1205ABE3C00BF112C /* RoomCollectionView.m in Sources */,
 				84FAEF89205AB0D900BF112C /* BaseDataSource.m in Sources */,
@@ -680,9 +704,11 @@
 				84F1E8C0205A6E7B00828549 /* CategoryController.m in Sources */,
 				84FAF000205EAF6A00BF112C /* ForgetPwdController.m in Sources */,
 				84F1E8C3205A6E9600828549 /* SettingController.m in Sources */,
+				2EC341F520600EBA007F4B8C /* CategoryCollectionCell.m in Sources */,
 				84F1E8B6205A6D9F00828549 /* MainTabBarController.m in Sources */,
 				84FAEF8C205AB40B00BF112C /* BaseDataDelegate.m in Sources */,
 				84FAF002205EAF6A00BF112C /* LoginController.m in Sources */,
+				2EC341F220600E73007F4B8C /* CategoryDataDelegate.m in Sources */,
 				84FAF004205EAF6A00BF112C /* OtherLoginController.m in Sources */,
 				84FAF001205EAF6A00BF112C /* GuideController.m in Sources */,
 				84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */,
