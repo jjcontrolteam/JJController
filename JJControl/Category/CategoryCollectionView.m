@@ -10,6 +10,9 @@
 #import "BaseDataSource.h"
 #import "CategoryDataDelegate.h"
 #import "CategoryCollectionCell.h"
+#import "CategoryModel.h"
+
+
 static NSString *identifier = @"CategoryCollectionCell";
 
 @interface CategoryCollectionView(){
@@ -24,24 +27,26 @@ static NSString *identifier = @"CategoryCollectionCell";
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[CategoryCollectionCell class] forCellWithReuseIdentifier:identifier];
     
-    _dataSource = [[BaseDataSource alloc] initWithItems:@[@"",@"",@""] cellIdentifier:identifier headerIdentifier:nil footerIdentifier:nil andCallBack:^(id cell, id data) {
-        
-    }];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i = 0 ; i < 15; i++) {
+        NSString *title = [NSString stringWithFormat:@"灯光 %@", @(i)];
+        CategoryModel *model = [CategoryModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:title details:@"8/30"];
+        [array addObject:model];
+    }
+    _dataSource = [[BaseDataSource alloc] initWithItems:array cellIdentifier:identifier headerIdentifier:nil footerIdentifier:nil andCallBack:myDataSourceBlock];
     self.dataSource = _dataSource;
     
-    _delegate = [[CategoryDataDelegate alloc] initWithItems:@[@"",@"",@""] andCallBack:^(id data) {
-        
-    }];
+    _delegate = [[CategoryDataDelegate alloc] initWithItems:array andCallBack:myDelegateBlock];
     self.delegate = _delegate;
 }
 
 - (void)bindCell:(id)cell withData:(id)data{
     CategoryCollectionCell *newCell = (CategoryCollectionCell *)cell;
+    [newCell setData:data];
  }
 
 - (void)chooseCell:(id)data{
-    
-}
+ }
 
 /*
 // Only override drawRect: if you perform custom drawing.

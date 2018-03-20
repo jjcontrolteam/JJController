@@ -10,4 +10,6 @@
 
 @interface CategoryCollectionCell : UICollectionViewCell
 
+@property (nonatomic, strong) id data;
+
 @end

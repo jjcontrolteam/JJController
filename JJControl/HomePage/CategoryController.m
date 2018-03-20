@@ -7,8 +7,10 @@
 //
 
 #import "CategoryController.h"
-
-@interface CategoryController ()
+#import "CategoryCollectionView.h"
+@interface CategoryController (){
+    CategoryCollectionView *_collectionView;
+}
 
 @end
 
@@ -16,9 +18,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor redColor];
     self.title = @"安防";
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 100);
+    _collectionView = [[CategoryCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+     [self.view addSubview:_collectionView];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [_collectionView reloadData];
 
 }
 
