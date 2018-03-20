@@ -11,7 +11,7 @@
 @implementation UIScreen (KIFAdditions)
 
 - (CGFloat)majorSwipeDisplacement {
-    return self.bounds.size.width * 0.5;
+    return self.bounds.size.width * 0.625;
 }
 
 @end

@@ -18,11 +18,6 @@
 
 MAKE_CATEGORIES_LOADABLE(UIAccessibilityElement_KIFAdditions)
 
-@interface UIAccessibilityElement (KIFAdditions_Private)
-
-- (id)tableViewCell; // UITableViewCellAccessibilityElement
-
-@end
 
 @implementation UIAccessibilityElement (KIFAdditions)
 
@@ -31,9 +26,7 @@ MAKE_CATEGORIES_LOADABLE(UIAccessibilityElement_KIFAdditions)
     while (element && ![element isKindOfClass:[UIView class]]) {
         // Sometimes accessibilityContainer will return a view that's too far up the view hierarchy
         // UIAccessibilityElement instances will sometimes respond to view, so try to use that and then fall back to accessibilityContainer
-        id view = [element respondsToSelector:@selector(view)] ? [(id)element view]
-        : [element respondsToSelector:@selector(tableViewCell)] ? [(id)element tableViewCell]
-        : nil;
+        id view = [element respondsToSelector:@selector(view)] ? [(id)element view] : nil;
         
         if (view) {
             element = view;
@@ -171,42 +164,35 @@ MAKE_CATEGORIES_LOADABLE(UIAccessibilityElement_KIFAdditions)
         return nil;
     }
     
-    if (!view.isVisibleInWindowFrame) {
-        // Scroll the view (and superviews) to be visible if necessary
-        UIView *superview = (UIScrollView *)view;
-        while (superview) {
-            // Fix for iOS7 table view cells containing scroll views
-            if ([superview.superview isKindOfClass:[UITableViewCell class]]) {
-                break;
-            }
-            
-            if ([superview isKindOfClass:[UIScrollView class]]) {
-                UIScrollView *scrollView = (UIScrollView *)superview;
-                
-                if (((UIAccessibilityElement *)view == element) && ![view isKindOfClass:[UITableViewCell class]]) {
-                    [scrollView scrollViewToVisible:view animated:YES];
-                } else if ([view isKindOfClass:[UITableViewCell class]] && [scrollView.superview isKindOfClass:[UITableView class]]) {
-                    UITableViewCell *cell = (UITableViewCell *)view;
-                    UITableView *tableView = (UITableView *)scrollView.superview;
-                    NSIndexPath *indexPath = [tableView indexPathForCell:cell];
-                    [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
-                } else {
-                    CGRect elementFrame = [view.window convertRect:element.accessibilityFrame toView:scrollView];
-                    CGRect visibleRect = CGRectMake(scrollView.contentOffset.x, scrollView.contentOffset.y, CGRectGetWidth(scrollView.bounds), CGRectGetHeight(scrollView.bounds));
-                    
-                    // Only call scrollRectToVisible if the element isn't already visible
-                    // iOS 8 will sometimes incorrectly scroll table views so the element scrolls out of view
-                    if (!CGRectContainsRect(visibleRect, elementFrame)) {
-                        [scrollView scrollRectToVisible:elementFrame animated:YES];
-                    }
-                }
-                
-                // Give the scroll view a small amount of time to perform the scroll.
-                KIFRunLoopRunInModeRelativeToAnimationSpeed(kCFRunLoopDefaultMode, 0.3, false);
-            }
-            
-            superview = superview.superview;
+    // Scroll the view (and superviews) to be visible if necessary
+    UIView *superview = (UIScrollView *)view;
+    while (superview) {
+        // Fix for iOS7 table view cells containing scroll views
+        if ([superview.superview isKindOfClass:[UITableViewCell class]]) {
+            break;
         }
+        
+        if ([superview isKindOfClass:[UIScrollView class]]) {
+            UIScrollView *scrollView = (UIScrollView *)superview;
+            
+            if (((UIAccessibilityElement *)view == element) && ![view isKindOfClass:[UITableViewCell class]]) {
+                [scrollView scrollViewToVisible:view animated:YES];
+            } else {
+                CGRect elementFrame = [view.window convertRect:element.accessibilityFrame toView:scrollView];
+                CGRect visibleRect = CGRectMake(scrollView.contentOffset.x, scrollView.contentOffset.y, CGRectGetWidth(scrollView.bounds), CGRectGetHeight(scrollView.bounds));
+                
+                // Only call scrollRectToVisible if the element isn't already visible
+                // iOS 8 will sometimes incorrectly scroll table views so the element scrolls out of view
+                if (!CGRectContainsRect(visibleRect, elementFrame)) {
+                    [scrollView scrollRectToVisible:elementFrame animated:YES];
+                }
+            }
+            
+            // Give the scroll view a small amount of time to perform the scroll.
+            KIFRunLoopRunInModeRelativeToAnimationSpeed(kCFRunLoopDefaultMode, 0.3, false);
+        }
+        
+        superview = superview.superview;
     }
     
     if ([[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
@@ -226,7 +212,7 @@ MAKE_CATEGORIES_LOADABLE(UIAccessibilityElement_KIFAdditions)
     
     if (mustBeTappable && !view.isProbablyTappable) {
         if (error) {
-            *error = [NSError KIFErrorWithFormat:@"Accessibility element %@ for view %@ with label \"%@\" is not tappable. It may be blocked by other views.", element, view, element.accessibilityLabel];
+            *error = [NSError KIFErrorWithFormat:@"Accessibility element with label \"%@\" is not tappable. It may be blocked by other views.", element.accessibilityLabel];
         }
         return nil;
     }

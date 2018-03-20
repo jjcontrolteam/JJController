@@ -8,14 +8,18 @@
 
 #import "JJServiceInterface.h"
 #import "MQTTClient.h"
-
+#import "MQTTSessionManager.h"
 static JJServiceInterface * _singleton;
-@interface JJServiceInterface()<MQTTSessionDelegate>{
-    MQTTSession *session;
+@interface JJServiceInterface()<MQTTSessionManagerDelegate>{
+    
 }
+@property (strong, nonatomic) MQTTSessionManager *manager;
+@property (strong, nonatomic) NSDictionary *mqttSettings;
+@property (weak, nonatomic)   UILabel *status;
+@property (strong, nonatomic) NSString *base;
 @end
 
-
+#define TARGET_OS_IPHONE 1
 @implementation JJServiceInterface
 + (instancetype)allocWithZone:(struct _NSZone *)zone{
     
@@ -31,38 +35,96 @@ static JJServiceInterface * _singleton;
 }
 
 + (instancetype)share{
-    
-    return  [[self alloc] init];
+    CGRect bounds=[UIScreen mainScreen].bounds;
+    return  [[self alloc] initWithFrame:bounds];
 }
 
--(instancetype)init{
-    self = [super init];
+-(instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
     if (self) {
+        UILabel *tmpview=[[UILabel alloc]initWithFrame:frame];
+        UIWindow *window =[[UIApplication sharedApplication].delegate window];
+        [window addSubview:tmpview];
+        [tmpview setBackgroundColor:[UIColor colorWithWhite:0.3 alpha:0.6]];
+        [tmpview setTextColor:[UIColor whiteColor]];
+        [tmpview setTextAlignment:NSTextAlignmentCenter];
+        self.status = tmpview;
+
+        NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
+        NSURL *mqttPlistUrl = [bundleURL URLByAppendingPathComponent:@"mqtt.plist"];
+        self.mqttSettings = [NSDictionary dictionaryWithContentsOfURL:mqttPlistUrl];
+        self.base = @"v1.cloud.request";
+        self.manager.subscriptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:MQTTQosLevelExactlyOnce]
+                                                                 forKey:[NSString stringWithFormat:@"%@/#", self.base]];
+       // self.manager.subscriptions = [@{@"client_id": @(0)} mutableCopy];
+        if (!self.manager) {
+            self.manager = [[MQTTSessionManager alloc] init];
+            self.manager.delegate = self;
+           
+            [self.manager connectTo:self.mqttSettings[@"host"]
+                               port:[self.mqttSettings[@"port"] intValue]
+                                tls:[self.mqttSettings[@"tls"] boolValue]
+                          keepalive:30.0
+                              clean:true
+                               auth:false
+                               user:nil
+                               pass:nil
+                          willTopic:@"v1.cloud.request"
+                               will:nil
+                            willQos:MQTTQosLevelExactlyOnce
+                     willRetainFlag:FALSE
+                       withClientId:nil];//[[NSUserDefaults standardUserDefaults]valueForKey:@"UseTelephone"]*/
+        } else {
+             [self.manager connectToLast];
+        }
         
-        
-        
-        MQTTCFSocketTransport *transport = [[MQTTCFSocketTransport alloc] init];
-        
-        transport.host = @"106.14.200.212";
-        
-        transport.port = 1883 ;
-        
-       // transport.voip=YES;
-        
-        session = [[MQTTSession alloc] init];
-        
-       // session.voip = YES;
-        
-        session.transport = transport;
-        
-        session.delegate = self;
-        
-        [session connectAndWaitTimeout:1];
+        [self.manager addObserver:self
+                       forKeyPath:@"state"
+                          options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
+                          context:nil];
         
         
     }
    
     return self;
+}
+
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    switch (self.manager.state) {
+        case MQTTSessionManagerStateClosed:
+            self.status.text = @"closed";
+            break;
+        case MQTTSessionManagerStateClosing:
+            self.status.text = @"closing";
+            break;
+        case MQTTSessionManagerStateConnected:
+            self.status.text = [NSString stringWithFormat:@"connected as %@-%@",
+                                [UIDevice currentDevice].name,
+                                @"登陆"];
+            self.manager.subscriptions = [@{@"v1/cloud/13979902123/request": @(0),@"client_id": @(1),@"v1/cloud/13979902123/response": @(2)} mutableCopy];
+          /*  [self.manager sendData:[@"13979902123" dataUsingEncoding:NSUTF8StringEncoding]
+                             topic:@"v1/cloud/13979902123/request"
+                               qos:MQTTQosLevelAtLeastOnce
+                            retain:FALSE];*/
+            
+            break;
+        case MQTTSessionManagerStateConnecting:
+            self.status.text = @"connecting";
+            break;
+        case MQTTSessionManagerStateError:
+            self.status.text = @"error";
+            break;
+        case MQTTSessionManagerStateStarting:
+        default:
+            self.status.text = @"not connected";
+            break;
+    }
+
+}
+
+-(void)removeAction{
+    [self removeFromSuperview];
 }
 
 -(void)connected:(MQTTSession *)session{
@@ -81,44 +143,15 @@ static JJServiceInterface * _singleton;
         });
     });
 }
-//连接成功
-- (void)handleEvent:(MQTTSession *)session event:(MQTTSessionEvent)eventCode error:(NSError *)error
-{
-    switch (eventCode) {
-        case MQTTSessionEventConnected:
-        {
-           
-        }
-            break;
-            
-        default:
-            break;
-    }
-}
 
-- (void)newMessage:(MQTTSession *)session
-              data:(NSData *)data
-           onTopic:(NSString *)topic
-               qos:(MQTTQosLevel)qos
-          retained:(BOOL)retained
-               mid:(unsigned int)mid {
-    // this is one of the delegate callbacks
-  /*  if (data) {
-        NSString *val = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-        if (val) {
-           NSDictionary *dict =  [[self class]jsonDictWithString:val];
-            if (_delegate && [_delegate respondsToSelector:@selector(receiveJson:)]) {
-                [_delegate receiveJson:dict];
-            }
-        }
-    }*/
-}
 
 -(void)sendMsg:(NSData*)data toTopic:(NSString*)topic{
- /*   [session publishAndWaitData:data
-                        onTopic:topic
-                         retain:NO
-                            qos:MQTTQosLevelExactlyOnce];*/
+ 
+    [self.manager sendData:data
+                     topic:topic
+                       qos:MQTTQosLevelAtLeastOnce
+                    retain:FALSE];
+    
     
 }
 
@@ -142,6 +175,32 @@ static JJServiceInterface * _singleton;
              completion(YES);
          }
     }];*/
+}
+- (void)handleMessage:(NSData *)data onTopic:(NSString *)topic retained:(BOOL)retained {
+    /*
+     * MQTTClient: process received message
+     */
+    
+    if (data) {
+    
+        NSString *val = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        
+        if (val) {
+        
+            NSDictionary *dict =  [[self class]jsonDictWithString:val];
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(receiveJson:)]) {
+            
+                [_delegate receiveJson:dict];
+               
+            }
+           
+        }
+     
+    }
+
+    
+   
 }
 
 // json字符串转dict字典

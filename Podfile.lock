@@ -1,16 +1,18 @@
 PODS:
-  - CocoaAsyncSocket (7.6.2)
-  - KIF (3.7.1):
-    - KIF/Core (= 3.7.1)
-  - KIF/Core (3.7.1)
-  - MQTTClient (0.13.0):
-    - MQTTClient/Core (= 0.13.0)
-  - MQTTClient/Core (0.13.0):
+  - CocoaAsyncSocket (7.5.1):
+    - CocoaAsyncSocket/GCD (= 7.5.1)
+  - CocoaAsyncSocket/GCD (7.5.1)
+  - KIF (3.5.1):
+    - KIF/Core (= 3.5.1)
+  - KIF/Core (3.5.1)
+  - MQTTClient (0.8.7):
+    - MQTTClient/Core (= 0.8.7)
+  - MQTTClient/Core (0.8.7):
     - MQTTClient/Manager
     - MQTTClient/Min
-  - MQTTClient/Manager (0.13.0):
+  - MQTTClient/Manager (0.8.7):
     - MQTTClient/Min
-  - MQTTClient/Min (0.13.0)
+  - MQTTClient/Min (0.8.7)
 
 DEPENDENCIES:
   - CocoaAsyncSocket
@@ -18,10 +20,10 @@ DEPENDENCIES:
   - MQTTClient
 
 SPEC CHECKSUMS:
-  CocoaAsyncSocket: 3541e024f48c54b251638ef72d51dd42808de932
-  KIF: af73f6a04539bd205622c2e5ce5f910cc2123d4b
-  MQTTClient: aced164e080fb139daa98fc745d01da279e55945
+  CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
+  KIF: 082eb65279e51c3092923802849eb796a04982ab
+  MQTTClient: 2842bdeab5a65eec75e0fcbbbd2a300946690fee
 
 PODFILE CHECKSUM: a947bbbb739a5f7b2930cd356ef6b721069b44fc
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.1.1

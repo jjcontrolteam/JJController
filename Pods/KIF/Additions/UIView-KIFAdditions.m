@@ -553,21 +553,6 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
     }
 
     NSMutableArray *touches = [NSMutableArray array];
-    
-    // Convert paths to be in window coordinates before we start, because the view may
-    // move relative to the window.
-    NSMutableArray *newPaths = [[NSMutableArray alloc] init];
-    
-    for (NSArray * path in arrayOfPaths) {
-        NSMutableArray *newPath = [[NSMutableArray alloc] init];
-        for (NSValue *pointValue in path) {
-            CGPoint point = [pointValue CGPointValue];
-            [newPath addObject:[NSValue valueWithCGPoint:[self.window convertPoint:point fromView:self]]];
-        }
-        [newPaths addObject:newPath];
-    }
-    
-    arrayOfPaths = newPaths;
 
     for (NSUInteger pointIndex = 0; pointIndex < pointsInPath; pointIndex++) {
         // create initial touch event and send touch down event
@@ -576,8 +561,6 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
             for (NSArray *path in arrayOfPaths)
             {
                 CGPoint point = [path[pointIndex] CGPointValue];
-                // The starting point needs to be relative to the view receiving the UITouch event.
-                point = [self convertPoint:point fromView:self.window];
                 UITouch *touch = [[UITouch alloc] initAtPoint:point inView:self];
                 [touch setPhaseAndUpdateTimestamp:UITouchPhaseBegan];
                 [touches addObject:touch];
@@ -595,7 +578,7 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
                 NSArray *path = arrayOfPaths[pathIndex];
                 CGPoint point = [path[pointIndex] CGPointValue];
                 touch = touches[pathIndex];
-                [touch setLocationInWindow:point];
+                [touch setLocationInWindow:[self.window convertPoint:point fromView:self]];
                 [touch setPhaseAndUpdateTimestamp:UITouchPhaseMoved];
             }
             UIEvent *event = [self eventWithTouches:[NSArray arrayWithArray:touches]];
@@ -918,26 +901,6 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
         }
     }];
     return result;
-}
-
-- (BOOL)isVisibleInWindowFrame;
-{
-    __block CGRect visibleFrame = [self.superview convertRect:self.frame toView:nil];
-    [self performBlockOnAscendentViews:^(UIView *view, BOOL *stop) {
-        if (view.clipsToBounds) {
-            CGRect clippingFrame = [view.superview convertRect:view.frame toView:nil];
-            visibleFrame = CGRectIntersection(visibleFrame, clippingFrame);
-        }
-        if (CGSizeEqualToSize(visibleFrame.size, CGSizeZero)) {
-            // Our frame has been fully clipped
-            *stop = YES;
-        }
-        if (view.superview == view.window) {
-            // Walked all ancestors (skip the top level window that has no superview)
-            *stop = YES;
-        }
-    }];
-    return !CGSizeEqualToSize(visibleFrame.size, CGSizeZero);
 }
 
 - (void)performBlockOnDescendentViews:(void (^)(UIView *view, BOOL *stop))block

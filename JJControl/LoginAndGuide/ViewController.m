@@ -60,7 +60,7 @@
     
     NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1002,\"user\": \"13911112222\",\"password\": %@,\"smscode\": 1234}" , result];
     
-    [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request"];
+    [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/13979902123/request"];
 }
 
 -(void)receiveJson:(NSDictionary*)dict

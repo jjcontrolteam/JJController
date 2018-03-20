@@ -34,11 +34,11 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    self.backgroundTaskIdentifier =[application beginBackgroundTaskWithExpirationHandler:^(void) {
+    /*self.backgroundTaskIdentifier =[application beginBackgroundTaskWithExpirationHandler:^(void) {
         // 清理工作需要在主线程中用同步的方式来进行
         [self endBackgroundTask];
     }];
-    
+    */
 }
 - (void) endBackgroundTask{
     dispatch_queue_t mainQueue = dispatch_get_main_queue();

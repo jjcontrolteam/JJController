@@ -11,7 +11,16 @@
 #import "OtherLoginController.h"
 #import "MainTabBarController.h"
 #import "ViewController.h"
-@interface LoginController ()<UITextFieldDelegate>
+#import "JJServiceInterface.h"
+#import "BDUMD5Crypt.h"
+#import<CommonCrypto/CommonDigest.h>
+
+
+#define KEY_MAC     @"HmacMD5"
+#define encryptKey  @"gaoyusong"
+
+
+@interface LoginController ()<UITextFieldDelegate,JJServiceDelegate>
 {
     UITextField *nameField_;
     UITextField *pwdField_;
@@ -120,6 +129,8 @@
     [self.view addSubview:forgetBtn_];
     [forgetBtn_ setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     
+    JJServiceInterface *service = [JJServiceInterface share];
+    service.delegate = self;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
@@ -127,12 +138,17 @@
 }
 
 -(void)loginAction:(id)sender{
-    MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
+   /* MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
     [self.navigationController pushViewController:mainTabbarController animated:YES];
-/*
-    ViewController *login=[[ViewController alloc]init];
-    [self.navigationController pushViewController:login animated:YES];
 */
+    JJServiceInterface *service = [JJServiceInterface share];
+    //   NSString *pwd = @"123456";
+    
+    NSString *result =[BDUMD5Crypt HMACMD5WithString:encryptKey WithKey:KEY_MAC] ;
+    
+    NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1002,\"user\": \"13911112222\",\"password\": %@,\"smscode\": 1234}" , result];
+    
+    [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/13979902123/request"];
 }
 
 -(void)loginOtherAction:(id)sender{
@@ -145,7 +161,19 @@
     [self.navigationController pushViewController:registerCtrl animated:YES];
 }
 
- 
+
+
+-(void)receiveJson:(NSDictionary*)dict
+{
+    NSLog(@"%@",dict);
+    
+}
+-(void)connectFinished{
+    
+}
+-(void)disconnect{
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

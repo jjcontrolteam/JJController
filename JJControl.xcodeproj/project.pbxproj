@@ -54,6 +54,7 @@
 		84FAF005205EAF6A00BF112C /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFFB205EAF6A00BF112C /* RegisterController.m */; };
 		84FAF006205EAF6A00BF112C /* UserBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFFD205EAF6A00BF112C /* UserBaseController.m */; };
 		84FAF007205EAF6A00BF112C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFFF205EAF6A00BF112C /* ViewController.m */; };
+		84FAF02D205FDA7000BF112C /* mqtt.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FAF02C205FDA7000BF112C /* mqtt.plist */; };
 		FABD6C35652F4D54E2A4DF90 /* libPods-JJControlTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F60C49A65A78122C5F926BD5 /* libPods-JJControlTests.a */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +160,7 @@
 		84FAEFFD205EAF6A00BF112C /* UserBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBaseController.m; sourceTree = "<group>"; };
 		84FAEFFE205EAF6A00BF112C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		84FAEFFF205EAF6A00BF112C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		84FAF02C205FDA7000BF112C /* mqtt.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mqtt.plist; sourceTree = "<group>"; };
 		8E1E090301D0EE65464692C2 /* libPods-JJControlUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJControlUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF19B07AEB2ED139E7CA732 /* Pods-JJControlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA4192CE4AD5263CDDD4FEED /* Pods-JJControlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJControlTests/Pods-JJControlTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				84B1ABFE2050DE08005F028A /* Assets.xcassets */,
 				84B1AC002050DE08005F028A /* LaunchScreen.storyboard */,
 				84B1AC032050DE08005F028A /* Info.plist */,
+				84FAF02C205FDA7000BF112C /* mqtt.plist */,
 				84B1AC042050DE08005F028A /* main.m */,
 			);
 			path = JJControl;
@@ -556,6 +559,7 @@
 				84F1E8DD205A773400828549 /* room_on@2x.png in Resources */,
 				84F1E8E3205A773400828549 /* setting_on@2x.png in Resources */,
 				84F1E8E0205A773400828549 /* home@2x.png in Resources */,
+				84FAF02D205FDA7000BF112C /* mqtt.plist in Resources */,
 				84F1E8E1205A773400828549 /* room@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -644,7 +648,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C1EE8D07FA0A39C05A2CC84D /* [CP] Embed Pods Frameworks */ = {
@@ -677,7 +681,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

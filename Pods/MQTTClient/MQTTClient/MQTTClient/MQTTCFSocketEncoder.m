@@ -20,7 +20,11 @@
     self = [super init];
     self.state = MQTTCFSocketEncoderStateInitializing;
     self.buffer = [[NSMutableData alloc] init];
+    
     self.stream = nil;
+    self.runLoop = [NSRunLoop currentRunLoop];
+    self.runLoopMode = NSRunLoopCommonModes;
+    
     return self;
 }
 
@@ -29,12 +33,14 @@
 }
 
 - (void)open {
-    (self.stream).delegate = self;
+    [self.stream setDelegate:self];
+    [self.stream scheduleInRunLoop:self.runLoop forMode:self.runLoopMode];
     [self.stream open];
 }
 
 - (void)close {
     [self.stream close];
+    [self.stream removeFromRunLoop:self.runLoop forMode:self.runLoopMode];
     [self.stream setDelegate:nil];
 }
 

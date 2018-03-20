@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @protocol JJServiceDelegate<NSObject>
 -(void)createTopicFinished;
 -(void)connectFinished;
 -(void)disconnect;
 -(void)receiveJson:(NSDictionary*)dict;
 @end
-@interface JJServiceInterface : NSObject
+@interface JJServiceInterface : UIView
 @property(nonatomic,assign) id<JJServiceDelegate> delegate;
 + (instancetype)share;
 -(void)sendMsg:(NSData*)data toTopic:(NSString*)topic;
