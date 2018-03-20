@@ -1,45 +1,47 @@
 //
-//  CategoryController.m
+//  DeviceController.m
 //  JJControl
 //
-//  Created by admin on 15/03/2018.
-//  Copyright © 2018 admin. All rights reserved.
+//  Created by YvanWang on 2018/3/20.
+//  Copyright © 2018年 admin. All rights reserved.
 //
 
-#import "CategoryController.h"
-#import "CategoryCollectionView.h"
 #import "DeviceController.h"
+#import "DeviceCollectionView.h"
+#import "ControlController.h"
 
-@interface CategoryController (){
-    CategoryCollectionView *_collectionView;
+@interface DeviceController (){
+    DeviceCollectionView *_collectionView;
 }
 
 @end
 
-@implementation CategoryController
+@implementation DeviceController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
-    self.title = @"安防";
+    self.title = @"灯光";
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    _collectionView = [[CategoryCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    layout.sectionHeadersPinToVisibleBounds = true;
+    layout.minimumInteritemSpacing = 1;
+    layout.minimumLineSpacing = 1;
+    
+    _collectionView = [[DeviceCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
     __weak typeof(self) weakSelf = self;
     _collectionView.block = ^{
-        DeviceController *deviceController = [[DeviceController alloc] init];
-        [weakSelf.navigationController pushViewController:deviceController animated:YES];
+        ControlController *controlController = [[ControlController alloc] init];
+        controlController.hidesBottomBarWhenPushed = YES;
+        [weakSelf.navigationController pushViewController:controlController animated:YES];
     };
+
     [self.view addSubview:_collectionView];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [_collectionView reloadData];
-
 }
 
 - (void)didReceiveMemoryWarning {

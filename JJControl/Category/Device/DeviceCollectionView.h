@@ -1,8 +1,8 @@
 //
-//  CategoryCollectionView.h
+//  DeviceCollectionView.h
 //  JJControl
 //
-//  Created by YvanWang on 2018/3/19.
+//  Created by YvanWang on 2018/3/20.
 //  Copyright © 2018年 admin. All rights reserved.
 //
 
@@ -10,8 +10,9 @@
 
 typedef void(^CollectionItemTappedBlock)(void);
 
-@interface CategoryCollectionView : BaseCollectionView
+@interface DeviceCollectionView : BaseCollectionView
 
 @property (nonatomic, copy) CollectionItemTappedBlock block;
+
 
 @end

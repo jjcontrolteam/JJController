@@ -1,5 +1,5 @@
 //
-//  CategoryCollectionCell.h
+//  CategoryCollectionViewCell.h
 //  JJControl
 //
 //  Created by YvanWang on 2018/3/19.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CategoryCollectionCell : UICollectionViewCell
+@interface CategoryCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) id data;
 

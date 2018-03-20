@@ -10,4 +10,9 @@
 
 @implementation CategoryDataDelegate
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return CGSizeMake([UIScreen mainScreen].bounds.size.width, 100);
+}
+
+
 @end

@@ -9,11 +9,11 @@
 #import "CategoryCollectionView.h"
 #import "BaseDataSource.h"
 #import "CategoryDataDelegate.h"
-#import "CategoryCollectionCell.h"
+#import "CategoryCollectionViewCell.h"
 #import "CategoryModel.h"
 
 
-static NSString *identifier = @"CategoryCollectionCell";
+static NSString *identifier = @"CategoryCollectionViewCell";
 
 @interface CategoryCollectionView(){
     BaseDataSource *_dataSource;
@@ -25,7 +25,7 @@ static NSString *identifier = @"CategoryCollectionCell";
 
 - (void)buildUI:(id)myDataSourceBlock withDelegate:(id)myDelegateBlock{
     [self setBackgroundColor:[UIColor redColor]];
-    [self registerClass:[CategoryCollectionCell class] forCellWithReuseIdentifier:identifier];
+    [self registerClass:[CategoryCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (int i = 0 ; i < 15; i++) {
@@ -41,12 +41,15 @@ static NSString *identifier = @"CategoryCollectionCell";
 }
 
 - (void)bindCell:(id)cell withData:(id)data{
-    CategoryCollectionCell *newCell = (CategoryCollectionCell *)cell;
+    CategoryCollectionViewCell *newCell = (CategoryCollectionViewCell *)cell;
     [newCell setData:data];
- }
+}
 
 - (void)chooseCell:(id)data{
- }
+    if(self.block){
+        self.block();
+    }
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
