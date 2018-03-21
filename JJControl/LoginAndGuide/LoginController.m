@@ -12,13 +12,12 @@
 #import "MainTabBarController.h"
 #import "ViewController.h"
 #import "JJServiceInterface.h"
+
 #import "BDUMD5Crypt.h"
 #import<CommonCrypto/CommonDigest.h>
 
-
-#define KEY_MAC     @"HmacMD5"
-#define encryptKey  @"gaoyusong"
-
+#define KEY_MAC     @"gaoyusong"
+#define encryptKey  @"HmacMD5"
 
 @interface LoginController ()<UITextFieldDelegate,JJServiceDelegate>
 {
@@ -128,9 +127,9 @@
     [forgetBtn_.titleLabel setFont:[UIFont systemFontOfSize:16]];
     [self.view addSubview:forgetBtn_];
     [forgetBtn_ setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-    
     JJServiceInterface *service = [JJServiceInterface share];
     service.delegate = self;
+    
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
@@ -138,17 +137,15 @@
 }
 
 -(void)loginAction:(id)sender{
-   /* MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
-    [self.navigationController pushViewController:mainTabbarController animated:YES];
+   /*
 */
     JJServiceInterface *service = [JJServiceInterface share];
-    //   NSString *pwd = @"123456";
+   ///
+    NSString *result =[BDUMD5Crypt macSignWithText:pwdField_.text secretKey:KEY_MAC] ;
     
-    NSString *result =[BDUMD5Crypt HMACMD5WithString:encryptKey WithKey:KEY_MAC] ;
-    
-    NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1002,\"user\": \"13911112222\",\"password\": %@,\"smscode\": 1234}" , result];
-    
-    [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/13979902123/request"];
+    NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1003,\"user\": \"%@\",\"password\": \"%@\"}" ,nameField_.text, result];
+    NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",nameField_.text];
+    [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
 }
 
 -(void)loginOtherAction:(id)sender{
@@ -165,9 +162,13 @@
 
 -(void)receiveJson:(NSDictionary*)dict
 {
-    NSLog(@"%@",dict);
+    
+  /*  NSLog(@"%@",dict);
+    MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
+    [self.navigationController pushViewController:mainTabbarController animated:YES];*/
     
 }
+
 -(void)connectFinished{
     
 }

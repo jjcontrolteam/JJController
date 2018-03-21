@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BDUMD5Crypt : NSObject
-+ (NSString *)HMACMD5WithString:(NSString *)toEncryptStr WithKey:(NSString *)keyStr;
-
+@interface BDUMD5Crypt : NSObject 
++ (NSString *)macSignWithText:(NSString *)text secretKey:(NSString *)secretKey;
 @end

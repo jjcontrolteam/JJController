@@ -7,8 +7,13 @@
 //
 
 #import "RegisterController.h"
+#import "JJServiceInterface.h"
+#import "BDUMD5Crypt.h"
+#import<CommonCrypto/CommonDigest.h>
 
-@interface RegisterController ()
+#define KEY_MAC     @"gaoyusong"
+#define encryptKey  @"gaoyusong"
+@interface RegisterController ()<JJServiceDelegate>
 {
     UITextField *nameField_;
     UITextField *pwdField_;
@@ -80,6 +85,9 @@
     [content setNumberOfLines:0];
     [content setTextAlignment:NSTextAlignmentLeft];
     [self.view addSubview:content];
+    
+    JJServiceInterface *service = [JJServiceInterface share];
+    service.delegate = self;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -105,7 +113,30 @@
 }
 
 -(void)registerAction:(id)sender{
+    if ([nameField_.text length]<1||[pwdField_.text length]<1||[doublePwdField_.text length]<1) {
+        return;
+    }
+    if (![pwdField_.text isEqualToString:doublePwdField_.text]) {
+        return;
+    }
+    JJServiceInterface *service = [JJServiceInterface share];
+    
+    NSString *result =[BDUMD5Crypt macSignWithText:pwdField_.text secretKey:KEY_MAC] ;
+    
+    NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1002,\"user\": \"%@\",\"password\": \"%@\",\"smscode\": 1234}" ,nameField_.text, result];
+    NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",nameField_.text];
+    [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
+    
+    
+}
+
+-(void)receiveJson:(NSDictionary*)dict
+{
     [self.navigationController popViewControllerAnimated:YES];
+    /*  NSLog(@"%@",dict);
+     MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
+     [self.navigationController pushViewController:mainTabbarController animated:YES];*/
+    
 }
 
 - (void)didReceiveMemoryWarning {

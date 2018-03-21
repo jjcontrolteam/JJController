@@ -7,57 +7,32 @@
 //
 
 #import "BDUMD5Crypt.h"
-#import <CommonCrypto/CommonDigest.h>
+#include <CommonCrypto/CommonDigest.h>
+#include <CommonCrypto/CommonHMAC.h>
 @implementation BDUMD5Crypt
-+ (NSString *)HMACMD5WithString:(NSString *)toEncryptStr WithKey:(NSString *)keyStr
-{
-    const char *cKey  = [keyStr cStringUsingEncoding:NSUTF8StringEncoding];
-    const char *cData = [toEncryptStr cStringUsingEncoding:NSUTF8StringEncoding];
-    const unsigned int blockSize = 64;
-    char ipad[blockSize];
-    char opad[blockSize];
-    char keypad[blockSize];
++ (NSString *)macSignWithText:(NSString *)text secretKey:(NSString *)secretKey{
+    CCHmacContext ctx;
+    //使用GBK编码
     
-    unsigned int keyLen =(unsigned int )strlen(cKey);
-    CC_MD5_CTX ctxt;
-    if (keyLen > blockSize) {
-        CC_MD5_Init(&ctxt);
-        CC_MD5_Update(&ctxt, cKey, keyLen);
-        CC_MD5_Final((unsigned char *)keypad, &ctxt);
-        keyLen = CC_MD5_DIGEST_LENGTH;
+    unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    const char *key = [secretKey cStringUsingEncoding:encode];
+    const char *str = [text cStringUsingEncoding:encode];
+    unsigned char mac[CC_MD5_DIGEST_LENGTH];
+    char hexmac[2 * CC_MD5_DIGEST_LENGTH + 1];
+    char *p;
+    CCHmacInit(&ctx, kCCHmacAlgMD5, key, strlen(key));
+    CCHmacUpdate(&ctx, str, strlen(str));
+    CCHmacFinal(&ctx, mac);
+    p = hexmac;
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH;i++) {
+        
+        snprintf(p,3,"%02x", mac[ i ]);
+        
+        p += 2;
+        
     }
-    else {
-        memcpy(keypad, cKey, keyLen);
-    }
+    return [NSString stringWithCString:hexmac encoding:encode];
     
-    memset(ipad, 0x36, blockSize);
-    memset(opad, 0x5c, blockSize);
-    
-    int i;
-    for (i = 0; i < keyLen; i++) {
-        ipad[i] ^= keypad[i];
-        opad[i] ^= keypad[i];
-    }
-    
-    CC_MD5_Init(&ctxt);
-    CC_MD5_Update(&ctxt, ipad, blockSize);
-    CC_MD5_Update(&ctxt, cData, (CC_LONG)strlen(cData));
-    unsigned char md5[CC_MD5_DIGEST_LENGTH];
-    CC_MD5_Final(md5, &ctxt);
-    
-    CC_MD5_Init(&ctxt);
-    CC_MD5_Update(&ctxt, opad, blockSize);
-    CC_MD5_Update(&ctxt, md5, CC_MD5_DIGEST_LENGTH);
-    CC_MD5_Final(md5, &ctxt);
-    
-    const unsigned int hex_len = CC_MD5_DIGEST_LENGTH*2+2;
-    char hex[hex_len];
-    for(i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
-        snprintf(&hex[i*2], hex_len-i*2, "%02x", md5[i]);
-    }
-    
-    NSData *HMAC = [[NSData alloc] initWithBytes:hex length:strlen(hex)];
-    NSString *hash = [[NSString alloc] initWithData:HMAC encoding:NSUTF8StringEncoding]; 
-    return hash;
 }
+
 @end

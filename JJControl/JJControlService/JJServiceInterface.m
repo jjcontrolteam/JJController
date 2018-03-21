@@ -8,6 +8,7 @@
 
 #import "JJServiceInterface.h"
 #import "MQTTClient.h"
+#import "MBProgressHUD.h"
 #import "MQTTSessionManager.h"
 static JJServiceInterface * _singleton;
 @interface JJServiceInterface()<MQTTSessionManagerDelegate>{
@@ -15,47 +16,33 @@ static JJServiceInterface * _singleton;
 }
 @property (strong, nonatomic) MQTTSessionManager *manager;
 @property (strong, nonatomic) NSDictionary *mqttSettings;
-@property (weak, nonatomic)   UILabel *status;
 @property (strong, nonatomic) NSString *base;
 @end
 
 #define TARGET_OS_IPHONE 1
 @implementation JJServiceInterface
-+ (instancetype)allocWithZone:(struct _NSZone *)zone{
-    
-    static dispatch_once_t onceToken;
-    // 一次函数
-    dispatch_once(&onceToken, ^{
-        if (_singleton == nil) {
-            _singleton = [super allocWithZone:zone];
-        }
-    });
-    
-    return _singleton;
-}
 
 + (instancetype)share{
-    CGRect bounds=[UIScreen mainScreen].bounds;
-    return  [[self alloc] initWithFrame:bounds];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (_singleton==nil) {
+            _singleton = [[JJServiceInterface alloc] init];
+        }
+      
+    });
+    return _singleton;
+    
 }
 
--(instancetype)initWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame];
+-(instancetype)init {
+    self = [super init];
     if (self) {
-        UILabel *tmpview=[[UILabel alloc]initWithFrame:frame];
-        UIWindow *window =[[UIApplication sharedApplication].delegate window];
-        [window addSubview:tmpview];
-        [tmpview setBackgroundColor:[UIColor colorWithWhite:0.3 alpha:0.6]];
-        [tmpview setTextColor:[UIColor whiteColor]];
-        [tmpview setTextAlignment:NSTextAlignmentCenter];
-        self.status = tmpview;
-
+       
         NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
         NSURL *mqttPlistUrl = [bundleURL URLByAppendingPathComponent:@"mqtt.plist"];
         self.mqttSettings = [NSDictionary dictionaryWithContentsOfURL:mqttPlistUrl];
-        self.base = @"v1.cloud.request";
-        self.manager.subscriptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:MQTTQosLevelExactlyOnce]
-                                                                 forKey:[NSString stringWithFormat:@"%@/#", self.base]];
+        self.base = @"v1/cloud/request";
+      //  self.manager.subscriptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:MQTTQosLevelExactlyOnce] forKey:self.base];
        // self.manager.subscriptions = [@{@"client_id": @(0)} mutableCopy];
         if (!self.manager) {
             self.manager = [[MQTTSessionManager alloc] init];
@@ -69,15 +56,16 @@ static JJServiceInterface * _singleton;
                                auth:false
                                user:nil
                                pass:nil
-                          willTopic:@"v1.cloud.request"
+                          willTopic:@"v1/cloud/request"
                                will:nil
                             willQos:MQTTQosLevelExactlyOnce
                      willRetainFlag:FALSE
-                       withClientId:nil];//[[NSUserDefaults standardUserDefaults]valueForKey:@"UseTelephone"]*/
+                       withClientId:@"18615277527"];//[[NSUserDefaults standardUserDefaults]valueForKey:@"UseTelephone"]*/
         } else {
              [self.manager connectToLast];
         }
-        
+        UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
+        [MBProgressHUD showHUDAddedTo:window animated:YES];
         [self.manager addObserver:self
                        forKeyPath:@"state"
                           options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
@@ -91,90 +79,77 @@ static JJServiceInterface * _singleton;
 
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
     switch (self.manager.state) {
         case MQTTSessionManagerStateClosed:
-            self.status.text = @"closed";
-            break;
-        case MQTTSessionManagerStateClosing:
-            self.status.text = @"closing";
-            break;
-        case MQTTSessionManagerStateConnected:
-            self.status.text = [NSString stringWithFormat:@"connected as %@-%@",
-                                [UIDevice currentDevice].name,
-                                @"登陆"];
-            self.manager.subscriptions = [@{@"v1/cloud/13979902123/request": @(0),@"client_id": @(1),@"v1/cloud/13979902123/response": @(2)} mutableCopy];
-          /*  [self.manager sendData:[@"13979902123" dataUsingEncoding:NSUTF8StringEncoding]
-                             topic:@"v1/cloud/13979902123/request"
-                               qos:MQTTQosLevelAtLeastOnce
-                            retain:FALSE];*/
+        {
+            UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
+            MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
+            [hud.label setText:@"连接失败."];
+        }
+           
             
             break;
+        case MQTTSessionManagerStateClosing:
+        {
+            UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
+            MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
+            [hud.label setText:@"连接关闭."];
+        }
+            break;
+        case MQTTSessionManagerStateConnected:
+        {
+            UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
+            MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
+            [hud.label setText:@"连接成功."];
+            [MBProgressHUD hideHUDForView:window animated:YES];
+           
+        }
+            
+          
+            break;
         case MQTTSessionManagerStateConnecting:
-            self.status.text = @"connecting";
+        {
+            UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
+            MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
+            [hud.label setText:@"连接中。。。"];
+        }
             break;
         case MQTTSessionManagerStateError:
-            self.status.text = @"error";
+        {
+            UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
+            MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
+            [hud.label setText:@"连接错误."];
+        }
             break;
         case MQTTSessionManagerStateStarting:
         default:
-            self.status.text = @"not connected";
+        {
+            UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
+            MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
+            [hud.label setText:@"连接关闭."];
+        }
             break;
     }
-
+    
 }
 
--(void)removeAction{
-    [self removeFromSuperview];
+-(void)createscriptions:(NSString*)tel{
+   //  NSString *response=[NSString stringWithFormat:@"v1/cloud/%@/response",tel];
+     //self.manager.subscriptions = [@{@"v1/cloud/request": @(0),response: @(1)} mutableCopy];
 }
 
--(void)connected:(MQTTSession *)session{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[self class] subScribeTopic:session toTopic:@"v1/cloud/request" callback:^(bool success) {
-                if (success) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                    if (_delegate && [_delegate respondsToSelector:@selector(createTopicFinished)]) {
-                        [_delegate createTopicFinished];
-                    }});
-                }
-            }];
-          
-            
-        });
-    });
-}
-
-
--(void)sendMsg:(NSData*)data toTopic:(NSString*)topic{
- 
+-(void)sendMsg:(NSData*)data toTopic:(NSString*)topic receiveTopic:(NSString*)recieve{
+    UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
+    [hud.label setText:@"发送中。。。"];
+    self.manager.subscriptions = [@{topic: @(0),recieve: @(1)} mutableCopy];
     [self.manager sendData:data
                      topic:topic
                        qos:MQTTQosLevelAtLeastOnce
                     retain:FALSE];
     
     
-}
-
-+(void)subScribeTopic:(MQTTSession*)msession toTopic:(NSString*)topic callback:(void (^)(bool success))completion{
-    [msession subscribeToTopics:@{
-                                 @"v1/cloud/request": @(0),
-                                 @"13911112222": @(1),
-                                 @"v1/cloud/13911112222/response": @(2)
-                                 } subscribeHandler:^(NSError *error, NSArray<NSNumber *> *gQoss){
-                                     if (error) {
-                                         completion(NO);
-                                     } else {
-                                         completion(YES);
-                                     }
-                               
-                                }];
-   /*  [msession subscribeToTopic:topic atLevel:MQTTQosLevelExactlyOnce subscribeHandler:^(NSError *error, NSArray<NSNumber *> *gQoss){
-         if (error) {
-             completion(NO);
-         } else {
-             completion(YES);
-         }
-    }];*/
 }
 - (void)handleMessage:(NSData *)data onTopic:(NSString *)topic retained:(BOOL)retained {
     /*
@@ -190,7 +165,8 @@ static JJServiceInterface * _singleton;
             NSDictionary *dict =  [[self class]jsonDictWithString:val];
             
             if (_delegate && [_delegate respondsToSelector:@selector(receiveJson:)]) {
-            
+                UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
+                [MBProgressHUD hideHUDForView:window animated:YES];
                 [_delegate receiveJson:dict];
                
             }

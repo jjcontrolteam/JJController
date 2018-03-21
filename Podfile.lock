@@ -5,6 +5,8 @@ PODS:
   - KIF (3.5.1):
     - KIF/Core (= 3.5.1)
   - KIF/Core (3.5.1)
+  - Masonry (1.0.2)
+  - MBProgressHUD (1.0.0)
   - MQTTClient (0.8.7):
     - MQTTClient/Core (= 0.8.7)
   - MQTTClient/Core (0.8.7):
@@ -17,13 +19,17 @@ PODS:
 DEPENDENCIES:
   - CocoaAsyncSocket
   - KIF (~> 3.0)
+  - Masonry
+  - MBProgressHUD
   - MQTTClient
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
   KIF: 082eb65279e51c3092923802849eb796a04982ab
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MQTTClient: 2842bdeab5a65eec75e0fcbbbd2a300946690fee
 
-PODFILE CHECKSUM: a947bbbb739a5f7b2930cd356ef6b721069b44fc
+PODFILE CHECKSUM: 1437704af0eb0f73cf6e68bde048ccfefb8864ca
 
 COCOAPODS: 1.1.1

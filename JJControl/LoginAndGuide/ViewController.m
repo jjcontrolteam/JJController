@@ -53,14 +53,8 @@
 }
 
 -(void)createTopicFinished{
-    JJServiceInterface *service = [JJServiceInterface share];
- //   NSString *pwd = @"123456";
     
-    NSString *result =[BDUMD5Crypt HMACMD5WithString:encryptKey WithKey:KEY_MAC] ;
-    
-    NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1002,\"user\": \"13911112222\",\"password\": %@,\"smscode\": 1234}" , result];
-    
-    [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/13979902123/request"];
+  
 }
 
 -(void)receiveJson:(NSDictionary*)dict
