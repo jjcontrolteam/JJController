@@ -1,40 +1,37 @@
 //
-//  SettingController.m
+//  DeviceSettingController.m
 //  JJControl
 //
-//  Created by admin on 15/03/2018.
-//  Copyright © 2018 admin. All rights reserved.
+//  Created by YvanWang on 2018/3/21.
+//  Copyright © 2018年 admin. All rights reserved.
 //
 
-#import "SettingController.h"
-#import "SettingCollectionView.h"
+#import "DeviceSettingController.h"
+#import "DeviceSettingCollectionView.h"
 
-@interface SettingController (){
-    SettingCollectionView *_collectionView;
-
+@interface DeviceSettingController (){
+    DeviceSettingCollectionView *_collectionView;
 }
-    
+
 @end
 
-@implementation SettingController
+@implementation DeviceSettingController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor yellowColor];
-    self.title = @"设置";
-    UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
-    _collectionView = [[SettingCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout];
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    _collectionView = [[DeviceSettingCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
     __weak typeof(self) weakSelf = self;
     _collectionView.block = ^{
-       
-    
+        
     };
+//
     [self.view addSubview:_collectionView];
-
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [_collectionView reloadData];
 }

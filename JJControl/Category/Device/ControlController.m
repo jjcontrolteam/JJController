@@ -7,7 +7,7 @@
 //
 
 #import "ControlController.h"
-
+#import "DeviceSettingController.h"
 @interface ControlController ()
 
 @end
@@ -19,6 +19,19 @@
     // Do any additional setup after loading the view.
     self.title = @"控制中心";
     self.view.backgroundColor = [UIColor blueColor];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleDone target:self action:@selector(goToSetting)];
+    
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"按钮" forState:UIControlStateNormal];
+    button.frame = CGRectMake(50, 50, 200, 200);
+    [self.view addSubview:button];
+}
+
+- (void)goToSetting{
+    DeviceSettingController *deviceSettingController = [[DeviceSettingController alloc] init];
+    [self.navigationController pushViewController:deviceSettingController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

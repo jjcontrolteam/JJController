@@ -27,6 +27,11 @@
     [segmentCtrl insertSegmentWithTitle:@"场景" atIndex:1 animated:NO];
     [segmentCtrl setTintColor:[UIColor colorWithRed:0.2471 green:0.6706 blue:0.4196 alpha:1.0]];
     [segmentCtrl setSelectedSegmentIndex:0];
+    [segmentCtrl addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)valueChanged:(UISegmentedControl *)segment{
+    
 }
 
 @end

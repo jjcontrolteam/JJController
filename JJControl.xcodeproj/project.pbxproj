@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EBD37C7206287E300E3A667 /* SettingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37C6206287E300E3A667 /* SettingCollectionView.m */; };
+		2EBD37CA2062882100E3A667 /* SettingDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37C92062882100E3A667 /* SettingDataDelegate.m */; };
+		2EBD37CD2062886900E3A667 /* SettingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37CC2062886900E3A667 /* SettingCollectionViewCell.m */; };
+		2EBD37D1206293B100E3A667 /* DeviceSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37D0206293B100E3A667 /* DeviceSettingController.m */; };
+		2EBD37D4206295A200E3A667 /* DeviceSettingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37D3206295A200E3A667 /* DeviceSettingCollectionView.m */; };
+		2EBD37D72062960100E3A667 /* DeviceSettingDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37D62062960100E3A667 /* DeviceSettingDataDelegate.m */; };
+		2EBD37DA2062966B00E3A667 /* DeviceSettingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37D92062966B00E3A667 /* DeviceSettingCollectionViewCell.m */; };
 		2EC341EF20600DCE007F4B8C /* CategoryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC341EE20600DCE007F4B8C /* CategoryCollectionView.m */; };
 		2EC341F220600E73007F4B8C /* CategoryDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC341F120600E73007F4B8C /* CategoryDataDelegate.m */; };
 		2EC341F520600EBA007F4B8C /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC341F420600EBA007F4B8C /* CategoryCollectionViewCell.m */; };
@@ -84,6 +91,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EBD37C5206287E300E3A667 /* SettingCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingCollectionView.h; sourceTree = "<group>"; };
+		2EBD37C6206287E300E3A667 /* SettingCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingCollectionView.m; sourceTree = "<group>"; };
+		2EBD37C82062882100E3A667 /* SettingDataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingDataDelegate.h; sourceTree = "<group>"; };
+		2EBD37C92062882100E3A667 /* SettingDataDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingDataDelegate.m; sourceTree = "<group>"; };
+		2EBD37CB2062886900E3A667 /* SettingCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingCollectionViewCell.h; sourceTree = "<group>"; };
+		2EBD37CC2062886900E3A667 /* SettingCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingCollectionViewCell.m; sourceTree = "<group>"; };
+		2EBD37CF206293B100E3A667 /* DeviceSettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceSettingController.h; sourceTree = "<group>"; };
+		2EBD37D0206293B100E3A667 /* DeviceSettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceSettingController.m; sourceTree = "<group>"; };
+		2EBD37D2206295A200E3A667 /* DeviceSettingCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceSettingCollectionView.h; sourceTree = "<group>"; };
+		2EBD37D3206295A200E3A667 /* DeviceSettingCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceSettingCollectionView.m; sourceTree = "<group>"; };
+		2EBD37D52062960100E3A667 /* DeviceSettingDataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceSettingDataDelegate.h; sourceTree = "<group>"; };
+		2EBD37D62062960100E3A667 /* DeviceSettingDataDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceSettingDataDelegate.m; sourceTree = "<group>"; };
+		2EBD37D82062966B00E3A667 /* DeviceSettingCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceSettingCollectionViewCell.h; sourceTree = "<group>"; };
+		2EBD37D92062966B00E3A667 /* DeviceSettingCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceSettingCollectionViewCell.m; sourceTree = "<group>"; };
 		2EC341ED20600DCE007F4B8C /* CategoryCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionView.h; sourceTree = "<group>"; };
 		2EC341EE20600DCE007F4B8C /* CategoryCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionView.m; sourceTree = "<group>"; };
 		2EC341F020600E73007F4B8C /* CategoryDataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryDataDelegate.h; sourceTree = "<group>"; };
@@ -239,9 +260,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2EBD37CE2062939200E3A667 /* DeviceSetting */ = {
+			isa = PBXGroup;
+			children = (
+				2EBD37CF206293B100E3A667 /* DeviceSettingController.h */,
+				2EBD37D0206293B100E3A667 /* DeviceSettingController.m */,
+				2EBD37D2206295A200E3A667 /* DeviceSettingCollectionView.h */,
+				2EBD37D3206295A200E3A667 /* DeviceSettingCollectionView.m */,
+				2EBD37D52062960100E3A667 /* DeviceSettingDataDelegate.h */,
+				2EBD37D62062960100E3A667 /* DeviceSettingDataDelegate.m */,
+				2EBD37D82062966B00E3A667 /* DeviceSettingCollectionViewCell.h */,
+				2EBD37D92062966B00E3A667 /* DeviceSettingCollectionViewCell.m */,
+			);
+			path = DeviceSetting;
+			sourceTree = "<group>";
+		};
 		2EC341EC20600D45007F4B8C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				2EBD37CE2062939200E3A667 /* DeviceSetting */,
 				2EC341FC20615669007F4B8C /* Device */,
 				2EC341ED20600DCE007F4B8C /* CategoryCollectionView.h */,
 				2EC341EE20600DCE007F4B8C /* CategoryCollectionView.m */,
@@ -279,6 +316,12 @@
 		2EC3420F206169FD007F4B8C /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				2EBD37C5206287E300E3A667 /* SettingCollectionView.h */,
+				2EBD37C6206287E300E3A667 /* SettingCollectionView.m */,
+				2EBD37C82062882100E3A667 /* SettingDataDelegate.h */,
+				2EBD37C92062882100E3A667 /* SettingDataDelegate.m */,
+				2EBD37CB2062886900E3A667 /* SettingCollectionViewCell.h */,
+				2EBD37CC2062886900E3A667 /* SettingCollectionViewCell.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -750,17 +793,23 @@
 				84FAEFA4205AC2BA00BF112C /* RoomCollectionCell.m in Sources */,
 				2EC3420B206161BB007F4B8C /* DeviceController.m in Sources */,
 				84FAEFEB205E9C8200BF112C /* RoomDataDelegate.m in Sources */,
+				2EBD37CD2062886900E3A667 /* SettingCollectionViewCell.m in Sources */,
 				2EC341EF20600DCE007F4B8C /* CategoryCollectionView.m in Sources */,
 				2EC34205206157C8007F4B8C /* DeviceModel.m in Sources */,
 				84FAEF92205ABD0D00BF112C /* BaseCollectionView.m in Sources */,
+				2EBD37D72062960100E3A667 /* DeviceSettingDataDelegate.m in Sources */,
 				84FAEFA1205ABE3C00BF112C /* RoomCollectionView.m in Sources */,
+				2EBD37CA2062882100E3A667 /* SettingDataDelegate.m in Sources */,
 				84FAEF89205AB0D900BF112C /* BaseDataSource.m in Sources */,
 				84FAF003205EAF6A00BF112C /* NavController.m in Sources */,
 				84FAF007205EAF6A00BF112C /* ViewController.m in Sources */,
 				2EC34202206156E8007F4B8C /* DeviceCollectionViewCell.m in Sources */,
 				84FAE8FA20566BF900BF112C /* JJCtrlConfig.m in Sources */,
+				2EBD37DA2062966B00E3A667 /* DeviceSettingCollectionViewCell.m in Sources */,
 				84FAF006205EAF6A00BF112C /* UserBaseController.m in Sources */,
+				2EBD37C7206287E300E3A667 /* SettingCollectionView.m in Sources */,
 				84FAEFEE205E9FA800BF112C /* RoomCollectionReusable.m in Sources */,
+				2EBD37D4206295A200E3A667 /* DeviceSettingCollectionView.m in Sources */,
 				84FAF005205EAF6A00BF112C /* RegisterController.m in Sources */,
 				84F1E8BA205A6E1C00828549 /* HomeController.m in Sources */,
 				84F1E9172060A7DA00828549 /* CategoryModel.m in Sources */,
@@ -783,6 +832,7 @@
 				2EC3420820615ACE007F4B8C /* DeviceCollectionReusableView.m in Sources */,
 				84B1AC052050DE08005F028A /* main.m in Sources */,
 				84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */,
+				2EBD37D1206293B100E3A667 /* DeviceSettingController.m in Sources */,
 				84FAE8C92056158300BF112C /* BDUMD5Crypt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
