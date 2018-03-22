@@ -44,10 +44,7 @@
     [scrollView_ setAccessibilityIdentifier:@"List Value"];
     
     [scrollView_ setIsAccessibilityElement:YES];
-    
-    JJServiceInterface *service = [JJServiceInterface share];
-    service.delegate = self;
-    
+     
     
    
 }

@@ -25,6 +25,7 @@
 		2EC3420B206161BB007F4B8C /* DeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3420A206161BB007F4B8C /* DeviceController.m */; };
 		2EC3420E20616496007F4B8C /* ControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3420D20616496007F4B8C /* ControlController.m */; };
 		3EA40562274736440E682BDD /* libPods-JJControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E718575862E4A786EFD47144 /* libPods-JJControl.a */; };
+		84301C58206284A5004A857D /* VerifyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301C57206284A5004A857D /* VerifyController.m */; };
 		84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1ABF62050DE08005F028A /* AppDelegate.m */; };
 		84B1ABFD2050DE08005F028A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFB2050DE08005F028A /* Main.storyboard */; };
 		84B1ABFF2050DE08005F028A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFE2050DE08005F028A /* Assets.xcassets */; };
@@ -127,6 +128,8 @@
 		2EC3420D20616496007F4B8C /* ControlController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControlController.m; sourceTree = "<group>"; };
 		6CCF6077A4B32890BA60222A /* Pods-JJControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJControl/Pods-JJControl.release.xcconfig"; sourceTree = "<group>"; };
 		7A49B1E052B158A11924C475 /* Pods-JJControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJControl/Pods-JJControl.debug.xcconfig"; sourceTree = "<group>"; };
+		84301C56206284A5004A857D /* VerifyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerifyController.h; sourceTree = "<group>"; };
+		84301C57206284A5004A857D /* VerifyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerifyController.m; sourceTree = "<group>"; };
 		84B1ABF22050DE08005F028A /* JJControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B1ABF52050DE08005F028A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84B1ABF62050DE08005F028A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -491,6 +494,8 @@
 				84FAEFF9205EAF6A00BF112C /* OtherLoginController.m */,
 				84FAEFFA205EAF6A00BF112C /* RegisterController.h */,
 				84FAEFFB205EAF6A00BF112C /* RegisterController.m */,
+				84301C56206284A5004A857D /* VerifyController.h */,
+				84301C57206284A5004A857D /* VerifyController.m */,
 				84FAEFFC205EAF6A00BF112C /* UserBaseController.h */,
 				84FAEFFD205EAF6A00BF112C /* UserBaseController.m */,
 				84FAEFFE205EAF6A00BF112C /* ViewController.h */,
@@ -828,6 +833,7 @@
 				84FAF004205EAF6A00BF112C /* OtherLoginController.m in Sources */,
 				84FAF001205EAF6A00BF112C /* GuideController.m in Sources */,
 				84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */,
+				84301C58206284A5004A857D /* VerifyController.m in Sources */,
 				84F1E8BD205A6E3000828549 /* RoomController.m in Sources */,
 				2EC3420820615ACE007F4B8C /* DeviceCollectionReusableView.m in Sources */,
 				84B1AC052050DE08005F028A /* main.m in Sources */,

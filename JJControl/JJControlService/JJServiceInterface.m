@@ -8,7 +8,6 @@
 
 #import "JJServiceInterface.h"
 #import "MQTTClient.h"
-#import "MBProgressHUD.h"
 #import "MQTTSessionManager.h"
 static JJServiceInterface * _singleton;
 @interface JJServiceInterface()<MQTTSessionManagerDelegate>{
@@ -28,8 +27,9 @@ static JJServiceInterface * _singleton;
         if (_singleton==nil) {
             _singleton = [[JJServiceInterface alloc] init];
         }
-      
+        
     });
+
     return _singleton;
     
 }
@@ -48,28 +48,9 @@ static JJServiceInterface * _singleton;
             self.manager = [[MQTTSessionManager alloc] init];
             self.manager.delegate = self;
            
-            [self.manager connectTo:self.mqttSettings[@"host"]
-                               port:[self.mqttSettings[@"port"] intValue]
-                                tls:[self.mqttSettings[@"tls"] boolValue]
-                          keepalive:30.0
-                              clean:true
-                               auth:false
-                               user:nil
-                               pass:nil
-                          willTopic:@"v1/cloud/request"
-                               will:nil
-                            willQos:MQTTQosLevelExactlyOnce
-                     willRetainFlag:FALSE
-                       withClientId:@"18615277527"];//[[NSUserDefaults standardUserDefaults]valueForKey:@"UseTelephone"]*/
-        } else {
-             [self.manager connectToLast];
         }
-        UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
-        [MBProgressHUD showHUDAddedTo:window animated:YES];
-        [self.manager addObserver:self
-                       forKeyPath:@"state"
-                          options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
-                          context:nil];
+        
+        
         
         
     }
@@ -77,32 +58,77 @@ static JJServiceInterface * _singleton;
     return self;
 }
 
+-(void)connectWithClientId:(NSString*)client_id{
+    [self.manager connectTo:self.mqttSettings[@"host"]
+                       port:[self.mqttSettings[@"port"] intValue]
+                        tls:[self.mqttSettings[@"tls"] boolValue]
+                  keepalive:3.0
+                      clean:true
+                       auth:false
+                       user:nil
+                       pass:nil
+                  willTopic:@"v1/cloud/request"
+                       will:nil
+                    willQos:MQTTQosLevelExactlyOnce
+             willRetainFlag:FALSE
+               withClientId:client_id];
+    
+    [self.manager addObserver:self
+                   forKeyPath:@"state"
+                      options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
+                      context:nil];
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
     switch (self.manager.state) {
         case MQTTSessionManagerStateClosed:
         {
-            UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
-            MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
-            [hud.label setText:@"连接失败."];
+            if (_delegate && [_delegate respondsToSelector:@selector(showStatus:)]) {
+    
+                [_delegate showStatus:@"连接失败."];
+                
+            }
+            if (_delegate && [_delegate respondsToSelector:@selector(connectFailue)]) {
+                
+                [_delegate connectFailue];
+                
+            }
         }
            
             
             break;
         case MQTTSessionManagerStateClosing:
         {
-            UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
-            MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
-            [hud.label setText:@"连接关闭."];
+            if (_delegate && [_delegate respondsToSelector:@selector(showStatus:)]) {
+                
+                [_delegate showStatus:@"连接关闭."];
+                
+            }
+            if (_delegate && [_delegate respondsToSelector:@selector(connectFailue)]) {
+                
+                [_delegate connectFailue];
+                
+            }
         }
             break;
         case MQTTSessionManagerStateConnected:
         {
-            UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
-            MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
-            [hud.label setText:@"连接成功."];
-            [MBProgressHUD hideHUDForView:window animated:YES];
+            if (_delegate && [_delegate respondsToSelector:@selector(showStatus:)]) {
+                
+                [_delegate showStatus:@"连接成功."];
+                
+            }
+            if (_delegate && [_delegate respondsToSelector:@selector(connectSuccess)]) {
+                
+                [_delegate connectSuccess];
+                
+            }
+            if (_delegate && [_delegate respondsToSelector:@selector(connectFailue)]) {
+                
+                [_delegate connectFailue];
+                
+            }
            
         }
             
@@ -110,39 +136,54 @@ static JJServiceInterface * _singleton;
             break;
         case MQTTSessionManagerStateConnecting:
         {
-            UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
-            MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
-            [hud.label setText:@"连接中。。。"];
+            if (_delegate && [_delegate respondsToSelector:@selector(showStatus:)]) {
+                
+                [_delegate showStatus:@"连接中."];
+                
+            }
+            if (_delegate && [_delegate respondsToSelector:@selector(connectFailue)]) {
+                
+                [_delegate connectFailue];
+                
+            }
         }
             break;
         case MQTTSessionManagerStateError:
         {
-            UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
-            MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
-            [hud.label setText:@"连接错误."];
+            if (_delegate && [_delegate respondsToSelector:@selector(showStatus:)]) {
+                
+                [_delegate showStatus:@"连接错误."];
+                
+            }
+            if (_delegate && [_delegate respondsToSelector:@selector(connectFailue)]) {
+                
+                [_delegate connectFailue];
+                
+            }
         }
             break;
         case MQTTSessionManagerStateStarting:
         default:
         {
-            UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
-            MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
-            [hud.label setText:@"连接关闭."];
+            if (_delegate && [_delegate respondsToSelector:@selector(showStatus:)]) {
+                
+                [_delegate showStatus:@"连接关闭."];
+                
+            }
+            if (_delegate && [_delegate respondsToSelector:@selector(connectFailue)]) {
+                
+                [_delegate connectFailue];
+                
+            }
+            
         }
             break;
     }
     
 }
 
--(void)createscriptions:(NSString*)tel{
-   //  NSString *response=[NSString stringWithFormat:@"v1/cloud/%@/response",tel];
-     //self.manager.subscriptions = [@{@"v1/cloud/request": @(0),response: @(1)} mutableCopy];
-}
-
 -(void)sendMsg:(NSData*)data toTopic:(NSString*)topic receiveTopic:(NSString*)recieve{
-    UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
-    MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
-    [hud.label setText:@"发送中。。。"];
+    
     self.manager.subscriptions = [@{topic: @(0),recieve: @(1)} mutableCopy];
     [self.manager sendData:data
                      topic:topic
@@ -155,7 +196,7 @@ static JJServiceInterface * _singleton;
     /*
      * MQTTClient: process received message
      */
-    
+  
     if (data) {
     
         NSString *val = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
@@ -163,12 +204,18 @@ static JJServiceInterface * _singleton;
         if (val) {
         
             NSDictionary *dict =  [[self class]jsonDictWithString:val];
-            
-            if (_delegate && [_delegate respondsToSelector:@selector(receiveJson:)]) {
-                UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
-                [MBProgressHUD hideHUDForView:window animated:YES];
-                [_delegate receiveJson:dict];
+            if ([[dict objectForKey:@"code"]integerValue]!=0) {
+                if (_delegate && [_delegate respondsToSelector:@selector(showStatus:)]) {
+                    
+                    [_delegate showStatus:[dict objectForKey:@"message"]];
+                    
+                }
+            }else{
+                if (_delegate && [_delegate respondsToSelector:@selector(receiveJson:)]) {
                
+                    [_delegate receiveJson:dict];
+               
+                }
             }
            
         }

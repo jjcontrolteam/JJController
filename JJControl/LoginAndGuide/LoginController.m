@@ -66,6 +66,10 @@
     style.alignment = NSTextAlignmentCenter;
     NSAttributedString *attri = [[NSAttributedString alloc] initWithString:@"账号" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:24], NSParagraphStyleAttributeName:style}];
     nameField_.attributedPlaceholder = attri;
+    nameField_.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 4, 0)];
+    //设置显示模式为永远显示(默认不显示 必须设置 否则没有效果)
+    nameField_.leftViewMode = UITextFieldViewModeAlways;
+    [nameField_ setTextColor:[UIColor whiteColor]];
     [nameField_ setBackgroundColor:[UIColor clearColor]];
     [nameField_.layer setBorderColor:[UIColor whiteColor].CGColor];
     [nameField_.layer setBorderWidth:1];
@@ -78,6 +82,10 @@
     pwdField_ = [[UITextField alloc]initWithFrame:CGRectMake(40,self.view.frame.size.height/2+60,self.view.frame.size.width-80,45)];
     NSAttributedString *attri1 = [[NSAttributedString alloc] initWithString:@"密码" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:24], NSParagraphStyleAttributeName:style}];
     pwdField_.attributedPlaceholder = attri1;
+    pwdField_.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 4, 0)];
+    //设置显示模式为永远显示(默认不显示 必须设置 否则没有效果)
+    pwdField_.leftViewMode = UITextFieldViewModeAlways;
+    [pwdField_ setTextColor:[UIColor whiteColor]];
     [pwdField_ setBackgroundColor:[UIColor clearColor]];
     [pwdField_.layer setBorderColor:[UIColor whiteColor].CGColor];
     [pwdField_.layer setBorderWidth:1];
@@ -127,8 +135,7 @@
     [forgetBtn_.titleLabel setFont:[UIFont systemFontOfSize:16]];
     [self.view addSubview:forgetBtn_];
     [forgetBtn_ setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-    JJServiceInterface *service = [JJServiceInterface share];
-    service.delegate = self;
+    
     
 }
 
@@ -139,15 +146,24 @@
 -(void)loginAction:(id)sender{
    /*
 */
-    JJServiceInterface *service = [JJServiceInterface share];
-   ///
-    NSString *result =[BDUMD5Crypt macSignWithText:pwdField_.text secretKey:KEY_MAC] ;
+    if ([nameField_.text length]<1||[pwdField_.text length]<1) {
+        return;
+    }
     
+    JJServiceInterface *service = [JJServiceInterface share];
+    service.delegate = self;
+    [service connectWithClientId:nameField_.text];
+    [self showHud];
+    
+}
+
+-(void)connectSuccess{
+    JJServiceInterface *service = [JJServiceInterface share];
+    NSString *result =[BDUMD5Crypt macSignWithText:pwdField_.text secretKey:KEY_MAC] ;
     NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1003,\"user\": \"%@\",\"password\": \"%@\"}" ,nameField_.text, result];
     NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",nameField_.text];
     [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
 }
-
 -(void)loginOtherAction:(id)sender{
     OtherLoginController *login=[[OtherLoginController alloc]init];
     [self.navigationController pushViewController:login animated:YES];
@@ -162,20 +178,12 @@
 
 -(void)receiveJson:(NSDictionary*)dict
 {
-    
+    [self hiddenHud];
   /*  NSLog(@"%@",dict);
     MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
     [self.navigationController pushViewController:mainTabbarController animated:YES];*/
     
 }
-
--(void)connectFinished{
-    
-}
--(void)disconnect{
-    
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

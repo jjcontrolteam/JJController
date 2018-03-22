@@ -1,30 +1,37 @@
 //
-//  RegisterController.m
+//  VerifyController.m
 //  JJControl
 //
-//  Created by admin on 2018/3/13.
+//  Created by admin on 2018/3/21.
 //  Copyright © 2018年 admin. All rights reserved.
 //
 
-#import "RegisterController.h"
-#import "JJServiceInterface.h"
 #import "VerifyController.h"
+#import "JJServiceInterface.h"
 #import "BDUMD5Crypt.h"
 #import<CommonCrypto/CommonDigest.h>
 
 #define KEY_MAC     @"gaoyusong"
 #define encryptKey  @"gaoyusong"
-@interface RegisterController ()<JJServiceDelegate>
+@interface VerifyController ()<JJServiceDelegate,UITextFieldDelegate>
 {
-    UITextField *nameField_;
-    UITextField *pwdField_;
-    UITextField *doublePwdField_;
+    UITextField *codeField_;
     UIButton  *registerBtn_;
+    NSString *tel_;
+    NSString *pwd_;
 }
+
 @end
 
-@implementation RegisterController
-
+@implementation VerifyController
+-(instancetype)init:(NSString*)name withPwd:(NSString*)pwd{
+    self =[super init];
+    if (self) {
+        tel_ = [name copy];
+        pwd_ = [pwd copy];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -37,36 +44,18 @@
     
     self.title = @"用户注册";
     
-    nameField_ = [[UITextField alloc]initWithFrame:CGRectMake(20,80,self.view.frame.size.width-40,45)];
+    codeField_ = [[UITextField alloc]initWithFrame:CGRectMake(20,80,self.view.frame.size.width-40,45)];
     UIImageView *rightView = [[UIImageView alloc]initWithFrame:CGRectMake(4, 0, 24, 24)];
     rightView.image =[UIImage imageNamed:@"JJControlResource.bundle/icon_admin.png"];
-    nameField_.leftView = rightView;
-    nameField_.leftViewMode = UITextFieldViewModeAlways;
-    nameField_.borderStyle=UITextBorderStyleRoundedRect;
-    nameField_.placeholder=@"请输入11未手机号码";
-    [nameField_ setDelegate:self];
-    [self.view addSubview:nameField_];
+    codeField_.leftView = rightView;
+    codeField_.leftViewMode = UITextFieldViewModeAlways;
+    codeField_.borderStyle=UITextBorderStyleRoundedRect;
+    codeField_.placeholder=@"请输入验证码";
+    [codeField_ setDelegate:self];
+    [self.view addSubview:codeField_];
     
     
-    pwdField_ = [[UITextField alloc]initWithFrame:CGRectMake(20,140,self.view.frame.size.width-40,45)];
-    UIImageView *rightView1 = [[UIImageView alloc]initWithFrame:CGRectMake(4, 0, 24, 24)];
-    rightView1.image =[UIImage imageNamed:@"JJControlResource.bundle/icon_mm.png"];
-    pwdField_.leftView = rightView1;
-    pwdField_.leftViewMode = UITextFieldViewModeAlways;
-    pwdField_.borderStyle=UITextBorderStyleRoundedRect;
-    pwdField_.placeholder=@"请输入密码";
-    [pwdField_ setDelegate:self];
-    [self.view addSubview:pwdField_];
     
-    doublePwdField_ = [[UITextField alloc]initWithFrame:CGRectMake(20,200,self.view.frame.size.width-40,45)];
-    UIImageView *rightView2 = [[UIImageView alloc]initWithFrame:CGRectMake(4, 0, 24, 24)];
-    rightView2.image =[UIImage imageNamed:@"JJControlResource.bundle/icon_mm.png"];
-    doublePwdField_.leftView = rightView2;
-    doublePwdField_.leftViewMode = UITextFieldViewModeAlways;
-    doublePwdField_.borderStyle=UITextBorderStyleRoundedRect;
-    doublePwdField_.placeholder=@"请再次输入密码";
-    [doublePwdField_ setDelegate:self];
-    [self.view addSubview:doublePwdField_];
     
     
     registerBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -86,8 +75,6 @@
     [content setNumberOfLines:0];
     [content setTextAlignment:NSTextAlignmentLeft];
     [self.view addSubview:content];
-    
-   
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -109,56 +96,34 @@
 }
 
 -(void)backAction:(id)sender{
-    [self backAction:sender];
-}
--(void)registerAction:(id)sender{
-    
-    if ([nameField_.text length]<1||[pwdField_.text length]<1||[doublePwdField_.text length]<1) {
-        return;
-    }
-    if (![pwdField_.text isEqualToString:doublePwdField_.text]) {
-        return;
-    }
-    JJServiceInterface *service = [JJServiceInterface share];
-    service.delegate = self;
-    [service connectWithClientId:nameField_.text];
-    [self showHud];
-    
-    
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)connectSuccess
-{
+-(void)registerAction:(id)sender{
+    if ([codeField_.text length]<1) {
+        return;
+    }
+    
     JJServiceInterface *service = [JJServiceInterface share];
-    NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1001,\"user\": \"%@\",\"type\": \"register\"}" ,nameField_.text];
-    NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",nameField_.text];
+    service.delegate = self;
+    [service connectWithClientId:tel_];
+    NSString *result =[BDUMD5Crypt macSignWithText:pwd_ secretKey:KEY_MAC] ;
+    
+    NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1002,\"user\": \"%@\",\"password\": \"%@\",\"smscode\": %@}" ,tel_, result,codeField_.text];
+    NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",tel_];
     [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
+    
+    
 }
 
 -(void)receiveJson:(NSDictionary*)dict
 {
-    if ([[dict objectForKey:@"code"]integerValue]==0) {
-        if ([[dict objectForKey:@"innerCode"] isEqualToString:nameField_.text]) {
-            if ([[dict objectForKey:@"cmd"]integerValue]==1001) {//获取验证码
-                JJServiceInterface *service = [JJServiceInterface share];
-                service.delegate = self;
-                NSString *result =[BDUMD5Crypt macSignWithText:pwdField_.text secretKey:KEY_MAC] ;
-                NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1002,\"user\": \"%@\",\"password\": \"%@\",\"smscode\": %@}" ,nameField_.text, result,[dict objectForKey:@"smsCode"]];
-                NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",nameField_.text];
-                [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
-            }else if ([[dict objectForKey:@"cmd"]integerValue]==1002) {//获取验证码
-                [self hiddenHud];
-                JJServiceInterface *service = [JJServiceInterface share];
-                service.delegate = nil;
-                [self.navigationController popViewControllerAnimated:YES];
-            }
-                
-        }
-    }
+    [self.navigationController popViewControllerAnimated:YES];
+    /*  NSLog(@"%@",dict);
+     MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
+     [self.navigationController pushViewController:mainTabbarController animated:YES];*/
     
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
