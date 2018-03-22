@@ -2,6 +2,11 @@ PODS:
   - CocoaAsyncSocket (7.5.1):
     - CocoaAsyncSocket/GCD (= 7.5.1)
   - CocoaAsyncSocket/GCD (7.5.1)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - JRDB (2.0.7):
+    - FMDB
   - KIF (3.5.1):
     - KIF/Core (= 3.5.1)
   - KIF/Core (3.5.1)
@@ -18,6 +23,7 @@ PODS:
 
 DEPENDENCIES:
   - CocoaAsyncSocket
+  - JRDB
   - KIF (~> 3.0)
   - Masonry
   - MBProgressHUD
@@ -25,11 +31,13 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  JRDB: fe181dcd4e0f4a0cc537e90f0ec181c9c513b348
   KIF: 082eb65279e51c3092923802849eb796a04982ab
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MQTTClient: 2842bdeab5a65eec75e0fcbbbd2a300946690fee
 
-PODFILE CHECKSUM: 1437704af0eb0f73cf6e68bde048ccfefb8864ca
+PODFILE CHECKSUM: 261a01958304cc6eb27b85d170229304337c8610
 
 COCOAPODS: 1.1.1
