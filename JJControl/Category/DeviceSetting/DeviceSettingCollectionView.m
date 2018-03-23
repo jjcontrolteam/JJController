@@ -22,18 +22,18 @@ static NSString *identifier = @"DeviceSettingCollectionViewCell";
 
 @implementation DeviceSettingCollectionView
 
-- (void)buildUI:(id)myDataSourceBlock withDelegate:(id)myDelegateBlock{
+- (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[DeviceSettingCollectionViewCell class] forCellWithReuseIdentifier:identifier];
-    
-    _dataSource = [[BaseDataSource alloc] initWithItems:@[@"房间", @"定时", @"最长市场", @"分享", @"开关绑定", @"设备密码", @"所属控制器"] cellIdentifier:identifier headerIdentifier:nil footerIdentifier:nil andCallBack:myDataSourceBlock];
+   
+    _dataSource = [[BaseDataSource alloc] initWithItems:@[@"房间", @"定时", @"最长市场", @"分享", @"开关绑定", @"设备密码", @"所属控制器"] cellIdentifier:identifier  andCellBack:myDataSourceBlock];
     self.dataSource = _dataSource;
     
     _delegate = [[DeviceSettingDataDelegate alloc] initWithItems:@[@"房间", @"定时", @"最长市场", @"分享", @"开关绑定", @"设备密码", @"所属控制器"] andCallBack:myDelegateBlock];
     self.delegate = _delegate;
 }
 
-- (void)bindCell:(id)cell withData:(id)data{
+- (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
     DeviceSettingCollectionViewCell *newCell = (DeviceSettingCollectionViewCell *)cell;
     [newCell setData:data];
 }

@@ -8,36 +8,95 @@
 
 #import "BaseDataSource.h"
 @interface BaseDataSource(){
-    NSArray *_items;
+    NSArray         *_cellData;
+    NSDictionary    *_headerData;
+    NSDictionary    *_footerData;
     NSString       *_identifier;
     NSString       *_header;
     NSString       *_footer;
-    cellBlock      callBlock;
+    cellBlock      _cellBlock;
+    headerBlock    _headerBlock;
+    footerBlock    _footerBlock;
 }
 @end
 @implementation BaseDataSource
 -(void)dealloc{
-    callBlock = nil;
+    _cellBlock = nil;
+    _headerBlock = nil;
+    _footerBlock = nil;
 }
--(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier headerIdentifier:(NSString *)header footerIdentifier:(NSString *)footer andCallBack:(cellBlock)block{
+
+-(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier  andCellBack:(cellBlock)cBlock {
     
     self = [super init];
     if (self) {
-        _items = [NSMutableArray arrayWithArray:array];
+        _cellData = [NSMutableArray arrayWithArray:array];
         _identifier = identifier;
-        _header = header;
-        _footer = footer;
-        callBlock = block;
+        _cellBlock = cBlock;
+        _header = @"";
+        _footer = @"";
     }
     return self;
 }
-
+/*
+ 创建带头部的视图
+ */
+-(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withHeaderItem:(NSDictionary*)item headerIdentifier:(NSString *)header  andCellBack:(cellBlock)cBlock andHeaderBack:(headerBlock)hBlock {
+    
+    self = [super init];
+    if (self) {
+        _cellData = [NSMutableArray arrayWithArray:array];
+        _headerData=[NSDictionary dictionaryWithDictionary:item];
+        _identifier = identifier;
+        _header = header;
+        _footer = @"";
+        _cellBlock = cBlock;
+        _headerBlock=hBlock;
+    }
+    return self;
+}
+/*
+ 创建带底部的视图
+ */
+-(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withFooterItem:(NSDictionary *)item footerIdentifier:(NSString *)footer andCellBack:(cellBlock)cBlock  andFooterBack:(footerBlock)fBlock{
+    
+    self = [super init];
+    if (self) {
+        _cellData = [NSMutableArray arrayWithArray:array];
+        _footerData=[NSDictionary dictionaryWithDictionary:item];
+        _identifier = identifier;
+        _header = @"";
+        _footer = footer;
+        _cellBlock = cBlock;
+        _footerBlock =fBlock;
+    }
+    return self;
+}
+/*
+ 创建带底部,头部的视图
+ */
+-(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withHeaderItem:(NSDictionary*)hitem headerIdentifier:(NSString *)header withFooterItem:(NSDictionary *)fitem footerIdentifier:(NSString *)footer andCellBack:(cellBlock)cBlock andHeaderBack:(headerBlock)hBlock andFooterBack:(footerBlock)fBlock{
+    
+    self = [super init];
+    if (self) {
+        _cellData = [NSMutableArray arrayWithArray:array];
+        _headerData=[NSDictionary dictionaryWithDictionary:hitem];
+        _footerData=[NSDictionary dictionaryWithDictionary:fitem];
+        _identifier = identifier;
+        _header = header;
+        _footer = footer;
+        _cellBlock = cBlock;
+        _headerBlock=hBlock;
+        _footerBlock =fBlock;
+    }
+    return self;
+}
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _items.count;
+    return _cellData.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -50,9 +109,9 @@
 
     }
     cell.backgroundColor = [UIColor whiteColor];
-    id theme = _items[indexPath.row];
-    if (callBlock) {
-        callBlock(cell,theme);
+    id theme = _cellData[indexPath.row];
+    if (_cellBlock) {
+        _cellBlock(cell,theme,indexPath);
     }
     return cell;
 }
@@ -64,11 +123,18 @@
     if (kind ==UICollectionElementKindSectionHeader) {
         //定制头部视图的内容
         UICollectionReusableView *headerV = (UICollectionReusableView *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:_header  forIndexPath:indexPath];
+        
         reusableView = headerV;
+        if (_headerBlock) {
+            _headerBlock(headerV,_headerData,indexPath);
+        }
     }
     if (kind ==UICollectionElementKindSectionFooter){
         UICollectionReusableView *headerV = (UICollectionReusableView *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:_footer  forIndexPath:indexPath];
         reusableView = headerV;
+        if (_footerBlock) {
+            _footerBlock(headerV,_footerData,indexPath);
+        }
     }
     return reusableView;
 }

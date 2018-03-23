@@ -23,20 +23,20 @@ static NSString *identifier = @"SettingCollectionViewCell";
 
 @implementation SettingCollectionView
 
-- (void)buildUI:(id)myDataSourceBlock withDelegate:(id)myDelegateBlock{
+- (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[SettingCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
 
-    _dataSource = [[BaseDataSource alloc] initWithItems:@[@"信息", @"消息", @"摇一摇", @"设备", @"密码", @"通用", @"反馈"] cellIdentifier:identifier headerIdentifier:nil footerIdentifier:nil andCallBack:myDataSourceBlock];
+    _dataSource = [[BaseDataSource alloc] initWithItems:@[@"信息", @"消息", @"摇一摇", @"设备", @"密码", @"通用", @"反馈"] cellIdentifier:identifier  andCellBack:myDataSourceBlock];
     self.dataSource = _dataSource;
     
     _delegate = [[SettingDataDelegate alloc] initWithItems:@[@"信息", @"消息", @"摇一摇", @"设备", @"密码", @"通用", @"反馈"] andCallBack:myDelegateBlock];
     self.delegate = _delegate;
 }
 
-- (void)bindCell:(id)cell withData:(id)data{
+-(void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
     SettingCollectionViewCell *newCell = (SettingCollectionViewCell *)cell;
     [newCell setData:data];
 }

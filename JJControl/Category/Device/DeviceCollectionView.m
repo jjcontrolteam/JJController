@@ -24,7 +24,7 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
 
 @implementation DeviceCollectionView
 
-- (void)buildUI:(id)myDataSourceBlock withDelegate:(id)myDelegateBlock{
+- (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[DeviceCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     [self registerClass:[DeviceCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:usableIdentifier];
@@ -36,7 +36,7 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
         DeviceModel *model = [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:title isOn:YES];
         [array addObject:model];
     }
-    _dataSource = [[BaseDataSource alloc] initWithItems:array cellIdentifier:identifier headerIdentifier:usableIdentifier footerIdentifier:nil andCallBack:myDataSourceBlock];
+    _dataSource = [[BaseDataSource alloc] initWithItems:array cellIdentifier:identifier  andCellBack:myDataSourceBlock];
     self.dataSource = _dataSource;
     
     _delegate = [[DeviceDataDelegate alloc] initWithItems:array andCallBack:myDelegateBlock];
@@ -44,7 +44,7 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
     
 }
 
-- (void)bindCell:(id)cell withData:(id)data{
+-(void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
     DeviceCollectionViewCell *newCell = (DeviceCollectionViewCell *)cell;
     [newCell setData:data];
 }

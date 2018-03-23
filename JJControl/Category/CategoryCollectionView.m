@@ -33,14 +33,15 @@ static NSString *identifier = @"CategoryCollectionViewCell";
         CategoryModel *model = [CategoryModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:title details:@"8/30"];
         [array addObject:model];
     }
-    _dataSource = [[BaseDataSource alloc] initWithItems:array cellIdentifier:identifier headerIdentifier:nil footerIdentifier:nil andCallBack:myDataSourceBlock];
+    _dataSource=[[BaseDataSource alloc]initWithItems:array cellIdentifier:identifier andCellBack:myDataSourceBlock];
+    
     self.dataSource = _dataSource;
     
     _delegate = [[CategoryDataDelegate alloc] initWithItems:array andCallBack:myDelegateBlock];
     self.delegate = _delegate;
 }
 
-- (void)bindCell:(id)cell withData:(id)data{
+-(void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
     CategoryCollectionViewCell *newCell = (CategoryCollectionViewCell *)cell;
     [newCell setData:data];
 }

@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface BaseCollectionView : UICollectionView
--(void)buildUI:(id)myDataSourceBlock withDelegate:(id)myDelegateBlock;
--(void)bindCell:(id)cell withData:(id)data;
+-(void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock;
+-(void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath*)indexPath;
+-(void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath*)indexPath;
+-(void)bindFooterer:(id)footer withData:(id)data withIndexPath:(NSIndexPath*)indexPath;
 -(void)chooseCell:(id)data;
 @end
