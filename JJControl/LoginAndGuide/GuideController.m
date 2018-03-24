@@ -54,19 +54,19 @@
     [self.view addSubview:startBtn_];
 }
 
--(void)startAction:(id)sender{
+- (void)startAction:(id)sender{
     
     LoginController *viewctrl = [[LoginController alloc]init];
     [self.navigationController pushViewController:viewctrl animated:NO];
 }
 
 
--(void)addNotification{
+- (void)addNotification{
     //给AVPlayerItem添加播放完成通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
 }
 
--(void)removeNotification{
+- (void)removeNotification{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -75,13 +75,13 @@
  *
  *  @param notification 通知对象
  */
--(void)playbackFinished:(NSNotification *)notification{
+- (void)playbackFinished:(NSNotification *)notification{
     
     [_player seekToTime:CMTimeMake(0, 1)];
     [_player play];
 }
 
--(void)viewWillDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [_playerLayer removeFromSuperlayer];

@@ -34,7 +34,7 @@ static JJServiceInterface * _singleton;
     
 }
 
--(instancetype)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
        
@@ -58,7 +58,7 @@ static JJServiceInterface * _singleton;
     return self;
 }
 
--(void)connectWithClientId:(NSString*)client_id{
+- (void)connectWithClientId:(NSString*)client_id{
     [self.manager connectTo:self.mqttSettings[@"host"]
                        port:[self.mqttSettings[@"port"] intValue]
                         tls:[self.mqttSettings[@"tls"] boolValue]
@@ -182,7 +182,7 @@ static JJServiceInterface * _singleton;
     
 }
 
--(void)sendMsg:(NSData*)data toTopic:(NSString*)topic receiveTopic:(NSString*)recieve{
+- (void)sendMsg:(NSData*)data toTopic:(NSString*)topic receiveTopic:(NSString*)recieve{
     
     self.manager.subscriptions = [@{topic: @(0),recieve: @(1)} mutableCopy];
     [self.manager sendData:data

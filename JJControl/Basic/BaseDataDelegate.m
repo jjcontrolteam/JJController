@@ -8,18 +8,19 @@
 
 #import "BaseDataDelegate.h"
 @interface BaseDataDelegate(){
-    NSArray *_items;
     NSString       *_identifier;
     cellDelegateBlock      callBlock;
 }
+
+
 @end
 
 @implementation BaseDataDelegate
--(void)dealloc{
+- (void)dealloc{
     callBlock = nil;
 }
 
--(instancetype)initWithItems:(NSArray *)array  andCallBack:(cellDelegateBlock)block{
+- (instancetype)initWithItems:(NSArray *)array  andCallBack:(cellDelegateBlock)block{
     self = [super init];
     if (self) {
         _items = [NSMutableArray arrayWithArray:array]; 
@@ -47,5 +48,10 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake([UIScreen mainScreen].bounds.size.width, 51);
 }
+
+- (void)setItems:(NSArray *)array{
+    _items = [NSMutableArray arrayWithArray:array];
+}
+
 
 @end

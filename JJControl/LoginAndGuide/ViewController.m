@@ -49,20 +49,20 @@
    
 }
 
--(void)createTopicFinished{
+- (void)createTopicFinished{
     
   
 }
 
--(void)receiveJson:(NSDictionary*)dict
+- (void)receiveJson:(NSDictionary*)dict
 {
     NSLog(@"%@",dict);
     
 }
--(void)connectFinished{
+- (void)connectFinished{
     
 }
--(void)disconnect{
+- (void)disconnect{
     
 }
  

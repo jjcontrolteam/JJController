@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^SegmentChangedBlock)(NSInteger index);
+
 @interface DeviceCollectionReusableView : UICollectionReusableView
+
+@property (nonatomic, copy) SegmentChangedBlock segmentChangedBlock;
 
 @end

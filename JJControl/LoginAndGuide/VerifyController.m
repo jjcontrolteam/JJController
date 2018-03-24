@@ -24,7 +24,7 @@
 @end
 
 @implementation VerifyController
--(instancetype)init:(NSString*)name withPwd:(NSString*)pwd{
+- (instancetype)init:(NSString*)name withPwd:(NSString*)pwd{
     self =[super init];
     if (self) {
         tel_ = [name copy];
@@ -77,7 +77,7 @@
     [self.view addSubview:content];
 }
 
--(void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40 , 40)];
@@ -89,17 +89,17 @@
     self.navigationItem.leftBarButtonItem = barButton;
 }
 
--(void)viewWillDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:YES];
 }
 
--(void)backAction:(id)sender{
+- (void)backAction:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)registerAction:(id)sender{
+- (void)registerAction:(id)sender{
     if ([codeField_.text length]<1) {
         return;
     }
@@ -116,7 +116,7 @@
     
 }
 
--(void)receiveJson:(NSDictionary*)dict
+- (void)receiveJson:(NSDictionary*)dict
 {
     [self.navigationController popViewControllerAnimated:YES];
     /*  NSLog(@"%@",dict);

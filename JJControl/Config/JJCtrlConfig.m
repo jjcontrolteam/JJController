@@ -23,13 +23,11 @@ inline static UIColor* getColorFromHex2(NSString *hexColor)
     [[NSScanner scannerWithString:[hexColor substringWithRange:range]] scanHexInt:&red];
     range.location = 2;
     [[NSScanner scannerWithString:[hexColor substringWithRange:range]] scanHexInt:&green];
-    //    ZNLog(@"aaaaaa ===== %d,%d,%d",red,green,blue);
     
     range.location = 4;
     [[NSScanner scannerWithString:[hexColor substringWithRange:range]] scanHexInt:&blue];
     
     return [UIColor colorWithRed:(float)(red/255.0f) green:(float)(green/255.0f) blue:(float)(blue/255.0f) alpha:1.0f];
-    //    return [UIColor whiteColor];
 }
 
 @implementation JJCtrlConfig

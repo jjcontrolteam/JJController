@@ -23,7 +23,7 @@ static NSString *identifier = @"CategoryCollectionViewCell";
 
 @implementation CategoryCollectionView
 
-- (void)buildUI:(id)myDataSourceBlock withDelegate:(id)myDelegateBlock{
+- (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[CategoryCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     
@@ -41,7 +41,7 @@ static NSString *identifier = @"CategoryCollectionViewCell";
     self.delegate = _delegate;
 }
 
--(void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
+- (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
     CategoryCollectionViewCell *newCell = (CategoryCollectionViewCell *)cell;
     [newCell setData:data];
 }

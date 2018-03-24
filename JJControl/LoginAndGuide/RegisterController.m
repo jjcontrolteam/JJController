@@ -90,7 +90,7 @@
    
 }
 
--(void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40 , 40)];
@@ -102,16 +102,17 @@
     self.navigationItem.leftBarButtonItem = barButton;
 }
 
--(void)viewWillDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:YES];
 }
 
--(void)backAction:(id)sender{
-    [self backAction:sender];
+- (void)backAction:(id)sender{
+    [super backAction:sender];
+//    [self backAction:sender];
 }
--(void)registerAction:(id)sender{
+- (void)registerAction:(id)sender{
     
     if ([nameField_.text length]<1||[pwdField_.text length]<1||[doublePwdField_.text length]<1) {
         return;
@@ -128,7 +129,7 @@
     
 }
 
--(void)connectSuccess
+- (void)connectSuccess
 {
     JJServiceInterface *service = [JJServiceInterface share];
     NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1001,\"user\": \"%@\",\"type\": \"register\"}" ,nameField_.text];
@@ -136,7 +137,7 @@
     [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
 }
 
--(void)receiveJson:(NSDictionary*)dict
+- (void)receiveJson:(NSDictionary*)dict
 {
     if ([[dict objectForKey:@"code"]integerValue]==0) {
         if ([[dict objectForKey:@"innerCode"] isEqualToString:nameField_.text]) {

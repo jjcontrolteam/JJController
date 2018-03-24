@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface UserBaseController : UIViewController<UITextFieldDelegate>
--(void)resetView:(float)move;
--(void)showHud;
--(void)showStatus:(NSString*)msg;
--(void)hiddenHud;
--(void)backAction:(id)sender;
--(void)connectFailue;
+- (void)resetView:(float)move;
+- (void)showHud;
+- (void)showStatus:(NSString*)msg;
+- (void)hiddenHud;
+- (void)backAction:(id)sender;
+- (void)connectFailue;
 @end

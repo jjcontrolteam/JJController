@@ -8,25 +8,25 @@
 
 #import "BaseDataSource.h"
 @interface BaseDataSource(){
-    NSArray         *_cellData;
+    
     NSDictionary    *_headerData;
     NSDictionary    *_footerData;
     NSString       *_identifier;
     NSString       *_header;
     NSString       *_footer;
-    cellBlock      _cellBlock;
     headerBlock    _headerBlock;
     footerBlock    _footerBlock;
 }
 @end
+
 @implementation BaseDataSource
--(void)dealloc{
+- (void)dealloc{
     _cellBlock = nil;
     _headerBlock = nil;
     _footerBlock = nil;
 }
 
--(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier  andCellBack:(cellBlock)cBlock {
+- (instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier  andCellBack:(cellBlock)cBlock {
     
     self = [super init];
     if (self) {
@@ -41,7 +41,7 @@
 /*
  创建带头部的视图
  */
--(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withHeaderItem:(NSDictionary*)item headerIdentifier:(NSString *)header  andCellBack:(cellBlock)cBlock andHeaderBack:(headerBlock)hBlock {
+- (instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withHeaderItem:(NSDictionary*)item headerIdentifier:(NSString *)header  andCellBack:(cellBlock)cBlock andHeaderBack:(headerBlock)hBlock {
     
     self = [super init];
     if (self) {
@@ -58,7 +58,7 @@
 /*
  创建带底部的视图
  */
--(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withFooterItem:(NSDictionary *)item footerIdentifier:(NSString *)footer andCellBack:(cellBlock)cBlock  andFooterBack:(footerBlock)fBlock{
+- (instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withFooterItem:(NSDictionary *)item footerIdentifier:(NSString *)footer andCellBack:(cellBlock)cBlock  andFooterBack:(footerBlock)fBlock{
     
     self = [super init];
     if (self) {
@@ -75,7 +75,7 @@
 /*
  创建带底部,头部的视图
  */
--(instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withHeaderItem:(NSDictionary*)hitem headerIdentifier:(NSString *)header withFooterItem:(NSDictionary *)fitem footerIdentifier:(NSString *)footer andCellBack:(cellBlock)cBlock andHeaderBack:(headerBlock)hBlock andFooterBack:(footerBlock)fBlock{
+- (instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withHeaderItem:(NSDictionary*)hitem headerIdentifier:(NSString *)header withFooterItem:(NSDictionary *)fitem footerIdentifier:(NSString *)footer andCellBack:(cellBlock)cBlock andHeaderBack:(headerBlock)hBlock andFooterBack:(footerBlock)fBlock{
     
     self = [super init];
     if (self) {
@@ -116,7 +116,7 @@
     return cell;
 }
 
--(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionReusableView *reusableView =nil;
     
@@ -137,6 +137,10 @@
         }
     }
     return reusableView;
+}
+
+- (void)setItems:(NSArray *)array{
+    _cellData = [NSMutableArray arrayWithArray:array];
 }
 
 @end

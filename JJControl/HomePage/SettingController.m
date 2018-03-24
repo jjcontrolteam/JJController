@@ -21,7 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+
     self.title = @"设置";
     UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
     _collectionView = [[SettingCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout];
@@ -31,7 +32,6 @@
     
     };
     [self.view addSubview:_collectionView];
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

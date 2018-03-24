@@ -10,5 +10,12 @@
 #import <UIKit/UIKit.h>
 typedef void (^cellDelegateBlock)(id data);
 @interface BaseDataDelegate : NSObject<UICollectionViewDelegateFlowLayout>
--(instancetype)initWithItems:(NSArray *)array  andCallBack:(cellDelegateBlock)block;
+
+@property (nonatomic, copy) NSArray *items;
+
+
+- (instancetype)initWithItems:(NSArray *)array  andCallBack:(cellDelegateBlock)block;
+
+- (void)setItems:(NSArray *)array;
+
 @end

@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseCollectionViewCell.h"
 
-@interface SettingCollectionViewCell : UICollectionViewCell
-
-@property (nonatomic, strong) id data;
+@interface SettingCollectionViewCell : BaseCollectionViewCell
 
 @end

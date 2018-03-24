@@ -143,13 +143,17 @@
     [self resetView:0.0];
 }
 
--(void)loginAction:(id)sender{
-   /*
-*/
+- (void)loginAction:(id)sender{
+    
+//    //直接跳转到首页进行测试
+//    MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
+//    [self.navigationController pushViewController:mainTabBarController animated:YES];
+//    
+
     if ([nameField_.text length]<1||[pwdField_.text length]<1) {
         return;
     }
-    
+
     JJServiceInterface *service = [JJServiceInterface share];
     service.delegate = self;
     [service connectWithClientId:nameField_.text];
@@ -157,26 +161,26 @@
     
 }
 
--(void)connectSuccess{
+- (void)connectSuccess{
     JJServiceInterface *service = [JJServiceInterface share];
     NSString *result =[BDUMD5Crypt macSignWithText:pwdField_.text secretKey:KEY_MAC] ;
     NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1003,\"user\": \"%@\",\"password\": \"%@\"}" ,nameField_.text, result];
     NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",nameField_.text];
     [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
 }
--(void)loginOtherAction:(id)sender{
+- (void)loginOtherAction:(id)sender{
     OtherLoginController *login=[[OtherLoginController alloc]init];
     [self.navigationController pushViewController:login animated:YES];
 }
 
--(void)registerAction:(id)sender{
+- (void)registerAction:(id)sender{
     RegisterController *registerCtrl = [[RegisterController alloc]init];
     [self.navigationController pushViewController:registerCtrl animated:YES];
 }
 
 
 
--(void)receiveJson:(NSDictionary*)dict
+- (void)receiveJson:(NSDictionary*)dict
 {
     [self hiddenHud];
   /*  NSLog(@"%@",dict);

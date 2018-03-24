@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E8C07C520667225004D296A /* SettingDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C07C420667225004D296A /* SettingDataSource.m */; };
+		2E8C07C82066761D004D296A /* InfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C07C72066761D004D296A /* InfoCollectionViewCell.m */; };
+		2E8C07CB20667628004D296A /* SpanCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C07CA20667628004D296A /* SpanCollectionViewCell.m */; };
+		2E8C07CF20667BE5004D296A /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C07CE20667BE5004D296A /* BaseCollectionViewCell.m */; };
 		2EBD37C7206287E300E3A667 /* SettingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37C6206287E300E3A667 /* SettingCollectionView.m */; };
 		2EBD37CA2062882100E3A667 /* SettingDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37C92062882100E3A667 /* SettingDataDelegate.m */; };
 		2EBD37CD2062886900E3A667 /* SettingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37CC2062886900E3A667 /* SettingCollectionViewCell.m */; };
@@ -113,6 +117,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E8C07C320667225004D296A /* SettingDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingDataSource.h; sourceTree = "<group>"; };
+		2E8C07C420667225004D296A /* SettingDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingDataSource.m; sourceTree = "<group>"; };
+		2E8C07C62066761D004D296A /* InfoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfoCollectionViewCell.h; sourceTree = "<group>"; };
+		2E8C07C72066761D004D296A /* InfoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfoCollectionViewCell.m; sourceTree = "<group>"; };
+		2E8C07C920667628004D296A /* SpanCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpanCollectionViewCell.h; sourceTree = "<group>"; };
+		2E8C07CA20667628004D296A /* SpanCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpanCollectionViewCell.m; sourceTree = "<group>"; };
+		2E8C07CD20667BE5004D296A /* BaseCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewCell.h; sourceTree = "<group>"; };
+		2E8C07CE20667BE5004D296A /* BaseCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewCell.m; sourceTree = "<group>"; };
+		2E8C07D02066947B004D296A /* JJControl.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJControl.pch; sourceTree = "<group>"; };
 		2EBD37C5206287E300E3A667 /* SettingCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingCollectionView.h; sourceTree = "<group>"; };
 		2EBD37C6206287E300E3A667 /* SettingCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingCollectionView.m; sourceTree = "<group>"; };
 		2EBD37C82062882100E3A667 /* SettingDataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingDataDelegate.h; sourceTree = "<group>"; };
@@ -326,6 +339,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2E8C07CC20667648004D296A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2EBD37CB2062886900E3A667 /* SettingCollectionViewCell.h */,
+				2EBD37CC2062886900E3A667 /* SettingCollectionViewCell.m */,
+				2E8C07C62066761D004D296A /* InfoCollectionViewCell.h */,
+				2E8C07C72066761D004D296A /* InfoCollectionViewCell.m */,
+				2E8C07C920667628004D296A /* SpanCollectionViewCell.h */,
+				2E8C07CA20667628004D296A /* SpanCollectionViewCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		2EBD37CE2062939200E3A667 /* DeviceSetting */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,12 +408,13 @@
 		2EC3420F206169FD007F4B8C /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				2E8C07CC20667648004D296A /* Cell */,
 				2EBD37C5206287E300E3A667 /* SettingCollectionView.h */,
 				2EBD37C6206287E300E3A667 /* SettingCollectionView.m */,
 				2EBD37C82062882100E3A667 /* SettingDataDelegate.h */,
 				2EBD37C92062882100E3A667 /* SettingDataDelegate.m */,
-				2EBD37CB2062886900E3A667 /* SettingCollectionViewCell.h */,
-				2EBD37CC2062886900E3A667 /* SettingCollectionViewCell.m */,
+				2E8C07C320667225004D296A /* SettingDataSource.h */,
+				2E8C07C420667225004D296A /* SettingDataSource.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -493,6 +520,7 @@
 				84B1AC032050DE08005F028A /* Info.plist */,
 				84FAF02C205FDA7000BF112C /* mqtt.plist */,
 				84B1AC042050DE08005F028A /* main.m */,
+				2E8C07D02066947B004D296A /* JJControl.pch */,
 			);
 			path = JJControl;
 			sourceTree = "<group>";
@@ -596,6 +624,8 @@
 				84FAEF8E205ABC9D00BF112C /* BaseCollectionLayout.m */,
 				84FAEF90205ABD0D00BF112C /* BaseCollectionView.h */,
 				84FAEF91205ABD0D00BF112C /* BaseCollectionView.m */,
+				2E8C07CD20667BE5004D296A /* BaseCollectionViewCell.h */,
+				2E8C07CE20667BE5004D296A /* BaseCollectionViewCell.m */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -920,6 +950,7 @@
 				2EC3420B206161BB007F4B8C /* DeviceController.m in Sources */,
 				84FAEFEB205E9C8200BF112C /* RoomDataDelegate.m in Sources */,
 				84301C822064A35D004A857D /* DBHelper.m in Sources */,
+				2E8C07C520667225004D296A /* SettingDataSource.m in Sources */,
 				2EBD37CD2062886900E3A667 /* SettingCollectionViewCell.m in Sources */,
 				2EC341EF20600DCE007F4B8C /* CategoryCollectionView.m in Sources */,
 				2EC34205206157C8007F4B8C /* DeviceModel.m in Sources */,
@@ -938,6 +969,7 @@
 				2EC34202206156E8007F4B8C /* DeviceCollectionViewCell.m in Sources */,
 				84FAE8FA20566BF900BF112C /* JJCtrlConfig.m in Sources */,
 				2EBD37DA2062966B00E3A667 /* DeviceSettingCollectionViewCell.m in Sources */,
+				2E8C07CF20667BE5004D296A /* BaseCollectionViewCell.m in Sources */,
 				84301CC02064A75C004A857D /* USER.m in Sources */,
 				84FAF006205EAF6A00BF112C /* UserBaseController.m in Sources */,
 				2EBD37C7206287E300E3A667 /* SettingCollectionView.m in Sources */,
@@ -961,6 +993,7 @@
 				84301C902064A67E004A857D /* CENTRAL_CONTROL.m in Sources */,
 				2EC341FF206156C1007F4B8C /* DeviceDataDelegate.m in Sources */,
 				84F1E8B6205A6D9F00828549 /* MainTabBarController.m in Sources */,
+				2E8C07CB20667628004D296A /* SpanCollectionViewCell.m in Sources */,
 				84301CBA2064A741004A857D /* TIMING.m in Sources */,
 				84FAEF8C205AB40B00BF112C /* BaseDataDelegate.m in Sources */,
 				84301C8D2064A66D004A857D /* BIND.m in Sources */,
@@ -973,6 +1006,7 @@
 				84FAF001205EAF6A00BF112C /* GuideController.m in Sources */,
 				84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */,
 				84301CAE2064A70D004A857D /* ROOM.m in Sources */,
+				2E8C07C82066761D004D296A /* InfoCollectionViewCell.m in Sources */,
 				84301C58206284A5004A857D /* VerifyController.m in Sources */,
 				84F1E8BD205A6E3000828549 /* RoomController.m in Sources */,
 				2EC3420820615ACE007F4B8C /* DeviceCollectionReusableView.m in Sources */,
@@ -1154,6 +1188,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F42QK2HDRU;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = JJControl/JJControl.pch;
 				INFOPLIST_FILE = JJControl/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1170,6 +1206,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F42QK2HDRU;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = JJControl/JJControl.pch;
 				INFOPLIST_FILE = JJControl/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -31,7 +31,9 @@
 }
 
 - (void)valueChanged:(UISegmentedControl *)segment{
-    
+    if(self.segmentChangedBlock){
+        self.segmentChangedBlock(segment.selectedSegmentIndex);
+    }
 }
 
 @end

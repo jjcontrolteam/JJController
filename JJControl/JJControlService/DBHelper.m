@@ -10,7 +10,7 @@
 #import "JRDB.h"
 #import "CategoryModel.h"
 @implementation DBHelper
--(void)test{
+- (void)test{
    // [JRDBMgr shareInstance]create
     CategoryModel *model =[[CategoryModel alloc]init];
     [model setID:@""];

@@ -34,7 +34,7 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
 }
 #pragma mark - 输入框代理 -
 
--(void)textFieldDidBeginEditing:(UITextField *)textField{   //开始编辑时，整体上移
+- (void)textFieldDidBeginEditing:(UITextField *)textField{   //开始编辑时，整体上移
     //计算当前cell的屏幕位置
     
     //  [genBtn_ setHidden:YES];
@@ -67,7 +67,7 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
     
 }
 #pragma mark-监视输入键盘是否遮挡
--(void)moveView:(float)move{
+- (void)moveView:(float)move{
     NSTimeInterval animationDuration = 0.30f;
     CGRect bounds = self.view.bounds;
     bounds.origin.y +=move;//view的X轴上移
@@ -77,7 +77,7 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
     [UIView commitAnimations];//设置调整界面的动画效果
 }
 
--(void)resetView:(float)move{
+- (void)resetView:(float)move{
     NSTimeInterval animationDuration = 0.30f;
     CGRect bounds = self.view.bounds;
     bounds.origin.y =move;//view的X轴上移
@@ -104,29 +104,29 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
     
 }
 
--(void)showHud{
+- (void)showHud{
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
--(void)hiddenHud{
+- (void)hiddenHud{
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
--(void)showStatus:(NSString*)msg{
+- (void)showStatus:(NSString*)msg{
     MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
     if (hud) {
         [hud.label setText:msg];
     }
 }
 
--(void)backAction:(id)sender{
+- (void)backAction:(id)sender{
     JJServiceInterface *service = [JJServiceInterface share];
     service.delegate = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
--(void)connectFailue{
+- (void)connectFailue{
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 

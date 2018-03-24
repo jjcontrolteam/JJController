@@ -15,7 +15,7 @@
 }
 @end
 @implementation RoomCollectionCell
--(instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -37,7 +37,7 @@
     }
     return self;
 }
--(void)fillInfo:(NSString*)txt{
+- (void)fillInfo:(NSString*)txt{
     [textLabel setText:txt];
 }
 @end

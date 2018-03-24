@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface VerifyController : UIViewController
--(instancetype)init:(NSString*)name withPwd:(NSString*)pwd;
+- (instancetype)init:(NSString*)name withPwd:(NSString*)pwd;
 @end

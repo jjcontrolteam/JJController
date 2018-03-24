@@ -19,11 +19,11 @@
         };
         void (^myFooterBlock)(id footer , id data,NSIndexPath *indexPath) = ^(id footer ,id data,NSIndexPath *indexPath){
             //cell数据的填充方法
-            [weakSelf bindCell:footer withData:data withIndexPath:indexPath];
+            [weakSelf bindFooterer:footer withData:data withIndexPath:indexPath];
         };
         void (^myHeadererBlock)(id header , id data,NSIndexPath *indexPath) = ^(id header ,id data,NSIndexPath *indexPath){
             //cell数据的填充方法
-            [weakSelf bindCell:header withData:data withIndexPath:indexPath];
+            [weakSelf bindHeader:header withData:data withIndexPath:indexPath];
         };
         void (^myDelegateBlock)(id data) = ^(id data){
             //cell数据的填充方法
@@ -35,11 +35,11 @@
     return self;
 }
 
--(void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
+- (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
     
 }
--(void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath*)indexPath{}
--(void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath*)indexPath{}
--(void)bindFooterer:(id)footer withData:(id)data withIndexPath:(NSIndexPath*)indexPath{}
--(void)chooseCell:(id)data{}
+- (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath*)indexPath{}
+- (void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath*)indexPath{}
+- (void)bindFooterer:(id)footer withData:(id)data withIndexPath:(NSIndexPath*)indexPath{}
+- (void)chooseCell:(id)data{}
 @end

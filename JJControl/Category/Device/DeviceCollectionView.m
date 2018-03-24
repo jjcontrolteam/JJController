@@ -20,6 +20,10 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
     BaseDataSource *_dataSource;
     BaseDataDelegate *_delegate;
 }
+
+@property (nonatomic, strong) NSMutableArray *array1;
+@property (nonatomic, strong) NSMutableArray *array2;
+
 @end
 
 @implementation DeviceCollectionView
@@ -29,30 +33,63 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
     [self registerClass:[DeviceCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     [self registerClass:[DeviceCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:usableIdentifier];
 
-    
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (int i = 0 ; i < 15; i++) {
-        NSString *title = [NSString stringWithFormat:@"灯光 %@", @(i)];
-        DeviceModel *model = [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:title isOn:YES];
-        [array addObject:model];
-    }
-    _dataSource = [[BaseDataSource alloc] initWithItems:array cellIdentifier:identifier  andCellBack:myDataSourceBlock];
+    _dataSource = [[BaseDataSource alloc] initWithItems:self.array1 cellIdentifier:identifier withHeaderItem:@{@"":@""} headerIdentifier:usableIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
     self.dataSource = _dataSource;
     
-    _delegate = [[DeviceDataDelegate alloc] initWithItems:array andCallBack:myDelegateBlock];
+    _delegate = [[DeviceDataDelegate alloc] initWithItems:self.array1 andCallBack:myDelegateBlock];
     self.delegate = _delegate;
     
 }
 
--(void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
+- (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
     DeviceCollectionViewCell *newCell = (DeviceCollectionViewCell *)cell;
+
     [newCell setData:data];
+}
+
+- (void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
+    DeviceCollectionReusableView *headerView = (DeviceCollectionReusableView *)header;
+    headerView.segmentChangedBlock = ^(NSInteger index) {
+        if(index == 0){
+            [_dataSource setItems:self.array1];
+            [_delegate setItems:self.array1];
+        }else{
+            
+            [_dataSource setItems:self.array2];
+            [_delegate setItems:self.array2];
+        }
+        [self reloadData];
+    };
 }
 
 - (void)chooseCell:(id)data{
     if(self.block){
         self.block();
     }
+}
+
+- (NSMutableArray *)array1{
+    if (!_array1) {
+        _array1 = [[NSMutableArray alloc] init];
+        for (int i = 0 ; i < 15; i++) {
+            NSString *title = [NSString stringWithFormat:@"灯光 %@", @(i)];
+            DeviceModel *model = [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:title isOn:YES];
+            [_array1 addObject:model];
+        }
+    }
+    return _array1;
+}
+
+- (NSMutableArray *)array2{
+    if (!_array2) {
+        _array2 = [[NSMutableArray alloc] init];
+        for (int i = 0 ; i < 10; i++) {
+            NSString *title = [NSString stringWithFormat:@"新的 %@", @(i)];
+            DeviceModel *model = [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:title isOn:YES];
+            [_array2 addObject:model];
+        }
+    }
+    return _array2;
 }
 
 /*

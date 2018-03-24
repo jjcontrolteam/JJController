@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface RoomCollectionCell : UICollectionViewCell
--(void)fillInfo:(NSString*)txt;
+- (void)fillInfo:(NSString*)txt;
 @end

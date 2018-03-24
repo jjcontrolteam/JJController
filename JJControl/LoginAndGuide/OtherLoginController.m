@@ -104,15 +104,15 @@
     [self.view addSubview:loginBtn_];
 }
 
--(void)backAction:(id)sender{
+- (void)backAction:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)loginAction:(id)sender{
+- (void)loginAction:(id)sender{
     
 }
 
--(void)fetchAction:(id)sender{
+- (void)fetchAction:(id)sender{
     
 }
 
