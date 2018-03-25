@@ -8,7 +8,7 @@
 
 #import "SettingController.h"
 #import "SettingCollectionView.h"
-
+#import "SettingViewModel.h"
 @interface SettingController (){
     SettingCollectionView *_collectionView;
 
@@ -24,8 +24,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.title = @"设置";
+    SettingViewModel *sVModel=[[SettingViewModel alloc]init];
     UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
-    _collectionView = [[SettingCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout];
+    _collectionView = [[SettingCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:sVModel];
     __weak typeof(self) weakSelf = self;
     _collectionView.block = ^{
        

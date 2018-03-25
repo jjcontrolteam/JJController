@@ -9,7 +9,7 @@
 #import "DeviceController.h"
 #import "DeviceCollectionView.h"
 #import "ControlController.h"
-
+#import "DeviceViewModel.h"
 @interface DeviceController (){
     DeviceCollectionView *_collectionView;
 }
@@ -27,8 +27,8 @@
     layout.sectionHeadersPinToVisibleBounds = true;
     layout.minimumInteritemSpacing = 1;
     layout.minimumLineSpacing = 1;
-    
-    _collectionView = [[DeviceCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    DeviceViewModel *viewModel=[[DeviceViewModel alloc]init];
+    _collectionView = [[DeviceCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:viewModel];
     __weak typeof(self) weakSelf = self;
     _collectionView.block = ^{
         ControlController *controlController = [[ControlController alloc] init];

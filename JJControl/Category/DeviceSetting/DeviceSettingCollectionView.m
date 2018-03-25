@@ -23,6 +23,8 @@ static NSString *identifier = @"DeviceSettingCollectionViewCell";
 @implementation DeviceSettingCollectionView
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
+    
+    [super buildUI:myDelegateBlock withHeaderBlock:headerBlock withFooterBlock:footerBlock withDelegate:myDelegateBlock];
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[DeviceSettingCollectionViewCell class] forCellWithReuseIdentifier:identifier];
    

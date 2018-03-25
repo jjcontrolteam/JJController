@@ -169,8 +169,10 @@
     [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
 }
 - (void)loginOtherAction:(id)sender{
-    OtherLoginController *login=[[OtherLoginController alloc]init];
-    [self.navigationController pushViewController:login animated:YES];
+   // OtherLoginController *login=[[OtherLoginController alloc]init];
+  //  [self.navigationController pushViewController:login animated:YES];
+    MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
+    [self.navigationController pushViewController:mainTabbarController animated:YES];
 }
 
 - (void)registerAction:(id)sender{

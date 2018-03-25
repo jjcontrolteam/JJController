@@ -21,14 +21,15 @@ static NSString *reusableindentifer=@"RoomCollectionReusable";
 @implementation RoomCollectionView
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
+    [super buildUI:myDataSourceBlock withHeaderBlock:headerBlock withFooterBlock:footerBlock withDelegate:myDataSourceBlock];
     [self setBackgroundColor:[UIColor colorWithWhite:0.33333 alpha:1.0]];
     [self registerClass:[RoomCollectionCell class] forCellWithReuseIdentifier:indentifer];
     [self registerClass:[RoomCollectionReusable class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reusableindentifer];
     
-    _dataSource = [[BaseDataSource alloc]initWithItems:@[@"aaa",@"aaa",@"aaa",@"aaa",@"aaa"]  cellIdentifier:indentifer withHeaderItem:@{@"":@""} headerIdentifier:reusableindentifer andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
+    _dataSource = [[BaseDataSource alloc]initWithItems:self.items  cellIdentifier:indentifer withHeaderItem:@{@"":@""} headerIdentifier:reusableindentifer andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
      self.dataSource = _dataSource;
     
-     _delegate = [[RoomDataDelegate alloc]initWithItems:@[@"aaa",@"aaa",@"aaa",@"aaa",@"aaa"]  andCallBack:myDelegateBlock];
+     _delegate = [[RoomDataDelegate alloc]initWithItems:self.items  andCallBack:myDelegateBlock];
      self.delegate = _delegate; 
 }
 

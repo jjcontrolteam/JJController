@@ -18,23 +18,22 @@
     SettingDataSource *_dataSource;
     BaseDataDelegate *_delegate;
 }
-@property (nonatomic, strong) NSMutableArray *array;
+
 @end
 
 @implementation SettingCollectionView
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
-    
+    [super buildUI:myDelegateBlock withHeaderBlock:headerBlock withFooterBlock:footerBlock withDelegate:myDelegateBlock];
     self.backgroundColor = [UIColor whiteColor];
 
     [self registerClass:[SettingCollectionViewCell class] forCellWithReuseIdentifier:settingIdentifier];
     [self registerClass:[SpanCollectionViewCell class] forCellWithReuseIdentifier:spanIdentifier];
     [self registerClass:[InfoCollectionViewCell class] forCellWithReuseIdentifier:infoIdentifier];
-
-    _dataSource = [[SettingDataSource alloc] initWithItems:self.array cellIdentifier:settingIdentifier andCellBack:myDataSourceBlock];
+    _dataSource = [[SettingDataSource alloc] initWithItems:self.items cellIdentifier:settingIdentifier andCellBack:myDataSourceBlock];
     self.dataSource = _dataSource;
     
-    _delegate = [[SettingDataDelegate alloc] initWithItems:self.array andCallBack:myDelegateBlock];
+    _delegate = [[SettingDataDelegate alloc] initWithItems:self.items andCallBack:myDelegateBlock];
     self.delegate = _delegate;
 }
 
@@ -46,14 +45,10 @@
 
 - (void)chooseCell:(id)data{
     if(self.block){
-        self.block();
+       // self.block();
     }
 }
 
-- (NSMutableArray *)array{
-    //span为空格
-    return [NSMutableArray arrayWithArray:@[@"信息",@"span", @"消息", @"摇一摇", @"span", @"设备", @"密码", @"通用", @"反馈"]];
-}
 
 /*
 // Only override drawRect: if you perform custom drawing.

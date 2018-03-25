@@ -11,7 +11,7 @@
 #import "DeviceCollectionViewCell.h"
 #import "DeviceCollectionReusableView.h"
 #import "BaseDataSource.h"
-#import "DeviceModel.h"
+#import "DeviceViewModel.h"
 
 static NSString *identifier = @"DeviceCollectionCell";
 static NSString *usableIdentifier = @"DeviceCollectionReusableView";
@@ -21,22 +21,21 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
     BaseDataDelegate *_delegate;
 }
 
-@property (nonatomic, strong) NSMutableArray *array1;
-@property (nonatomic, strong) NSMutableArray *array2;
 
 @end
 
 @implementation DeviceCollectionView
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
+    [super buildUI:myDataSourceBlock withHeaderBlock:headerBlock withFooterBlock:footerBlock withDelegate:myDataSourceBlock];
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[DeviceCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     [self registerClass:[DeviceCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:usableIdentifier];
 
-    _dataSource = [[BaseDataSource alloc] initWithItems:self.array1 cellIdentifier:identifier withHeaderItem:@{@"":@""} headerIdentifier:usableIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
+    _dataSource = [[BaseDataSource alloc] initWithItems:self.items cellIdentifier:identifier withHeaderItem:@{@"":@""} headerIdentifier:usableIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
     self.dataSource = _dataSource;
     
-    _delegate = [[DeviceDataDelegate alloc] initWithItems:self.array1 andCallBack:myDelegateBlock];
+    _delegate = [[DeviceDataDelegate alloc] initWithItems:self.items andCallBack:myDelegateBlock];
     self.delegate = _delegate;
     
 }
@@ -51,12 +50,16 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
     DeviceCollectionReusableView *headerView = (DeviceCollectionReusableView *)header;
     headerView.segmentChangedBlock = ^(NSInteger index) {
         if(index == 0){
-            [_dataSource setItems:self.array1];
-            [_delegate setItems:self.array1];
+            __block typeof(self) weakSelf=self;
+            [self.viewModel fetchData:^(NSArray *data) {
+                weakSelf.items = [NSMutableArray arrayWithArray:data];
+            }];
         }else{
-            
-            [_dataSource setItems:self.array2];
-            [_delegate setItems:self.array2];
+            DeviceViewModel *vModel=(DeviceViewModel*)self.viewModel;
+            __block typeof(self) weakSelf=self;
+            [vModel fetchData1:^(NSArray *data) {
+                weakSelf.items = [NSMutableArray arrayWithArray:data];
+            }];
         }
         [self reloadData];
     };
@@ -68,29 +71,7 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
     }
 }
 
-- (NSMutableArray *)array1{
-    if (!_array1) {
-        _array1 = [[NSMutableArray alloc] init];
-        for (int i = 0 ; i < 15; i++) {
-            NSString *title = [NSString stringWithFormat:@"灯光 %@", @(i)];
-            DeviceModel *model = [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:title isOn:YES];
-            [_array1 addObject:model];
-        }
-    }
-    return _array1;
-}
 
-- (NSMutableArray *)array2{
-    if (!_array2) {
-        _array2 = [[NSMutableArray alloc] init];
-        for (int i = 0 ; i < 10; i++) {
-            NSString *title = [NSString stringWithFormat:@"新的 %@", @(i)];
-            DeviceModel *model = [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:title isOn:YES];
-            [_array2 addObject:model];
-        }
-    }
-    return _array2;
-}
 
 /*
 // Only override drawRect: if you perform custom drawing.
