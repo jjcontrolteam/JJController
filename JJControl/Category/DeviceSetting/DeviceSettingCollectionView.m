@@ -23,8 +23,7 @@ static NSString *identifier = @"DeviceSettingCollectionViewCell";
 @implementation DeviceSettingCollectionView
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
-    
-    [super buildUI:myDelegateBlock withHeaderBlock:headerBlock withFooterBlock:footerBlock withDelegate:myDelegateBlock];
+     
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[DeviceSettingCollectionViewCell class] forCellWithReuseIdentifier:identifier];
    
@@ -33,6 +32,8 @@ static NSString *identifier = @"DeviceSettingCollectionViewCell";
     
     _delegate = [[DeviceSettingDataDelegate alloc] initWithItems:@[@"房间", @"定时", @"最长市场", @"分享", @"开关绑定", @"设备密码", @"所属控制器"] andCallBack:myDelegateBlock];
     self.delegate = _delegate;
+    
+    [self fetchData];
 }
 
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{

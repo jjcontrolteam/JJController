@@ -24,7 +24,7 @@
 @implementation SettingCollectionView
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
-    [super buildUI:myDelegateBlock withHeaderBlock:headerBlock withFooterBlock:footerBlock withDelegate:myDelegateBlock];
+    
     self.backgroundColor = [UIColor whiteColor];
 
     [self registerClass:[SettingCollectionViewCell class] forCellWithReuseIdentifier:settingIdentifier];
@@ -35,6 +35,8 @@
     
     _delegate = [[SettingDataDelegate alloc] initWithItems:@[] andCallBack:myDelegateBlock];
     self.delegate = _delegate;
+    
+    [self fetchData];
 }
 
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
@@ -45,7 +47,7 @@
 
 - (void)chooseCell:(id)data{
     if(self.block){
-       // self.block();
+         self.block();
     }
 }
 
