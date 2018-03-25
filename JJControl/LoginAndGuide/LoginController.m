@@ -182,11 +182,14 @@
 
 - (void)receiveJson:(NSDictionary*)dict
 {
-    [self hiddenHud];
-  /*  NSLog(@"%@",dict);
-    MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
-    [self.navigationController pushViewController:mainTabbarController animated:YES];*/
     
+    [self hiddenHud];
+     NSLog(@"%@",dict);
+    if([[dict valueForKey:@"code"]integerValue]==0 && [[dict valueForKey:@"cmd"]integerValue]==1003)
+    {
+        MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
+        [self.navigationController pushViewController:mainTabbarController animated:YES];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
