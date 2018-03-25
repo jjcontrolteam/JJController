@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CategoryModel : NSObject
+@interface CategoryCellModel : NSObject
 
 @property (nonatomic, copy) NSString *pic;
 @property (nonatomic, copy) NSString *title;

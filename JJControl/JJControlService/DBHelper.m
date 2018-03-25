@@ -8,11 +8,11 @@
 
 #import "DBHelper.h"
 #import "JRDB.h"
-#import "CategoryModel.h"
+#import "CategoryCellModel.h"
 @implementation DBHelper
 - (void)test{
    // [JRDBMgr shareInstance]create
-    CategoryModel *model =[[CategoryModel alloc]init];
+    CategoryCellModel *model =[[CategoryCellModel alloc]init];
     [model setID:@""];
 }
 @end

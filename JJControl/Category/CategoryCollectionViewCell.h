@@ -9,7 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CategoryCollectionViewCell : UICollectionViewCell
-
-@property (nonatomic, strong) id data;
-
+- (void)setData:(id)data;
 @end

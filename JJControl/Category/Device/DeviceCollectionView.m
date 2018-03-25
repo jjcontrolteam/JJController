@@ -27,17 +27,19 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
 @implementation DeviceCollectionView
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
-    [super buildUI:myDataSourceBlock withHeaderBlock:headerBlock withFooterBlock:footerBlock withDelegate:myDataSourceBlock];
+    
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[DeviceCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     [self registerClass:[DeviceCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:usableIdentifier];
 
-    _dataSource = [[BaseDataSource alloc] initWithItems:self.items cellIdentifier:identifier withHeaderItem:@{@"":@""} headerIdentifier:usableIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
+    _dataSource = [[BaseDataSource alloc] initWithItems:@[] cellIdentifier:identifier withHeaderItem:@{@"":@""} headerIdentifier:usableIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
     self.dataSource = _dataSource;
     
-    _delegate = [[DeviceDataDelegate alloc] initWithItems:self.items andCallBack:myDelegateBlock];
+    _delegate = [[DeviceDataDelegate alloc] initWithItems:@[] andCallBack:myDelegateBlock];
     self.delegate = _delegate;
     
+    //放最后，由于延迟加载数据
+    [self fetchData];
 }
 
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
@@ -52,16 +54,24 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
         if(index == 0){
             __block typeof(self) weakSelf=self;
             [self.viewModel fetchData:^(NSArray *data) {
-                weakSelf.items = [NSMutableArray arrayWithArray:data];
+                BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
+                DeviceDataDelegate *ddd=(DeviceDataDelegate*)weakSelf.delegate;
+                ds.cellData = [NSMutableArray arrayWithArray:data];
+                ddd.items = [NSMutableArray arrayWithArray:data];
+                [weakSelf reloadData];
             }];
         }else{
             DeviceViewModel *vModel=(DeviceViewModel*)self.viewModel;
             __block typeof(self) weakSelf=self;
             [vModel fetchData1:^(NSArray *data) {
-                weakSelf.items = [NSMutableArray arrayWithArray:data];
+                BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
+                DeviceDataDelegate *ddd=(DeviceDataDelegate*)weakSelf.delegate;
+                ds.cellData = [NSMutableArray arrayWithArray:data];
+                ddd.items = [NSMutableArray arrayWithArray:data];
+                [weakSelf reloadData];
             }];
         }
-        [self reloadData];
+       
     };
 }
 

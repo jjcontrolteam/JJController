@@ -6,9 +6,9 @@
 //  Copyright © 2018 admin. All rights reserved.
 //
 
-#import "CategoryModel.h"
+#import "CategoryCellModel.h"
 
-@implementation CategoryModel
+@implementation CategoryCellModel
 
 - (instancetype)initWithPic:(NSString *)pic title:(NSString *)title details:(NSString *)details{
     if(self = [super init]){

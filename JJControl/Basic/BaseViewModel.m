@@ -29,7 +29,7 @@
 -(void)updateCollectionView{
     
 }
--(void)updateCell{
+-(void)updateCell:(UICollectionViewCell*)cell{
     
 }
 @end

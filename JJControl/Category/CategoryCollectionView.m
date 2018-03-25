@@ -10,8 +10,6 @@
 #import "BaseDataSource.h"
 #import "CategoryDataDelegate.h"
 #import "CategoryCollectionViewCell.h"
-#import "CategoryModel.h"
-
 
 static NSString *identifier = @"CategoryCollectionViewCell";
 
@@ -24,26 +22,26 @@ static NSString *identifier = @"CategoryCollectionViewCell";
 @implementation CategoryCollectionView
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
+    
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[CategoryCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (int i = 0 ; i < 15; i++) {
-        NSString *title = [NSString stringWithFormat:@"灯光 %@", @(i)];
-        CategoryModel *model = [CategoryModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:title details:@"8/30"];
-        [array addObject:model];
-    }
-    _dataSource=[[BaseDataSource alloc]initWithItems:array cellIdentifier:identifier andCellBack:myDataSourceBlock];
+    
+    _dataSource=[[BaseDataSource alloc]initWithItems:@[] cellIdentifier:identifier andCellBack:myDataSourceBlock];
     
     self.dataSource = _dataSource;
     
-    _delegate = [[CategoryDataDelegate alloc] initWithItems:array andCallBack:myDelegateBlock];
+    _delegate = [[CategoryDataDelegate alloc] initWithItems:@[] andCallBack:myDelegateBlock];
     self.delegate = _delegate;
+    
+    //放最后，由于延迟加载数据
+    [self fetchData];
 }
 
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
     CategoryCollectionViewCell *newCell = (CategoryCollectionViewCell *)cell;
     [newCell setData:data];
+    
 }
 
 - (void)chooseCell:(id)data{

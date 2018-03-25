@@ -7,7 +7,7 @@
 //
 
 #import "CategoryCollectionViewCell.h"
-#import "CategoryModel.h"
+#import "CategoryCellModel.h"
 
 @interface CategoryCollectionViewCell(){
     UIImageView *_imgView;
@@ -50,7 +50,7 @@
 }
 
 - (void)setData:(id)data{
-    CategoryModel *model = (CategoryModel *)data;
+    CategoryCellModel *model = (CategoryCellModel *)data;
     [_imgView setImage:[UIImage imageNamed:model.pic]];
     [_lbName setText:model.title];
     [_lbDetails setText:model.details];

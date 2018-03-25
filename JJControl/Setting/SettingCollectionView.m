@@ -30,10 +30,10 @@
     [self registerClass:[SettingCollectionViewCell class] forCellWithReuseIdentifier:settingIdentifier];
     [self registerClass:[SpanCollectionViewCell class] forCellWithReuseIdentifier:spanIdentifier];
     [self registerClass:[InfoCollectionViewCell class] forCellWithReuseIdentifier:infoIdentifier];
-    _dataSource = [[SettingDataSource alloc] initWithItems:self.items cellIdentifier:settingIdentifier andCellBack:myDataSourceBlock];
+    _dataSource = [[SettingDataSource alloc] initWithItems:@[] cellIdentifier:settingIdentifier andCellBack:myDataSourceBlock];
     self.dataSource = _dataSource;
     
-    _delegate = [[SettingDataDelegate alloc] initWithItems:self.items andCallBack:myDelegateBlock];
+    _delegate = [[SettingDataDelegate alloc] initWithItems:@[] andCallBack:myDelegateBlock];
     self.delegate = _delegate;
 }
 

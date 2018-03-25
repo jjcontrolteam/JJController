@@ -9,7 +9,7 @@
 #import "CategoryController.h"
 #import "CategoryCollectionView.h"
 #import "DeviceController.h"
-
+#import "CategoryViewModel.h"
 @interface CategoryController (){
     CategoryCollectionView *_collectionView;
 }
@@ -24,9 +24,9 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor redColor];
     self.title = @"安防";
-    
+    CategoryViewModel *vModel=[[CategoryViewModel alloc]init];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    _collectionView = [[CategoryCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    _collectionView = [[CategoryCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:vModel];
     __weak typeof(self) weakSelf = self;
     _collectionView.block = ^{
         DeviceController *deviceController = [[DeviceController alloc] init];

@@ -54,6 +54,7 @@
 		84301D052067E6A0004A857D /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301D042067E6A0004A857D /* BaseViewModel.m */; };
 		84301D082067F082004A857D /* SettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301D072067F082004A857D /* SettingViewModel.m */; };
 		84301D0B2067F165004A857D /* DeviceViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301D0A2067F165004A857D /* DeviceViewModel.m */; };
+		84301D0E2067FA5A004A857D /* CategoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301D0D2067FA5A004A857D /* CategoryViewModel.m */; };
 		84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1ABF62050DE08005F028A /* AppDelegate.m */; };
 		84B1ABFD2050DE08005F028A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFB2050DE08005F028A /* Main.storyboard */; };
 		84B1ABFF2050DE08005F028A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFE2050DE08005F028A /* Assets.xcassets */; };
@@ -74,7 +75,7 @@
 		84F1E8E1205A773400828549 /* room@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1E8D9205A773300828549 /* room@2x.png */; };
 		84F1E8E2205A773400828549 /* home_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1E8DA205A773300828549 /* home_on@2x.png */; };
 		84F1E8E3205A773400828549 /* setting_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1E8DB205A773300828549 /* setting_on@2x.png */; };
-		84F1E9172060A7DA00828549 /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E9162060A7DA00828549 /* CategoryModel.m */; };
+		84F1E9172060A7DA00828549 /* CategoryCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E9162060A7DA00828549 /* CategoryCellModel.m */; };
 		84FAE8AE2054C2C900BF112C /* JJServiceInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8AD2054C2C900BF112C /* JJServiceInterface.m */; };
 		84FAE8C92056158300BF112C /* BDUMD5Crypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE8C82056158300BF112C /* BDUMD5Crypt.m */; };
 		84FAE8EF20565E4C00BF112C /* intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84FAE8EE20565E4C00BF112C /* intro.mp4 */; };
@@ -215,6 +216,8 @@
 		84301D072067F082004A857D /* SettingViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewModel.m; sourceTree = "<group>"; };
 		84301D092067F165004A857D /* DeviceViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceViewModel.h; sourceTree = "<group>"; };
 		84301D0A2067F165004A857D /* DeviceViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceViewModel.m; sourceTree = "<group>"; };
+		84301D0C2067FA5A004A857D /* CategoryViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryViewModel.h; sourceTree = "<group>"; };
+		84301D0D2067FA5A004A857D /* CategoryViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryViewModel.m; sourceTree = "<group>"; };
 		84B1ABF22050DE08005F028A /* JJControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B1ABF52050DE08005F028A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84B1ABF62050DE08005F028A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -247,8 +250,8 @@
 		84F1E8D9205A773300828549 /* room@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "room@2x.png"; sourceTree = "<group>"; };
 		84F1E8DA205A773300828549 /* home_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_on@2x.png"; sourceTree = "<group>"; };
 		84F1E8DB205A773300828549 /* setting_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_on@2x.png"; sourceTree = "<group>"; };
-		84F1E9152060A7DA00828549 /* CategoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryModel.h; sourceTree = "<group>"; };
-		84F1E9162060A7DA00828549 /* CategoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryModel.m; sourceTree = "<group>"; };
+		84F1E9152060A7DA00828549 /* CategoryCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryCellModel.h; sourceTree = "<group>"; };
+		84F1E9162060A7DA00828549 /* CategoryCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryCellModel.m; sourceTree = "<group>"; };
 		84FAE8AC2054C2C900BF112C /* JJServiceInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJServiceInterface.h; sourceTree = "<group>"; };
 		84FAE8AD2054C2C900BF112C /* JJServiceInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJServiceInterface.m; sourceTree = "<group>"; };
 		84FAE8C72056158300BF112C /* BDUMD5Crypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BDUMD5Crypt.h; sourceTree = "<group>"; };
@@ -387,8 +390,10 @@
 				2EC341F120600E73007F4B8C /* CategoryDataDelegate.m */,
 				2EC341F320600EBA007F4B8C /* CategoryCollectionViewCell.h */,
 				2EC341F420600EBA007F4B8C /* CategoryCollectionViewCell.m */,
-				84F1E9152060A7DA00828549 /* CategoryModel.h */,
-				84F1E9162060A7DA00828549 /* CategoryModel.m */,
+				84F1E9152060A7DA00828549 /* CategoryCellModel.h */,
+				84F1E9162060A7DA00828549 /* CategoryCellModel.m */,
+				84301D0C2067FA5A004A857D /* CategoryViewModel.h */,
+				84301D0D2067FA5A004A857D /* CategoryViewModel.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -987,6 +992,7 @@
 				2EC34202206156E8007F4B8C /* DeviceCollectionViewCell.m in Sources */,
 				84FAE8FA20566BF900BF112C /* JJCtrlConfig.m in Sources */,
 				2EBD37DA2062966B00E3A667 /* DeviceSettingCollectionViewCell.m in Sources */,
+				84301D0E2067FA5A004A857D /* CategoryViewModel.m in Sources */,
 				2E8C07CF20667BE5004D296A /* BaseCollectionViewCell.m in Sources */,
 				84301CC02064A75C004A857D /* USER.m in Sources */,
 				84FAF006205EAF6A00BF112C /* UserBaseController.m in Sources */,
@@ -997,7 +1003,7 @@
 				84FAF005205EAF6A00BF112C /* RegisterController.m in Sources */,
 				84301CA82064A6ED004A857D /* PANEL_KEY.m in Sources */,
 				84F1E8BA205A6E1C00828549 /* HomeController.m in Sources */,
-				84F1E9172060A7DA00828549 /* CategoryModel.m in Sources */,
+				84F1E9172060A7DA00828549 /* CategoryCellModel.m in Sources */,
 				84301C962064A69B004A857D /* DATA_VERSION.m in Sources */,
 				84FAEF8F205ABC9D00BF112C /* BaseCollectionLayout.m in Sources */,
 				2EC341FB20615664007F4B8C /* DeviceCollectionView.m in Sources */,

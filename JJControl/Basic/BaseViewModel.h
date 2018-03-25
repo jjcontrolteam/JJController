@@ -15,5 +15,5 @@ typedef void (^fetchFooterBlock)(NSDictionary *data);
 -(void)fetchHeaderData:(fetchHeaderBlock)block;
 -(void)fetchFooterData:(fetchFooterBlock)block;
 -(void)updateCollectionView;
--(void)updateCell;
+-(void)updateCell:(UICollectionViewCell*)cell;
 @end
