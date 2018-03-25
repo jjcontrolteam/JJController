@@ -138,9 +138,6 @@
     }
     return reusableView;
 }
-
-- (void)setItems:(NSArray *)array{
-    _cellData = [NSMutableArray arrayWithArray:array];
-}
+ 
 
 @end

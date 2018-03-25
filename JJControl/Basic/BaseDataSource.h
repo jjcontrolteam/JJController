@@ -34,7 +34,5 @@ typedef void (^footerBlock)(id footer , id data,NSIndexPath *indexPath);
  */
 - (instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withHeaderItem:(NSDictionary*)hitem headerIdentifier:(NSString *)header withFooterItem:(NSDictionary *)fitem footerIdentifier:(NSString *)footer andCellBack:(cellBlock)cBlock andHeaderBack:(headerBlock)hBlock andFooterBack:(footerBlock)fBlock;
 
-//重新设置cell数据源
-- (void)setItems:(NSArray *)array;
-
+ 
 @end

@@ -62,7 +62,7 @@
     [self.viewModel fetchData:^(NSArray *data) {
         if (data) {
             BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
-            BaseDataSource *ddd=(BaseDataSource*)weakSelf.delegate;
+            BaseDataDelegate *ddd=(BaseDataDelegate*)weakSelf.delegate;
             ds.cellData = [NSMutableArray arrayWithArray:data];
             ddd.items = [NSMutableArray arrayWithArray:data];
             [weakSelf reloadData];

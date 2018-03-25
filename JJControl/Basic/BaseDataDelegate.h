@@ -16,6 +16,4 @@ typedef void (^cellDelegateBlock)(id data);
 
 - (instancetype)initWithItems:(NSArray *)array  andCallBack:(cellDelegateBlock)block;
 
-- (void)setItems:(NSArray *)array;
-
 @end
