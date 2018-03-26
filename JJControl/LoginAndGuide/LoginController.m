@@ -145,19 +145,19 @@
 
 - (void)loginAction:(id)sender{
     
-//    //直接跳转到首页进行测试
-//    MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
-//    [self.navigationController pushViewController:mainTabBarController animated:YES];
-//    
-
-    if ([nameField_.text length]<1||[pwdField_.text length]<1) {
-        return;
-    }
-
-    JJServiceInterface *service = [JJServiceInterface share];
-    service.delegate = self;
-    [service connectWithClientId:nameField_.text];
-    [self showHud];
+    //直接跳转到首页进行测试
+    MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
+    [self.navigationController pushViewController:mainTabBarController animated:YES];
+    
+//
+//    if ([nameField_.text length]<1||[pwdField_.text length]<1) {
+//        return;
+//    }
+//
+//    JJServiceInterface *service = [JJServiceInterface share];
+//    service.delegate = self;
+//    [service connectWithClientId:nameField_.text];
+//    [self showHud];
     
 }
 
