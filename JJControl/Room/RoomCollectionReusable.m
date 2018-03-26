@@ -35,8 +35,14 @@
         [segmentCtrl insertSegmentWithTitle:@"场景" atIndex:2 animated:NO];
         [segmentCtrl insertSegmentWithTitle:@"联动" atIndex:3 animated:NO];
         [segmentCtrl setTintColor:[UIColor colorWithRed:0.2471 green:0.6706 blue:0.4196 alpha:1.0]];
+        [segmentCtrl addTarget:self action:@selector(change:) forControlEvents:UIControlEventValueChanged];
         
     }
     return self;
+}
+-(void)change:(UISegmentedControl *)sender{
+    if (_segmentChangedBlock) {
+        _segmentChangedBlock(sender.selectedSegmentIndex);
+    }
 }
 @end

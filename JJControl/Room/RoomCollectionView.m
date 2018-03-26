@@ -8,6 +8,7 @@
 
 #import "RoomCollectionView.h"
 #import "BaseDataSource.h"
+#import "RoomViewModel.h"
 #import "RoomDataDelegate.h"
 #import "RoomCollectionCell.h"
 #import "RoomCollectionReusable.h"
@@ -41,6 +42,42 @@ static NSString *reusableindentifer=@"RoomCollectionReusable";
 }
 
 - (void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath*)indexPath{
+    if ([header isKindOfClass:[RoomCollectionReusable class]]) {
+        RoomCollectionReusable *headerView = (RoomCollectionReusable *)header;
+        headerView.segmentChangedBlock = ^(NSInteger index) {
+            RoomViewModel *vModel = (RoomViewModel*)self.viewModel;
+            if(index == 0){
+                __block typeof(self) weakSelf=self;
+                [vModel fetchDeviceData:^(NSArray *data) {
+                    BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
+                    BaseDataDelegate *ddd=(BaseDataDelegate*)weakSelf.delegate;
+                    ds.cellData = [NSMutableArray arrayWithArray:data];
+                    ddd.items = [NSMutableArray arrayWithArray:data];
+                    [weakSelf reloadData];
+                }];
+            }else if(index == 1){
+                __block typeof(self) weakSelf=self;
+                [vModel fetchSceneData:^(NSArray *data) {
+                    BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
+                    BaseDataDelegate *ddd=(BaseDataDelegate*)weakSelf.delegate;
+                    ds.cellData = [NSMutableArray arrayWithArray:data];
+                    ddd.items = [NSMutableArray arrayWithArray:data];
+                    [weakSelf reloadData];
+                }];
+            }else{
+                __block typeof(self) weakSelf=self;
+                [vModel fetchConectData:^(NSArray *data) {
+                    BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
+                    BaseDataDelegate *ddd=(BaseDataDelegate*)weakSelf.delegate;
+                    ds.cellData = [NSMutableArray arrayWithArray:data];
+                    ddd.items = [NSMutableArray arrayWithArray:data];
+                    [weakSelf reloadData];
+                }];
+            }
+            
+        };
+    }
+    
     
 }
 - (void)chooseCell:(id)data{

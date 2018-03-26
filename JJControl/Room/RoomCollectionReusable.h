@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void(^RoomSegmentChangedBlock)(NSInteger index);
 @interface RoomCollectionReusable : UICollectionReusableView
-
+@property (nonatomic, copy) RoomSegmentChangedBlock segmentChangedBlock;
 @end

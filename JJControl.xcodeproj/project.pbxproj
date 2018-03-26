@@ -55,6 +55,8 @@
 		84301D082067F082004A857D /* SettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301D072067F082004A857D /* SettingViewModel.m */; };
 		84301D0B2067F165004A857D /* DeviceViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301D0A2067F165004A857D /* DeviceViewModel.m */; };
 		84301D0E2067FA5A004A857D /* CategoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301D0D2067FA5A004A857D /* CategoryViewModel.m */; };
+		84301D292068C3C2004A857D /* RoomViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301D282068C3C2004A857D /* RoomViewModel.m */; };
+		84301D2C2068C7DB004A857D /* ServiceMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301D2B2068C7DB004A857D /* ServiceMgr.m */; };
 		84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1ABF62050DE08005F028A /* AppDelegate.m */; };
 		84B1ABFD2050DE08005F028A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFB2050DE08005F028A /* Main.storyboard */; };
 		84B1ABFF2050DE08005F028A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFE2050DE08005F028A /* Assets.xcassets */; };
@@ -218,6 +220,10 @@
 		84301D0A2067F165004A857D /* DeviceViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceViewModel.m; sourceTree = "<group>"; };
 		84301D0C2067FA5A004A857D /* CategoryViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryViewModel.h; sourceTree = "<group>"; };
 		84301D0D2067FA5A004A857D /* CategoryViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryViewModel.m; sourceTree = "<group>"; };
+		84301D272068C3C2004A857D /* RoomViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomViewModel.h; sourceTree = "<group>"; };
+		84301D282068C3C2004A857D /* RoomViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomViewModel.m; sourceTree = "<group>"; };
+		84301D2A2068C7DB004A857D /* ServiceMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceMgr.h; sourceTree = "<group>"; };
+		84301D2B2068C7DB004A857D /* ServiceMgr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceMgr.m; sourceTree = "<group>"; };
 		84B1ABF22050DE08005F028A /* JJControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B1ABF52050DE08005F028A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84B1ABF62050DE08005F028A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -591,6 +597,8 @@
 			children = (
 				84FAE8AC2054C2C900BF112C /* JJServiceInterface.h */,
 				84FAE8AD2054C2C900BF112C /* JJServiceInterface.m */,
+				84301D2A2068C7DB004A857D /* ServiceMgr.h */,
+				84301D2B2068C7DB004A857D /* ServiceMgr.m */,
 				84FAE8C72056158300BF112C /* BDUMD5Crypt.h */,
 				84FAE8C82056158300BF112C /* BDUMD5Crypt.m */,
 				84301C802064A35C004A857D /* DBHelper.h */,
@@ -621,6 +629,8 @@
 			children = (
 				84FAEF9F205ABE3C00BF112C /* RoomCollectionView.h */,
 				84FAEFA0205ABE3C00BF112C /* RoomCollectionView.m */,
+				84301D272068C3C2004A857D /* RoomViewModel.h */,
+				84301D282068C3C2004A857D /* RoomViewModel.m */,
 				84FAEFE9205E9C8200BF112C /* RoomDataDelegate.h */,
 				84FAEFEA205E9C8200BF112C /* RoomDataDelegate.m */,
 				84FAEFA2205AC2BA00BF112C /* RoomCollectionCell.h */,
@@ -993,12 +1003,14 @@
 				84FAE8FA20566BF900BF112C /* JJCtrlConfig.m in Sources */,
 				2EBD37DA2062966B00E3A667 /* DeviceSettingCollectionViewCell.m in Sources */,
 				84301D0E2067FA5A004A857D /* CategoryViewModel.m in Sources */,
+				84301D292068C3C2004A857D /* RoomViewModel.m in Sources */,
 				2E8C07CF20667BE5004D296A /* BaseCollectionViewCell.m in Sources */,
 				84301CC02064A75C004A857D /* USER.m in Sources */,
 				84FAF006205EAF6A00BF112C /* UserBaseController.m in Sources */,
 				2EBD37C7206287E300E3A667 /* SettingCollectionView.m in Sources */,
 				84FAEFEE205E9FA800BF112C /* RoomCollectionReusable.m in Sources */,
 				2EBD37D4206295A200E3A667 /* DeviceSettingCollectionView.m in Sources */,
+				84301D2C2068C7DB004A857D /* ServiceMgr.m in Sources */,
 				84301CA22064A6D0004A857D /* LINKAGE.m in Sources */,
 				84FAF005205EAF6A00BF112C /* RegisterController.m in Sources */,
 				84301CA82064A6ED004A857D /* PANEL_KEY.m in Sources */,

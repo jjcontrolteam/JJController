@@ -9,7 +9,7 @@
 #import "RoomController.h"
 #import "BaseCollectionLayout.h"
 #import "RoomCollectionView.h"
-#import "BaseViewModel.h"
+#import "RoomViewModel.h"
 @interface RoomController ()
 {
     RoomCollectionView *conview;
@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor orangeColor];
     self.title = @"房间";
-    BaseViewModel *vmodel=[[BaseViewModel alloc]init];
+    RoomViewModel *vmodel=[[RoomViewModel alloc]init];
     UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
     conview = [[RoomCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:vmodel];
     [self.view addSubview:conview];

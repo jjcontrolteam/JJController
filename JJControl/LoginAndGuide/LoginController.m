@@ -171,6 +171,7 @@
 - (void)loginOtherAction:(id)sender{
    // OtherLoginController *login=[[OtherLoginController alloc]init];
   //  [self.navigationController pushViewController:login animated:YES];
+    
     MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
     [self.navigationController pushViewController:mainTabbarController animated:YES];
 }
@@ -189,6 +190,7 @@
      NSLog(@"%@",dict);
     if([[dict valueForKey:@"code"]integerValue]==0 && [[dict valueForKey:@"cmd"]integerValue]==1003)
     {
+        [[NSUserDefaults standardUserDefaults]setValue:nameField_.text forKey:@"client_id"];
         MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
         [self.navigationController pushViewController:mainTabbarController animated:YES];
     }
