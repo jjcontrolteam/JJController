@@ -12,7 +12,8 @@
 static ServiceMgr * _singleton;
 
 @interface ServiceMgr()<JJServiceDelegate>{
-    ReceiveBlock receiveBlock_;
+    ReceiveBlock jsonModelBlock_;
+    ReceiveBlock sysDataBlock_;
 }
 @end
 @implementation ServiceMgr
@@ -42,20 +43,73 @@ static ServiceMgr * _singleton;
 -(void)sendMessage:(NSDictionary*)dict withTopic:(NSString*)topic withResponse:(NSString*)receiveTopic withSuccess:(ReceiveBlock)block{
     if (dict) {
         JJServiceInterface *service = [JJServiceInterface share];
-        receiveBlock_ = [block copy];
+        jsonModelBlock_ = [block copy];
         NSString *str =  [[JJServiceInterface class] jsonStringWithDictionary:dict];
         [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:topic receiveTopic:receiveTopic];
     }
     
 }
 
+-(void)sysStartingFetchData:(ReceiveBlock)block{
+    //
+    sysDataBlock_ = [block copy];
+    NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
+    NSString *topic=[NSString stringWithFormat:@"v1/123456/%@/data/request",clientid];
+    NSString *receive=[NSString stringWithFormat:@"v1/123456/%@/data/response",clientid];
+    NSDictionary *dict=@{@"cmd":@"1001",@"tables":@[@{@"table":@"device",@"version":@"1"},@{@"table":@"scene",@"version":@"1"}]};
+    __block __weak typeof(self) weakSelf= self;
+    [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
+        if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
+            [weakSelf sysStartFetchData];
+        }
+        
+    }];
+    
+}
+-(void)sysStartFetchData{
+    NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
+    NSString *topic=[NSString stringWithFormat:@"v1/123456/%@/data/request",clientid];
+    NSString *receive=[NSString stringWithFormat:@"v1/123456/%@/data/response",clientid];
+    NSDictionary *dict=@{@"cmd":@"1001"};
+    __block __weak typeof(self) weakSelf= self;
+    [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
+        if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
+            [weakSelf sysEndFetchData];
+        }
+        
+    }];
+}
+
+-(void)sysEndFetchData{
+    NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
+    NSString *topic=[NSString stringWithFormat:@"v1/123456/%@/data/request",clientid];
+    NSString *receive=[NSString stringWithFormat:@"v1/123456/%@/data/response",clientid];
+    NSDictionary *dict=@{@"cmd":@"1003"};
+    __block __weak typeof(self) weakSelf= self;
+    [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
+        if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
+            [weakSelf callBackSysData:dict];
+        }
+        
+    }];
+}
+-(void)callBackSysData:(NSDictionary*)dict{
+    if (dict) {
+        if (sysDataBlock_) {
+            sysDataBlock_(dict);
+        }
+    }
+}
 - (void)receiveJson:(NSDictionary*)dict
 {
     if (dict) {
-        if (receiveBlock_) {
-            receiveBlock_(dict);
+        if (jsonModelBlock_) {
+            jsonModelBlock_(dict);
         }
     }
-    
+}
+-(void)cleanUp{
+    jsonModelBlock_=nil;
+    sysDataBlock_=nil;
 }
 @end

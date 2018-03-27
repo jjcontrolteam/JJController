@@ -42,7 +42,7 @@
 }
 - (void) endBackgroundTask{
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
-    __block typeof(self) weakSelf= self;
+    __block __weak typeof(self) weakSelf= self;
     dispatch_async(mainQueue, ^(void) {
         AppDelegate *strongSelf = weakSelf;
         if (strongSelf != nil){

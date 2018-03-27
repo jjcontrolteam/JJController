@@ -12,4 +12,6 @@ typedef void(^ReceiveBlock)(NSDictionary *dict);
 + (instancetype)share;
 
 -(void)sendMessage:(NSDictionary*)dict withTopic:(NSString*)topic withResponse:(NSString*)receiveTopic withSuccess:(ReceiveBlock)block;
+-(void)cleanUp;
+-(void)sysStartingFetchData:(ReceiveBlock)block;
 @end

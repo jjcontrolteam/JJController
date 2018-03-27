@@ -23,7 +23,7 @@
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     _collectionView = [[DeviceSettingCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
-    __weak typeof(self) weakSelf = self;
+    __block __weak typeof(self) weakSelf = self;
     _collectionView.block = ^{
         
     };

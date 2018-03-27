@@ -18,7 +18,7 @@
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout withViewModel:(BaseViewModel*)vModel{
     self=[super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
-        __block typeof(self) weakSelf=self;
+        __block __weak typeof(self) weakSelf=self;
         void (^myDataSourceBlock)(id cell , id data,NSIndexPath *indexPath) = ^(id cell ,id data,NSIndexPath *indexPath){
             //cell数据的填充方法
             [weakSelf bindCell:cell withData:data withIndexPath:indexPath];
@@ -58,7 +58,7 @@
     
 }
 -(void)fetchData{
-    __block typeof(self) weakSelf= self;
+    __block __weak typeof(self) weakSelf= self;
     [self.viewModel fetchData:^(NSArray *data) {
         if (data) {
             BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;

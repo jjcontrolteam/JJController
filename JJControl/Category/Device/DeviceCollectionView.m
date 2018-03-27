@@ -52,7 +52,7 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
     DeviceCollectionReusableView *headerView = (DeviceCollectionReusableView *)header;
     headerView.segmentChangedBlock = ^(NSInteger index) {
         if(index == 0){
-            __block typeof(self) weakSelf=self;
+            __block __weak typeof(self) weakSelf=self;
             [self.viewModel fetchData:^(NSArray *data) {
                 BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
                 DeviceDataDelegate *ddd=(DeviceDataDelegate*)weakSelf.delegate;
@@ -62,7 +62,7 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
             }];
         }else{
             DeviceViewModel *vModel=(DeviceViewModel*)self.viewModel;
-            __block typeof(self) weakSelf=self;
+            __block __weak typeof(self) weakSelf=self;
             [vModel fetchData1:^(NSArray *data) {
                 BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
                 DeviceDataDelegate *ddd=(DeviceDataDelegate*)weakSelf.delegate;

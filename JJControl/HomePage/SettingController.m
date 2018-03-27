@@ -27,7 +27,7 @@
     SettingViewModel *sVModel=[[SettingViewModel alloc]init];
     UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
     _collectionView = [[SettingCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:sVModel];
-    __weak typeof(self) weakSelf = self;
+    __block __weak typeof(self) weakSelf = self;
     _collectionView.block = ^{
        
     

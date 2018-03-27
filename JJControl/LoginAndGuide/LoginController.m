@@ -11,8 +11,8 @@
 #import "OtherLoginController.h"
 #import "MainTabBarController.h"
 #import "ViewController.h"
+#import "ServiceMgr.h"
 #import "JJServiceInterface.h"
-
 #import "BDUMD5Crypt.h"
 #import<CommonCrypto/CommonDigest.h>
 
@@ -146,27 +146,48 @@
 - (void)loginAction:(id)sender{
     
     //直接跳转到首页进行测试
-    MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
+   /* MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
     [self.navigationController pushViewController:mainTabBarController animated:YES];
-    
-//
-//    if ([nameField_.text length]<1||[pwdField_.text length]<1) {
-//        return;
-//    }
-//
-//    JJServiceInterface *service = [JJServiceInterface share];
-//    service.delegate = self;
-//    [service connectWithClientId:nameField_.text];
-//    [self showHud];
+    */
+
+    if ([nameField_.text length]<1||[pwdField_.text length]<1) {
+        return;
+    }
+
+    JJServiceInterface *service = [JJServiceInterface share];
+    service.delegate = self;
+    [service connectWithClientId:nameField_.text];
+    [self showHud];
     
 }
 
 - (void)connectSuccess{
-    JJServiceInterface *service = [JJServiceInterface share];
+    ServiceMgr *service = [ServiceMgr share];
     NSString *result =[BDUMD5Crypt macSignWithText:pwdField_.text secretKey:KEY_MAC] ;
-    NSString *str=[NSString stringWithFormat:@"{\"cmd\": 1003,\"user\": \"%@\",\"password\": \"%@\"}" ,nameField_.text, result];
+    NSDictionary *dict=@{@"cmd":@"1003",@"user":nameField_.text,@"password":result};
     NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",nameField_.text];
-    [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
+     __block __weak typeof(self) weakSelf= self;
+    [self showHud];
+    [service sendMessage:dict withTopic:@"v1/cloud/request" withResponse:receive withSuccess:^(NSDictionary *dict) {
+        NSLog(@"%@",dict);
+        [weakSelf hiddenHud];
+        if([[dict valueForKey:@"code"]integerValue]==0 && [[dict valueForKey:@"cmd"]integerValue]==1003)
+        {
+            [weakSelf startSysData];
+        }
+    }];
+    //[service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
+}
+-(void)startSysData{
+    ServiceMgr *service = [ServiceMgr share];
+    __block __weak typeof(self) weakSelf= self;
+    [service sysStartingFetchData:^(NSDictionary *dict) {
+        
+        [[NSUserDefaults standardUserDefaults]setValue:nameField_.text forKey:@"client_id"];
+        MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
+        [weakSelf.navigationController pushViewController:mainTabbarController animated:YES];
+    }];
+   
 }
 - (void)loginOtherAction:(id)sender{
    // OtherLoginController *login=[[OtherLoginController alloc]init];
@@ -182,19 +203,6 @@
 }
 
 
-
-- (void)receiveJson:(NSDictionary*)dict
-{
-    
-    [self hiddenHud];
-     NSLog(@"%@",dict);
-    if([[dict valueForKey:@"code"]integerValue]==0 && [[dict valueForKey:@"cmd"]integerValue]==1003)
-    {
-        [[NSUserDefaults standardUserDefaults]setValue:nameField_.text forKey:@"client_id"];
-        MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
-        [self.navigationController pushViewController:mainTabbarController animated:YES];
-    }
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

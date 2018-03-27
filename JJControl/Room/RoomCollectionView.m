@@ -47,7 +47,7 @@ static NSString *reusableindentifer=@"RoomCollectionReusable";
         headerView.segmentChangedBlock = ^(NSInteger index) {
             RoomViewModel *vModel = (RoomViewModel*)self.viewModel;
             if(index == 0){
-                __block typeof(self) weakSelf=self;
+                __block __weak typeof(self) weakSelf=self;
                 [vModel fetchDeviceData:^(NSArray *data) {
                     BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
                     BaseDataDelegate *ddd=(BaseDataDelegate*)weakSelf.delegate;
@@ -56,7 +56,7 @@ static NSString *reusableindentifer=@"RoomCollectionReusable";
                     [weakSelf reloadData];
                 }];
             }else if(index == 1){
-                __block typeof(self) weakSelf=self;
+                __block __weak typeof(self) weakSelf=self;
                 [vModel fetchSceneData:^(NSArray *data) {
                     BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
                     BaseDataDelegate *ddd=(BaseDataDelegate*)weakSelf.delegate;
@@ -65,7 +65,7 @@ static NSString *reusableindentifer=@"RoomCollectionReusable";
                     [weakSelf reloadData];
                 }];
             }else{
-                __block typeof(self) weakSelf=self;
+                __block __weak typeof(self) weakSelf=self;
                 [vModel fetchConectData:^(NSArray *data) {
                     BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
                     BaseDataDelegate *ddd=(BaseDataDelegate*)weakSelf.delegate;

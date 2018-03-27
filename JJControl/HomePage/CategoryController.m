@@ -27,7 +27,7 @@
     CategoryViewModel *vModel=[[CategoryViewModel alloc]init];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     _collectionView = [[CategoryCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:vModel];
-    __weak typeof(self) weakSelf = self;
+    __block __weak typeof(self) weakSelf = self;
     _collectionView.block = ^{
         DeviceController *deviceController = [[DeviceController alloc] init];
         [weakSelf.navigationController pushViewController:deviceController animated:YES];

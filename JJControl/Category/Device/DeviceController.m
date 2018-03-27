@@ -29,7 +29,7 @@
     layout.minimumLineSpacing = 1;
     DeviceViewModel *viewModel=[[DeviceViewModel alloc]init];
     _collectionView = [[DeviceCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:viewModel];
-    __weak typeof(self) weakSelf = self;
+    __block __weak typeof(self) weakSelf = self;
     _collectionView.block = ^{
         ControlController *controlController = [[ControlController alloc] init];
         controlController.hidesBottomBarWhenPushed = YES;
