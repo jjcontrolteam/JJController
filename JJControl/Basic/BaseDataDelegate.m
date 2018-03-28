@@ -46,7 +46,7 @@
 }
 ////设置Cell样式
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    return CGSizeMake([UIScreen mainScreen].bounds.size.width, 51);
+//    return CGSizeMake(SCREEN_WIDTH, 51);
 //}
 
 

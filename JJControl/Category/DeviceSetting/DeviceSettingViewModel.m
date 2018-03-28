@@ -11,7 +11,7 @@
 @implementation DeviceSettingViewModel
 
 - (void)fetchData:(fetchBlock)block{
-    block(@[@"房间", @"定时", @"最长市场", @"分享", @"开关绑定", @"设备密码", @"所属控制器"]);
+    block(@[@"房间", @"span", @"定时", @"最长开启", @"span", @"分享", @"开关绑定", @"设备密码", @"span",@"所属控制器"]);
 }
 
 @end

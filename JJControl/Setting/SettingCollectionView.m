@@ -39,10 +39,8 @@
     [self fetchData];
 }
 
-- (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
-    SettingCollectionViewCell *newCell = (SettingCollectionViewCell *)cell;
-    
-    [newCell setCellData:data];
+- (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{    
+    [cell setCellData:data];
 }
 
 - (void)chooseCell:(id)data{

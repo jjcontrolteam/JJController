@@ -9,12 +9,11 @@
 #import "DeviceSettingCollectionView.h"
 #import "DeviceSettingDataDelegate.h"
 #import "DeviceSettingCollectionViewCell.h"
-#import "BaseDataSource.h"
-
-static NSString *identifier = @"DeviceSettingCollectionViewCell";
+#import "DeviceSettingDataSource.h"
+#import "SpanCollectionViewCell.h"
 
 @interface DeviceSettingCollectionView(){
-    BaseDataSource *_dataSource;
+    DeviceSettingDataSource *_dataSource;
     DeviceSettingDataDelegate *_delegate;
 }
 
@@ -26,8 +25,9 @@ static NSString *identifier = @"DeviceSettingCollectionViewCell";
      
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[DeviceSettingCollectionViewCell class] forCellWithReuseIdentifier:identifier];
-   
-    _dataSource = [[BaseDataSource alloc] initWithItems:@[] cellIdentifier:identifier  andCellBack:myDataSourceBlock];
+    [self registerClass:[SpanCollectionViewCell class] forCellWithReuseIdentifier:spanIdentifier];
+
+    _dataSource = [[DeviceSettingDataSource alloc] initWithItems:@[] cellIdentifier:identifier  andCellBack:myDataSourceBlock];
     self.dataSource = _dataSource;
     
     _delegate = [[DeviceSettingDataDelegate alloc] initWithItems:@[] andCallBack:myDelegateBlock];
@@ -37,8 +37,7 @@ static NSString *identifier = @"DeviceSettingCollectionViewCell";
 }
 
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
-    DeviceSettingCollectionViewCell *newCell = (DeviceSettingCollectionViewCell *)cell;
-    [newCell setData:data];
+    [cell setCellData:data];
 }
 
 - (void)chooseCell:(id)data{
@@ -46,6 +45,7 @@ static NSString *identifier = @"DeviceSettingCollectionViewCell";
         self.block();
     }
 }
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

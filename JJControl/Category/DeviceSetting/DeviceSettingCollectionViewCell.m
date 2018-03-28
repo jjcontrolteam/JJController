@@ -69,9 +69,9 @@
     }];
 }
 
-- (void)setData:(id)data{
+- (void)setCellData:(id)cellData{
     [_imgView setImage:[UIImage imageNamed:@"JJControlResource.bundle/icon_cj_ys_on.png"]];
-    [_lbName setText:data];
+    [_lbName setText:cellData];
     [_lbDetails setText:@"详情"];
 }
 

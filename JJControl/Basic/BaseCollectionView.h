@@ -17,4 +17,7 @@
 - (void)bindFooterer:(id)footer withData:(id)data withIndexPath:(NSIndexPath*)indexPath;
 - (void)chooseCell:(id)data;
 -(void)fetchData;
+
+//需要新增  该行数据源改变 更新当前row的方法
+
 @end

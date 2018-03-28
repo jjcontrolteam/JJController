@@ -11,7 +11,7 @@
 @implementation RoomDataDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-     return CGSizeMake([UIScreen mainScreen].bounds.size.width, 204);
+     return CGSizeMake(SCREEN_WIDTH, 204);
 }
 
 @end

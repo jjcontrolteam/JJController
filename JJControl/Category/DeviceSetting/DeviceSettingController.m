@@ -24,7 +24,7 @@
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
 
-    layout.estimatedItemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 100);
+    layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 100);
     DeviceSettingViewModel *deviceSettingViewModel = [[DeviceSettingViewModel alloc] init];
     _collectionView = [[DeviceSettingCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:deviceSettingViewModel];
     __weak typeof(self) weakSelf = self;

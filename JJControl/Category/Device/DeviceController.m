@@ -24,7 +24,7 @@
     self.title = @"灯光";
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.estimatedItemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 100);
+    layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 100);
 //    layout.sectionHeadersPinToVisibleBounds = true;
 //    layout.minimumInteritemSpacing = 1;
 //    layout.minimumLineSpacing = 1;

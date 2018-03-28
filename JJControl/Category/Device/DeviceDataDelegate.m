@@ -11,7 +11,7 @@
 @implementation DeviceDataDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return CGSizeMake([UIScreen mainScreen].bounds.size.width, 60);
+    return CGSizeMake(SCREEN_WIDTH, 60);
 }
 
 
