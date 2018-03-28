@@ -17,4 +17,12 @@
 
 #import <Masonry.h>
 
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
+
+#define CELL_LEFT_MARGIN 10.0f
+#define CELL_TOP_MARGIN 10.0f
+#define CELL_RIGHT_MARGIN 10.0f
+#define CELL_BOTTOM_MARGIN 10.0f
+#define CELL_INNER_MARGIN 10.0f

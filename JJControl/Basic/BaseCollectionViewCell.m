@@ -10,4 +10,14 @@
 
 @implementation BaseCollectionViewCell
 
+//- (UICollectionViewLayoutAttributes*)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes*)layoutAttributes {
+//    [self setNeedsLayout];
+//    [self layoutIfNeeded];
+//    CGSize size = [self.contentView systemLayoutSizeFittingSize: layoutAttributes.size];
+//    CGRect cellFrame = layoutAttributes.frame;
+//    cellFrame.size.height= size.height;
+//    layoutAttributes.frame= cellFrame;
+//    return layoutAttributes;
+//}
+
 @end

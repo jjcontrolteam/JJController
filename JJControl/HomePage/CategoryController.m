@@ -26,6 +26,8 @@
     self.title = @"安防";
     CategoryViewModel *vModel=[[CategoryViewModel alloc]init];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.estimatedItemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 100);
+
     _collectionView = [[CategoryCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:vModel];
     __block __weak typeof(self) weakSelf = self;
     _collectionView.block = ^{
@@ -33,7 +35,6 @@
         [weakSelf.navigationController pushViewController:deviceController animated:YES];
     };
     [self.view addSubview:_collectionView];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{

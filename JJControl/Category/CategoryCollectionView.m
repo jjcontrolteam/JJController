@@ -25,8 +25,7 @@ static NSString *identifier = @"CategoryCollectionViewCell";
     
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[CategoryCollectionViewCell class] forCellWithReuseIdentifier:identifier];
-    
-    
+     
     _dataSource=[[BaseDataSource alloc]initWithItems:@[] cellIdentifier:identifier andCellBack:myDataSourceBlock];
     
     self.dataSource = _dataSource;

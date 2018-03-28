@@ -1,8 +1,8 @@
 //
 //  main.m
 //  JJControl
-//
-//  Created by admin on 2018/3/8.
+//JJControl Group
+//  Created by admin onJJControl Group 2018/3/8.
 //  Copyright © 2018年 admin. All rights reserved.
 //
 

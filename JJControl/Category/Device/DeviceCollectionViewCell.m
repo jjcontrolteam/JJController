@@ -28,18 +28,31 @@
 - (void)createSubviews{
     [self setBackgroundColor:[UIColor whiteColor]];
     
-    _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(12,12, 26, 26)];
-    [self addSubview:_imgView];
+    _imgView = [[UIImageView alloc]init];
+    [self.contentView addSubview:_imgView];
+    [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.contentView).offset(CELL_LEFT_MARGIN);
+        make.bottom.mas_equalTo(self.contentView).offset(-CELL_BOTTOM_MARGIN);
+        make.top.mas_equalTo(self.contentView).offset(CELL_TOP_MARGIN);
+        make.width.height.mas_equalTo(SCREEN_WIDTH / 12.0);
+    }];
     
-    _lbName =[[UILabel alloc]initWithFrame:CGRectMake(48, 0,200, 50)];
-    [self addSubview:_lbName];
+    _lbName =[[UILabel alloc]init];
+    [self.contentView addSubview:_lbName];
     [_lbName setTextAlignment:NSTextAlignmentLeft];
     [_lbName setFont:[UIFont systemFontOfSize:16]];
     [_lbName setTextColor:[UIColor blackColor]];
+    [_lbName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.contentView);
+        make.left.mas_equalTo(_imgView.mas_right).offset(CELL_INNER_MARGIN);
+    }];
     
-    _switch =[[UISwitch alloc]initWithFrame:CGRectMake(248, 0,200, 50)];
-    [self addSubview:_switch];
-    
+    _switch =[[UISwitch alloc]init];
+    [self.contentView addSubview:_switch];
+    [_switch mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.contentView);
+        make.right.mas_equalTo(self.contentView).offset(-CELL_RIGHT_MARGIN);
+    }];
 }
 
 - (void)setData:(id)data{

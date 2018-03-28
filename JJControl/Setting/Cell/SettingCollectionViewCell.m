@@ -9,9 +9,13 @@
 #import "SettingCollectionViewCell.h"
 
 @interface SettingCollectionViewCell(){
-    UIImageView *_imgView;
-    UILabel *_lbName;
+    
 }
+
+@property (nonatomic, strong) UIImageView *imgViewLeft;
+@property (nonatomic, strong) UILabel *lbTitle;
+@property (nonatomic, strong) UIImageView *imgArrow;
+
 @end
 
 @implementation SettingCollectionViewCell
@@ -24,45 +28,62 @@
 }
 
 - (void)createSubviews{
-    [self setBackgroundColor:[UIColor purpleColor]];
-    
-    _imgView = [[UIImageView alloc]init];
-    _imgView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:_imgView];
-    [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self).offset(20);
-        make.centerY.mas_equalTo(self);
-        make.width.mas_equalTo(self.mas_height).multipliedBy(0.5);
-        make.height.mas_equalTo(self).multipliedBy(0.5);
-    }];
-    
-    _lbName =[[UILabel alloc]init];
-    _lbName.translatesAutoresizingMaskIntoConstraints = NO;
-    [_lbName setTextAlignment:NSTextAlignmentLeft];
-    [_lbName setFont:[UIFont systemFontOfSize:18]];
-    [_lbName setTextColor:[UIColor blackColor]];
-    [self addSubview:_lbName];
+    [self setBackgroundColor:[UIColor whiteColor]];
 
-    UIImageView *imgArrow = [[UIImageView alloc]init];
-    [imgArrow setImage:[UIImage imageNamed:@"JJControlResource.bundle/icon_cj_ys_on.png"]];
-    [self addSubview:imgArrow];
-    [imgArrow mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self).offset(-20);
-        make.centerY.mas_equalTo(self);
-        make.width.mas_equalTo(self).multipliedBy(0.05);
-        make.height.mas_equalTo(self.mas_width).multipliedBy(0.05);
+    [self.contentView addSubview:self.imgViewLeft];
+    [self.contentView addSubview:self.lbTitle];
+    [self.contentView addSubview:self.imgArrow];
+
+    [self.imgViewLeft mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.contentView).offset(CELL_LEFT_MARGIN);
+        make.bottom.mas_equalTo(self.contentView).offset(-CELL_BOTTOM_MARGIN);
+        make.top.mas_equalTo(self.contentView).offset(CELL_TOP_MARGIN);
+        make.width.height.mas_equalTo(SCREEN_WIDTH / 12.0);
     }];
-    
-    [_lbName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(_imgView.mas_right).offset(20);
-        make.right.mas_equalTo(imgArrow.mas_left).offset(-20);
-        make.centerY.mas_equalTo(self);
+
+    [self.imgArrow mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.contentView);
+        make.right.mas_equalTo(self.contentView).offset(-CELL_RIGHT_MARGIN);
+        make.width.height.mas_equalTo(self.contentView.mas_height).multipliedBy(0.3);
+    }];
+
+    [self.lbTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.contentView);
+        make.left.mas_equalTo(_imgViewLeft.mas_right).offset(CELL_INNER_MARGIN);
     }];
 }
 
+
+- (UIImageView *)imgViewLeft{
+    if(!_imgViewLeft){
+        _imgViewLeft = [[UIImageView alloc]init];
+        _imgViewLeft.translatesAutoresizingMaskIntoConstraints = NO;
+    }
+    return _imgViewLeft;
+}
+
+- (UILabel *)lbTitle{
+    if(!_lbTitle){
+        _lbTitle = [[UILabel alloc]init];
+        _lbTitle.translatesAutoresizingMaskIntoConstraints = NO;
+        [_lbTitle setTextAlignment:NSTextAlignmentLeft];
+        [_lbTitle setFont:[UIFont systemFontOfSize:18]];
+        [_lbTitle setTextColor:[UIColor blackColor]];
+    }
+    return _lbTitle;
+}
+
+- (UIImageView *)imgArrow{
+    if(!_imgArrow){
+        _imgArrow = [[UIImageView alloc]init];
+        [_imgArrow setImage:[UIImage imageNamed:@"JJControlResource.bundle/right.png"]];
+    }
+    return _imgArrow;
+}
+
 - (void)setCellData:(id)cellData{
-    [_imgView setImage:[UIImage imageNamed:@"JJControlResource.bundle/icon_cj_ys_on.png"]];
-    [_lbName setText:cellData];
+    [self.imgViewLeft setImage:[UIImage imageNamed:@"JJControlResource.bundle/icon_cj_ys_on.png"]];
+    [self.lbTitle setText:cellData];
 }
 
 @end

@@ -18,8 +18,18 @@
 }
 
 - (void)createSubviews{
-    UISegmentedControl *segmentCtrl = [[UISegmentedControl alloc]initWithFrame:CGRectMake(14, 0, self.frame.size.width-28, 34)];
+    UISegmentedControl *segmentCtrl = [[UISegmentedControl alloc]init];
+    segmentCtrl.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:segmentCtrl];
+    
+    [segmentCtrl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self).offset(14);
+        make.right.mas_equalTo(self).offset(-14);
+        make.top.mas_equalTo(10);
+        make.bottom.mas_equalTo(-10);
+        make.height.mas_equalTo(20);
+    }];
+    
     
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [segmentCtrl setTitleTextAttributes:dic forState:UIControlStateSelected];

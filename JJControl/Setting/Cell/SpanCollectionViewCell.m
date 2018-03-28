@@ -19,6 +19,15 @@
 
 - (void)createSubviews{
     [self setBackgroundColor:[UIColor redColor]];
+    
+    UIView *lineView = [[UIView alloc] init];
+    [self.contentView addSubview:lineView];
+ 
+    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.contentView).offset(0);
+        make.height.mas_equalTo(10);
+        make.top.mas_equalTo(self.contentView).offset(0);
+    }];
 }
 
 - (void)setCellData:(id)cellData{

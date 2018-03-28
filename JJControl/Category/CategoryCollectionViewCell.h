@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseCollectionViewCell.h"
 
-@interface CategoryCollectionViewCell : UICollectionViewCell
+@interface CategoryCollectionViewCell : BaseCollectionViewCell
+
 - (void)setData:(id)data;
+
 @end

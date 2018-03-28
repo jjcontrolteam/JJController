@@ -57,6 +57,7 @@
 		84301D0E2067FA5A004A857D /* CategoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301D0D2067FA5A004A857D /* CategoryViewModel.m */; };
 		84301D292068C3C2004A857D /* RoomViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301D282068C3C2004A857D /* RoomViewModel.m */; };
 		84301D2C2068C7DB004A857D /* ServiceMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301D2B2068C7DB004A857D /* ServiceMgr.m */; };
+		843CBA472069D8EB00FB5443 /* DeviceSettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843CBA462069D8EB00FB5443 /* DeviceSettingViewModel.m */; };
 		84B1ABF72050DE08005F028A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1ABF62050DE08005F028A /* AppDelegate.m */; };
 		84B1ABFD2050DE08005F028A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFB2050DE08005F028A /* Main.storyboard */; };
 		84B1ABFF2050DE08005F028A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B1ABFE2050DE08005F028A /* Assets.xcassets */; };
@@ -224,6 +225,8 @@
 		84301D282068C3C2004A857D /* RoomViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomViewModel.m; sourceTree = "<group>"; };
 		84301D2A2068C7DB004A857D /* ServiceMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceMgr.h; sourceTree = "<group>"; };
 		84301D2B2068C7DB004A857D /* ServiceMgr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceMgr.m; sourceTree = "<group>"; };
+		843CBA452069D8EB00FB5443 /* DeviceSettingViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceSettingViewModel.h; sourceTree = "<group>"; };
+		843CBA462069D8EB00FB5443 /* DeviceSettingViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceSettingViewModel.m; sourceTree = "<group>"; };
 		84B1ABF22050DE08005F028A /* JJControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B1ABF52050DE08005F028A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84B1ABF62050DE08005F028A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -381,6 +384,8 @@
 				2EBD37D62062960100E3A667 /* DeviceSettingDataDelegate.m */,
 				2EBD37D82062966B00E3A667 /* DeviceSettingCollectionViewCell.h */,
 				2EBD37D92062966B00E3A667 /* DeviceSettingCollectionViewCell.m */,
+				843CBA452069D8EB00FB5443 /* DeviceSettingViewModel.h */,
+				843CBA462069D8EB00FB5443 /* DeviceSettingViewModel.m */,
 			);
 			path = DeviceSetting;
 			sourceTree = "<group>";
@@ -1009,6 +1014,7 @@
 				84FAF006205EAF6A00BF112C /* UserBaseController.m in Sources */,
 				2EBD37C7206287E300E3A667 /* SettingCollectionView.m in Sources */,
 				84FAEFEE205E9FA800BF112C /* RoomCollectionReusable.m in Sources */,
+				843CBA472069D8EB00FB5443 /* DeviceSettingViewModel.m in Sources */,
 				2EBD37D4206295A200E3A667 /* DeviceSettingCollectionView.m in Sources */,
 				84301D2C2068C7DB004A857D /* ServiceMgr.m in Sources */,
 				84301CA22064A6D0004A857D /* LINKAGE.m in Sources */,

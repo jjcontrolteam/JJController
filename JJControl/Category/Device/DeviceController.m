@@ -24,9 +24,10 @@
     self.title = @"灯光";
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.sectionHeadersPinToVisibleBounds = true;
-    layout.minimumInteritemSpacing = 1;
-    layout.minimumLineSpacing = 1;
+    layout.estimatedItemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 100);
+//    layout.sectionHeadersPinToVisibleBounds = true;
+//    layout.minimumInteritemSpacing = 1;
+//    layout.minimumLineSpacing = 1;
     DeviceViewModel *viewModel=[[DeviceViewModel alloc]init];
     _collectionView = [[DeviceCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:viewModel];
     __block __weak typeof(self) weakSelf = self;

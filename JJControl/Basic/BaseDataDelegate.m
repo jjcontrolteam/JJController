@@ -44,11 +44,11 @@
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(0, 0, 0, 0);
 }
-//设置Cell样式
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake([UIScreen mainScreen].bounds.size.width, 51);
-}
- 
+////设置Cell样式
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+//    return CGSizeMake([UIScreen mainScreen].bounds.size.width, 51);
+//}
+
 
 
 @end

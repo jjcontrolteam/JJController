@@ -8,6 +8,7 @@
 
 #import "DeviceSettingController.h"
 #import "DeviceSettingCollectionView.h"
+#import "DeviceSettingViewModel.h"
 
 @interface DeviceSettingController (){
     DeviceSettingCollectionView *_collectionView;
@@ -22,12 +23,15 @@
     // Do any additional setup after loading the view.
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    _collectionView = [[DeviceSettingCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
-    __block __weak typeof(self) weakSelf = self;
+
+    layout.estimatedItemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 100);
+    DeviceSettingViewModel *deviceSettingViewModel = [[DeviceSettingViewModel alloc] init];
+    _collectionView = [[DeviceSettingCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:deviceSettingViewModel];
+    __weak typeof(self) weakSelf = self;
     _collectionView.block = ^{
         
     };
-//
+    
     [self.view addSubview:_collectionView];
 }
 

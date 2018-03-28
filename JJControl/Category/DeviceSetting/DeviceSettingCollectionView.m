@@ -27,10 +27,10 @@ static NSString *identifier = @"DeviceSettingCollectionViewCell";
     [self setBackgroundColor:[UIColor redColor]];
     [self registerClass:[DeviceSettingCollectionViewCell class] forCellWithReuseIdentifier:identifier];
    
-    _dataSource = [[BaseDataSource alloc] initWithItems:@[@"房间", @"定时", @"最长市场", @"分享", @"开关绑定", @"设备密码", @"所属控制器"] cellIdentifier:identifier  andCellBack:myDataSourceBlock];
+    _dataSource = [[BaseDataSource alloc] initWithItems:@[] cellIdentifier:identifier  andCellBack:myDataSourceBlock];
     self.dataSource = _dataSource;
     
-    _delegate = [[DeviceSettingDataDelegate alloc] initWithItems:@[@"房间", @"定时", @"最长市场", @"分享", @"开关绑定", @"设备密码", @"所属控制器"] andCallBack:myDelegateBlock];
+    _delegate = [[DeviceSettingDataDelegate alloc] initWithItems:@[] andCallBack:myDelegateBlock];
     self.delegate = _delegate;
     
     [self fetchData];
