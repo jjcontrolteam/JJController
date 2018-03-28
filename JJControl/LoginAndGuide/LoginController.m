@@ -181,13 +181,21 @@
 -(void)startSysData{
     ServiceMgr *service = [ServiceMgr share];
     __block __weak typeof(self) weakSelf= self;
+    [service bindCentral:^(NSDictionary *dict) {
+        [weakSelf sysData];
+    }];
+    
+   
+}
+-(void)sysData{
+    ServiceMgr *service = [ServiceMgr share];
+    __block __weak typeof(self) weakSelf= self;
     [service sysStartingFetchData:^(NSDictionary *dict) {
         
         [[NSUserDefaults standardUserDefaults]setValue:nameField_.text forKey:@"client_id"];
         MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
         [weakSelf.navigationController pushViewController:mainTabbarController animated:YES];
     }];
-   
 }
 - (void)loginOtherAction:(id)sender{
    // OtherLoginController *login=[[OtherLoginController alloc]init];

@@ -10,7 +10,7 @@
 typedef void(^ReceiveBlock)(NSDictionary *dict);
 @interface ServiceMgr : NSObject
 + (instancetype)share;
-
+-(void)bindCentral:(ReceiveBlock)block;
 -(void)sendMessage:(NSDictionary*)dict withTopic:(NSString*)topic withResponse:(NSString*)receiveTopic withSuccess:(ReceiveBlock)block;
 -(void)cleanUp;
 -(void)sysStartingFetchData:(ReceiveBlock)block;

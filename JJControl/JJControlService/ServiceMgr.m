@@ -60,7 +60,9 @@ static ServiceMgr * _singleton;
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
         if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
-            [weakSelf sysStartFetchData];
+            if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1001) {
+                [weakSelf sysStartFetchData];
+            } 
         }
         
     }];
@@ -74,7 +76,10 @@ static ServiceMgr * _singleton;
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
         if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
-            [weakSelf sysEndFetchData];
+            if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1001) {
+                [weakSelf sysEndFetchData];
+            }
+            
         }
         
     }];
@@ -88,11 +93,33 @@ static ServiceMgr * _singleton;
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
         if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
-            [weakSelf callBackSysData:dict];
+            if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1003) {
+               [weakSelf callBackSysData:dict];
+            }
+            
         }
         
     }];
 }
+-(void)bindCentral:(ReceiveBlock)block{
+    sysDataBlock_ = [block copy];
+    
+    NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
+    NSString *topic=@"v1/cloud/request";
+    NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",clientid];
+    NSDictionary *dict=@{@"cmd":@"1005",@"user":clientid,@"central":@"121"};
+    __block __weak typeof(self) weakSelf= self;
+    [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
+        if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
+            if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1003) {
+                [weakSelf callBackSysData:dict];
+            }
+           
+        }
+        
+    }];
+}
+
 -(void)callBackSysData:(NSDictionary*)dict{
     if (dict) {
         if (sysDataBlock_) {
