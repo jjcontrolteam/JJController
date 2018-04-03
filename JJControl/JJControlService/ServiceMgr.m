@@ -8,7 +8,8 @@
 
 #import "ServiceMgr.h"
 #import "JJServiceInterface.h"
-#import "USER.h"
+#import "JRDB.h"
+#import "MJExtension.h"
 static ServiceMgr * _singleton;
 
 @interface ServiceMgr()<JJServiceDelegate>{
@@ -61,28 +62,24 @@ static ServiceMgr * _singleton;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
         if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
             if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1001) {
-                [weakSelf sysStartFetchData];
+                [weakSelf sysStartFetchData:dict];
             } 
         }
         
     }];
     
 }
--(void)sysStartFetchData{
-    NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
-    NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
-    NSString *receive=[NSString stringWithFormat:@"v1/18/%@/data/response",clientid];
-    NSDictionary *dict=@{@"cmd":@"1001"};
-    __block __weak typeof(self) weakSelf= self;
-    [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
-        if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
-            if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1001) {
-                [weakSelf sysEndFetchData];
+-(void)sysStartFetchData:(NSDictionary*)dict{
+    NSString *tbclass=[dict valueForKey:@"table"];
+    if (tbclass) {
+        if (tbclass) {
+            for (NSDictionary *val in [dict valueForKey:@"rows"]) {
+                id  tbmodel=[NSClassFromString(tbclass) mj_objectWithKeyValues:val];
+                 [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(tbclass)]];
+                 [tbmodel jr_save];
             }
-            
         }
-        
-    }];
+    }
 }
 
 -(void)sysEndFetchData{

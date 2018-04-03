@@ -10,6 +10,7 @@ pod 'CocoaAsyncSocket'
 pod  'MBProgressHUD'
 pod  'Masonry'
 pod  ‘JRDB’
+pod 'MJExtension'
 end
 
 target 'JJControlTests'  do

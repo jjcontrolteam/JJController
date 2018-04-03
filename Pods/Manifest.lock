@@ -12,6 +12,7 @@ PODS:
   - KIF/Core (3.5.1)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
+  - MJExtension (3.0.13)
   - MQTTClient (0.8.7):
     - MQTTClient/Core (= 0.8.7)
   - MQTTClient/Core (0.8.7):
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - KIF (~> 3.0)
   - Masonry
   - MBProgressHUD
+  - MJExtension
   - MQTTClient
 
 SPEC CHECKSUMS:
@@ -36,8 +38,9 @@ SPEC CHECKSUMS:
   KIF: 082eb65279e51c3092923802849eb796a04982ab
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MQTTClient: 2842bdeab5a65eec75e0fcbbbd2a300946690fee
 
-PODFILE CHECKSUM: 261a01958304cc6eb27b85d170229304337c8610
+PODFILE CHECKSUM: 786e2699451faa6d2d122b82402a9f8f4a015258
 
 COCOAPODS: 1.1.1

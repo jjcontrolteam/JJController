@@ -19,6 +19,7 @@
 #import "LOG_TABLE.h"
 #import "PANEL_KEY.h"
 #import "PARAM_ADJUST.h"
+#import "MJExtension.h"
 @interface AppDelegate ()
 {
     
@@ -32,7 +33,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
   //  [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
-    USER *user=[[USER alloc]init];
+   /* USER *user=[[USER alloc]init];
     [[JRDBMgr shareInstance] registerClazzes:@[
                                                [USER class],[TRIGGER class],[TIMING class],[SHARE class],[SETTING class],[SCENE class],[ROOM class],[PARAM_ADJUST class],[PANEL_KEY class],[LOG_TABLE class],
                                                ]];
@@ -54,10 +55,25 @@
     setting.PARENT = 0;
     setting.VALUE = @"117.141625";
     [setting jr_save];
+    */
     
+    NSDictionary *dict=@{@"cmd":@"1001",@"table":@"USER",@"rows":@[@{@"PASSWORD":@"39aebe95200c5538ecf37cab57848447"}]};
+    [self sysStartFetchData:dict];
     return YES;
 }
-
+-(void)sysStartFetchData:(NSDictionary*)dict{
+    NSString *tbclass=[dict valueForKey:@"table"];
+    if (tbclass) {
+        if (tbclass) {
+            for (NSDictionary *val in [dict valueForKey:@"rows"]) {
+                id  tbmodel=[NSClassFromString(tbclass) mj_objectWithKeyValues:val];
+                [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(tbclass)]];
+                [tbmodel jr_save];
+            }
+        }
+    }
+}
+                 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
