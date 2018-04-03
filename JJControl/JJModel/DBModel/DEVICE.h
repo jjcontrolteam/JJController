@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DEVICE : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface DEVICE : NSObject 
 @property(nonatomic,assign) NSInteger  PARENT;
 @property(nonatomic,assign)   NSInteger  PORT;
 @property(nonatomic,assign) NSInteger  COMMUNICATION;

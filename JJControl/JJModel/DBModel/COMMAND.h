@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface COMMAND : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface COMMAND : NSObject 
 @property(nonatomic,assign) NSInteger  DEVICE_ID;
 @property(nonatomic,assign) NSInteger  PARENT;
 @property(nonatomic,copy)   NSString * CMD;

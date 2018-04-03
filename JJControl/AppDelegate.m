@@ -7,7 +7,18 @@
 //
 
 #import "AppDelegate.h"
-
+#import "JRDB.h"
+#import "USER.h"
+#import "TIMING.h"
+#import "TRIGGER.h"
+#import "SETTING.h"
+#import "ROOM.h"
+#import "SCENE.h"
+#import "SHARE.h"
+#import "SETTING.h"
+#import "LOG_TABLE.h"
+#import "PANEL_KEY.h"
+#import "PARAM_ADJUST.h"
 @interface AppDelegate ()
 {
     
@@ -21,6 +32,29 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
   //  [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
+    USER *user=[[USER alloc]init];
+    [[JRDBMgr shareInstance] registerClazzes:@[
+                                               [USER class],[TRIGGER class],[TIMING class],[SHARE class],[SETTING class],[SCENE class],[ROOM class],[PARAM_ADJUST class],[PANEL_KEY class],[LOG_TABLE class],
+                                               ]];
+    [USER jr_primaryKey];
+    [user setPASSWORD:@"39aebe95200c5538ecf37cab57848447"];
+    [user jr_save];
+   
+    PANEL_KEY *panel=[[PANEL_KEY alloc]init];
+    [PANEL_KEY jr_primaryKey];
+    panel.CHANNEL=1;
+    panel.KEY=@"12-1";
+    panel.PARENT=18;
+    [panel jr_save];
+    
+    SETTING *setting=[[SETTING alloc]init];
+    [SETTING jr_primaryKey];
+    setting.ID=@"11652348477502";
+    setting.KEY = @"3232";
+    setting.PARENT = 0;
+    setting.VALUE = @"117.141625";
+    [setting jr_save];
+    
     return YES;
 }
 

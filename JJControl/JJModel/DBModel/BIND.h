@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BIND : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface BIND : NSObject 
 @property(nonatomic,assign) NSInteger  PARENT;
 @property(nonatomic,assign) NSInteger  TYPE;
 @property(nonatomic,assign) NSInteger  CLICK;

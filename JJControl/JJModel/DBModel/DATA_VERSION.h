@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DATA_VERSION : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface DATA_VERSION : NSObject 
 @property(nonatomic,assign) NSInteger  VERSION;
 @property(nonatomic,assign) NSInteger  PARENT;
 @property(nonatomic,copy)   NSString * TABLE;

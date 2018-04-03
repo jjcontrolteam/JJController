@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface SETTING : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@property(nonatomic,copy)   NSString * ID;
 @property(nonatomic,assign) NSInteger  PARENT;
 @property(nonatomic,copy)   NSString * KEY;
 @property(nonatomic,copy)   NSString * VALUE;

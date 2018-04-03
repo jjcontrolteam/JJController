@@ -8,7 +8,7 @@
 
 #import "ServiceMgr.h"
 #import "JJServiceInterface.h"
-
+#import "USER.h"
 static ServiceMgr * _singleton;
 
 @interface ServiceMgr()<JJServiceDelegate>{
@@ -54,9 +54,9 @@ static ServiceMgr * _singleton;
     //
     sysDataBlock_ = [block copy];
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
-    NSString *topic=[NSString stringWithFormat:@"v1/123456/%@/data/request",clientid];
-    NSString *receive=[NSString stringWithFormat:@"v1/123456/%@/data/response",clientid];
-    NSDictionary *dict=@{@"cmd":@"1001",@"tables":@[@{@"table":@"device",@"version":@"1"},@{@"table":@"scene",@"version":@"1"}]};
+    NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
+    NSString *receive=[NSString stringWithFormat:@"v1/18/%@/data/response",clientid];
+    NSDictionary *dict=@{@"cmd":@"1001",@"tables":@[]};//@{@"table":@"PARAM_ADJUST",@"version":@"1"},@{@"table":@"COMMAND",@"version":@"1"},@{@"table":@"TIMING",@"version":@"1"}
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
         if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
@@ -70,8 +70,8 @@ static ServiceMgr * _singleton;
 }
 -(void)sysStartFetchData{
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
-    NSString *topic=[NSString stringWithFormat:@"v1/123456/%@/data/request",clientid];
-    NSString *receive=[NSString stringWithFormat:@"v1/123456/%@/data/response",clientid];
+    NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
+    NSString *receive=[NSString stringWithFormat:@"v1/18/%@/data/response",clientid];
     NSDictionary *dict=@{@"cmd":@"1001"};
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
@@ -87,8 +87,8 @@ static ServiceMgr * _singleton;
 
 -(void)sysEndFetchData{
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
-    NSString *topic=[NSString stringWithFormat:@"v1/123456/%@/data/request",clientid];
-    NSString *receive=[NSString stringWithFormat:@"v1/123456/%@/data/response",clientid];
+    NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
+    NSString *receive=[NSString stringWithFormat:@"v1/18/%@/data/response",clientid];
     NSDictionary *dict=@{@"cmd":@"1003"};
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
@@ -107,19 +107,41 @@ static ServiceMgr * _singleton;
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
     NSString *topic=@"v1/cloud/request";
     NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",clientid];
-    NSDictionary *dict=@{@"cmd":@"1005",@"user":clientid,@"central":@"121"};
+    NSDictionary *dict=@{@"cmd":@"1005",@"user":clientid,@"central":@"18"};
+    __block __weak typeof(self) weakSelf= self;
+    [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
+        if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
+            if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1005
+                ) {
+                [weakSelf callBackSysData:dict];
+            }
+           
+        }/*else{
+            if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1005
+                ) {
+                [weakSelf callBackSysData:dict];
+            }
+        }*/
+        
+    }];
+}
+-(void)fetchUserInfo{
+    NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
+    NSString *topic=@"v1/cloud/request";
+    NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",clientid];
+    NSDictionary *dict=@{@"cmd":@"1008",@"user":clientid};
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
         if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
             if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1003) {
                 [weakSelf callBackSysData:dict];
             }
-           
+            
         }
         
     }];
+    
 }
-
 -(void)callBackSysData:(NSDictionary*)dict{
     if (dict) {
         if (sysDataBlock_) {

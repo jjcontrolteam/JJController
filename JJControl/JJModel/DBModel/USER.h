@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface USER : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface USER : NSObject 
 @property(nonatomic,copy) NSString  *PASSWORD;
 @end

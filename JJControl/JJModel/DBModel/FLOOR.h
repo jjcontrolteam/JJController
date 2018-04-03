@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FLOOR : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface FLOOR : NSObject 
 @property(nonatomic,assign) NSInteger  FLOOR;
 @property(nonatomic,copy)   NSString * NAME;
 @property(nonatomic,copy)   NSString * CAD_PATH;

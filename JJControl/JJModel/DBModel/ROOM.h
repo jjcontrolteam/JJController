@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ROOM : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface ROOM : NSObject 
 @property(nonatomic,assign) NSInteger  TYPE;
 @property(nonatomic,assign) NSInteger  FLOOR;
 @property(nonatomic,assign) NSInteger  STAR;

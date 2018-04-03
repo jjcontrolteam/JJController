@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ACTION : NSObject
-@property(nonatomic,assign) NSInteger _id;
+@interface ACTION : NSObject 
 @property(nonatomic,assign) NSInteger MODULE;
 @property(nonatomic,assign) NSInteger MODULE_ID;
 @property(nonatomic,assign) NSInteger PARENT;

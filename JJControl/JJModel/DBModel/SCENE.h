@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@interface SCENE : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface SCENE : NSObject 
 @property(nonatomic,assign) NSInteger  PARENT;
 @property(nonatomic,assign) NSInteger  TYPE; 
 @property(nonatomic,copy)   NSString * NAME;

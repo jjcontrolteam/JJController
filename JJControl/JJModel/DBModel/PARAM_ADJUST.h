@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PARAM_ADJUST : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface PARAM_ADJUST : NSObject 
 @property(nonatomic,assign) NSInteger  DEVICE_ID;
 @property(nonatomic,assign) NSInteger  PARENT;
 @property(nonatomic,assign) NSInteger  VALUE1;

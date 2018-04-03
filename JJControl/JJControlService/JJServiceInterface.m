@@ -77,6 +77,10 @@ static JJServiceInterface * _singleton;
                    forKeyPath:@"state"
                       options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
                       context:nil];
+    [self.manager addObserver:self
+              forKeyPath:@"effectiveSubscriptions"
+                 options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
+                 context:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -178,6 +182,11 @@ static JJServiceInterface * _singleton;
             
         }
             break;
+    }
+    if ([keyPath isEqualToString:@"effectiveSubscriptions"]) {
+        MQTTSessionManager *manager = (MQTTSessionManager *)object;
+        NSLog(@"aa-%@",manager.effectiveSubscriptions);
+       // DDLogVerbose(@"effectiveSubscriptions changed: %@", manager.effectiveSubscriptions);
     }
     
 }

@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TIMING : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface TIMING : NSObject 
 @property(nonatomic,assign) NSInteger  PARENT;
 @property(nonatomic,assign) NSInteger  DEVICE_ID;
 @property(nonatomic,assign) NSInteger  SCENE_ID;

@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@interface SHARE : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface SHARE : NSObject 
 @property(nonatomic,assign) NSInteger  TYPE;
 @property(nonatomic,assign) NSInteger  SHARE_ID;
 @property(nonatomic,assign) NSInteger  PARENT2;

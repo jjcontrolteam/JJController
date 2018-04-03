@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@interface TRIGGER : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface TRIGGER : NSObject 
 @property(nonatomic,assign) NSInteger  LINKAGE_ID;
 @property(nonatomic,assign) NSInteger  PARENT;
 @property(nonatomic,assign) NSInteger  AND_OR;

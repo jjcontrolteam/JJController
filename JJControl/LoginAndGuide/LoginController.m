@@ -146,32 +146,32 @@
 - (void)loginAction:(id)sender{
     
    // 直接跳转到首页进行测试
-   MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
-    [self.navigationController pushViewController:mainTabBarController animated:YES];
+  // MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
+ //   [self.navigationController pushViewController:mainTabBarController animated:YES];
     
 
-//    if ([nameField_.text length]<1||[pwdField_.text length]<1) {
-//        return;
-//    }
-//
-//    JJServiceInterface *service = [JJServiceInterface share];
-//    service.delegate = self;
-//    [service connectWithClientId:nameField_.text];
-//    [self showHud];
+   /* if ([nameField_.text length]<1||[pwdField_.text length]<1) {
+        return;
+    }
+*/
+    JJServiceInterface *service = [JJServiceInterface share];
+    service.delegate = self;
+    [service connectWithClientId:@"13979922222"];
+    [self showHud];
     
 }
 
 - (void)connectSuccess{
     ServiceMgr *service = [ServiceMgr share];
-    NSString *result =[BDUMD5Crypt macSignWithText:pwdField_.text secretKey:KEY_MAC] ;
-    NSDictionary *dict=@{@"cmd":@"1003",@"user":nameField_.text,@"password":result};
-    NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",nameField_.text];
+    NSString *result =[BDUMD5Crypt macSignWithText:@"111111" secretKey:KEY_MAC] ;
+    NSDictionary *dict=@{@"cmd":@"1003",@"user":@"13979922222",@"password":result};
+    NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",@"13979922222"];
      __block __weak typeof(self) weakSelf= self;
     [self showHud];
     [service sendMessage:dict withTopic:@"v1/cloud/request" withResponse:receive withSuccess:^(NSDictionary *dict) {
         NSLog(@"%@",dict);
         [weakSelf hiddenHud];
-        if([[dict valueForKey:@"code"]integerValue]==0 && [[dict valueForKey:@"cmd"]integerValue]==1003)
+        if([dict valueForKey:@"code"]&&[[dict valueForKey:@"code"]integerValue]==0 && [[dict valueForKey:@"cmd"]integerValue]==1003)
         {
             [weakSelf startSysData];
         }
@@ -192,7 +192,7 @@
     __block __weak typeof(self) weakSelf= self;
     [service sysStartingFetchData:^(NSDictionary *dict) {
         
-        [[NSUserDefaults standardUserDefaults]setValue:nameField_.text forKey:@"client_id"];
+        [[NSUserDefaults standardUserDefaults]setValue:@"13979922222" forKey:@"client_id"];
         MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
         [weakSelf.navigationController pushViewController:mainTabbarController animated:YES];
     }];

@@ -9,5 +9,7 @@
 #import "USER.h"
 
 @implementation USER
-
+/*+ (NSString *)jr_customPrimarykey {
+    return @"_id"; // 对应property的属性名
+}*/
 @end

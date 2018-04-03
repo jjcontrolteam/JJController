@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LINKAGE : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface LINKAGE : NSObject 
 @property(nonatomic,assign) NSInteger  PARENT;
 @property(nonatomic,assign) NSInteger  ROOM_ID;
 @property(nonatomic,assign) NSInteger  ENABLE;

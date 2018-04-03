@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FAMILY : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface FAMILY : NSObject 
 @property(nonatomic,copy)   NSString * CALL;
 @property(nonatomic,copy)   NSString * USER;
 @property(nonatomic,copy)   NSString * USER2;

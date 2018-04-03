@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CENTRAL_CONTROL : NSObject
-@property(nonatomic,assign) NSInteger  _id;
+@interface CENTRAL_CONTROL : NSObject 
 @property(nonatomic,assign) NSInteger  PARENT;
 @property(nonatomic,assign) NSInteger  CHANNEL;
 @property(nonatomic,copy)   NSString * NAME;
