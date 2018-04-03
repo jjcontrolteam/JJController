@@ -57,7 +57,7 @@
     [setting jr_save];
     */
     
-    NSDictionary *dict=@{@"cmd":@"1001",@"table":@"USER",@"rows":@[@{@"PASSWORD":@"39aebe95200c5538ecf37cab57848447"}]};
+    NSDictionary *dict=@{@"cmd":@"1001",@"table":@"USER",@"rows":@[@{@"password":@"39aebe95200c5538ecf37cab57848447"}]};
     [self sysStartFetchData:dict];
     return YES;
 }

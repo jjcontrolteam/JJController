@@ -13,7 +13,12 @@
 - (id)valueInObject:(id)object
 {
     if ([object isKindOfClass:[NSDictionary class]] && self.type == MJPropertyKeyTypeDictionary) {
-        return object[self.name];
+        id val=object[self.name];
+        if (val==nil) {
+            NSString *nameval=[self.name lowercaseString];
+            val=object[nameval];
+        }
+        return val;
     } else if ([object isKindOfClass:[NSArray class]] && self.type == MJPropertyKeyTypeArray) {
         NSArray *array = object;
         NSUInteger index = self.name.intValue;
