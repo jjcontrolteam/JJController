@@ -7,6 +7,7 @@
 //
 
 #import "DeviceSettingCollectionViewCell.h"
+#import "DeviceSettingModel.h"
 
 @interface DeviceSettingCollectionViewCell(){
     UIImageView *_imgView;
@@ -29,6 +30,7 @@
     [self setBackgroundColor:[UIColor whiteColor]];
     
     _imgView = [[UIImageView alloc]init];
+    _imgView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:_imgView];
     [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.contentView).offset(CELL_LEFT_MARGIN);
@@ -38,6 +40,7 @@
     }];
     
     _lbName = [[UILabel alloc]init];
+    _lbName.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:_lbName];
     [_lbName setTextAlignment:NSTextAlignmentLeft];
     [_lbName setFont:[UIFont systemFontOfSize:16]];
@@ -45,10 +48,11 @@
     
     [_lbName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.contentView);
-        make.left.mas_equalTo(_imgView.mas_right).offset(CELL_INNER_MARGIN);
+        make.left.mas_equalTo(_imgView.mas_right).offset(2 * CELL_INNER_MARGIN);
     }];
     
     _lbDetails = [[UILabel alloc]init];
+    _lbDetails.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:_lbDetails];
     [_lbDetails setTextAlignment:NSTextAlignmentLeft];
     [_lbDetails setFont:[UIFont systemFontOfSize:16]];
@@ -56,11 +60,11 @@
     
     UIImageView *imgArrow = [[UIImageView alloc]init];
     [self.contentView addSubview:imgArrow];
-    [imgArrow setImage:[UIImage imageNamed:@"JJControlResource.bundle/icon_cj_ys_on.png"]];
+    [imgArrow setImage:[UIImage imageNamed:@"JJControlResource.bundle/right.png"]];
     [imgArrow mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.contentView);
         make.right.mas_equalTo(self.contentView).offset(-CELL_RIGHT_MARGIN);
-        make.width.height.mas_equalTo(self.contentView.mas_height).multipliedBy(0.3);
+        make.width.height.equalTo(@(SCREEN_WIDTH * 0.03));
     }];
     
     [_lbDetails mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -69,10 +73,19 @@
     }];
 }
 
-- (void)setCellData:(id)cellData{
-    [_imgView setImage:[UIImage imageNamed:@"JJControlResource.bundle/icon_cj_ys_on.png"]];
-    [_lbName setText:cellData];
-    [_lbDetails setText:@"详情"];
+- (void)setCellData:(DeviceSettingModel *)cellData{
+    if(cellData.pic)
+        [_imgView setImage:[UIImage imageNamed:cellData.pic]];
+    if(cellData.title)
+        [_lbName setText:cellData.title];
+    if(cellData.details)
+        [_lbDetails setText:cellData.details];
+
+    if(cellData.deviceSettingType == DeviceSettingTypeTitle){
+        [_imgView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(SCREEN_WIDTH / 8.0);
+        }];
+    }
 }
 
 @end

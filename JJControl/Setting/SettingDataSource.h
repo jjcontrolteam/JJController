@@ -7,11 +7,10 @@
 //
 
 #import "BaseDataSource.h"
-
 static NSString *settingIdentifier = @"SettingIdentifier";
 static NSString *spanIdentifier = @"SpanIdentifier";
-static NSString *infoIdentifier = @"InfoIdentifier";
-
+static NSString *infoIdentifier = @"infoIdentifier";
+static NSString *buttonIndentifier = @"ButtonCollectionViewCell";
 @interface SettingDataSource : BaseDataSource
 
 @end

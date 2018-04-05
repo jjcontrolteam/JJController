@@ -18,7 +18,7 @@
 }
 
 - (void)createSubviews{
-    [self setBackgroundColor:[UIColor redColor]];
+    [self setBackgroundColor:[UIColor clearColor]];
     
     UIView *lineView = [[UIView alloc] init];
     [self.contentView addSubview:lineView];

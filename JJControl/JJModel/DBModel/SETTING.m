@@ -10,6 +10,7 @@
 
 @implementation SETTING
 + (NSString *)jr_customPrimarykey {
+
     return @"ID"; // 对应property的属性名
 }
 /// 自定义主键属性值

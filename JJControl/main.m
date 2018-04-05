@@ -3,7 +3,7 @@
 //  JJControl
 //JJControl Group
 //  Created by admin onJJControl Group 2018/3/8.
-//  Copyright © 2018年 admin. All rights reserved.
+//  Copyright © 2018年Pods project Group admin. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

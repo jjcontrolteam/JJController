@@ -10,9 +10,9 @@
 #import "SettingDataDelegate.h"
 #import "SettingCollectionViewCell.h"
 #import "SettingDataSource.h"
-#import "InfoCollectionViewCell.h"
 #import "SpanCollectionViewCell.h"
-
+#import "ButtonCollectionViewCell.h"
+#import "InfoCollectionReusableView.h"
 
 @interface SettingCollectionView(){
     SettingDataSource *_dataSource;
@@ -25,22 +25,32 @@
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
     
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor lightGrayColor];
 
     [self registerClass:[SettingCollectionViewCell class] forCellWithReuseIdentifier:settingIdentifier];
     [self registerClass:[SpanCollectionViewCell class] forCellWithReuseIdentifier:spanIdentifier];
-    [self registerClass:[InfoCollectionViewCell class] forCellWithReuseIdentifier:infoIdentifier];
-    _dataSource = [[SettingDataSource alloc] initWithItems:@[] cellIdentifier:settingIdentifier andCellBack:myDataSourceBlock];
+    [self registerClass:[InfoCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:infoIdentifier];
+    [self registerClass:[ButtonCollectionViewCell class] forCellWithReuseIdentifier:buttonIndentifier];
+    
+    _dataSource = [[SettingDataSource alloc] initWithItems:@[] cellIdentifier:settingIdentifier withHeaderItem:@{@"":@""} headerIdentifier:infoIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
     self.dataSource = _dataSource;
     
     _delegate = [[SettingDataDelegate alloc] initWithItems:@[] andCallBack:myDelegateBlock];
     self.delegate = _delegate;
     
     [self fetchData];
+    
+    [self layoutIfNeeded];
 }
 
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{    
     [cell setCellData:data];
+}
+
+
+- (void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
+    [header setCellData:data];
+
 }
 
 - (void)chooseCell:(id)data{

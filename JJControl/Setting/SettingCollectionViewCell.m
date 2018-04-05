@@ -7,6 +7,7 @@
 //
 
 #import "SettingCollectionViewCell.h"
+#import "DeviceSettingModel.h"
 
 @interface SettingCollectionViewCell(){
     
@@ -44,7 +45,7 @@
     [self.imgArrow mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.contentView);
         make.right.mas_equalTo(self.contentView).offset(-CELL_RIGHT_MARGIN);
-        make.width.height.mas_equalTo(self.contentView.mas_height).multipliedBy(0.3);
+        make.width.height.equalTo(@(SCREEN_WIDTH * 0.03));
     }];
 
     [self.lbTitle mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -81,9 +82,9 @@
     return _imgArrow;
 }
 
-- (void)setCellData:(id)cellData{
-    [self.imgViewLeft setImage:[UIImage imageNamed:@"JJControlResource.bundle/icon_cj_ys_on.png"]];
-    [self.lbTitle setText:cellData];
+- (void)setCellData:(DeviceSettingModel *)cellData{
+    [self.imgViewLeft setImage:[UIImage imageNamed:cellData.pic]];
+    [self.lbTitle setText:cellData.title];
 }
 
 @end

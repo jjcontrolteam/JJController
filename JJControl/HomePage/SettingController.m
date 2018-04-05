@@ -29,8 +29,8 @@
     SettingViewModel *sVModel=[[SettingViewModel alloc]init];
     UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
     layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 100);
-
     _collectionView = [[SettingCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:sVModel];
+    
     __block __weak typeof(self) weakSelf = self;
     _collectionView.block = ^{
         ModifyViewController *modifyViewController = [[ModifyViewController alloc] initWithTitle:@"标题啊" currentText:@"老的字符串"];

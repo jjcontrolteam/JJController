@@ -10,7 +10,7 @@
 
 static NSString *identifier = @"DeviceSettingCollectionViewCell";
 static NSString *spanIdentifier = @"SpanCollectionViewCell";
-
+static NSString *buttonIdentifier = @"ButtonCollectionViewCell";
 @interface DeviceSettingDataSource : BaseDataSource
 
 @end

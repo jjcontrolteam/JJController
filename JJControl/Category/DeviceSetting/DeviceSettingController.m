@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.title = @"设备设置";
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
 
     layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 100);

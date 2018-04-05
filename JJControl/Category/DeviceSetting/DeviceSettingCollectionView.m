@@ -11,6 +11,7 @@
 #import "DeviceSettingCollectionViewCell.h"
 #import "DeviceSettingDataSource.h"
 #import "SpanCollectionViewCell.h"
+#import "ButtonCollectionViewCell.h"
 
 @interface DeviceSettingCollectionView(){
     DeviceSettingDataSource *_dataSource;
@@ -23,9 +24,10 @@
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
      
-    [self setBackgroundColor:[UIColor redColor]];
+    [self setBackgroundColor:[UIColor lightGrayColor]];
     [self registerClass:[DeviceSettingCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     [self registerClass:[SpanCollectionViewCell class] forCellWithReuseIdentifier:spanIdentifier];
+    [self registerClass:[ButtonCollectionViewCell class] forCellWithReuseIdentifier:buttonIdentifier];
 
     _dataSource = [[DeviceSettingDataSource alloc] initWithItems:@[] cellIdentifier:identifier  andCellBack:myDataSourceBlock];
     self.dataSource = _dataSource;

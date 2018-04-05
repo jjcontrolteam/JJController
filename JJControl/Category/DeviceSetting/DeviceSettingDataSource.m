@@ -7,14 +7,17 @@
 //
 
 #import "DeviceSettingDataSource.h"
+#import "DeviceSettingModel.h"
 
 @implementation DeviceSettingDataSource
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell *cell;
-    NSString *currentItem = [self.cellData objectAtIndex:indexPath.row];
-    if([currentItem isEqualToString:@"span"]){
+    DeviceSettingModel *model = [self.cellData objectAtIndex:indexPath.row];
+    if(model.deviceSettingType == DeviceSettingTypeSpan){
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:spanIdentifier forIndexPath:indexPath];
+    }else if(model.deviceSettingType == DeviceSettingTypeButton){
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:buttonIdentifier forIndexPath:indexPath];
     }else{
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     }

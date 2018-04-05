@@ -30,7 +30,6 @@
         make.height.mas_equalTo(20);
     }];
     
-    
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [segmentCtrl setTitleTextAttributes:dic forState:UIControlStateSelected];
     [segmentCtrl insertSegmentWithTitle:@"设备" atIndex:0 animated:NO];

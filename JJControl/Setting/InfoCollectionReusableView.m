@@ -1,21 +1,21 @@
 //
-//  InfoCollectionViewCell.m
+//  InfoCollectionReusableView.m
 //  JJControl
 //
-//  Created by YvanWang on 2018/3/24.
+//  Created by YvanWang on 2018/4/6.
 //  Copyright © 2018年 admin. All rights reserved.
 //
 
-#import "InfoCollectionViewCell.h"
+#import "InfoCollectionReusableView.h"
 
-@interface InfoCollectionViewCell(){
+@interface InfoCollectionReusableView(){
     UIImageView *_avaterImageView;
     UILabel *_nameLabel;
     UILabel *_idLabel;
 }
 @end
 
-@implementation InfoCollectionViewCell
+@implementation InfoCollectionReusableView
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
@@ -25,52 +25,52 @@
 }
 
 - (void)createSubviews{
-    [self setBackgroundColor:[UIColor yellowColor]];
+    [self setBackgroundColor:[UIColor whiteColor]];
     
     _avaterImageView = [[UIImageView alloc]init];
     _avaterImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.contentView addSubview:_avaterImageView];
+    [self addSubview:_avaterImageView];
     [_avaterImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.contentView).offset(CELL_TOP_MARGIN);
-        make.left.mas_equalTo(self.contentView).offset(CELL_LEFT_MARGIN);
-        make.bottom.mas_equalTo(self.contentView).offset(-CELL_BOTTOM_MARGIN);
-        make.height.width.mas_equalTo(SCREEN_WIDTH * 0.15);
+        make.top.mas_equalTo(self).offset(CELL_TOP_MARGIN);
+        make.left.mas_equalTo(self).offset(CELL_LEFT_MARGIN);
+        make.bottom.mas_equalTo(self).offset(-CELL_BOTTOM_MARGIN);
+        make.height.width.mas_equalTo(SCREEN_WIDTH * 0.20);
     }];
-
+    
     _nameLabel =[[UILabel alloc]init];
     _nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [_nameLabel setTextAlignment:NSTextAlignmentLeft];
     [_nameLabel setFont:[UIFont systemFontOfSize:20]];
     [_nameLabel setTextColor:[UIColor blackColor]];
-    [self.contentView addSubview:_nameLabel];
-
-
+    [self addSubview:_nameLabel];
+    
+    
     _idLabel =[[UILabel alloc]init];
     _idLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [_idLabel setTextAlignment:NSTextAlignmentLeft];
     [_idLabel setFont:[UIFont systemFontOfSize:18]];
     [_idLabel setTextColor:[UIColor blackColor]];
-    [self.contentView addSubview:_idLabel];
-
-
+    [self addSubview:_idLabel];
+    
+    
     UIImageView *imgArrow = [[UIImageView alloc]init];
     imgArrow.translatesAutoresizingMaskIntoConstraints = NO;
     [imgArrow setImage:[UIImage imageNamed:@"JJControlResource.bundle/icon_cj_ys_on.png"]];
-    [self.contentView addSubview:imgArrow];
+    [self addSubview:imgArrow];
     [imgArrow mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(self.contentView);
-        make.right.mas_equalTo(self.contentView).offset(-CELL_RIGHT_MARGIN);
-        make.width.height.mas_equalTo(self.contentView.mas_height).multipliedBy(0.3);
+        make.centerY.mas_equalTo(self);
+        make.right.mas_equalTo(self).offset(-CELL_RIGHT_MARGIN);
+        make.width.height.equalTo(@(SCREEN_WIDTH * 0.03));
     }];
-
+    
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_avaterImageView.mas_right).offset(CELL_INNER_MARGIN);
-        make.bottom.equalTo(self.contentView.mas_centerY);
+        make.bottom.equalTo(self.mas_centerY);
     }];
-
+    
     [_idLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_avaterImageView.mas_right).offset(CELL_INNER_MARGIN);
-        make.top.equalTo(self.contentView.mas_centerY);
+        make.top.equalTo(self.mas_centerY);
     }];
 }
 

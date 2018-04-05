@@ -10,17 +10,8 @@
 
 @implementation SettingDataDelegate
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    NSString *currentItem = [self.items objectAtIndex:indexPath.row];
-//    if(indexPath.row == 0){
-//        return CGSizeMake(SCREEN_WIDTH, 100);
-//    }
-//    else if([currentItem isEqualToString:@"span"]){
-//        return CGSizeMake(SCREEN_WIDTH, 20);
-//    }else{
-//        return [super collectionView:collectionView layout:collectionViewLayout sizeForItemAtIndexPath:indexPath];
-//    }
-//}
-
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    return CGSizeMake(SCREEN_WIDTH, 100);
+}
 
 @end
