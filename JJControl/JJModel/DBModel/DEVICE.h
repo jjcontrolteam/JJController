@@ -14,18 +14,18 @@
 @property(nonatomic,assign) NSInteger  COMMUNICATION;
 @property(nonatomic,assign) NSInteger  TYPE;
 @property(nonatomic,copy)   NSString * NAME;
-@property(nonatomic,copy)   NSString * ICON_PATH;
-@property(nonatomic,assign) NSInteger  ROOM_ID;
+@property(nonatomic,copy)   NSString * iconPath;
+@property(nonatomic,assign) NSInteger  roomId;
 @property(nonatomic,assign) NSInteger  ENABLE;
 @property(nonatomic,assign) NSInteger  HIDE;
+@property(nonatomic,copy)   NSString * ID;
 
-
-@property(nonatomic,assign) NSInteger  IS_FEEDBACK;
+@property(nonatomic,assign) NSInteger  isFeedback;
 @property(nonatomic,assign) NSInteger  SEQUENCE_ALL;
 @property(nonatomic,assign) NSInteger  SEQUENCE_ROOM;
 @property(nonatomic,assign) NSInteger  SEQUENCE_FLOOR;
-@property(nonatomic,assign) NSInteger  COUNT_DOWN;
-@property(nonatomic,assign) NSInteger  MAX_ON;
+@property(nonatomic,assign) NSInteger  countDown;
+@property(nonatomic,assign) NSInteger  maxON;
 
 @property(nonatomic,assign) NSInteger  ADJUST;
 @property(nonatomic,assign) NSInteger  VALUE1;

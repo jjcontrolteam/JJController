@@ -29,7 +29,7 @@
 - (void)createSubviews{
     [self setBackgroundColor:[UIColor whiteColor]];
     
-    _imgView = [[UIImageView alloc]init];
+    _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
     _imgView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:_imgView];
     [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -84,6 +84,10 @@
     if(cellData.deviceSettingType == DeviceSettingTypeTitle){
         [_imgView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(SCREEN_WIDTH / 8.0);
+        }];
+    }else{
+        [_imgView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(SCREEN_WIDTH / 15.0);
         }];
     }
 }

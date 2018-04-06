@@ -13,6 +13,7 @@
 @property(nonatomic,assign) NSInteger  FLOOR;
 @property(nonatomic,assign) NSInteger  STAR;
 @property(nonatomic,copy)   NSString * NAME;
-@property(nonatomic,copy)   NSString * ICON_PATH;
-@property(nonatomic,copy)   NSString * CAD_MASK;
+@property(nonatomic,copy)   NSString * iconPath;
+@property(nonatomic,copy)   NSString * CADMASK;
+@property(nonatomic,copy)   NSString * ID;
 @end

@@ -183,6 +183,7 @@
     __block __weak typeof(self) weakSelf= self;
     [service bindCentral:^(NSDictionary *dict) {
         [weakSelf sysData];
+        NSLog(@"");
     }];
     
    

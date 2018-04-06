@@ -60,16 +60,29 @@ static ServiceMgr * _singleton;
     NSDictionary *dict=@{@"cmd":@"1001",@"tables":@[]};//@{@"table":@"PARAM_ADJUST",@"version":@"1"},@{@"table":@"COMMAND",@"version":@"1"},@{@"table":@"TIMING",@"version":@"1"}
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
-        if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
-            if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1001) {
-                [weakSelf sysStartFetchData:dict];
-            } 
-        }
+        [weakSelf sysStartFetchData];
         
     }];
     
 }
--(void)sysStartFetchData:(NSDictionary*)dict{
+-(void)sysStartFetchData{
+    NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
+    NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
+    NSString *receive=[NSString stringWithFormat:@"v1/18/%@/data/response",clientid];
+    NSDictionary *dict=@{@"cmd":@"1001"};//@{@"table":@"PARAM_ADJUST",@"version":@"1"},@{@"table":@"COMMAND",@"version":@"1"},@{@"table":@"TIMING",@"version":@"1"}
+    __block __weak typeof(self) weakSelf= self;
+    [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
+        if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1003) {
+            [weakSelf callBackSysData:dict];
+        }else{
+            if (dict) {
+                [weakSelf sysSaveData:dict];
+            }
+        }
+        
+    }];
+}
+-(void)sysSaveData:(NSDictionary*)dict{
     NSString *tbclass=[dict valueForKey:@"table"];
     if (tbclass) {
         if (tbclass) {
@@ -82,24 +95,45 @@ static ServiceMgr * _singleton;
     }
 }
 
--(void)sysEndFetchData{
+-(void)insertRoom{//:(ReceiveBlock)block
+   // sysDataBlock_ = [block copy];
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
     NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
     NSString *receive=[NSString stringWithFormat:@"v1/18/%@/data/response",clientid];
-    NSDictionary *dict=@{@"cmd":@"1003"};
+    UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000*1000;
+    UInt64 recordTime1 = [[NSDate date] timeIntervalSince1970]*1000*1000;
+    NSString *sqlStr=[NSString stringWithFormat:@"[\"insert into ROOM(_id,NAME,TYPE,ICON_PATH,FLOOR,STAR) values(%llu,'客厅',2,'icon_fj_kt',1,0)\",\"insert into FLOOR(_id,FLOOR,NAME,CAD_PATH) values(%llu,'1F','','')\"]",recordTime,recordTime];
+    NSString *session=[NSString stringWithFormat:@"%llu",recordTime1];
+    NSDictionary *dict=@{@"cmd":@"2001",@"session":session,@"id":@"0",@"table":@"ROOM",@"sqls":sqlStr};
+    __block __weak typeof(self) weakSelf= self;
+    [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
+      
+         if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0)  {
+            [weakSelf callBackSysData:dict];
+        }
+    }];
+}
+
+-(void)bindCentral:(ReceiveBlock)block{
+    sysDataBlock_ = [block copy];
+    
+    NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
+    NSString *topic=@"v1/cloud/request";
+    NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",clientid];
+    NSDictionary *dict=@{@"cmd":@"1006",@"user":clientid,@"central":@"18"};
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
         if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0) {
-            if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1003) {
-               [weakSelf callBackSysData:dict];
+            if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1006
+                ) {
+                [weakSelf bindCentraling];
             }
-            
+           
         }
         
     }];
 }
--(void)bindCentral:(ReceiveBlock)block{
-    sysDataBlock_ = [block copy];
+-(void)bindCentraling{
     
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
     NSString *topic=@"v1/cloud/request";
@@ -112,16 +146,12 @@ static ServiceMgr * _singleton;
                 ) {
                 [weakSelf callBackSysData:dict];
             }
-           
-        }/*else{
-            if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1005
-                ) {
-                [weakSelf callBackSysData:dict];
-            }
-        }*/
+            
+        }
         
     }];
 }
+
 -(void)fetchUserInfo{
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
     NSString *topic=@"v1/cloud/request";

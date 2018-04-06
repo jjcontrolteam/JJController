@@ -288,7 +288,9 @@ void SqlLog(id sql) {
             }
             
             JRSql *sql = [JRSqlGenerator sql4Insert:one toDB:(FMDatabase *)handler table:nil];
-            [one setID:[JRPersistentUtil uuid]];
+            if (one.ID==nil||[one.ID length]<1) {
+                [one setID:[JRPersistentUtil uuid]];
+            }
             [sql.args insertObject:one.ID atIndex:0];
             BOOL ret = [handler jr_executeUpdate:sql];
             

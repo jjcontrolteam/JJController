@@ -11,5 +11,6 @@
 @interface FLOOR : NSObject 
 @property(nonatomic,assign) NSInteger  FLOOR;
 @property(nonatomic,copy)   NSString * NAME;
-@property(nonatomic,copy)   NSString * CAD_PATH;
+@property(nonatomic,copy)   NSString * cadPath;
+@property(nonatomic,copy)   NSString * ID;
 @end

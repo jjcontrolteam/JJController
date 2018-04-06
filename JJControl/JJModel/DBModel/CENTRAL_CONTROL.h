@@ -14,7 +14,7 @@
 @property(nonatomic,copy)   NSString * NAME;
 @property(nonatomic,copy)   NSString * TYPE;
 @property(nonatomic,assign) NSInteger  VERSION;
-@property(nonatomic,assign) NSInteger  SIGN_LIGHT;
+@property(nonatomic,assign) NSInteger  signLight;
 @property(nonatomic,copy)   NSString * HOST;
-@property(nonatomic,assign) NSInteger  BAUD_RATE;
+@property(nonatomic,assign) NSInteger  baudRate;
 @end

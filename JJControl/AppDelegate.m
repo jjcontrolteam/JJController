@@ -57,22 +57,12 @@
     [setting jr_save];
     */
     
-    NSDictionary *dict=@{@"cmd":@"1001",@"table":@"USER",@"rows":@[@{@"password":@"39aebe95200c5538ecf37cab57848447"}]};
-    [self sysStartFetchData:dict];
+   // NSDictionary *dict=@{@"cmd":@"1001",@"table":@"USER",@"rows":@[@{@"password":@"39aebe95200c5538ecf37cab57848447"}]};
+    //[self sysStartFetchData:dict];
+    
     return YES;
 }
--(void)sysStartFetchData:(NSDictionary*)dict{
-    NSString *tbclass=[dict valueForKey:@"table"];
-    if (tbclass) {
-        if (tbclass) {
-            for (NSDictionary *val in [dict valueForKey:@"rows"]) {
-                id  tbmodel=[NSClassFromString(tbclass) mj_objectWithKeyValues:val];
-                [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(tbclass)]];
-                [tbmodel jr_save];
-            }
-        }
-    }
-}
+
                  
 
 - (void)applicationWillResignActive:(UIApplication *)application {

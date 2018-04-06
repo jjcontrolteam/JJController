@@ -7,7 +7,7 @@
 //
 
 #import "SETTING.h"
-
+#import "NSObject+JRDB.h"
 @implementation SETTING
 + (NSString *)jr_customPrimarykey {
 

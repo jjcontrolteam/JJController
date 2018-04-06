@@ -62,7 +62,7 @@ static JJServiceInterface * _singleton;
     [self.manager connectTo:self.mqttSettings[@"host"]
                        port:[self.mqttSettings[@"port"] intValue]
                         tls:[self.mqttSettings[@"tls"] boolValue]
-                  keepalive:3.0
+                  keepalive:60.0
                       clean:true
                        auth:false
                        user:nil
