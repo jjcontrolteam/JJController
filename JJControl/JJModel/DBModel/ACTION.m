@@ -1,19 +1,19 @@
 //
-//  CENTRAL_CONTROL.m
+//  ACTION.m
 //  JJControl
 //
-//  Created by admin on 2018/3/23.
+//  Created by admin on 2018/4/7.
 //  Copyright © 2018年 admin. All rights reserved.
 //
 
-#import "CENTRAL_CONTROL.h"
+#import "ACTION.h"
 #import "NSObject+JRDB.h"
-@implementation CENTRAL_CONTROL
+@implementation ACTION
 + (NSString *)jr_customPrimarykey {
     return @"ID"; // 对应property的属性名
 }
 /// 自定义主键属性值
 - (id)jr_customPrimarykeyValue {
     return self.ID;
-} 
+}
 @end

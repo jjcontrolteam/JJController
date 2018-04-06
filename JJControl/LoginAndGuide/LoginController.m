@@ -173,16 +173,23 @@
         [weakSelf hiddenHud];
         if([dict valueForKey:@"code"]&&[[dict valueForKey:@"code"]integerValue]==0 && [[dict valueForKey:@"cmd"]integerValue]==1003)
         {
-            [weakSelf startSysData];
+            if ([dict valueForKey:@"centrals"]&&[[dict valueForKey:@"centrals"] count]>0) {
+                
+                [weakSelf sysData];
+            }else{
+                [weakSelf startBind];
+            }
+            
         }
     }];
     //[service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
 }
--(void)startSysData{
+-(void)startBind{
     ServiceMgr *service = [ServiceMgr share];
     __block __weak typeof(self) weakSelf= self;
     [service bindCentral:^(NSDictionary *dict) {
-        [weakSelf sysData];
+        
+       [weakSelf sysData];
         NSLog(@"");
     }];
     
@@ -192,7 +199,7 @@
     ServiceMgr *service = [ServiceMgr share];
     __block __weak typeof(self) weakSelf= self;
     [service sysStartingFetchData:^(NSDictionary *dict) {
-        
+       // [service fetchUserInfo];
         [[NSUserDefaults standardUserDefaults]setValue:@"13979922222" forKey:@"client_id"];
         MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
         [weakSelf.navigationController pushViewController:mainTabbarController animated:YES];

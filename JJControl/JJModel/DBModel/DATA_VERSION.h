@@ -12,4 +12,5 @@
 @property(nonatomic,assign) NSInteger  VERSION;
 @property(nonatomic,assign) NSInteger  PARENT;
 @property(nonatomic,copy)   NSString * TABLE;
+@property(nonatomic,copy)   NSString * ID;
 @end

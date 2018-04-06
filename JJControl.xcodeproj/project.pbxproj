@@ -70,6 +70,7 @@
 		84B1AC052050DE08005F028A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC042050DE08005F028A /* main.m */; };
 		84B1AC0F2050DE08005F028A /* JJControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC0E2050DE08005F028A /* JJControlTests.m */; };
 		84B1AC1A2050DE08005F028A /* JJControlUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC192050DE08005F028A /* JJControlUITests.m */; };
+		84C681732077D13900DBB77F /* ACTION.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C681722077D13900DBB77F /* ACTION.m */; };
 		84F1E8B6205A6D9F00828549 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E8B5205A6D9F00828549 /* MainTabBarController.m */; };
 		84F1E8BA205A6E1C00828549 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E8B9205A6E1C00828549 /* HomeController.m */; };
 		84F1E8BD205A6E3000828549 /* RoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E8BC205A6E3000828549 /* RoomController.m */; };
@@ -256,6 +257,8 @@
 		84B1AC152050DE08005F028A /* JJControlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJControlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B1AC192050DE08005F028A /* JJControlUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJControlUITests.m; sourceTree = "<group>"; };
 		84B1AC1B2050DE08005F028A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84C681712077D13900DBB77F /* ACTION.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACTION.h; sourceTree = "<group>"; };
+		84C681722077D13900DBB77F /* ACTION.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACTION.m; sourceTree = "<group>"; };
 		84F1E8B4205A6D9F00828549 /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		84F1E8B5205A6D9F00828549 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		84F1E8B8205A6E1C00828549 /* HomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
@@ -528,6 +531,8 @@
 				84301CBC2064A74F004A857D /* TRIGGER.m */,
 				84301CBE2064A75C004A857D /* USER.h */,
 				84301CBF2064A75C004A857D /* USER.m */,
+				84C681712077D13900DBB77F /* ACTION.h */,
+				84C681722077D13900DBB77F /* ACTION.m */,
 				2E48416F207679F400207A17 /* ACTIONS.h */,
 				2E484170207679F400207A17 /* ACTIONS.m */,
 			);
@@ -1060,6 +1065,7 @@
 				84F1E8BA205A6E1C00828549 /* HomeController.m in Sources */,
 				2E48417A2076842A00207A17 /* DeviceSettingModel.m in Sources */,
 				84F1E9172060A7DA00828549 /* CategoryCellModel.m in Sources */,
+				84C681732077D13900DBB77F /* ACTION.m in Sources */,
 				84301C962064A69B004A857D /* DATA_VERSION.m in Sources */,
 				84FAEF8F205ABC9D00BF112C /* BaseCollectionLayout.m in Sources */,
 				2EC341FB20615664007F4B8C /* DeviceCollectionView.m in Sources */,

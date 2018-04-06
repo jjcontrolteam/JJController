@@ -12,5 +12,5 @@
 @property(nonatomic,copy)   NSString * CALL;
 @property(nonatomic,copy)   NSString * USER;
 @property(nonatomic,copy)   NSString * USER2;
-
+@property(nonatomic,copy)   NSString * ID;
 @end

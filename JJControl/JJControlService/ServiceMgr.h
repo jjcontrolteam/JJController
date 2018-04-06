@@ -14,4 +14,7 @@ typedef void(^ReceiveBlock)(NSDictionary *dict);
 -(void)sendMessage:(NSDictionary*)dict withTopic:(NSString*)topic withResponse:(NSString*)receiveTopic withSuccess:(ReceiveBlock)block;
 -(void)cleanUp;
 -(void)sysStartingFetchData:(ReceiveBlock)block;
+-(void)insertRoom;
+-(void)deleteRoom;
+-(void)fetchUserInfo;
 @end

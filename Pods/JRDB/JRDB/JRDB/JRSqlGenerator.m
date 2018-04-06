@@ -66,7 +66,7 @@
             case JRRelationOneToOne:
             case JRRelationChildren:
             {
-                [sql appendFormat:@", %@ %@", prop.dataBaseName, prop.dataBaseType];
+                [sql appendFormat:@", '%@' %@", prop.dataBaseName, prop.dataBaseType];
                 break;
             }
             default:
@@ -136,7 +136,7 @@
         if (![db jr_columnExists:prop.dataBaseName inTable:tableName]) { return; }
         
         // 拼接语句
-        [sql appendFormat:@" , %@", prop.dataBaseName];
+        [sql appendFormat:@" , '%@'", prop.dataBaseName];
         [sql2 appendFormat:@" , ?"];
         
         id value;
@@ -179,7 +179,7 @@
 }
 
 + (JRSql *)sql4Delete:(id<JRPersistent>)obj table:(NSString * _Nullable)table {
-    NSString *sql = [NSString stringWithFormat:@"delete from %@ where %@ = ? ;", table ?: [self getTableNameForClazz:[obj class]], [JRPersistentUtil getPrimaryKeyByName:[[obj class] jr_primaryKey] inClass:[obj class]]];
+    NSString *sql = [NSString stringWithFormat:@"delete from %@ where '%@' = ? ;", table ?: [self getTableNameForClazz:[obj class]], [JRPersistentUtil getPrimaryKeyByName:[[obj class] jr_primaryKey] inClass:[obj class]]];
     JRSql *jrsql = [JRSql sql:sql args:@[[obj jr_primaryKeyValue]]];
     return jrsql;
 
@@ -235,7 +235,7 @@
             }
             default: return;
         }
-        [sql appendFormat:@" %@ = ?,", prop.dataBaseName];
+        [sql appendFormat:@" '%@' = ?,", prop.dataBaseName];
         // 空值转换
         if (!value) { value = [NSNull null]; }
         // 添加参数
@@ -442,12 +442,12 @@
     // group
     if (chain.groupBy.length) {
         JRActivatedProperty *ap = [JRPersistentUtil activityWithPropertyName:chain.groupBy inClass:chain.targetClazz];
-        [sqlString appendFormat:@" group by %@ ", ap.dataBaseName?:chain.groupBy];
+        [sqlString appendFormat:@" group by '%@' ", ap.dataBaseName?:chain.groupBy];
     }
     // orderby
     if (chain.orderBy.length) {
         JRActivatedProperty *ap = [JRPersistentUtil activityWithPropertyName:chain.orderBy inClass:chain.targetClazz];
-        [sqlString appendFormat:@" order by %@ ", ap.dataBaseName?:chain.orderBy];
+        [sqlString appendFormat:@" order by '%@' ", ap.dataBaseName?:chain.orderBy];
     }
     // desc asc
     if (chain.isDesc && chain.orderBy.length) {[sqlString appendString:@" desc "];}

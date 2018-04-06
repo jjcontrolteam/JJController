@@ -7,7 +7,14 @@
 //
 
 #import "FAMILY.h"
-
+#import "NSObject+JRDB.h"
 @implementation FAMILY
-
++ (NSString *)jr_customPrimarykey {
+    return @"ID"; // 对应property的属性名
+}
+/// 自定义主键属性值
+- (id)jr_customPrimarykeyValue {
+    return self.ID;
+}
+ 
 @end

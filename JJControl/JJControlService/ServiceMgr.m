@@ -88,8 +88,12 @@ static ServiceMgr * _singleton;
         if (tbclass) {
             for (NSDictionary *val in [dict valueForKey:@"rows"]) {
                 id  tbmodel=[NSClassFromString(tbclass) mj_objectWithKeyValues:val];
-                 [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(tbclass)]];
-                 [tbmodel jr_save];
+                
+                if (tbmodel) {
+                    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(tbclass)]];
+                    [tbmodel jr_save];
+                }
+                
             }
         }
     }
@@ -99,12 +103,14 @@ static ServiceMgr * _singleton;
    // sysDataBlock_ = [block copy];
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
     NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
-    NSString *receive=[NSString stringWithFormat:@"v1/18/%@/data/response",clientid];
+    NSString *receive=[NSString stringWithFormat:@"v1/18/all/data/response"];
     UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000*1000;
     UInt64 recordTime1 = [[NSDate date] timeIntervalSince1970]*1000*1000;
-    NSString *sqlStr=[NSString stringWithFormat:@"[\"insert into ROOM(_id,NAME,TYPE,ICON_PATH,FLOOR,STAR) values(%llu,'客厅',2,'icon_fj_kt',1,0)\",\"insert into FLOOR(_id,FLOOR,NAME,CAD_PATH) values(%llu,'1F','','')\"]",recordTime,recordTime];
+   // NSString *sqlStr=[NSString stringWithFormat:@"[\"insert into ROOM(_id,NAME,TYPE,ICON_PATH,FLOOR,STAR) values(%llu,'AA',2,'icon_fj_kt',1,0)\"]",recordTime];//,\"insert into FLOOR(_id,FLOOR,NAME,CAD_PATH) values(%llu,'1F','','')
+     NSString *sqlRoom=[NSString stringWithFormat:@"insert into ROOM(_id,NAME,TYPE,ICON_PATH,FLOOR,STAR) values(%llu,'房间53',2,'icon_fj_kt',1,0)",recordTime];//,\"
+    NSString *sqlFloor=[NSString stringWithFormat:@"insert into FLOOR(_id,FLOOR,NAME,CAD_PATH) values(%llu,1,'1F','')",recordTime];;
     NSString *session=[NSString stringWithFormat:@"%llu",recordTime1];
-    NSDictionary *dict=@{@"cmd":@"2001",@"session":session,@"id":@"0",@"table":@"ROOM",@"sqls":sqlStr};
+    NSDictionary *dict=@{@"cmd":@"2001",@"session":session,@"id":@"0",@"table":@"ROOM",@"sqls":@[sqlRoom,sqlFloor]};
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
       
@@ -113,7 +119,26 @@ static ServiceMgr * _singleton;
         }
     }];
 }
-
+-(void)deleteRoom{//:(ReceiveBlock)block
+    // sysDataBlock_ = [block copy];
+    NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
+    NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
+    NSString *receive=[NSString stringWithFormat:@"v1/18/all/data/response"];
+    UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000*1000;
+    UInt64 recordTime1 = [[NSDate date] timeIntervalSince1970]*1000*1000;
+    // NSString *sqlStr=[NSString stringWithFormat:@"[\"insert into ROOM(_id,NAME,TYPE,ICON_PATH,FLOOR,STAR) values(%llu,'AA',2,'icon_fj_kt',1,0)\"]",recordTime];//,\"insert into FLOOR(_id,FLOOR,NAME,CAD_PATH) values(%llu,'1F','','')
+    NSString *sqlRoom=[NSString stringWithFormat:@"delete from ROOM where _id=%@",@"1523006595479821"];//,\"
+    NSString *sqlFloor=[NSString stringWithFormat:@"delete from FLOOR where _id=%@",@"1523006595479821"];;
+    NSString *session=[NSString stringWithFormat:@"%llu",recordTime1];
+    NSDictionary *dict=@{@"cmd":@"2003",@"session":session,@"id":@"0",@"table":@"ROOM",@"sqls":@[sqlRoom,sqlFloor]};
+    __block __weak typeof(self) weakSelf= self;
+    [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
+        
+        if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0)  {
+            [weakSelf callBackSysData:dict];
+        }
+    }];
+}
 -(void)bindCentral:(ReceiveBlock)block{
     sysDataBlock_ = [block copy];
     
@@ -154,7 +179,7 @@ static ServiceMgr * _singleton;
 
 -(void)fetchUserInfo{
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
-    NSString *topic=@"v1/cloud/request";
+    NSString *topic=@"v1/cloud/request";//[NSString stringWithFormat:@"v1/cloud/%@/request",clientid];
     NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",clientid];
     NSDictionary *dict=@{@"cmd":@"1008",@"user":clientid};
     __block __weak typeof(self) weakSelf= self;
