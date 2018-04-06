@@ -8,7 +8,7 @@
 
 #import "BaseCollectionView.h"
 
-typedef void(^CollectionItemTappedBlock)(void);
+typedef void(^CollectionItemTappedBlock)(id data);
 
 @interface DeviceSettingCollectionView : BaseCollectionView
 

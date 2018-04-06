@@ -44,7 +44,7 @@
 
 - (void)chooseCell:(id)data{
     if(self.block){
-        self.block();
+        self.block(data);
     }
 }
 

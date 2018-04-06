@@ -9,6 +9,7 @@
 #import "DeviceSettingController.h"
 #import "DeviceSettingCollectionView.h"
 #import "DeviceSettingViewModel.h"
+#import "PickerViewController.h"
 
 @interface DeviceSettingController (){
     DeviceSettingCollectionView *_collectionView;
@@ -28,8 +29,16 @@
     DeviceSettingViewModel *deviceSettingViewModel = [[DeviceSettingViewModel alloc] init];
     _collectionView = [[DeviceSettingCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:deviceSettingViewModel];
     __weak typeof(self) weakSelf = self;
-    _collectionView.block = ^{
-        
+    _collectionView.block = ^(DeviceSettingModel * data) {
+        if(data.deviceSettingType == DeviceSettingTypeSelection){
+            PickerViewController *pickerVC = [[PickerViewController alloc] initWithTitle:data.title selectItem:data.details array:data.selectionArray];
+//            pickerVC.changeBlock = ^(NSInteger index) {
+            
+//            };
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:pickerVC];
+            [weakSelf presentViewController:nav animated:YES completion:nil];
+            
+        }
     };
     
     [self.view addSubview:_collectionView];

@@ -7,7 +7,6 @@
 //
 
 #import "DeviceSettingViewModel.h"
-#import "DeviceSettingModel.h"
 
 @implementation DeviceSettingViewModel
 
@@ -43,14 +42,12 @@
     modelDaojishi.type = @"daojishi";
     modelDaojishi.deviceSettingType = DeviceSettingTypeSelection;
     modelDaojishi.selectionArray = @[@"1分钟",@"5分钟", @"30分钟"];
-
     [array addObject:modelDaojishi];
     
     DeviceSettingModel *modelLongest = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"最长开启" details:@"未设定"];
     modelLongest.type = @"longest";
     modelLongest.deviceSettingType = DeviceSettingTypeSelection;
     modelLongest.selectionArray = @[@"1分钟",@"5分钟", @"30分钟"];
-
     [array addObject:modelLongest];
     
     DeviceSettingModel *model2 = [DeviceSettingModel modelWithType:DeviceSettingTypeSpan];
@@ -74,7 +71,7 @@
     [array addObject:model3];
     
     DeviceSettingModel *modelBelong = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"所属控制器" details:@"P16S"];
-    modelPWD.type = @"belong";
+    modelBelong.type = @"belong";
     [array addObject:modelBelong];
     
     DeviceSettingModel *modelHidden = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"设备隐藏" details:nil];
@@ -84,7 +81,7 @@
     [array addObject:modelHidden];
     
     DeviceSettingModel *modelLog = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"日志" details:nil];
-    modelPWD.type = @"log";
+    modelLog.type = @"log";
     [array addObject:modelLog];
     
     DeviceSettingModel *model4 = [DeviceSettingModel modelWithType:DeviceSettingTypeSpan];
@@ -92,7 +89,7 @@
     
     DeviceSettingModel *modelButton = [DeviceSettingModel modelWithType:DeviceSettingTypeButton];
     modelButton.title = @"删除";
-    modelPWD.type = @"delete";
+    modelButton.type = @"delete";
     [array addObject:modelButton];
     
     block(array);

@@ -11,6 +11,7 @@
 		2E4841772076815800207A17 /* ButtonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4841762076815700207A17 /* ButtonCollectionViewCell.m */; };
 		2E48417A2076842A00207A17 /* DeviceSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4841792076842A00207A17 /* DeviceSettingModel.m */; };
 		2E48417E20769EAD00207A17 /* InfoCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E48417D20769EAD00207A17 /* InfoCollectionReusableView.m */; };
+		2E4841812077259C00207A17 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4841802077259C00207A17 /* PickerViewController.m */; };
 		2E8BFFC8206BD7BD002751C7 /* DeviceSettingDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8BFFC7206BD7BD002751C7 /* DeviceSettingDataSource.m */; };
 		2E8BFFCC206BDC61002751C7 /* ModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8BFFCB206BDC61002751C7 /* ModifyViewController.m */; };
 		2E8C07C520667225004D296A /* SettingDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C07C420667225004D296A /* SettingDataSource.m */; };
@@ -136,6 +137,8 @@
 		2E4841792076842A00207A17 /* DeviceSettingModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceSettingModel.m; sourceTree = "<group>"; };
 		2E48417C20769EAD00207A17 /* InfoCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfoCollectionReusableView.h; sourceTree = "<group>"; };
 		2E48417D20769EAD00207A17 /* InfoCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfoCollectionReusableView.m; sourceTree = "<group>"; };
+		2E48417F2077259C00207A17 /* PickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
+		2E4841802077259C00207A17 /* PickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
 		2E8BFFC6206BD7BD002751C7 /* DeviceSettingDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceSettingDataSource.h; sourceTree = "<group>"; };
 		2E8BFFC7206BD7BD002751C7 /* DeviceSettingDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceSettingDataSource.m; sourceTree = "<group>"; };
 		2E8BFFCA206BDC61002751C7 /* ModifyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModifyViewController.h; sourceTree = "<group>"; };
@@ -388,6 +391,8 @@
 			children = (
 				2E8BFFCA206BDC61002751C7 /* ModifyViewController.h */,
 				2E8BFFCB206BDC61002751C7 /* ModifyViewController.m */,
+				2E48417F2077259C00207A17 /* PickerViewController.h */,
+				2E4841802077259C00207A17 /* PickerViewController.m */,
 			);
 			path = UserControl;
 			sourceTree = "<group>";
@@ -1019,6 +1024,7 @@
 				84301D052067E6A0004A857D /* BaseViewModel.m in Sources */,
 				84301D082067F082004A857D /* SettingViewModel.m in Sources */,
 				2EC341EF20600DCE007F4B8C /* CategoryCollectionView.m in Sources */,
+				2E4841812077259C00207A17 /* PickerViewController.m in Sources */,
 				2EC34205206157C8007F4B8C /* DeviceModel.m in Sources */,
 				84FAEF92205ABD0D00BF112C /* BaseCollectionView.m in Sources */,
 				84301C992064A6A8004A857D /* DEVICE.m in Sources */,
