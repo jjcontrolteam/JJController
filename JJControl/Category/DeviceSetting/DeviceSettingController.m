@@ -10,6 +10,8 @@
 #import "DeviceSettingCollectionView.h"
 #import "DeviceSettingViewModel.h"
 #import "PickerViewController.h"
+#import "TypeSelectViewController.h"
+#import "TimingViewController.h"
 
 @interface DeviceSettingController (){
     DeviceSettingCollectionView *_collectionView;
@@ -38,6 +40,16 @@
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:pickerVC];
             [weakSelf presentViewController:nav animated:YES completion:nil];
             
+        }else if(data.deviceSettingType == DeviceSettingTypeTitle){
+            TypeSelectViewController *typeSelectVC = [[TypeSelectViewController alloc] init];
+            [weakSelf.navigationController pushViewController:typeSelectVC animated:YES];
+        }else if(data.deviceSettingType == DeviceSettingTypeButton){
+            
+        }else{
+            if([data.type isEqualToString:@"timer"]){   //定时
+                TimingViewController *timingVC = [[TimingViewController alloc] init];
+                [weakSelf.navigationController pushViewController:timingVC animated:YES];
+            }
         }
     };
     

@@ -15,7 +15,7 @@
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath*)indexPath;
 - (void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath*)indexPath;
 - (void)bindFooterer:(id)footer withData:(id)data withIndexPath:(NSIndexPath*)indexPath;
-- (void)chooseCell:(id)data;
+- (void)chooseCell:(id)data withIndexPath:(NSIndexPath*)indexPath;
 -(void)fetchData;
 
 //需要新增  该行数据源改变 更新当前row的方法

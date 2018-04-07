@@ -53,7 +53,7 @@
 
 }
 
-- (void)chooseCell:(id)data{
+- (void)chooseCell:(id)data withIndexPath:(NSIndexPath*)indexPath{
     if(self.block){
          self.block();
     }

@@ -80,7 +80,7 @@ static NSString *reusableindentifer=@"RoomCollectionReusable";
     
     
 }
-- (void)chooseCell:(id)data{
+- (void)chooseCell:(id)data withIndexPath:indexPath{
     NSLog(@"%@",data);
 }
 @end

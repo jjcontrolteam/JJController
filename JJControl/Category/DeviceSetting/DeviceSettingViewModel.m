@@ -34,7 +34,7 @@
     DeviceSettingModel *model1 = [DeviceSettingModel modelWithType:DeviceSettingTypeSpan];
     [array addObject:model1];
     
-    DeviceSettingModel *modelTimer = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"定时" details:@"0个"];
+    DeviceSettingModel *modelTimer = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/timing.png" title:@"定时" details:@"0个"];
     modelTimer.type = @"timer";
     [array addObject:modelTimer];
     
@@ -53,7 +53,7 @@
     DeviceSettingModel *model2 = [DeviceSettingModel modelWithType:DeviceSettingTypeSpan];
     [array addObject:model2];
     
-    DeviceSettingModel *modelShare = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"分享" details:@"0个"];
+    DeviceSettingModel *modelShare = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/share.png" title:@"分享" details:@"0个"];
     modelShare.type = @"share";
     [array addObject:modelShare];
     

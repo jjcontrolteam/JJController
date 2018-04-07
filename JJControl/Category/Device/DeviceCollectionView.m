@@ -28,7 +28,7 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
     
-    [self setBackgroundColor:[UIColor redColor]];
+    [self setBackgroundColor:[UIColor whiteColor]];
     [self registerClass:[DeviceCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     [self registerClass:[DeviceCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:usableIdentifier];
 
@@ -75,7 +75,7 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
     };
 }
 
-- (void)chooseCell:(id)data{
+- (void)chooseCell:(id)data withIndexPath:(NSIndexPath*)indexPath{
     if(self.block){
         self.block();
     }

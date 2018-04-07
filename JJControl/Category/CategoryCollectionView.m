@@ -23,7 +23,7 @@ static NSString *identifier = @"CategoryCollectionViewCell";
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
     
-    [self setBackgroundColor:[UIColor redColor]];
+    [self setBackgroundColor:[UIColor whiteColor]];
     [self registerClass:[CategoryCollectionViewCell class] forCellWithReuseIdentifier:identifier];
      
     _dataSource=[[BaseDataSource alloc]initWithItems:@[] cellIdentifier:identifier andCellBack:myDataSourceBlock];
@@ -43,7 +43,7 @@ static NSString *identifier = @"CategoryCollectionViewCell";
     
 }
 
-- (void)chooseCell:(id)data{
+- (void)chooseCell:(id)data withIndexPath:(NSIndexPath*)indexPath{
     if(self.block){
         self.block();
     }

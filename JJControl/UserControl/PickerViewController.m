@@ -95,13 +95,13 @@ static NSString *cellIdentifier = @"cellIdentifier";
     titleLabel.textColor = [UIColor blackColor];
     [cell.contentView addSubview:titleLabel];
 
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 150, 10, 25, 25)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 100, 10, 25, 25)];
     [cell.contentView addSubview:imageView];
 
     if([[_selectArray objectAtIndex:indexPath.row] boolValue]){
         imageView.image = [UIImage imageNamed:@"JJControlResource.bundle/bind.png"];
     }else{
-        imageView.image = [UIImage imageNamed:@"JJControlResource.bundle/icon_cj_ys_on.png"];
+        imageView.image = nil;
     }
     
     return cell;

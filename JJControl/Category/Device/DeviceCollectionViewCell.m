@@ -12,9 +12,12 @@
 @interface DeviceCollectionViewCell(){
     UIImageView *_imgView;
     UILabel *_lbName;
-    UISwitch *_switch;
     UILabel *_lbLocate;
     UIImageView *_imgViewIcon;
+    
+    //两者取其一
+    UIButton *_btnSwitch;
+    UILabel *_lbState;
 }
 @end
 
@@ -71,9 +74,9 @@
         make.width.height.mas_equalTo(10);
     }];
     
-    _switch =[[UISwitch alloc]init];
-    [self.contentView addSubview:_switch];
-    [_switch mas_makeConstraints:^(MASConstraintMaker *make) {
+    _btnSwitch =[[UIButton alloc]init];
+    [self.contentView addSubview:_btnSwitch];
+    [_btnSwitch mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.contentView);
         make.right.mas_equalTo(self.contentView).offset(-CELL_RIGHT_MARGIN);
     }];
@@ -85,8 +88,17 @@
     [_lbName setText:model.title];
     [_lbLocate setText:@"啊啊啊"];
     [_imgViewIcon setImage:[UIImage imageNamed:model.pic]];
-
-    [_switch setOn:model.isOn];
+    
+    if(model.isOn){
+        [_btnSwitch setTitle:@"ON" forState:UIControlStateNormal];
+        [_btnSwitch setBackgroundColor:[UIColor greenColor]];
+        [_btnSwitch setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }else{
+        [_btnSwitch setTitle:@"OFF" forState:UIControlStateNormal];
+        [_btnSwitch setBackgroundColor:[UIColor whiteColor]];
+        [_btnSwitch setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+ 
+    }
 }
 
 @end

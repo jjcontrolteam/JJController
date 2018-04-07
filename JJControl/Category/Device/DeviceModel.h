@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, DeviceModelType){
+    DeviceModelTypeSwitch,  //开关
+    DeviceModelTypeDispaly  //只用于展示
+};
+
 @interface DeviceModel : NSObject
 
 @property (nonatomic, copy) NSString *pic;

@@ -76,10 +76,18 @@
 - (void)setCellData:(DeviceSettingModel *)cellData{
     if(cellData.pic)
         [_imgView setImage:[UIImage imageNamed:cellData.pic]];
+    else
+        [_imgView setImage:nil];
+    
     if(cellData.title)
         [_lbName setText:cellData.title];
+    else
+        [_lbName setText:nil];
+    
     if(cellData.details)
         [_lbDetails setText:cellData.details];
+    else
+        [_lbDetails setText:nil];
 
     if(cellData.deviceSettingType == DeviceSettingTypeTitle){
         [_imgView mas_updateConstraints:^(MASConstraintMaker *make) {

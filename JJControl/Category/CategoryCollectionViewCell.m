@@ -57,11 +57,11 @@
     _imgArrow = [[UIImageView alloc]init];
     _imgArrow.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:_imgArrow];
-    [_imgArrow setImage:[UIImage imageNamed:@"JJControlResource.bundle/icon_cj_ys_on.png"]];
+    [_imgArrow setImage:[UIImage imageNamed:@"JJControlResource.bundle/right.png"]];
     [_imgArrow mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.contentView);
         make.right.mas_equalTo(self.contentView).offset(-CELL_RIGHT_MARGIN);
-        make.width.height.mas_equalTo(self.contentView.mas_height).multipliedBy(0.3);
+        make.width.height.equalTo(@(SCREEN_WIDTH * 0.03));
     }];
 
     [_lbName mas_makeConstraints:^(MASConstraintMaker *make) {

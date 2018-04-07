@@ -31,9 +31,9 @@
             //cell数据的填充方法
             [weakSelf bindHeader:header withData:data withIndexPath:indexPath];
         };
-        void (^myDelegateBlock)(id data) = ^(id data){
+        void (^myDelegateBlock)(id data, NSIndexPath *indexPath) = ^(id data ,NSIndexPath *indexPath){
             //cell数据的填充方法
-            [weakSelf chooseCell:data];
+            [weakSelf chooseCell:data withIndexPath:indexPath];
         };
         _viewModel = vModel;
        
@@ -82,5 +82,5 @@
         }
     }];
 }
-- (void)chooseCell:(id)data{}
+- (void)chooseCell:(id)data withIndexPath:(NSIndexPath*)indexPath{}
 @end
