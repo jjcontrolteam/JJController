@@ -57,19 +57,7 @@ static ServiceMgr * _singleton;
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
     NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
     NSString *receive=[NSString stringWithFormat:@"v1/18/%@/data/response",clientid];
-    NSDictionary *dict=@{@"cmd":@"1001",@"tables":@[]};//@{@"table":@"PARAM_ADJUST",@"version":@"1"},@{@"table":@"COMMAND",@"version":@"1"},@{@"table":@"TIMING",@"version":@"1"}
-    __block __weak typeof(self) weakSelf= self;
-    [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
-        [weakSelf sysStartFetchData];
-        
-    }];
-    
-}
--(void)sysStartFetchData{
-    NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
-    NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
-    NSString *receive=[NSString stringWithFormat:@"v1/18/%@/data/response",clientid];
-    NSDictionary *dict=@{@"cmd":@"1001"};//@{@"table":@"PARAM_ADJUST",@"version":@"1"},@{@"table":@"COMMAND",@"version":@"1"},@{@"table":@"TIMING",@"version":@"1"}
+    NSDictionary *dict=@{@"cmd":@"1001"};
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
         if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1003) {
@@ -81,7 +69,9 @@ static ServiceMgr * _singleton;
         }
         
     }];
+    
 }
+
 -(void)sysSaveData:(NSDictionary*)dict{
     NSString *tbclass=[dict valueForKey:@"table"];
     if (tbclass) {
@@ -99,22 +89,45 @@ static ServiceMgr * _singleton;
     }
 }
 
+-(void)callBackSysData:(NSDictionary*)dict{
+    if (dict) {
+        if (sysDataBlock_) {
+            sysDataBlock_(dict);
+        }
+    }
+}
+
+- (void)receiveJson:(NSDictionary*)dict
+{
+    if (dict) {
+        if (jsonModelBlock_) {
+            jsonModelBlock_(dict);
+        }
+    }
+}
+-(void)cleanUp{
+    jsonModelBlock_=nil;
+    sysDataBlock_=nil;
+}
+
+
+
 -(void)insertRoom{//:(ReceiveBlock)block
-   // sysDataBlock_ = [block copy];
+    // sysDataBlock_ = [block copy];
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
     NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
     NSString *receive=[NSString stringWithFormat:@"v1/18/all/data/response"];
     UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000*1000;
     UInt64 recordTime1 = [[NSDate date] timeIntervalSince1970]*1000*1000;
-   // NSString *sqlStr=[NSString stringWithFormat:@"[\"insert into ROOM(_id,NAME,TYPE,ICON_PATH,FLOOR,STAR) values(%llu,'AA',2,'icon_fj_kt',1,0)\"]",recordTime];//,\"insert into FLOOR(_id,FLOOR,NAME,CAD_PATH) values(%llu,'1F','','')
-     NSString *sqlRoom=[NSString stringWithFormat:@"insert into ROOM(_id,NAME,TYPE,ICON_PATH,FLOOR,STAR) values(%llu,'房间53',2,'icon_fj_kt',1,0)",recordTime];//,\"
+    // NSString *sqlStr=[NSString stringWithFormat:@"[\"insert into ROOM(_id,NAME,TYPE,ICON_PATH,FLOOR,STAR) values(%llu,'AA',2,'icon_fj_kt',1,0)\"]",recordTime];//,\"insert into FLOOR(_id,FLOOR,NAME,CAD_PATH) values(%llu,'1F','','')
+    NSString *sqlRoom=[NSString stringWithFormat:@"insert into ROOM(_id,NAME,TYPE,ICON_PATH,FLOOR,STAR) values(%llu,'房间53',2,'icon_fj_kt',1,0)",recordTime];//,\"
     NSString *sqlFloor=[NSString stringWithFormat:@"insert into FLOOR(_id,FLOOR,NAME,CAD_PATH) values(%llu,1,'1F','')",recordTime];;
     NSString *session=[NSString stringWithFormat:@"%llu",recordTime1];
     NSDictionary *dict=@{@"cmd":@"2001",@"session":session,@"id":@"0",@"table":@"ROOM",@"sqls":@[sqlRoom,sqlFloor]};
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
-      
-         if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0)  {
+        
+        if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0)  {
             [weakSelf callBackSysData:dict];
         }
     }];
@@ -153,7 +166,7 @@ static ServiceMgr * _singleton;
                 ) {
                 [weakSelf bindCentraling];
             }
-           
+            
         }
         
     }];
@@ -193,24 +206,5 @@ static ServiceMgr * _singleton;
         
     }];
     
-}
--(void)callBackSysData:(NSDictionary*)dict{
-    if (dict) {
-        if (sysDataBlock_) {
-            sysDataBlock_(dict);
-        }
-    }
-}
-- (void)receiveJson:(NSDictionary*)dict
-{
-    if (dict) {
-        if (jsonModelBlock_) {
-            jsonModelBlock_(dict);
-        }
-    }
-}
--(void)cleanUp{
-    jsonModelBlock_=nil;
-    sysDataBlock_=nil;
 }
 @end

@@ -15,7 +15,7 @@
 #import "JJServiceInterface.h"
 #import "BDUMD5Crypt.h"
 #import<CommonCrypto/CommonDigest.h>
-
+#import "BindController.h"
 #define KEY_MAC     @"gaoyusong"
 #define encryptKey  @"HmacMD5"
 
@@ -28,6 +28,8 @@
     UIButton  *registerBtn_;
     UIButton  *loginOtherBtn_;
     UIButton  *forgetBtn_;
+    
+    UILabel   *conLabel_;
 }
 @end
 
@@ -137,42 +139,75 @@
     [forgetBtn_ setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     
     
+    conLabel_ = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetHeight(self.view.frame)-64, CGRectGetWidth(self.view.frame)-20, 20)];
+    [conLabel_ setText:@"连接中。。。"];
+    [conLabel_ setTextColor:[UIColor whiteColor]];
+    [conLabel_ setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:conLabel_];
+    
+    [self performSelector:@selector(delay) withObject:nil afterDelay:0.5];
 }
 
+-(void)delay{
+    [self showHud];
+    JJServiceInterface *service = [JJServiceInterface share];
+    service.delegate = self;
+    NSString *clientid=@"13979922222";//[[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
+    [service connectWithClientId:clientid];
+    
+}
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     [self resetView:0.0];
 }
 
 - (void)loginAction:(id)sender{
-    
-   // 直接跳转到首页进行测试
-//   MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
-//    [self.navigationController pushViewController:mainTabBarController animated:YES];
-//
-
-   /* if ([nameField_.text length]<1||[pwdField_.text length]<1) {
-        return;
+    NSString *clientid=@"13979922222";[[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
+    if (clientid) {//clientid isequalto namefield.text
+        [self loginWithClientId];
+    }else{
+        [self loginWithoutClientId];
     }
-*/
-    JJServiceInterface *service = [JJServiceInterface share];
-    service.delegate = self;
-    [service connectWithClientId:@"13979922222"];
-    [self showHud];
     
 }
 
 - (void)connectSuccess{
+    [conLabel_ setText:@"连接成功"];
+    NSString *clientid=@"13979922222";[[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
+    if (clientid) {//clientid isequalto namefield.text
+        [self loginWithClientId];
+    }
+}
+
+-(void)connectFailue{
+    [super connectFailue];
+    [conLabel_ setText:@"连接失败"];
+    
+}
+
+-(void)loginWithoutClientId{
+    [self showHud];
+    JJServiceInterface *service = [JJServiceInterface share];
+    service.delegate = self;
+    [service connectWithClientId:nameField_.text];
+    
+    
+    
+}
+
+-(void)loginWithClientId{
     ServiceMgr *service = [ServiceMgr share];
     NSString *result =[BDUMD5Crypt macSignWithText:@"111111" secretKey:KEY_MAC] ;
     NSDictionary *dict=@{@"cmd":@"1003",@"user":@"13979922222",@"password":result};
     NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",@"13979922222"];
-     __block __weak typeof(self) weakSelf= self;
+    __block __weak typeof(self) weakSelf= self;
     [self showHud];
     [service sendMessage:dict withTopic:@"v1/cloud/request" withResponse:receive withSuccess:^(NSDictionary *dict) {
         NSLog(@"%@",dict);
         [weakSelf hiddenHud];
         if([dict valueForKey:@"code"]&&[[dict valueForKey:@"code"]integerValue]==0 && [[dict valueForKey:@"cmd"]integerValue]==1003)
         {
+            [[NSUserDefaults standardUserDefaults]setValue:@"13979922222" forKey:@"client_id"];
+            
             if ([dict valueForKey:@"centrals"]&&[[dict valueForKey:@"centrals"] count]>0) {
                 
                 [weakSelf sysData];
@@ -182,17 +217,12 @@
             
         }
     }];
-    //[service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
 }
+
 -(void)startBind{
-    ServiceMgr *service = [ServiceMgr share];
-    __block __weak typeof(self) weakSelf= self;
-    [service bindCentral:^(NSDictionary *dict) {
-        
-       [weakSelf sysData];
-        NSLog(@"");
-    }];
     
+    BindController *bindController = [[BindController alloc] init];
+    [self.navigationController pushViewController:bindController animated:YES];
    
 }
 -(void)sysData{
@@ -200,17 +230,16 @@
     __block __weak typeof(self) weakSelf= self;
     [service sysStartingFetchData:^(NSDictionary *dict) {
        // [service fetchUserInfo];
-        [[NSUserDefaults standardUserDefaults]setValue:@"13979922222" forKey:@"client_id"];
+        
         MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
         [weakSelf.navigationController pushViewController:mainTabbarController animated:YES];
     }];
 }
 - (void)loginOtherAction:(id)sender{
-   // OtherLoginController *login=[[OtherLoginController alloc]init];
-  //  [self.navigationController pushViewController:login animated:YES];
-    
-    MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
-    [self.navigationController pushViewController:mainTabbarController animated:YES];
+    BindController *bindController = [[BindController alloc] init];
+    [self.navigationController pushViewController:bindController animated:YES];
+   // MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
+   // [self.navigationController pushViewController:mainTabbarController animated:YES];
 }
 
 - (void)registerAction:(id)sender{

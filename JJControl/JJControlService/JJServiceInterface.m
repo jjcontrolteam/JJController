@@ -59,6 +59,7 @@ static JJServiceInterface * _singleton;
 }
 
 - (void)connectWithClientId:(NSString*)client_id{
+   // [self.manager disconnect];
     [self.manager connectTo:self.mqttSettings[@"host"]
                        port:[self.mqttSettings[@"port"] intValue]
                         tls:[self.mqttSettings[@"tls"] boolValue]
@@ -67,7 +68,7 @@ static JJServiceInterface * _singleton;
                        auth:false
                        user:nil
                        pass:nil
-                  willTopic:@"v1/cloud/request"
+                  willTopic:nil
                        will:nil
                     willQos:MQTTQosLevelExactlyOnce
              willRetainFlag:FALSE
