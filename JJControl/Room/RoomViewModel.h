@@ -12,4 +12,5 @@
 -(void)fetchSceneData:(fetchBlock)block;
 -(void)fetchDeviceData:(fetchBlock)block;
 -(void)fetchConectData:(fetchBlock)block;
+-(void)insertRoom:(fetchBlock)block;
 @end

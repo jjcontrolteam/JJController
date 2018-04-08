@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ROOM;
 @interface RoomCollectionCell : UICollectionViewCell
-- (void)fillInfo:(NSString*)txt;
+- (void)fillInfo:(ROOM*)model;
 @end

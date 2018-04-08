@@ -8,8 +8,6 @@
 
 #import "ServiceMgr.h"
 #import "JJServiceInterface.h"
-#import "JRDB.h"
-#import "MJExtension.h"
 #import "MBProgressHUD.h"
 static ServiceMgr * _singleton;
 
@@ -74,8 +72,7 @@ static ServiceMgr * _singleton;
 }
 -(void)sendMessage:(NSDictionary*)dict withTopic:(NSString*)topic withResponse:(NSString*)receiveTopic withSuccess:(ReceiveBlock)block{
     if (dict) {
-        [self showHud];
-        [self showStatus:@"发送中"];
+       
         JJServiceInterface *service = [JJServiceInterface share];
         jsonModelBlock_ = [block copy];
         NSString *str =  [[JJServiceInterface class] jsonStringWithDictionary:dict];
@@ -88,11 +85,13 @@ static ServiceMgr * _singleton;
 
 -(void)sysStartingFetchData:(ReceiveBlock)block{
     //
+    [self showHud];
+    [self showStatus:@"同步数据"];
     sysDataBlock_ = [block copy];
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
     NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
     NSString *receive=[NSString stringWithFormat:@"v1/18/%@/data/response",clientid];
-    NSDictionary *dict=@{@"cmd":@"1001"};
+    NSDictionary *dict=@{@"cmd":@"1001",@"tables":@[]};
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
         if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1003) {
@@ -138,6 +137,7 @@ static ServiceMgr * _singleton;
 #pragma mark-委托返回
 - (void)receiveJson:(NSDictionary*)dict
 {
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         if (dict) {
             if (jsonModelBlock_) {

@@ -101,12 +101,11 @@ static JJServiceInterface * _singleton;
             }
             [self.manager connectToLast];
         }
-           
             
             break;
         case MQTTSessionManagerStateClosing:
         {
-            if (_delegate && [_delegate respondsToSelector:@selector(showStatus:)]) {
+           /* if (_delegate && [_delegate respondsToSelector:@selector(showStatus:)]) {
                 
                 [_delegate showStatus:@"连接关闭."];
                 
@@ -115,8 +114,7 @@ static JJServiceInterface * _singleton;
                 
                 [_delegate connectFailue];
                 
-            }
-            [self.manager connectToLast];
+            }*/
         }
             break;
         case MQTTSessionManagerStateConnected:
@@ -148,7 +146,7 @@ static JJServiceInterface * _singleton;
             break;
         case MQTTSessionManagerStateError:
         {
-            if (_delegate && [_delegate respondsToSelector:@selector(showStatus:)]) {
+            /*if (_delegate && [_delegate respondsToSelector:@selector(showStatus:)]) {
                 
                 [_delegate showStatus:@"连接错误."];
                 
@@ -157,8 +155,8 @@ static JJServiceInterface * _singleton;
                 
                 [_delegate connectFailue];
                 
-            }
-            [self.manager connectToLast];
+            }*/
+           
         }
             break;
         case MQTTSessionManagerStateStarting:
