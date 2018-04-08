@@ -8,6 +8,10 @@
 
 #import "DeviceCollectionReusableView.h"
 
+@interface DeviceCollectionReusableView(){
+    UISegmentedControl *_segmentCtrl;
+}
+@end
 @implementation DeviceCollectionReusableView
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -18,11 +22,11 @@
 }
 
 - (void)createSubviews{
-    UISegmentedControl *segmentCtrl = [[UISegmentedControl alloc]init];
-    segmentCtrl.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:segmentCtrl];
+    _segmentCtrl = [[UISegmentedControl alloc]init];
+    _segmentCtrl.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:_segmentCtrl];
     
-    [segmentCtrl mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_segmentCtrl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self).offset(14);
         make.right.mas_equalTo(self).offset(-14);
         make.top.mas_equalTo(10);
@@ -31,18 +35,24 @@
     }];
     
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
-    [segmentCtrl setTitleTextAttributes:dic forState:UIControlStateSelected];
-    [segmentCtrl insertSegmentWithTitle:@"设备" atIndex:0 animated:NO];
-    [segmentCtrl insertSegmentWithTitle:@"场景" atIndex:1 animated:NO];
-    [segmentCtrl setTintColor:[UIColor colorWithRed:0.2471 green:0.6706 blue:0.4196 alpha:1.0]];
-    [segmentCtrl setSelectedSegmentIndex:0];
-    [segmentCtrl addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+    [_segmentCtrl insertSegmentWithTitle:@"" atIndex:0 animated:NO];
+    [_segmentCtrl insertSegmentWithTitle:@"" atIndex:1 animated:NO];
+    [_segmentCtrl setTitleTextAttributes:dic forState:UIControlStateSelected];
+    [_segmentCtrl setTintColor:[UIColor colorWithRed:0.2471 green:0.6706 blue:0.4196 alpha:1.0]];
+    [_segmentCtrl setSelectedSegmentIndex:0];
+    [_segmentCtrl addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
+- (void)setCellData:(NSDictionary *)data{ 
+    [_segmentCtrl setTitle:[data objectForKey:@"firstItem"]  forSegmentAtIndex:0];
+    [_segmentCtrl setTitle:[data objectForKey:@"secondItem"] forSegmentAtIndex:1];
+}
 - (void)valueChanged:(UISegmentedControl *)segment{
     if(self.segmentChangedBlock){
         self.segmentChangedBlock(segment.selectedSegmentIndex);
     }
 }
+
+
 
 @end

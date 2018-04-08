@@ -7,13 +7,14 @@
 //
 
 #import "TypeSelectViewController.h"
-#import "IconSelectionViewController.h"
 #import "TypeSelectCollectionView.h"
 #import "TypeSelectViewModel.h"
 #import "IconChangeViewController.h"
+#import "IconChangeViewModel.h"
 
 @interface TypeSelectViewController(){
     TypeSelectCollectionView *_collectionView;
+    TypeSelectViewModel *_typeSelectViewModel;
 }
 
 @end
@@ -26,16 +27,15 @@
     // Do any additional setup after loading the view.
     
     self.title = @"选择类型";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStyleDone target:self action:@selector(nextStep)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStyleDone target:self action:@selector(goToIconEditPage)];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 100);
-    TypeSelectViewModel *typeSelectViewModel = [[TypeSelectViewModel alloc] init];
-    _collectionView = [[TypeSelectCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:typeSelectViewModel];
+    _typeSelectViewModel = [[TypeSelectViewModel alloc] init];
+    _collectionView = [[TypeSelectCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:_typeSelectViewModel];
     __weak typeof(self) weakSelf = self;
-    _collectionView.block = ^(IconChangeViewModel *viewModle) {
-        IconChangeViewController *IconChangeVC = [[IconChangeViewController alloc]initWithViewModel:viewModle];
-        [weakSelf.navigationController pushViewController:IconChangeVC animated:YES];
+    _collectionView.block = ^() {
+        [weakSelf goToIconEditPage];
     };
     
     [self.view addSubview:_collectionView];
@@ -46,12 +46,13 @@
     [_collectionView reloadData];
 }
 
-- (void)nextStep{
-//    //获取选中的
-//    [self goToIconEditPage];
-}
-
 - (void)goToIconEditPage{
+    //获取选中的
+    IconChangeViewModel *iconChangeVM = [_typeSelectViewModel iconChangeViewModelForSelectItem];
+    if(iconChangeVM){
+        IconChangeViewController *IconChangeVC = [[IconChangeViewController alloc] initWithViewModel:iconChangeVM];
+        [self.navigationController pushViewController:IconChangeVC animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

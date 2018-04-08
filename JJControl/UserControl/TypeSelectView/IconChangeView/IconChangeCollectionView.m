@@ -13,6 +13,7 @@
 #import "HeaderCollectionReusableView.h"
 #import "IconChangeDataSource.h"
 #import "IconChangeDateDelegate.h"
+#import "NameChangeCollectionViewCell.h"
 @interface IconChangeCollectionView(){
     IconChangeDataSource *_dataSource;
     IconChangeDateDelegate *_delegate;
@@ -26,10 +27,12 @@
     
     self.backgroundColor = [UIColor lightGrayColor];
     
-    [self registerClass:[IconChangeCollectionViewCell class] forCellWithReuseIdentifier:identifier];
+    [self registerClass:[IconChangeCollectionViewCell class] forCellWithReuseIdentifier:IconIdentifier];
+    [self registerClass:[NameChangeCollectionViewCell class ] forCellWithReuseIdentifier:nameIdentifier];
     [self registerClass:[HeaderCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerIdentifier];
+    self.isMultiSection = YES;
     
-    _dataSource = [[IconChangeDataSource alloc] initWithItems:@[] cellIdentifier:identifier withHeaderItem:@{} headerIdentifier:headerIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
+    _dataSource = [[IconChangeDataSource alloc] initWithItems:@[] cellIdentifier:IconIdentifier withHeaderItem:@[] headerIdentifier:headerIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
     self.dataSource = _dataSource;
     
     _delegate = [[IconChangeDateDelegate alloc] initWithItems:@[] andCallBack:myDelegateBlock];
@@ -42,7 +45,6 @@
 
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
     [cell setCellData:data];
-    
 }
 
 - (void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath *)indexPath{

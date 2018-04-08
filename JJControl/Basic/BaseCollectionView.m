@@ -13,12 +13,15 @@
 {
     
 }
+@property (nonatomic, strong, readwrite) BaseViewModel *viewModel;
+
 @end
 @implementation BaseCollectionView
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout withViewModel:(BaseViewModel*)vModel{
     self=[super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
-        __block __weak typeof(self) weakSelf=self;
+        [self setBackgroundColor:[UIColor whiteColor]];
+         __block __weak typeof(self) weakSelf=self;
         void (^myDataSourceBlock)(id cell , id data,NSIndexPath *indexPath) = ^(id cell ,id data,NSIndexPath *indexPath){
             //cell数据的填充方法
             [weakSelf bindCell:cell withData:data withIndexPath:indexPath];
@@ -60,24 +63,30 @@
 -(void)fetchData{
     __block __weak typeof(self) weakSelf= self;
     [self.viewModel fetchData:^(NSArray *data) {
-        if (data) {
+        if (data && data.count > 0) {
             BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
             BaseDataDelegate *ddd=(BaseDataDelegate*)weakSelf.delegate;
             ds.cellData = [NSMutableArray arrayWithArray:data];
+            ds.isMultiSection = _isMultiSection;
             ddd.items = [NSMutableArray arrayWithArray:data];
+            ddd.isMultiSection = _isMultiSection;
             [weakSelf reloadData];
         }
     }];
-    [self.viewModel fetchHeaderData:^(NSDictionary *data) {
-        if (data) {
-            // weakSelf.headerData  = [NSDictionary dictionaryWithDictionary:data];
+    [self.viewModel fetchHeaderData:^(NSArray *data) {
+        if (data && data.count > 0) {
+            BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
+            ds.headerData = [NSMutableArray arrayWithArray:data];
+            ds.isMultiSection = _isMultiSection;
             [weakSelf reloadData];
         }
     }];
     
-    [self.viewModel fetchFooterData:^(NSDictionary *data) {
-        if (data) {
-            //  weakSelf.footerData  = [NSDictionary dictionaryWithDictionary:data];
+    [self.viewModel fetchFooterData:^(NSArray *data) {
+        if (data && data.count > 0) {
+            BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
+            ds.footerData = [NSMutableArray arrayWithArray:data];
+            ds.isMultiSection = _isMultiSection;
             [weakSelf reloadData];
         }
     }];

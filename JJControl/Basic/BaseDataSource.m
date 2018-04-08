@@ -9,13 +9,9 @@
 #import "BaseDataSource.h"
 @interface BaseDataSource(){
     
-    NSDictionary    *_headerData;
-    NSDictionary    *_footerData;
     NSString       *_identifier;
     NSString       *_header;
     NSString       *_footer;
-    headerBlock    _headerBlock;
-    footerBlock    _footerBlock;
 }
 @end
 
@@ -41,12 +37,12 @@
 /*
  创建带头部的视图
  */
-- (instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withHeaderItem:(NSDictionary*)item headerIdentifier:(NSString *)header  andCellBack:(cellBlock)cBlock andHeaderBack:(headerBlock)hBlock {
+- (instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withHeaderItem:(NSArray*)harray headerIdentifier:(NSString *)header  andCellBack:(cellBlock)cBlock andHeaderBack:(headerBlock)hBlock {
     
     self = [super init];
     if (self) {
         _cellData = [NSMutableArray arrayWithArray:array];
-        _headerData=[NSDictionary dictionaryWithDictionary:item];
+        _headerData=[NSMutableArray arrayWithArray:harray];
         _identifier = identifier;
         _header = header;
         _footer = @"";
@@ -58,12 +54,12 @@
 /*
  创建带底部的视图
  */
-- (instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withFooterItem:(NSDictionary *)item footerIdentifier:(NSString *)footer andCellBack:(cellBlock)cBlock  andFooterBack:(footerBlock)fBlock{
+- (instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withFooterItem:(NSArray *)farray footerIdentifier:(NSString *)footer andCellBack:(cellBlock)cBlock  andFooterBack:(footerBlock)fBlock{
     
     self = [super init];
     if (self) {
         _cellData = [NSMutableArray arrayWithArray:array];
-        _footerData=[NSDictionary dictionaryWithDictionary:item];
+        _footerData=[NSMutableArray arrayWithArray:farray];
         _identifier = identifier;
         _header = @"";
         _footer = footer;
@@ -75,13 +71,13 @@
 /*
  创建带底部,头部的视图
  */
-- (instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withHeaderItem:(NSDictionary*)hitem headerIdentifier:(NSString *)header withFooterItem:(NSDictionary *)fitem footerIdentifier:(NSString *)footer andCellBack:(cellBlock)cBlock andHeaderBack:(headerBlock)hBlock andFooterBack:(footerBlock)fBlock{
+- (instancetype)initWithItems:(NSArray *)array cellIdentifier:(NSString *)identifier withHeaderItem:(NSArray*)harray headerIdentifier:(NSString *)header withFooterItem:(NSArray *)farray footerIdentifier:(NSString *)footer andCellBack:(cellBlock)cBlock andHeaderBack:(headerBlock)hBlock andFooterBack:(footerBlock)fBlock{
     
     self = [super init];
     if (self) {
         _cellData = [NSMutableArray arrayWithArray:array];
-        _headerData=[NSDictionary dictionaryWithDictionary:hitem];
-        _footerData=[NSDictionary dictionaryWithDictionary:fitem];
+        _headerData=[NSMutableArray arrayWithArray:harray];
+        _footerData=[NSMutableArray arrayWithArray:farray];
         _identifier = identifier;
         _header = header;
         _footer = footer;
@@ -92,24 +88,31 @@
     return self;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 1;
+    if(_isMultiSection){
+        return _cellData.count;
+    }else{
+        return 1;
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _cellData.count;
+    if(_isMultiSection){
+        return [[_cellData objectAtIndex:section] count];
+    }else{
+        return _cellData.count;
+    }
 }
 
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:_identifier forIndexPath:indexPath];
-    
-    if (cell == nil) {
-        
-        cell = [[UICollectionViewCell alloc]init];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
+    return [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+}
 
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [self collectionView:collectionView dequeueReusableCellWithReuseIdentifier:_identifier forIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[UICollectionViewCell alloc]init];
     }
-    cell.backgroundColor = [UIColor whiteColor];
-    id theme = _cellData[indexPath.row];
+    id theme = _isMultiSection ? _cellData[indexPath.section][indexPath.row] : _cellData[indexPath.row];
     if (_cellBlock) {
         _cellBlock(cell,theme,indexPath);
     }
@@ -125,15 +128,17 @@
         UICollectionReusableView *headerV = (UICollectionReusableView *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:_header  forIndexPath:indexPath];
         
         reusableView = headerV;
+        id theme = _headerData[indexPath.section];
         if (_headerBlock) {
-            _headerBlock(headerV,_headerData,indexPath);
+            _headerBlock(headerV,theme,indexPath);
         }
     }
     if (kind ==UICollectionElementKindSectionFooter){
         UICollectionReusableView *headerV = (UICollectionReusableView *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:_footer  forIndexPath:indexPath];
         reusableView = headerV;
+        id theme = _footerData[indexPath.section];
         if (_footerBlock) {
-            _footerBlock(headerV,_footerData,indexPath);
+            _footerBlock(headerV,theme,indexPath);
         }
     }
     return reusableView;

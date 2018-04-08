@@ -32,7 +32,7 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
     [self registerClass:[DeviceCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     [self registerClass:[DeviceCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:usableIdentifier];
 
-    _dataSource = [[BaseDataSource alloc] initWithItems:@[] cellIdentifier:identifier withHeaderItem:@{@"":@""} headerIdentifier:usableIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
+    _dataSource = [[BaseDataSource alloc] initWithItems:@[] cellIdentifier:identifier withHeaderItem:@[] headerIdentifier:usableIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
     self.dataSource = _dataSource;
     
     _delegate = [[DeviceDataDelegate alloc] initWithItems:@[] andCallBack:myDelegateBlock];
@@ -50,6 +50,7 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
 
 - (void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
     DeviceCollectionReusableView *headerView = (DeviceCollectionReusableView *)header;
+    [headerView setCellData:data];
     headerView.segmentChangedBlock = ^(NSInteger index) {
         if(index == 0){
             __block __weak typeof(self) weakSelf=self;
@@ -71,7 +72,6 @@ static NSString *usableIdentifier = @"DeviceCollectionReusableView";
                 [weakSelf reloadData];
             }];
         }
-       
     };
 }
 

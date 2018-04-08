@@ -11,7 +11,7 @@
 
 @implementation DeviceSettingDataSource
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell *cell;
     DeviceSettingModel *model = [self.cellData objectAtIndex:indexPath.row];
     if(model.deviceSettingType == DeviceSettingTypeSpan){
@@ -21,12 +21,6 @@
     }else{
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     }
-    
-    id theme = self.cellData[indexPath.row];
-    if (self.cellBlock) {
-        self.cellBlock(cell,theme,indexPath);
-    }
     return cell;
 }
-
 @end

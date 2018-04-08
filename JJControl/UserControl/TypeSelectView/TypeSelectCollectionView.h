@@ -7,13 +7,12 @@
 //
 
 #import "BaseCollectionView.h"
-@class IconChangeViewModel;
+@class TypeSelectViewModel;
 
-typedef void(^CollectionItemTappedBlock)(IconChangeViewModel *viewModle);
+typedef void(^CollectionItemTappedBlock)(void);
 
 @interface TypeSelectCollectionView : BaseCollectionView
 
 @property (nonatomic, copy) CollectionItemTappedBlock block;
-
 
 @end

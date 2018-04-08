@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-static NSString *headerIdentifier = @"HeaderCollectionReusableView";
-
+ 
 @interface HeaderCollectionReusableView : UICollectionReusableView
 
 @end

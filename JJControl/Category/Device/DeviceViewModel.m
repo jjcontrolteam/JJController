@@ -30,5 +30,8 @@
     block(_array2);
 }
 
+- (void)fetchHeaderData:(fetchHeaderBlock)block{
+    block(@[@{@"firstItem":@" 设备",@"secondItem":@"场景"}]);
+}
 
 @end

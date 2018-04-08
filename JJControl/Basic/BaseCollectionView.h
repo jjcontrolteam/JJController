@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewModel.h"
+#import "BaseViewModel.h" 
 @interface BaseCollectionView : UICollectionView
-@property(nonatomic,strong) BaseViewModel *viewModel; 
+@property (nonatomic, strong, readonly) BaseViewModel *viewModel;
+@property (nonatomic, assign) BOOL isMultiSection;
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout withViewModel:(BaseViewModel*)vModel;
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock;
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath*)indexPath;

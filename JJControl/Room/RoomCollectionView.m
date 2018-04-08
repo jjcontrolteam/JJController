@@ -27,7 +27,7 @@ static NSString *reusableindentifer=@"RoomCollectionReusable";
     [self registerClass:[RoomCollectionCell class] forCellWithReuseIdentifier:indentifer];
     [self registerClass:[RoomCollectionReusable class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reusableindentifer];
     
-    _dataSource = [[BaseDataSource alloc]initWithItems:@[]  cellIdentifier:indentifer withHeaderItem:@{@"":@""} headerIdentifier:reusableindentifer andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
+    _dataSource = [[BaseDataSource alloc]initWithItems:@[]  cellIdentifier:indentifer withHeaderItem:@[] headerIdentifier:reusableindentifer andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
      self.dataSource = _dataSource;
     
      _delegate = [[RoomDataDelegate alloc]initWithItems:@[] andCallBack:myDelegateBlock];

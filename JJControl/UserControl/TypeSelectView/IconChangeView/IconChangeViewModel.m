@@ -25,11 +25,12 @@
 }
 
 - (void)fetchData:(fetchBlock)block{
-    block(@[@"",@""]);
+    block(@[@[_deviceModel],@[_deviceModel]]);
 }
 
 - (void)fetchHeaderData:(fetchHeaderBlock)block{
-    block(@{@"key":@"哈哈"});
+    block(@[@"图标", @"名称"]);
 }
+
 
 @end

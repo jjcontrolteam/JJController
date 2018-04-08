@@ -7,6 +7,7 @@
 //
 
 #import "IconChangeCollectionViewCell.h"
+#import "DeviceModel.h"
 
 @interface IconChangeCollectionViewCell(){
     UIImageView *_imgViewOrigin;
@@ -35,21 +36,21 @@
         make.left.mas_equalTo(self.contentView).offset(4 * CELL_LEFT_MARGIN);
         make.width.height.equalTo(@80);
     }];
-//
-//    UIImageView *imgViewNew = [[UIImageView alloc] init];
-//    imgViewNew.translatesAutoresizingMaskIntoConstraints = NO;
-//    imgViewNew.backgroundColor = [UIColor blueColor];
-//    [self.contentView addSubview:imgViewNew];
-//
-//    [imgViewNew mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.size.mas_equalTo(_imgViewOrigin);
-//        make.top.bottom.mas_equalTo(_imgViewOrigin);
-//        make.right.mas_equalTo(self.contentView).offset(- 4 * CELL_RIGHT_MARGIN);
-//    }];
+
+    UIImageView *imgViewNew = [[UIImageView alloc] init];
+    imgViewNew.translatesAutoresizingMaskIntoConstraints = NO;
+    imgViewNew.backgroundColor = [UIColor blueColor];
+    [self.contentView addSubview:imgViewNew];
+
+    [imgViewNew mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(_imgViewOrigin);
+        make.top.bottom.mas_equalTo(_imgViewOrigin);
+        make.right.mas_equalTo(self.contentView).offset(- 4 * CELL_RIGHT_MARGIN);
+    }];
 }
 
-- (void)setCellData:(id)cellData{
-    _imgViewOrigin.image = [UIImage imageNamed:@"home_on@2x"];
+- (void)setCellData:(DeviceModel *)cellData{
+    _imgViewOrigin.image =  [UIImage imageNamed:cellData.pic];
 }
 
 @end

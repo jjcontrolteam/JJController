@@ -10,10 +10,7 @@
 
 @implementation DeviceSettingViewModel
 
-
-
 - (void)fetchData:(fetchBlock)block{
-    
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
     DeviceSettingModel *model = [DeviceSettingModel modelWithType:DeviceSettingTypeSpan];
@@ -95,5 +92,7 @@
     block(array);
      
 }
+
+
 
 @end

@@ -14,4 +14,6 @@ typedef void(^SegmentChangedBlock)(NSInteger index);
 
 @property (nonatomic, copy) SegmentChangedBlock segmentChangedBlock;
 
+- (void)setCellData:(id)data;
+ 
 @end

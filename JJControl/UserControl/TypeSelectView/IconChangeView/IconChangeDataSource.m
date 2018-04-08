@@ -10,14 +10,13 @@
 
 @implementation IconChangeDataSource
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 3;
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
+    UICollectionViewCell *cell;
+    if(indexPath.section == 0){
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:IconIdentifier forIndexPath:indexPath];
+    }else{
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:nameIdentifier forIndexPath:indexPath];
+    }
+    return cell;
 }
-
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 1;
-}
-
-
 @end

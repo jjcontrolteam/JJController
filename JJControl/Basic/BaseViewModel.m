@@ -21,10 +21,10 @@
 }
 
 -(void)fetchHeaderData:(fetchHeaderBlock)block{
-    block(@{});
+    block(@[]);
 }
 -(void)fetchFooterData:(fetchFooterBlock)block{
-    block(@{});
+    block(@[]);
 }
 -(void)updateCollectionView{
     

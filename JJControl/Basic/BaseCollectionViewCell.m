@@ -10,6 +10,13 @@
 
 @implementation BaseCollectionViewCell
 
+- (instancetype)initWithFrame:(CGRect)frame{
+    if(self = [super initWithFrame:frame]){
+        [self setBackgroundColor:[UIColor whiteColor]];
+    }
+    return self;
+}
+
 //- (UICollectionViewLayoutAttributes*)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes*)layoutAttributes {
 //    [self setNeedsLayout];
 //    [self layoutIfNeeded];

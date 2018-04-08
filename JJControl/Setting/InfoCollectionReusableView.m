@@ -75,11 +75,10 @@
 }
 
 
-- (void)setCellData:(id)cellData{
-    _avaterImageView.image = [UIImage imageNamed:@"JJControlResource.bundle/icon_cj_ys_on.png"];
-    
-    _nameLabel.text = @"ThinkHome";
-    _idLabel.text = @"帐号:13912222211";
+- (void)setCellData:(NSDictionary *)cellData{
+    _avaterImageView.image = [UIImage imageNamed:[cellData objectForKey:@"avatar"] ];
+    _nameLabel.text = [cellData objectForKey:@"name"];
+    _idLabel.text = [cellData objectForKey:@"id"] ;
 }
 
 @end

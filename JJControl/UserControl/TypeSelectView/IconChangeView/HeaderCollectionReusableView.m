@@ -34,11 +34,9 @@
     [self addSubview:_titleLabel];
     
 }
-
-
-- (void)setCellData:(id)cellData{
  
-    _titleLabel.text = @"ThinkHome";
+- (void)setCellData:(id)cellData{
+    _titleLabel.text = cellData;
  }
 
 

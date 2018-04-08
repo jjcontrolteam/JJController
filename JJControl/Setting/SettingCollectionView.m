@@ -32,7 +32,7 @@
     [self registerClass:[InfoCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:infoIdentifier];
     [self registerClass:[ButtonCollectionViewCell class] forCellWithReuseIdentifier:buttonIndentifier];
     
-    _dataSource = [[SettingDataSource alloc] initWithItems:@[] cellIdentifier:settingIdentifier withHeaderItem:@{@"":@""} headerIdentifier:infoIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
+    _dataSource = [[SettingDataSource alloc] initWithItems:@[] cellIdentifier:settingIdentifier withHeaderItem:@[] headerIdentifier:infoIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
     self.dataSource = _dataSource;
     
     _delegate = [[SettingDataDelegate alloc] initWithItems:@[] andCallBack:myDelegateBlock];

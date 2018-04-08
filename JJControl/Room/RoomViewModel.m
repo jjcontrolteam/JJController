@@ -37,7 +37,11 @@
     }];
 }
 
--(void)fetchConectData:(fetchBlock)block{
-    
+- (void)fetchHeaderData:(fetchBlock)block{
+    block(@[@""]);
+}
+
+- (void)fetchConectData:(fetchBlock)block{
+    block(@[@""]);
 }
 @end

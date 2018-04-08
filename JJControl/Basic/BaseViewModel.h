@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 typedef void (^fetchBlock)(NSArray *data);
-typedef void (^fetchHeaderBlock)(NSDictionary *data);
-typedef void (^fetchFooterBlock)(NSDictionary *data);
+typedef void (^fetchHeaderBlock)(NSArray *data);
+typedef void (^fetchFooterBlock)(NSArray *data);
 @interface BaseViewModel : NSObject 
 -(void)fetchData:(fetchBlock)block;
 -(void)fetchHeaderData:(fetchHeaderBlock)block;

@@ -53,4 +53,8 @@
     block(array);
     
 }
+
+- (void)fetchHeaderData:(fetchHeaderBlock)block{
+    block(@[@{@"avatar":@"JJControlResource.bundle/icon_cj_ys_on.png",@"name":@"ThinkHome",@"id":@"13912222211"}]);
+}
 @end

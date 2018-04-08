@@ -8,7 +8,6 @@
 
 #import "BaseCollectionViewCell.h"
 
-static NSString *identifier = @"IconChangeCollectionViewCell";
  
 @interface IconChangeCollectionViewCell : BaseCollectionViewCell
 

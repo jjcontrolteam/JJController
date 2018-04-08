@@ -14,6 +14,4 @@
     return CGSizeMake(SCREEN_WIDTH, 60);
 }
 
-
-
 @end

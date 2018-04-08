@@ -236,10 +236,10 @@
     }];
 }
 - (void)loginOtherAction:(id)sender{
-    BindController *bindController = [[BindController alloc] init];
-    [self.navigationController pushViewController:bindController animated:YES];
-   // MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
-   // [self.navigationController pushViewController:mainTabbarController animated:YES];
+//    BindController *bindController = [[BindController alloc] init];
+//    [self.navigationController pushViewController:bindController animated:YES];
+    MainTabBarController *mainTabbarController = [[MainTabBarController alloc] init];
+    [self.navigationController pushViewController:mainTabbarController animated:YES];
 }
 
 - (void)registerAction:(id)sender{

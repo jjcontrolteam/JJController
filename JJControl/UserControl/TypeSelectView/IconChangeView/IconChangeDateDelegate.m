@@ -11,7 +11,7 @@
 @implementation IconChangeDateDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return CGSizeMake(SCREEN_WIDTH, 50);
+    return CGSizeMake(SCREEN_WIDTH, 30);
 }
 
 @end

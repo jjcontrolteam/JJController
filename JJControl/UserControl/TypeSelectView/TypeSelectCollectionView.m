@@ -17,17 +17,14 @@
     BaseDataSource *_dataSource;
     BaseDataDelegate *_delegate;
 }
-@property(nonatomic,strong) TypeSelectViewModel *viewModel;
+@property (nonatomic, strong) TypeSelectViewModel *viewModel;
 
 @end
-
 
 @implementation TypeSelectCollectionView
 @dynamic viewModel;
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
-    
-    self.backgroundColor = [UIColor lightGrayColor];
     
     [self registerClass:[TypeSelectCollectionViewCell class] forCellWithReuseIdentifier:identifier];
  
@@ -51,7 +48,7 @@
     [self.viewModel changeSelectItem:indexPath.row];
     [self reloadData];
     if(self.block){
-        self.block([[IconChangeViewModel alloc] initWithModel:data]);
+        self.block();
     }
 }
 /*

@@ -7,6 +7,7 @@
 //
 
 #import "TypeSelectViewModel.h"
+#import "IconChangeViewModel.h"
 #import "DeviceModel.h"
 
 @interface TypeSelectViewModel(){
@@ -46,11 +47,11 @@
     }
 }
 
-- (DeviceModel *)selectedItem{
+- (IconChangeViewModel *)iconChangeViewModelForSelectItem{
     for(NSInteger i = 0; i < self.deviceItems.count; i++){
         DeviceModel *model = [self.deviceItems objectAtIndex:i];
         if(model.isOn == YES){
-            return model;
+            return [[IconChangeViewModel alloc] initWithModel:model];
         }
     }
     return nil;
