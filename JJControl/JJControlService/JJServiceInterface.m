@@ -68,7 +68,7 @@ static JJServiceInterface * _singleton;
                        auth:false
                        user:nil
                        pass:nil
-                  willTopic:nil
+                  willTopic:@"v1/cloud/request"
                        will:nil
                     willQos:MQTTQosLevelExactlyOnce
              willRetainFlag:FALSE
@@ -78,10 +78,10 @@ static JJServiceInterface * _singleton;
                    forKeyPath:@"state"
                       options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
                       context:nil];
-    [self.manager addObserver:self
+   /* [self.manager addObserver:self
               forKeyPath:@"effectiveSubscriptions"
                  options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
-                 context:nil];
+                 context:nil];*/
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -99,6 +99,7 @@ static JJServiceInterface * _singleton;
                 [_delegate connectFailue];
                 
             }
+            [self.manager connectToLast];
         }
            
             
@@ -115,6 +116,7 @@ static JJServiceInterface * _singleton;
                 [_delegate connectFailue];
                 
             }
+            [self.manager connectToLast];
         }
             break;
         case MQTTSessionManagerStateConnected:
@@ -129,12 +131,7 @@ static JJServiceInterface * _singleton;
                 [_delegate connectSuccess];
                 
             }
-            if (_delegate && [_delegate respondsToSelector:@selector(connectFailue)]) {
-                
-                [_delegate connectFailue];
-                
-            }
-           
+            
         }
             
           
@@ -146,11 +143,7 @@ static JJServiceInterface * _singleton;
                 [_delegate showStatus:@"连接中."];
                 
             }
-            if (_delegate && [_delegate respondsToSelector:@selector(connectFailue)]) {
-                
-                [_delegate connectFailue];
-                
-            }
+            
         }
             break;
         case MQTTSessionManagerStateError:
@@ -165,6 +158,7 @@ static JJServiceInterface * _singleton;
                 [_delegate connectFailue];
                 
             }
+            [self.manager connectToLast];
         }
             break;
         case MQTTSessionManagerStateStarting:
@@ -172,23 +166,19 @@ static JJServiceInterface * _singleton;
         {
             if (_delegate && [_delegate respondsToSelector:@selector(showStatus:)]) {
                 
-                [_delegate showStatus:@"连接关闭."];
+                [_delegate showStatus:@"连接开始."];
                 
             }
-            if (_delegate && [_delegate respondsToSelector:@selector(connectFailue)]) {
-                
-                [_delegate connectFailue];
-                
-            }
+            
             
         }
             break;
     }
-    if ([keyPath isEqualToString:@"effectiveSubscriptions"]) {
+   /* if ([keyPath isEqualToString:@"effectiveSubscriptions"]) {
         MQTTSessionManager *manager = (MQTTSessionManager *)object;
         NSLog(@"aa-%@",manager.effectiveSubscriptions);
        // DDLogVerbose(@"effectiveSubscriptions changed: %@", manager.effectiveSubscriptions);
-    }
+    }*/
     
 }
 

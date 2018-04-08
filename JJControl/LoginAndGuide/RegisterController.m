@@ -123,7 +123,7 @@
     JJServiceInterface *service = [JJServiceInterface share];
     service.delegate = self;
     [service connectWithClientId:nameField_.text];
-    [self showHud];
+   
     
     
     
@@ -149,7 +149,7 @@
                 NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",nameField_.text];
                 [service sendMsg:[str dataUsingEncoding:NSUTF8StringEncoding] toTopic:@"v1/cloud/request" receiveTopic:receive];
             }else if ([[dict objectForKey:@"cmd"]integerValue]==1002) {//获取验证码
-                [self hiddenHud];
+                 
                 JJServiceInterface *service = [JJServiceInterface share];
                 service.delegate = nil;
                 [self.navigationController popViewControllerAnimated:YES];

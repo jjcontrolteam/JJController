@@ -10,11 +10,13 @@
 #import "JJServiceInterface.h"
 #import "JRDB.h"
 #import "MJExtension.h"
+#import "MBProgressHUD.h"
 static ServiceMgr * _singleton;
 
 @interface ServiceMgr()<JJServiceDelegate>{
     ReceiveBlock jsonModelBlock_;
     ReceiveBlock sysDataBlock_;
+    ConnectBlock conBlock_;
 }
 @end
 @implementation ServiceMgr
@@ -40,9 +42,40 @@ static ServiceMgr * _singleton;
     }
     return self;
 }
+-(void)connectWithClientId:(NSString*)clientid withSuccess:(ConnectBlock)block{
+    [self showHud];
+    [self showStatus:@"连接中"];
+    JJServiceInterface *service = [JJServiceInterface share];
+    service.delegate = self;
+    conBlock_ = [block copy];
+    [service connectWithClientId:clientid];
+}
 
+- (void)connectSuccess{
+    [self hiddenHud];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (conBlock_) {
+            conBlock_(YES);
+        }
+    });
+    
+}
+-(void)connectFailue{
+    [self hiddenHud];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (conBlock_) {
+            conBlock_(NO);
+        }
+    });
+    
+    
+}
 -(void)sendMessage:(NSDictionary*)dict withTopic:(NSString*)topic withResponse:(NSString*)receiveTopic withSuccess:(ReceiveBlock)block{
     if (dict) {
+        [self showHud];
+        [self showStatus:@"发送中"];
         JJServiceInterface *service = [JJServiceInterface share];
         jsonModelBlock_ = [block copy];
         NSString *str =  [[JJServiceInterface class] jsonStringWithDictionary:dict];
@@ -50,6 +83,8 @@ static ServiceMgr * _singleton;
     }
     
 }
+
+
 
 -(void)sysStartingFetchData:(ReceiveBlock)block{
     //
@@ -61,6 +96,7 @@ static ServiceMgr * _singleton;
     __block __weak typeof(self) weakSelf= self;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
         if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1003) {
+            [weakSelf hiddenHud];
             [weakSelf callBackSysData:dict];
         }else{
             if (dict) {
@@ -77,6 +113,9 @@ static ServiceMgr * _singleton;
     if (tbclass) {
         if (tbclass) {
             for (NSDictionary *val in [dict valueForKey:@"rows"]) {
+                if ([tbclass isEqualToString:@"ACTION"]) {//注意取，写后台表为ACTION
+                    tbclass =@"ACTIONS";
+                }
                 id  tbmodel=[NSClassFromString(tbclass) mj_objectWithKeyValues:val];
                 
                 if (tbmodel) {
@@ -96,22 +135,54 @@ static ServiceMgr * _singleton;
         }
     }
 }
-
+#pragma mark-委托返回
 - (void)receiveJson:(NSDictionary*)dict
 {
-    if (dict) {
-        if (jsonModelBlock_) {
-            jsonModelBlock_(dict);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (dict) {
+            if (jsonModelBlock_) {
+                jsonModelBlock_(dict);
+            }
         }
-    }
+    });
+    
+   
 }
+
 -(void)cleanUp{
     jsonModelBlock_=nil;
     sysDataBlock_=nil;
 }
 
+#pragma mark-ui操作
+- (void)showHud{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
+        [MBProgressHUD showHUDAddedTo:window animated:YES];
+    });
+    
+}
 
+- (void)hiddenHud{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
+        [MBProgressHUD hideHUDForView:window animated:YES];
+    });
+    
+}
 
+- (void)showStatus:(NSString*)msg{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIWindow *window=[[[UIApplication sharedApplication]delegate]window];
+        MBProgressHUD *hud = [MBProgressHUD HUDForView:window];
+        if (hud) {
+            [hud.label setText:msg];
+        }
+    });
+    
+    
+}
+#pragma mark-测试调试使用
 -(void)insertRoom{//:(ReceiveBlock)block
     // sysDataBlock_ = [block copy];
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];

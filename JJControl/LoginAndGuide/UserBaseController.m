@@ -103,24 +103,7 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
     return YES;
     
 }
-
-- (void)showHud{
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-}
-
-- (void)hiddenHud{
-    
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-}
-
-- (void)showStatus:(NSString*)msg{
-    MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
-    if (hud) {
-        [hud.label setText:msg];
-    }
-}
-
+ 
 - (void)backAction:(id)sender{
     JJServiceInterface *service = [JJServiceInterface share];
     service.delegate = nil;

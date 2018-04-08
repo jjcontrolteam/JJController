@@ -12,14 +12,14 @@
 #import "MainTabBarController.h"
 #import "ViewController.h"
 #import "ServiceMgr.h"
-#import "JJServiceInterface.h"
+//#import "JJServiceInterface.h"
 #import "BDUMD5Crypt.h"
 #import<CommonCrypto/CommonDigest.h>
 #import "BindController.h"
 #define KEY_MAC     @"gaoyusong"
 #define encryptKey  @"HmacMD5"
 
-@interface LoginController ()<UITextFieldDelegate,JJServiceDelegate>
+@interface LoginController ()<UITextFieldDelegate>
 {
     UITextField *nameField_;
     UITextField *pwdField_;
@@ -149,12 +149,16 @@
 }
 
 -(void)delay{
-    [self showHud];
-    JJServiceInterface *service = [JJServiceInterface share];
-    service.delegate = self;
     NSString *clientid=@"13979922222";//[[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
-    [service connectWithClientId:clientid];
-    
+   
+    [[ServiceMgr share]connectWithClientId:clientid withSuccess:^(BOOL success) {
+        if (success) {
+            
+            [conLabel_ setText:@"连接成功"];
+        }else
+            [conLabel_ setText:@"连接失败"];
+        
+    }];
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     [self resetView:0.0];
@@ -170,27 +174,18 @@
     
 }
 
-- (void)connectSuccess{
-    [conLabel_ setText:@"连接成功"];
-    NSString *clientid=@"13979922222";[[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
-    if (clientid) {//clientid isequalto namefield.text
-        [self loginWithClientId];
-    }
-}
-
--(void)connectFailue{
-    [super connectFailue];
-    [conLabel_ setText:@"连接失败"];
-    
-}
-
 -(void)loginWithoutClientId{
-    [self showHud];
-    JJServiceInterface *service = [JJServiceInterface share];
-    service.delegate = self;
-    [service connectWithClientId:nameField_.text];
     
+    NSString *clientid=@"13979922222";//[[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
     
+    [[ServiceMgr share]connectWithClientId:clientid withSuccess:^(BOOL success) {
+        if (success) {
+            [conLabel_ setText:@"连接成功"];
+        }else
+            [conLabel_ setText:@"连接失败"];
+        
+    }];
+        
     
 }
 
@@ -200,10 +195,8 @@
     NSDictionary *dict=@{@"cmd":@"1003",@"user":@"13979922222",@"password":result};
     NSString *receive=[NSString stringWithFormat:@"v1/cloud/%@/response",@"13979922222"];
     __block __weak typeof(self) weakSelf= self;
-    [self showHud];
     [service sendMessage:dict withTopic:@"v1/cloud/request" withResponse:receive withSuccess:^(NSDictionary *dict) {
         NSLog(@"%@",dict);
-        [weakSelf hiddenHud];
         if([dict valueForKey:@"code"]&&[[dict valueForKey:@"code"]integerValue]==0 && [[dict valueForKey:@"cmd"]integerValue]==1003)
         {
             [[NSUserDefaults standardUserDefaults]setValue:@"13979922222" forKey:@"client_id"];
