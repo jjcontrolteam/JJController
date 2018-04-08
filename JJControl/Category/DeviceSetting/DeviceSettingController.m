@@ -12,7 +12,7 @@
 #import "PickerViewController.h"
 #import "TypeSelectViewController.h"
 #import "TimingViewController.h"
-
+#import "PickerViewModel.h"
 @interface DeviceSettingController (){
     DeviceSettingCollectionView *_collectionView;
 }
@@ -32,11 +32,15 @@
     _collectionView = [[DeviceSettingCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:deviceSettingViewModel];
     __weak typeof(self) weakSelf = self;
     _collectionView.block = ^(DeviceSettingModel * data) {
-        if(data.deviceSettingType == DeviceSettingTypeSelection){
-            PickerViewController *pickerVC = [[PickerViewController alloc] initWithTitle:data.title selectItem:data.details array:data.selectionArray];
-//            pickerVC.changeBlock = ^(NSInteger index) {
-            
-//            };
+        if(data.deviceSettingType == DeviceSettingTypeSelection || data.deviceSettingType == DeviceSettingTypeMultiSelection){
+            PickerViewModel *pickerVM = [[PickerViewModel alloc] initWithTitle:data.title array:data.selectionArray];
+            if(data.deviceSettingType == DeviceSettingTypeMultiSelection){
+                pickerVM.pickerViewType = PickerViewTypeMulti;  //多选
+            }
+            PickerViewController *pickerVC = [[PickerViewController alloc] initWithViewModel:pickerVM];
+            pickerVC.ensureBlock = ^(NSArray *array) {
+                data.selectionArray = array;
+            };
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:pickerVC];
             [weakSelf presentViewController:nav animated:YES completion:nil];
             

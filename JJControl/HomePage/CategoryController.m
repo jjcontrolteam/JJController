@@ -23,7 +23,7 @@
     
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor redColor];
-    self.title = @"安防";
+    self.title = @"类别";
     CategoryViewModel *vModel=[[CategoryViewModel alloc]init];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 100);

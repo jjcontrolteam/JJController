@@ -27,7 +27,6 @@
     //图标切换
     _imgViewOrigin = [[UIImageView alloc] init];
     _imgViewOrigin.translatesAutoresizingMaskIntoConstraints = NO;
-    _imgViewOrigin.backgroundColor = [UIColor redColor];
     [self.contentView addSubview:_imgViewOrigin];
 
     [_imgViewOrigin mas_makeConstraints:^(MASConstraintMaker *make) {

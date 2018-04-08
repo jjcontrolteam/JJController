@@ -7,6 +7,7 @@
 //
 
 #import "DeviceSettingViewModel.h"
+#import "DeviceModel.h"
 
 @implementation DeviceSettingViewModel
 
@@ -19,12 +20,18 @@
     DeviceSettingModel *modelTitle = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:nil details:@"水晶灯"];
     modelTitle.type = @"title";
     modelTitle.deviceSettingType = DeviceSettingTypeTitle;
-    modelTitle.selectionArray = @[@"灯光",@"射灯", @"壁灯"];
+    modelTitle.selectionArray = @[[DeviceModel modelWithTitle:@"水晶灯" isOn:YES],
+                                  [DeviceModel modelWithTitle:@"摄灯" isOn:NO],
+                                  [DeviceModel modelWithTitle:@"壁灯" isOn:NO],
+                                  [DeviceModel modelWithTitle:@"楼道" isOn:NO]];
     [array addObject:modelTitle];
     
     DeviceSettingModel *modelRoom = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"房间" details:@"一层客厅"];
     modelRoom.type = @"room";
-    modelRoom.selectionArray = @[@"一层客厅",@"二层", @"三层厨房"];
+    modelRoom.selectionArray = @[[DeviceModel modelWithTitle:@"一层客厅" isOn:YES],
+                                 [DeviceModel modelWithTitle:@"二层厨房" isOn:NO],
+                                 [DeviceModel modelWithTitle:@"三层厕所" isOn:NO],
+                                 [DeviceModel modelWithTitle:@"四层楼道" isOn:NO]];
     modelRoom.deviceSettingType = DeviceSettingTypeSelection;
     [array addObject:modelRoom];
     
@@ -38,13 +45,19 @@
     DeviceSettingModel *modelDaojishi = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"倒计时" details:@"15分钟"];
     modelDaojishi.type = @"daojishi";
     modelDaojishi.deviceSettingType = DeviceSettingTypeSelection;
-    modelDaojishi.selectionArray = @[@"1分钟",@"5分钟", @"30分钟"];
+    modelDaojishi.selectionArray = @[[DeviceModel modelWithTitle:@"1分钟" isOn:NO],
+                                      [DeviceModel modelWithTitle:@"5分钟" isOn:NO],
+                                      [DeviceModel modelWithTitle:@"15分钟" isOn:YES],
+                                      [DeviceModel modelWithTitle:@"30分钟" isOn:NO]];
     [array addObject:modelDaojishi];
     
     DeviceSettingModel *modelLongest = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"最长开启" details:@"未设定"];
     modelLongest.type = @"longest";
     modelLongest.deviceSettingType = DeviceSettingTypeSelection;
-    modelLongest.selectionArray = @[@"1分钟",@"5分钟", @"30分钟"];
+    modelLongest.selectionArray = @[[DeviceModel modelWithTitle:@"未设定" isOn:YES],
+                                    [DeviceModel modelWithTitle:@"1分钟" isOn:NO],
+                                    [DeviceModel modelWithTitle:@"5分钟" isOn:NO],
+                                    [DeviceModel modelWithTitle:@"30分钟" isOn:NO]];
     [array addObject:modelLongest];
     
     DeviceSettingModel *model2 = [DeviceSettingModel modelWithType:DeviceSettingTypeSpan];
@@ -61,7 +74,8 @@
     DeviceSettingModel *modelPWD = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"设备密码" details:@"未启用"];
     modelPWD.deviceSettingType = DeviceSettingTypeSelection;
     modelPWD.type = @"PWD";
-    modelPWD.selectionArray = @[@"开启",@"不开启"];
+    modelPWD.selectionArray = @[[DeviceModel modelWithTitle:@"未启用" isOn:YES],
+                                [DeviceModel modelWithTitle:@"启用" isOn:NO]];
     [array addObject:modelPWD];
     
     DeviceSettingModel *model3 = [DeviceSettingModel modelWithType:DeviceSettingTypeSpan];
@@ -74,7 +88,10 @@
     DeviceSettingModel *modelHidden = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"设备隐藏" details:nil];
     modelHidden.deviceSettingType = DeviceSettingTypeMultiSelection;
     modelHidden.type = @"hidden";
-    modelHidden.selectionArray = @[@"在全部列表中隐藏",@"在房间列表中隐藏"];
+    modelHidden.selectionArray =  @[[DeviceModel modelWithTitle:@"在全部列表中隐藏" isOn:YES],
+                                    [DeviceModel modelWithTitle:@"在房间列表中隐藏" isOn:YES],
+                                    [DeviceModel modelWithTitle:@"在卧室列表中隐藏" isOn:YES],
+                                    [DeviceModel modelWithTitle:@"在二楼列表中隐藏" isOn:NO]];
     [array addObject:modelHidden];
     
     DeviceSettingModel *modelLog = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"日志" details:nil];

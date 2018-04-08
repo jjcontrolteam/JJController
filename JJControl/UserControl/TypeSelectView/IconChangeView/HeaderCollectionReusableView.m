@@ -23,10 +23,9 @@
 }
 
 - (void)createSubviews{
-    self.backgroundColor = [UIColor redColor];
+    self.backgroundColor = [UIColor lightGrayColor];
     
     _titleLabel =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
-    _titleLabel.backgroundColor = [UIColor blueColor];
     _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [_titleLabel setTextAlignment:NSTextAlignmentLeft];
     [_titleLabel setFont:[UIFont systemFontOfSize:20]];

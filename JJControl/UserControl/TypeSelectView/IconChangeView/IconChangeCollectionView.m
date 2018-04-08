@@ -25,7 +25,7 @@
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
     
-    self.backgroundColor = [UIColor lightGrayColor];
+    self.backgroundColor = [UIColor whiteColor];
     
     [self registerClass:[IconChangeCollectionViewCell class] forCellWithReuseIdentifier:IconIdentifier];
     [self registerClass:[NameChangeCollectionViewCell class ] forCellWithReuseIdentifier:nameIdentifier];

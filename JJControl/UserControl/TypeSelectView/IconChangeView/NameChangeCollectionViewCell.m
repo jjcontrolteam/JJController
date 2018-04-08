@@ -11,7 +11,7 @@
 
 @interface NameChangeCollectionViewCell (){
     UITextField *_textFieldName;
- }
+}
 
 @end
 

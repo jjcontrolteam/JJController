@@ -13,13 +13,15 @@ typedef NS_ENUM(NSInteger, DeviceModelType){
     DeviceModelTypeDispaly  //只用于展示
 };
 
-@interface DeviceModel : NSObject
+@interface DeviceModel : NSObject<NSMutableCopying>
 
 @property (nonatomic, copy) NSString *pic;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, assign) BOOL isOn;
 
 + (instancetype)modelWithPic:(NSString *)pic title:(NSString *)title isOn:(BOOL)isOn;
++ (instancetype)modelWithTitle:(NSString *)title isOn:(BOOL)isOn;
+
 
 
 @end

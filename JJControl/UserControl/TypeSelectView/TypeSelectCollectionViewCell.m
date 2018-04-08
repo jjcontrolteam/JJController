@@ -28,7 +28,7 @@
 
 - (void)createSubviews{
     
-    _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
+    _imgView = [[UIImageView alloc]init];
     _imgView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:_imgView];
     [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -50,7 +50,7 @@
         make.left.mas_equalTo(_imgView.mas_right).offset(2 * CELL_INNER_MARGIN);
     }];
     
-    _selectView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 100, 10, 25, 25)];
+    _selectView = [[UIImageView alloc] init];
     _selectView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:_selectView];
     [_selectView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -63,8 +63,13 @@
 - (void)setCellData:(DeviceModel *)cellData{
     
     [_lbName setText:cellData.title];
-    [_imgView setImage:[UIImage imageNamed:cellData.pic]];
-    
+    if(cellData.pic){
+        [_imgView setImage:[UIImage imageNamed:cellData.pic]];
+    }else{
+        [_imgView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(0);
+        }];
+    }
     if(cellData.isOn){
         _selectView.image = [UIImage imageNamed:@"JJControlResource.bundle/bind.png"];
     }else{

@@ -34,6 +34,9 @@
 		2E8C07C520667225004D296A /* SettingDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C07C420667225004D296A /* SettingDataSource.m */; };
 		2E8C07CB20667628004D296A /* SpanCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C07CA20667628004D296A /* SpanCollectionViewCell.m */; };
 		2E8C07CF20667BE5004D296A /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C07CE20667BE5004D296A /* BaseCollectionViewCell.m */; };
+		2EB6FCD2207A3FE000860762 /* PickerCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6FCD1207A3FE000860762 /* PickerCollectionView.m */; };
+		2EB6FCD8207A443000860762 /* PickerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6FCD7207A443000860762 /* PickerViewModel.m */; };
+		2EB6FCDC207A643700860762 /* ModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6FCDB207A643700860762 /* ModelBase.m */; };
 		2EBD37C7206287E300E3A667 /* SettingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37C6206287E300E3A667 /* SettingCollectionView.m */; };
 		2EBD37CA2062882100E3A667 /* SettingDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37C92062882100E3A667 /* SettingDataDelegate.m */; };
 		2EBD37CD2062886900E3A667 /* SettingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37CC2062886900E3A667 /* SettingCollectionViewCell.m */; };
@@ -204,6 +207,12 @@
 		2E8C07CD20667BE5004D296A /* BaseCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewCell.h; sourceTree = "<group>"; };
 		2E8C07CE20667BE5004D296A /* BaseCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewCell.m; sourceTree = "<group>"; };
 		2E8C07D02066947B004D296A /* JJControl.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJControl.pch; sourceTree = "<group>"; };
+		2EB6FCD0207A3FE000860762 /* PickerCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerCollectionView.h; sourceTree = "<group>"; };
+		2EB6FCD1207A3FE000860762 /* PickerCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerCollectionView.m; sourceTree = "<group>"; };
+		2EB6FCD6207A443000860762 /* PickerViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerViewModel.h; sourceTree = "<group>"; };
+		2EB6FCD7207A443000860762 /* PickerViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerViewModel.m; sourceTree = "<group>"; };
+		2EB6FCDA207A643600860762 /* ModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBase.h; sourceTree = "<group>"; };
+		2EB6FCDB207A643700860762 /* ModelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBase.m; sourceTree = "<group>"; };
 		2EBD37C5206287E300E3A667 /* SettingCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingCollectionView.h; sourceTree = "<group>"; };
 		2EBD37C6206287E300E3A667 /* SettingCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingCollectionView.m; sourceTree = "<group>"; };
 		2EBD37C82062882100E3A667 /* SettingDataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingDataDelegate.h; sourceTree = "<group>"; };
@@ -449,6 +458,7 @@
 		2E48418620788FDB00207A17 /* TypeSelectView */ = {
 			isa = PBXGroup;
 			children = (
+				2EB6FCD9207A44EE00860762 /* PickerView */,
 				2E4841A920793DEA00207A17 /* IconChangeView */,
 				2E48418320788F2400207A17 /* TypeSelectViewController.h */,
 				2E48418420788F2400207A17 /* TypeSelectViewController.m */,
@@ -511,10 +521,21 @@
 				2E48418620788FDB00207A17 /* TypeSelectView */,
 				2E8BFFCA206BDC61002751C7 /* ModifyViewController.h */,
 				2E8BFFCB206BDC61002751C7 /* ModifyViewController.m */,
-				2E48417F2077259C00207A17 /* PickerViewController.h */,
-				2E4841802077259C00207A17 /* PickerViewController.m */,
 			);
 			path = UserControl;
+			sourceTree = "<group>";
+		};
+		2EB6FCD9207A44EE00860762 /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				2E48417F2077259C00207A17 /* PickerViewController.h */,
+				2E4841802077259C00207A17 /* PickerViewController.m */,
+				2EB6FCD0207A3FE000860762 /* PickerCollectionView.h */,
+				2EB6FCD1207A3FE000860762 /* PickerCollectionView.m */,
+				2EB6FCD6207A443000860762 /* PickerViewModel.h */,
+				2EB6FCD7207A443000860762 /* PickerViewModel.m */,
+			);
+			path = PickerView;
 			sourceTree = "<group>";
 		};
 		2EBD37CE2062939200E3A667 /* DeviceSetting */ = {
@@ -804,6 +825,8 @@
 		84FAEF86205AAD8D00BF112C /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				2EB6FCDA207A643600860762 /* ModelBase.h */,
+				2EB6FCDB207A643700860762 /* ModelBase.m */,
 				84FAEF87205AB0D900BF112C /* BaseDataSource.h */,
 				84FAEF88205AB0D900BF112C /* BaseDataSource.m */,
 				84FAEF8A205AB40B00BF112C /* BaseDataDelegate.h */,
@@ -1152,6 +1175,8 @@
 				2EC341EF20600DCE007F4B8C /* CategoryCollectionView.m in Sources */,
 				2E4841BE20794D8A00207A17 /* IconChangeDateDelegate.m in Sources */,
 				2E4841B220793E7400207A17 /* IconChangeCollectionView.m in Sources */,
+				2EB6FCD8207A443000860762 /* PickerViewModel.m in Sources */,
+				2EB6FCD2207A3FE000860762 /* PickerCollectionView.m in Sources */,
 				2E4841812077259C00207A17 /* PickerViewController.m in Sources */,
 				2EC34205206157C8007F4B8C /* DeviceModel.m in Sources */,
 				84FAEF92205ABD0D00BF112C /* BaseCollectionView.m in Sources */,
@@ -1196,6 +1221,7 @@
 				2E48417A2076842A00207A17 /* DeviceSettingModel.m in Sources */,
 				84F1E9172060A7DA00828549 /* CategoryCellModel.m in Sources */,
 				84301C962064A69B004A857D /* DATA_VERSION.m in Sources */,
+				2EB6FCDC207A643700860762 /* ModelBase.m in Sources */,
 				84FAEF8F205ABC9D00BF112C /* BaseCollectionLayout.m in Sources */,
 				2EC341FB20615664007F4B8C /* DeviceCollectionView.m in Sources */,
 				84341BA72079B1AE00FFED1A /* NameChangeCollectionViewCell.m in Sources */,

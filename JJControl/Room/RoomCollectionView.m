@@ -12,7 +12,7 @@
 #import "RoomDataDelegate.h"
 #import "RoomCollectionCell.h"
 #import "RoomCollectionReusable.h"
-static NSString *indentifer=@"RoomTableViewCell";
+static NSString *indentifer=@"RoomCollectionCell";
 static NSString *reusableindentifer=@"RoomCollectionReusable";
 @interface RoomCollectionView(){
     BaseDataSource *_dataSource ;
