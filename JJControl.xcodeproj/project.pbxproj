@@ -93,6 +93,12 @@
 		84B1AC1A2050DE08005F028A /* JJControlUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AC192050DE08005F028A /* JJControlUITests.m */; };
 		84C681762079050C00DBB77F /* BindController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C681752079050C00DBB77F /* BindController.m */; };
 		84C6817920791C9000DBB77F /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C6817820791C9000DBB77F /* MyAlertView.m */; };
+		84C681A6207B889700DBB77F /* HomeCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C681A5207B889700DBB77F /* HomeCollectionView.m */; };
+		84C681A9207B88A800DBB77F /* HomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C681A8207B88A800DBB77F /* HomeViewModel.m */; };
+		84C681AC207B88C100DBB77F /* HomeDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C681AB207B88C100DBB77F /* HomeDataDelegate.m */; };
+		84C681AF207B88DB00DBB77F /* HomeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C681AE207B88DB00DBB77F /* HomeCollectionCell.m */; };
+		84C681B2207B8C9B00DBB77F /* StretchyHeaderCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C681B0207B8C9A00DBB77F /* StretchyHeaderCollectionViewLayout.m */; };
+		84C681B5207B8CBC00DBB77F /* HomeReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C681B4207B8CBC00DBB77F /* HomeReusableView.m */; };
 		84F1E8B6205A6D9F00828549 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E8B5205A6D9F00828549 /* MainTabBarController.m */; };
 		84F1E8BA205A6E1C00828549 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E8B9205A6E1C00828549 /* HomeController.m */; };
 		84F1E8BD205A6E3000828549 /* RoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1E8BC205A6E3000828549 /* RoomController.m */; };
@@ -325,6 +331,18 @@
 		84C681752079050C00DBB77F /* BindController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindController.m; sourceTree = "<group>"; };
 		84C6817720791C9000DBB77F /* MyAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAlertView.h; sourceTree = "<group>"; };
 		84C6817820791C9000DBB77F /* MyAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAlertView.m; sourceTree = "<group>"; };
+		84C681A4207B889700DBB77F /* HomeCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionView.h; sourceTree = "<group>"; };
+		84C681A5207B889700DBB77F /* HomeCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionView.m; sourceTree = "<group>"; };
+		84C681A7207B88A800DBB77F /* HomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewModel.h; sourceTree = "<group>"; };
+		84C681A8207B88A800DBB77F /* HomeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewModel.m; sourceTree = "<group>"; };
+		84C681AA207B88C100DBB77F /* HomeDataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDataDelegate.h; sourceTree = "<group>"; };
+		84C681AB207B88C100DBB77F /* HomeDataDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDataDelegate.m; sourceTree = "<group>"; };
+		84C681AD207B88DB00DBB77F /* HomeCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionCell.h; sourceTree = "<group>"; };
+		84C681AE207B88DB00DBB77F /* HomeCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionCell.m; sourceTree = "<group>"; };
+		84C681B0207B8C9A00DBB77F /* StretchyHeaderCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StretchyHeaderCollectionViewLayout.m; sourceTree = "<group>"; };
+		84C681B1207B8C9B00DBB77F /* StretchyHeaderCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StretchyHeaderCollectionViewLayout.h; sourceTree = "<group>"; };
+		84C681B3207B8CBC00DBB77F /* HomeReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeReusableView.h; sourceTree = "<group>"; };
+		84C681B4207B8CBC00DBB77F /* HomeReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeReusableView.m; sourceTree = "<group>"; };
 		84F1E8B4205A6D9F00828549 /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		84F1E8B5205A6D9F00828549 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		84F1E8B8205A6E1C00828549 /* HomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
@@ -702,6 +720,7 @@
 		84B1ABF42050DE08005F028A /* JJControl */ = {
 			isa = PBXGroup;
 			children = (
+				84C681A3207B887200DBB77F /* Home */,
 				2E48417B207698A700207A17 /* CommonCollectionViewCell */,
 				2E8BFFC9206BDAAE002751C7 /* UserControl */,
 				84301C832064A5AA004A857D /* JJModel */,
@@ -745,6 +764,24 @@
 			);
 			path = JJControlUITests;
 			sourceTree = "<group>";
+		};
+		84C681A3207B887200DBB77F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				84C681A4207B889700DBB77F /* HomeCollectionView.h */,
+				84C681A5207B889700DBB77F /* HomeCollectionView.m */,
+				84C681A7207B88A800DBB77F /* HomeViewModel.h */,
+				84C681A8207B88A800DBB77F /* HomeViewModel.m */,
+				84C681AA207B88C100DBB77F /* HomeDataDelegate.h */,
+				84C681AB207B88C100DBB77F /* HomeDataDelegate.m */,
+				84C681AD207B88DB00DBB77F /* HomeCollectionCell.h */,
+				84C681AE207B88DB00DBB77F /* HomeCollectionCell.m */,
+				84C681B3207B8CBC00DBB77F /* HomeReusableView.h */,
+				84C681B4207B8CBC00DBB77F /* HomeReusableView.m */,
+			);
+			name = Home;
+			path = JJControl/Home;
+			sourceTree = SOURCE_ROOT;
 		};
 		84F1E8B3205A6D5B00828549 /* HomePage */ = {
 			isa = PBXGroup;
@@ -818,6 +855,8 @@
 				84FAEFA3205AC2BA00BF112C /* RoomCollectionCell.m */,
 				84FAEFEC205E9FA800BF112C /* RoomCollectionReusable.h */,
 				84FAEFED205E9FA800BF112C /* RoomCollectionReusable.m */,
+				84C681B1207B8C9B00DBB77F /* StretchyHeaderCollectionViewLayout.h */,
+				84C681B0207B8C9A00DBB77F /* StretchyHeaderCollectionViewLayout.m */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -1168,14 +1207,17 @@
 				2EC3420B206161BB007F4B8C /* DeviceController.m in Sources */,
 				84FAEFEB205E9C8200BF112C /* RoomDataDelegate.m in Sources */,
 				84301C822064A35D004A857D /* DBHelper.m in Sources */,
+				84C681B5207B8CBC00DBB77F /* HomeReusableView.m in Sources */,
 				2E8C07C520667225004D296A /* SettingDataSource.m in Sources */,
 				2EBD37CD2062886900E3A667 /* SettingCollectionViewCell.m in Sources */,
 				84301D052067E6A0004A857D /* BaseViewModel.m in Sources */,
 				84301D082067F082004A857D /* SettingViewModel.m in Sources */,
 				2EC341EF20600DCE007F4B8C /* CategoryCollectionView.m in Sources */,
 				2E4841BE20794D8A00207A17 /* IconChangeDateDelegate.m in Sources */,
+				84C681A6207B889700DBB77F /* HomeCollectionView.m in Sources */,
 				2E4841B220793E7400207A17 /* IconChangeCollectionView.m in Sources */,
 				2EB6FCD8207A443000860762 /* PickerViewModel.m in Sources */,
+				84C681AF207B88DB00DBB77F /* HomeCollectionCell.m in Sources */,
 				2EB6FCD2207A3FE000860762 /* PickerCollectionView.m in Sources */,
 				2E4841812077259C00207A17 /* PickerViewController.m in Sources */,
 				2EC34205206157C8007F4B8C /* DeviceModel.m in Sources */,
@@ -1212,12 +1254,14 @@
 				84FAEFEE205E9FA800BF112C /* RoomCollectionReusable.m in Sources */,
 				843CBA472069D8EB00FB5443 /* DeviceSettingViewModel.m in Sources */,
 				2EBD37D4206295A200E3A667 /* DeviceSettingCollectionView.m in Sources */,
+				84C681B2207B8C9B00DBB77F /* StretchyHeaderCollectionViewLayout.m in Sources */,
 				84301D2C2068C7DB004A857D /* ServiceMgr.m in Sources */,
 				84301CA22064A6D0004A857D /* LINKAGE.m in Sources */,
 				84FAF005205EAF6A00BF112C /* RegisterController.m in Sources */,
 				2E4841A220792DD000207A17 /* TypeSelectCollectionView.m in Sources */,
 				84301CA82064A6ED004A857D /* PANEL_KEY.m in Sources */,
 				84F1E8BA205A6E1C00828549 /* HomeController.m in Sources */,
+				84C681A9207B88A800DBB77F /* HomeViewModel.m in Sources */,
 				2E48417A2076842A00207A17 /* DeviceSettingModel.m in Sources */,
 				84F1E9172060A7DA00828549 /* CategoryCellModel.m in Sources */,
 				84301C962064A69B004A857D /* DATA_VERSION.m in Sources */,
@@ -1238,6 +1282,7 @@
 				2EC341FF206156C1007F4B8C /* DeviceDataDelegate.m in Sources */,
 				84F1E8B6205A6D9F00828549 /* MainTabBarController.m in Sources */,
 				2E8C07CB20667628004D296A /* SpanCollectionViewCell.m in Sources */,
+				84C681AC207B88C100DBB77F /* HomeDataDelegate.m in Sources */,
 				84301CBA2064A741004A857D /* TIMING.m in Sources */,
 				84FAEF8C205AB40B00BF112C /* BaseDataDelegate.m in Sources */,
 				84301C8D2064A66D004A857D /* BIND.m in Sources */,

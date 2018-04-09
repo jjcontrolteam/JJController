@@ -96,6 +96,7 @@ static ServiceMgr * _singleton;
     [self sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
         if ([dict objectForKey:@"cmd"]&&[[dict objectForKey:@"cmd"]integerValue]==1003) {
             [weakSelf hiddenHud];
+            [[JRDBMgr shareInstance]close];
             [weakSelf callBackSysData:dict];
         }else{
             if (dict) {
@@ -120,6 +121,7 @@ static ServiceMgr * _singleton;
                 if (tbmodel) {
                     [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(tbclass)]];
                     [tbmodel jr_save];
+                    
                 }
                 
             }
