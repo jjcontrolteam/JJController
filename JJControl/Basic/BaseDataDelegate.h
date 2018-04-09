@@ -14,6 +14,6 @@ typedef void (^cellDelegateBlock)(id data, NSIndexPath *indexPath);
 @property (nonatomic, copy) NSArray *items;
 @property (nonatomic, assign) BOOL isMultiSection;
 
-- (instancetype)initWithItems:(NSArray *)array  andCallBack:(cellDelegateBlock)block;
+- (instancetype)initWithItems:(NSArray *)array andCallBack:(cellDelegateBlock)block;
 
 @end

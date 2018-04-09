@@ -37,6 +37,8 @@
 		2EB6FCD2207A3FE000860762 /* PickerCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6FCD1207A3FE000860762 /* PickerCollectionView.m */; };
 		2EB6FCD8207A443000860762 /* PickerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6FCD7207A443000860762 /* PickerViewModel.m */; };
 		2EB6FCDC207A643700860762 /* ModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6FCDB207A643700860762 /* ModelBase.m */; };
+		2EB6FCEE207B96D200860762 /* BannerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6FCED207B96D200860762 /* BannerCollectionViewCell.m */; };
+		2EB6FCF1207B9C4400860762 /* RoomDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6FCF0207B9C4400860762 /* RoomDataSource.m */; };
 		2EBD37C7206287E300E3A667 /* SettingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37C6206287E300E3A667 /* SettingCollectionView.m */; };
 		2EBD37CA2062882100E3A667 /* SettingDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37C92062882100E3A667 /* SettingDataDelegate.m */; };
 		2EBD37CD2062886900E3A667 /* SettingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD37CC2062886900E3A667 /* SettingCollectionViewCell.m */; };
@@ -127,7 +129,7 @@
 		84FAEFA1205ABE3C00BF112C /* RoomCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFA0205ABE3C00BF112C /* RoomCollectionView.m */; };
 		84FAEFA4205AC2BA00BF112C /* RoomCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFA3205AC2BA00BF112C /* RoomCollectionCell.m */; };
 		84FAEFEB205E9C8200BF112C /* RoomDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFEA205E9C8200BF112C /* RoomDataDelegate.m */; };
-		84FAEFEE205E9FA800BF112C /* RoomCollectionReusable.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFED205E9FA800BF112C /* RoomCollectionReusable.m */; };
+		84FAEFEE205E9FA800BF112C /* FloorCollectionReusable.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFED205E9FA800BF112C /* FloorCollectionReusable.m */; };
 		84FAF000205EAF6A00BF112C /* ForgetPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFF1205EAF6A00BF112C /* ForgetPwdController.m */; };
 		84FAF001205EAF6A00BF112C /* GuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFF3205EAF6A00BF112C /* GuideController.m */; };
 		84FAF002205EAF6A00BF112C /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FAEFF5205EAF6A00BF112C /* LoginController.m */; };
@@ -219,6 +221,10 @@
 		2EB6FCD7207A443000860762 /* PickerViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerViewModel.m; sourceTree = "<group>"; };
 		2EB6FCDA207A643600860762 /* ModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBase.h; sourceTree = "<group>"; };
 		2EB6FCDB207A643700860762 /* ModelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBase.m; sourceTree = "<group>"; };
+		2EB6FCEC207B96D200860762 /* BannerCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerCollectionViewCell.h; sourceTree = "<group>"; };
+		2EB6FCED207B96D200860762 /* BannerCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerCollectionViewCell.m; sourceTree = "<group>"; };
+		2EB6FCEF207B9C4400860762 /* RoomDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomDataSource.h; sourceTree = "<group>"; };
+		2EB6FCF0207B9C4400860762 /* RoomDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomDataSource.m; sourceTree = "<group>"; };
 		2EBD37C5206287E300E3A667 /* SettingCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingCollectionView.h; sourceTree = "<group>"; };
 		2EBD37C6206287E300E3A667 /* SettingCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingCollectionView.m; sourceTree = "<group>"; };
 		2EBD37C82062882100E3A667 /* SettingDataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingDataDelegate.h; sourceTree = "<group>"; };
@@ -389,8 +395,8 @@
 		84FAEFA3205AC2BA00BF112C /* RoomCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomCollectionCell.m; sourceTree = "<group>"; };
 		84FAEFE9205E9C8200BF112C /* RoomDataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomDataDelegate.h; sourceTree = "<group>"; };
 		84FAEFEA205E9C8200BF112C /* RoomDataDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomDataDelegate.m; sourceTree = "<group>"; };
-		84FAEFEC205E9FA800BF112C /* RoomCollectionReusable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomCollectionReusable.h; sourceTree = "<group>"; };
-		84FAEFED205E9FA800BF112C /* RoomCollectionReusable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomCollectionReusable.m; sourceTree = "<group>"; };
+		84FAEFEC205E9FA800BF112C /* FloorCollectionReusable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FloorCollectionReusable.h; sourceTree = "<group>"; };
+		84FAEFED205E9FA800BF112C /* FloorCollectionReusable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FloorCollectionReusable.m; sourceTree = "<group>"; };
 		84FAEFF0205EAF6A00BF112C /* ForgetPwdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdController.h; sourceTree = "<group>"; };
 		84FAEFF1205EAF6A00BF112C /* ForgetPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdController.m; sourceTree = "<group>"; };
 		84FAEFF2205EAF6A00BF112C /* GuideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideController.h; sourceTree = "<group>"; };
@@ -851,12 +857,18 @@
 				84301D282068C3C2004A857D /* RoomViewModel.m */,
 				84FAEFE9205E9C8200BF112C /* RoomDataDelegate.h */,
 				84FAEFEA205E9C8200BF112C /* RoomDataDelegate.m */,
+				2EB6FCEF207B9C4400860762 /* RoomDataSource.h */,
+				2EB6FCF0207B9C4400860762 /* RoomDataSource.m */,
 				84FAEFA2205AC2BA00BF112C /* RoomCollectionCell.h */,
 				84FAEFA3205AC2BA00BF112C /* RoomCollectionCell.m */,
 				84FAEFEC205E9FA800BF112C /* RoomCollectionReusable.h */,
 				84FAEFED205E9FA800BF112C /* RoomCollectionReusable.m */,
 				84C681B1207B8C9B00DBB77F /* StretchyHeaderCollectionViewLayout.h */,
 				84C681B0207B8C9A00DBB77F /* StretchyHeaderCollectionViewLayout.m */,
+				2EB6FCEC207B96D200860762 /* BannerCollectionViewCell.h */,
+				2EB6FCED207B96D200860762 /* BannerCollectionViewCell.m */,
+				84FAEFEC205E9FA800BF112C /* FloorCollectionReusable.h */,
+				84FAEFED205E9FA800BF112C /* FloorCollectionReusable.m */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -1251,13 +1263,14 @@
 				2EBD37C7206287E300E3A667 /* SettingCollectionView.m in Sources */,
 				84C681762079050C00DBB77F /* BindController.m in Sources */,
 				2E4841992078C40100207A17 /* TimingModel.m in Sources */,
-				84FAEFEE205E9FA800BF112C /* RoomCollectionReusable.m in Sources */,
+				84FAEFEE205E9FA800BF112C /* FloorCollectionReusable.m in Sources */,
 				843CBA472069D8EB00FB5443 /* DeviceSettingViewModel.m in Sources */,
 				2EBD37D4206295A200E3A667 /* DeviceSettingCollectionView.m in Sources */,
 				84C681B2207B8C9B00DBB77F /* StretchyHeaderCollectionViewLayout.m in Sources */,
 				84301D2C2068C7DB004A857D /* ServiceMgr.m in Sources */,
 				84301CA22064A6D0004A857D /* LINKAGE.m in Sources */,
 				84FAF005205EAF6A00BF112C /* RegisterController.m in Sources */,
+				2EB6FCEE207B96D200860762 /* BannerCollectionViewCell.m in Sources */,
 				2E4841A220792DD000207A17 /* TypeSelectCollectionView.m in Sources */,
 				84301CA82064A6ED004A857D /* PANEL_KEY.m in Sources */,
 				84F1E8BA205A6E1C00828549 /* HomeController.m in Sources */,
@@ -1292,6 +1305,7 @@
 				2E484171207679F400207A17 /* ACTIONS.m in Sources */,
 				2EC341F220600E73007F4B8C /* CategoryDataDelegate.m in Sources */,
 				2E48418520788F2400207A17 /* TypeSelectViewController.m in Sources */,
+				2EB6FCF1207B9C4400860762 /* RoomDataSource.m in Sources */,
 				84FAF004205EAF6A00BF112C /* OtherLoginController.m in Sources */,
 				2E4841BB207945DA00207A17 /* HeaderCollectionReusableView.m in Sources */,
 				2E48419F2078CE0100207A17 /* AllTimingModel.m in Sources */,

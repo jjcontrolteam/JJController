@@ -10,22 +10,30 @@
 #import "ServiceMgr.h"
 #import "ROOM.h"
 #import "RoomCollectionCell.h"
+
+@interface RoomViewModel(){
+    NSArray<ROOM *> *_floors;
+}
+@end
+
 @implementation RoomViewModel
 
 -(void)fetchData:(fetchBlock)block{
     // 分组按照楼层
-    NSArray<ROOM *> *floors=J_Select(ROOM)
+    _floors=J_Select(ROOM)
                             .GroupJ(FLOOR)
                             .list;
     NSMutableArray *arr=[NSMutableArray array];
-    for (ROOM *room in floors) {
+    [arr addObject:@[@"轮播"]];
+    for (ROOM *room in _floors) {
         NSArray<ROOM *> *list =J_Select(ROOM).AndJ(FLOOR).eq([NSNumber numberWithInteger:room.FLOOR])
                                 .list;
-        [arr addObject:list];
+        if(list.count > 0){
+            [arr addObject:list];
+        }
     }
     block(arr);
 }
-
  
 -(void)fetchSceneData:(fetchBlock)block{
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
@@ -45,7 +53,13 @@
 }
 
 - (void)fetchHeaderData:(fetchBlock)block{
-    block(@[@""]);
+    NSMutableArray *arr=[NSMutableArray array];
+    [arr addObject:@""];
+    for (ROOM *room in _floors) {
+        if(room.NAME)
+            [arr addObject:[NSString stringWithFormat:@"F%@",@(room.FLOOR)]];
+    }
+    block(arr);
 }
 
 - (void)fetchConectData:(fetchBlock)block{

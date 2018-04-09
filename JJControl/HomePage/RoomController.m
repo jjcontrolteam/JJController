@@ -20,12 +20,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor orangeColor];
     self.title = @"房间";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加" style:UIBarButtonItemStyleDone target:self action:@selector(addRoom)];
+    
     RoomViewModel *vmodel=[[RoomViewModel alloc]init];
     UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
+    layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 100);
     conview = [[RoomCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:vmodel];
     [self.view addSubview:conview];
    
@@ -38,6 +40,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)addRoom{
+    
 }
 
 /*

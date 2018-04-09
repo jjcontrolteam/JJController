@@ -11,9 +11,11 @@
 @implementation RoomDataDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-     return CGSizeMake(SCREEN_WIDTH, 204);
+    if(section == 0){
+        return CGSizeMake(SCREEN_WIDTH, 0.01);  
+    }else{
+        return CGSizeMake(SCREEN_WIDTH, 50);
+    }
 }
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(SCREEN_WIDTH, 51);
-}
+
 @end
