@@ -13,6 +13,8 @@
 #import "TypeSelectViewController.h"
 #import "TimingViewController.h"
 #import "PickerViewModel.h"
+#import "TypeSelectViewModel.h"
+
 @interface DeviceSettingController (){
     DeviceSettingCollectionView *_collectionView;
 }
@@ -45,7 +47,10 @@
             [weakSelf presentViewController:nav animated:YES completion:nil];
             
         }else if(data.deviceSettingType == DeviceSettingTypeTitle){
-            TypeSelectViewController *typeSelectVC = [[TypeSelectViewController alloc] init];
+            
+            TypeSelectViewModel *typeSelectVM = [[TypeSelectViewModel alloc] initWithTitle:data.title array:data.selectionArray];
+ 
+            TypeSelectViewController *typeSelectVC = [[TypeSelectViewController alloc] initWithViewModel:typeSelectVM];
             [weakSelf.navigationController pushViewController:typeSelectVC animated:YES];
         }else if(data.deviceSettingType == DeviceSettingTypeButton){
             

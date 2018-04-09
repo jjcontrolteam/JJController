@@ -11,7 +11,11 @@
 
 @interface TypeSelectViewModel : BaseViewModel
 
-//选中某一个 其他设置为不选中
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, strong) NSMutableArray *array;
+
+- (instancetype)initWithTitle:(NSString *)title array:(NSArray *)array;
+
 - (void)changeSelectItem:(NSInteger)index;
 
 - (IconChangeViewModel *)iconChangeViewModelForSelectItem;

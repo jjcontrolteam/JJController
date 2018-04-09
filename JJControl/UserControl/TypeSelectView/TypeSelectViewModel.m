@@ -13,33 +13,29 @@
 @interface TypeSelectViewModel(){
     DeviceModel *_currentDeviceItem;
 }
-
-@property (nonatomic, strong) NSMutableArray *deviceItems;
-
+ 
 @end
 
 @implementation TypeSelectViewModel
 
-- (instancetype)init{
+- (instancetype)initWithTitle:(NSString *)title array:(NSArray *)array{
     if(self = [super init]){
-        _deviceItems = [[NSMutableArray alloc] init];
+        _title = title;
+        _array = [[NSMutableArray alloc] init];
+        for (DeviceModel *model in array) {
+            [_array addObject:[model mutableCopy]];
+        }
     }
     return self;
 }
 
 - (void)fetchData:(fetchBlock)block{
-    self.deviceItems = [[NSMutableArray alloc] initWithArray:@[
-    [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"设备1" isOn:NO],
-    [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"设备2" isOn:NO],
-    [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"设备3" isOn:YES],
-    [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"设备4" isOn:NO],
-    [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"设备5" isOn:NO]]];
-    block(self.deviceItems);
+    block(self.array);
 }
 
 - (void)changeSelectItem:(NSInteger)index{
-    for(NSInteger i = 0; i < self.deviceItems.count; i++){
-        DeviceModel *model = [self.deviceItems objectAtIndex:i];
+    for(NSInteger i = 0; i < self.array.count; i++){
+        DeviceModel *model = [self.array objectAtIndex:i];
         if(i == index)
             model.isOn = YES;
         else
@@ -48,8 +44,8 @@
 }
 
 - (IconChangeViewModel *)iconChangeViewModelForSelectItem{
-    for(NSInteger i = 0; i < self.deviceItems.count; i++){
-        DeviceModel *model = [self.deviceItems objectAtIndex:i];
+    for(NSInteger i = 0; i < self.array.count; i++){
+        DeviceModel *model = [self.array objectAtIndex:i];
         if(model.isOn == YES){
             return [[IconChangeViewModel alloc] initWithModel:model];
         }

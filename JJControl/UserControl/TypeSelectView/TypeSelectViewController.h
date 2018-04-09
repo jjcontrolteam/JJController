@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TypeSelectViewModel;
 
 @interface TypeSelectViewController : UIViewController
+
+- (instancetype)initWithViewModel:(TypeSelectViewModel *)viewModel;
 
 @end

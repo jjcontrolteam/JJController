@@ -14,13 +14,21 @@
 
 @interface TypeSelectViewController(){
     TypeSelectCollectionView *_collectionView;
-    TypeSelectViewModel *_typeSelectViewModel;
+    TypeSelectViewModel *_viewModel;
+    
 }
 
 @end
  
 
 @implementation TypeSelectViewController
+
+- (instancetype)initWithViewModel:(TypeSelectViewModel *)viewModel{
+    if(self = [super init]){
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,8 +39,7 @@
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 100);
-    _typeSelectViewModel = [[TypeSelectViewModel alloc] init];
-    _collectionView = [[TypeSelectCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:_typeSelectViewModel];
+    _collectionView = [[TypeSelectCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:_viewModel];
     __weak typeof(self) weakSelf = self;
     _collectionView.block = ^() {
         [weakSelf goToIconEditPage];
@@ -48,7 +55,7 @@
 
 - (void)goToIconEditPage{
     //获取选中的
-    IconChangeViewModel *iconChangeVM = [_typeSelectViewModel iconChangeViewModelForSelectItem];
+    IconChangeViewModel *iconChangeVM = [_viewModel iconChangeViewModelForSelectItem];
     if(iconChangeVM){
         IconChangeViewController *IconChangeVC = [[IconChangeViewController alloc] initWithViewModel:iconChangeVM];
         [self.navigationController pushViewController:IconChangeVC animated:YES];

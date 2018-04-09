@@ -20,10 +20,10 @@
     DeviceSettingModel *modelTitle = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:nil details:@"水晶灯"];
     modelTitle.type = @"title";
     modelTitle.deviceSettingType = DeviceSettingTypeTitle;
-    modelTitle.selectionArray = @[[DeviceModel modelWithTitle:@"水晶灯" isOn:YES],
-                                  [DeviceModel modelWithTitle:@"摄灯" isOn:NO],
-                                  [DeviceModel modelWithTitle:@"壁灯" isOn:NO],
-                                  [DeviceModel modelWithTitle:@"楼道" isOn:NO]];
+    modelTitle.selectionArray = @[[DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"水晶灯" isOn:YES],
+                                  [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"摄灯" isOn:NO],
+                                  [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"壁灯" isOn:NO],
+                                  [DeviceModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"楼道" isOn:NO]];
     [array addObject:modelTitle];
     
     DeviceSettingModel *modelRoom = [DeviceSettingModel modelWithPic:@"JJControlResource.bundle/icon_cj_ys_on.png" title:@"房间" details:@"一层客厅"];
