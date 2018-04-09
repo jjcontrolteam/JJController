@@ -43,6 +43,7 @@
     return self;
 }
 - (void)fillInfo:(ROOM*)model{
+    
     [textLabel setText:model.NAME];
     NSString *imgname=[NSString stringWithFormat:@"JJControlResource.bundle/%@.png",model.iconPath];
     [imgView setImage:[UIImage imageNamed:imgname]];

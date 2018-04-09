@@ -38,7 +38,11 @@ static NSString *reusableindentifer=@"RoomCollectionReusable";
 
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
     RoomCollectionCell *cell2 = (RoomCollectionCell *)cell;
-    [cell2 fillInfo:data];
+    if (data && [data count]>0) {
+        NSArray *sections=[data objectAtIndex:indexPath.section]; 
+        [cell2 fillInfo:[sections objectAtIndex:indexPath.row]];
+    }
+    
 }
 
 - (void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath*)indexPath{

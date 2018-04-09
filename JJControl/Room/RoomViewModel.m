@@ -13,8 +13,16 @@
 @implementation RoomViewModel
 
 -(void)fetchData:(fetchBlock)block{
-    
-    NSArray *arr = [ROOM jr_findAll];
+    // 分组按照楼层
+    NSArray<ROOM *> *floors=J_Select(ROOM)
+                            .GroupJ(FLOOR)
+                            .list;
+    NSMutableArray *arr=[NSMutableArray array];
+    for (ROOM *room in floors) {
+        NSArray<ROOM *> *list =J_Select(ROOM).AndJ(FLOOR).eq([NSNumber numberWithInteger:room.FLOOR])
+                                .list;
+        [arr addObject:list];
+    }
     block(arr);
 }
 
