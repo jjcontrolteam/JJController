@@ -10,7 +10,7 @@
 
 @interface LINKAGE : NSObject 
 @property(nonatomic,assign) NSInteger  PARENT;
-@property(nonatomic,assign) NSInteger  ROOM_ID;
+@property(nonatomic,assign) NSInteger  roomID;
 @property(nonatomic,assign) NSInteger  ENABLE;
 @property(nonatomic,assign) NSInteger  REVERSAL;
 @property(nonatomic,assign) NSInteger  TIMES;

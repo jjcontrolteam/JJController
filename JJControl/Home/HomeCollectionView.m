@@ -52,6 +52,36 @@ static NSString *reusableindentifer=@"HomeCollectionReusable";
         if (data) {
              [headerView setIconName:data];
         }
+        __block __weak typeof(self) weakSelf=self;
+        HomeViewModel *hvm=(HomeViewModel*)self.viewModel;
+        headerView.segmentChangedBlock = ^(NSInteger index) {
+            if (index==0) {
+                [hvm fetchData:^(NSArray *data) {
+                    BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
+                    BaseDataDelegate *ddd=(BaseDataDelegate*)weakSelf.delegate;
+                    ds.cellData = [NSMutableArray arrayWithArray:data];
+                    ddd.items = [NSMutableArray arrayWithArray:data];
+                    [weakSelf reloadData];
+                }];
+            }else if (index==1) {
+                [hvm fetchScene:^(NSArray *data) {
+                    BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
+                    BaseDataDelegate *ddd=(BaseDataDelegate*)weakSelf.delegate;
+                    ds.cellData = [NSMutableArray arrayWithArray:data];
+                    ddd.items = [NSMutableArray arrayWithArray:data];
+                    [weakSelf reloadData];
+                }];
+                
+            }else{
+                [hvm fetchLinkAge:^(NSArray *data) {
+                    BaseDataSource *ds=(BaseDataSource*)weakSelf.dataSource;
+                    BaseDataDelegate *ddd=(BaseDataDelegate*)weakSelf.delegate;
+                    ds.cellData = [NSMutableArray arrayWithArray:data];
+                    ddd.items = [NSMutableArray arrayWithArray:data];
+                    [weakSelf reloadData];
+                }];
+            }
+        };
        
     }
     

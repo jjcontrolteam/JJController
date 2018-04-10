@@ -9,5 +9,6 @@
 #import "BaseViewModel.h"
 
 @interface HomeViewModel : BaseViewModel
-
+-(void)fetchLinkAge:(fetchBlock)block;
+-(void)fetchScene:(fetchBlock)block;
 @end

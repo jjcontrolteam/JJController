@@ -442,12 +442,12 @@
     // group
     if (chain.groupBy.length) {
         JRActivatedProperty *ap = [JRPersistentUtil activityWithPropertyName:chain.groupBy inClass:chain.targetClazz];
-        [sqlString appendFormat:@" group by '%@' ", ap.dataBaseName?:chain.groupBy];
+        [sqlString appendFormat:@" group by \"%@\" ", ap.dataBaseName?:chain.groupBy];
     }
     // orderby
     if (chain.orderBy.length) {
         JRActivatedProperty *ap = [JRPersistentUtil activityWithPropertyName:chain.orderBy inClass:chain.targetClazz];
-        [sqlString appendFormat:@" order by '%@' ", ap.dataBaseName?:chain.orderBy];
+        [sqlString appendFormat:@" order by \"%@\" ", ap.dataBaseName?:chain.orderBy];
     }
     // desc asc
     if (chain.isDesc && chain.orderBy.length) {[sqlString appendString:@" desc "];}
