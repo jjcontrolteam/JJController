@@ -24,7 +24,13 @@
                             .GroupJ(FLOOR)
                             .list;
     NSMutableArray *arr=[NSMutableArray array];
-    [arr addObject:@[@"轮播"]];
+    
+    //轮播图
+    NSArray *circleItems = @[@"JJControlResource.bundle/cad1.jpg",
+                             @"JJControlResource.bundle/cad2.jpg",
+                             @"JJControlResource.bundle/cad3.jpg"];
+    [arr addObject:@[circleItems]];
+    
     for (ROOM *room in _floors) {
         NSArray<ROOM *> *list =J_Select(ROOM).AndJ(FLOOR).eq([NSNumber numberWithInteger:room.FLOOR])
                                 .list;

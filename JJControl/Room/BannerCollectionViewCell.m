@@ -7,9 +7,9 @@
 //
 
 #import "BannerCollectionViewCell.h"
-
+#import "SDCycleScrollView.h"
 @interface BannerCollectionViewCell(){
-    UILabel *_label;
+    SDCycleScrollView *_cycleScrollView;
 }
 @end
 
@@ -25,19 +25,18 @@
 - (void)createSubviews{
     self.backgroundColor = [UIColor redColor];
     
-    _label = [[UILabel alloc] init];
-    _label.backgroundColor = [UIColor blueColor];
-    [self addSubview:_label];
+    _cycleScrollView = [[SDCycleScrollView alloc] init];
+    _cycleScrollView.backgroundColor = [UIColor blueColor];
+    [self addSubview:_cycleScrollView];
     
-    [_label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self).offset(CELL_TOP_MARGIN);
-        make.bottom.mas_equalTo(self).offset(-CELL_BOTTOM_MARGIN);
-        make.width.height.equalTo(@150);
+    [_cycleScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.mas_equalTo(self);
+        make.width.height.equalTo(@(SCREEN_WIDTH));
     }];
 }
 
 - (void)setCellData:(id)cellData{
-    _label.text = cellData;
+    _cycleScrollView.imageURLStringsGroup = cellData;
 } 
 
 @end
