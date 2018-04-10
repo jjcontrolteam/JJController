@@ -11,6 +11,7 @@ pod  'MBProgressHUD'
 pod  'Masonry'
 pod  ‘JRDB’
 pod 'MJExtension'
+pod 'SDCycleScrollView'
 end
 
 target 'JJControlTests'  do
