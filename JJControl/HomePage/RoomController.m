@@ -27,7 +27,7 @@
     
     RoomViewModel *vmodel=[[RoomViewModel alloc]init];
     UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
-    layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 100);
+    layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH);
     conview = [[RoomCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:vmodel];
     [self.view addSubview:conview];
    

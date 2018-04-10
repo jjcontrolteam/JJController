@@ -27,6 +27,7 @@
     
     _cycleScrollView = [[SDCycleScrollView alloc] init];
     _cycleScrollView.backgroundColor = [UIColor blueColor];
+    _cycleScrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:_cycleScrollView];
     
     [_cycleScrollView mas_makeConstraints:^(MASConstraintMaker *make) {

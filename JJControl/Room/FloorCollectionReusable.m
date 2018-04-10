@@ -28,6 +28,7 @@
     _floorLabel = [[UILabel alloc] init];
     _floorLabel.textColor = [UIColor grayColor];
     _floorLabel.font = [UIFont systemFontOfSize:25];
+    _floorLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:_floorLabel];
     
     [_floorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -39,6 +40,7 @@
     _detailsLabel = [[UILabel alloc] init];
     _detailsLabel.textColor = [UIColor grayColor];
     _detailsLabel.textAlignment = NSTextAlignmentRight;
+    _detailsLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _detailsLabel.font = [UIFont systemFontOfSize:16];
     [self addSubview:_detailsLabel];
     
