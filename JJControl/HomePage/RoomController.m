@@ -10,9 +10,12 @@
 #import "BaseCollectionLayout.h"
 #import "RoomCollectionView.h"
 #import "RoomViewModel.h"
+#import "AddRoomViewController.h"
+
 @interface RoomController ()
 {
     RoomCollectionView *conview;
+    RoomViewModel *_vmodel;
 }
 @end
 
@@ -20,15 +23,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor orangeColor];
     self.title = @"房间";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加" style:UIBarButtonItemStyleDone target:self action:@selector(addRoom)];
     
-    RoomViewModel *vmodel=[[RoomViewModel alloc]init];
+    _vmodel=[[RoomViewModel alloc]init];
     UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
     layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH);
-    conview = [[RoomCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:vmodel];
+    conview = [[RoomCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:_vmodel];
     [self.view addSubview:conview];
    
     
@@ -43,7 +48,13 @@
 }
 
 - (void)addRoom{
-    
+    AddRoomViewController *addRoomVC = [[AddRoomViewController alloc] init];
+    addRoomVC.addRoomBlock = ^(ROOM *room) {
+        [_vmodel insertRoom:^(NSArray *data) {
+            
+        }];
+    };
+    [self.navigationController pushViewController:addRoomVC animated:YES];
 }
 
 /*

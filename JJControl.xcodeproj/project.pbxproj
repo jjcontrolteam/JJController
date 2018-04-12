@@ -34,6 +34,9 @@
 		2E8C07C520667225004D296A /* SettingDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C07C420667225004D296A /* SettingDataSource.m */; };
 		2E8C07CB20667628004D296A /* SpanCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C07CA20667628004D296A /* SpanCollectionViewCell.m */; };
 		2E8C07CF20667BE5004D296A /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C07CE20667BE5004D296A /* BaseCollectionViewCell.m */; };
+		2EA4745A207D0C540053A1A2 /* AddRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA47459207D0C540053A1A2 /* AddRoomViewController.m */; };
+		2EA4745D207D0C6C0053A1A2 /* AddRoomViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4745C207D0C6C0053A1A2 /* AddRoomViewModel.m */; };
+		2EA47460207D0D170053A1A2 /* ListPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4745F207D0D170053A1A2 /* ListPickerViewController.m */; };
 		2EB6FCD2207A3FE000860762 /* PickerCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6FCD1207A3FE000860762 /* PickerCollectionView.m */; };
 		2EB6FCD8207A443000860762 /* PickerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6FCD7207A443000860762 /* PickerViewModel.m */; };
 		2EB6FCDC207A643700860762 /* ModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6FCDB207A643700860762 /* ModelBase.m */; };
@@ -215,6 +218,12 @@
 		2E8C07CD20667BE5004D296A /* BaseCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewCell.h; sourceTree = "<group>"; };
 		2E8C07CE20667BE5004D296A /* BaseCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewCell.m; sourceTree = "<group>"; };
 		2E8C07D02066947B004D296A /* JJControl.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJControl.pch; sourceTree = "<group>"; };
+		2EA47458207D0C540053A1A2 /* AddRoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddRoomViewController.h; sourceTree = "<group>"; };
+		2EA47459207D0C540053A1A2 /* AddRoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddRoomViewController.m; sourceTree = "<group>"; };
+		2EA4745B207D0C6C0053A1A2 /* AddRoomViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddRoomViewModel.h; sourceTree = "<group>"; };
+		2EA4745C207D0C6C0053A1A2 /* AddRoomViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddRoomViewModel.m; sourceTree = "<group>"; };
+		2EA4745E207D0D170053A1A2 /* ListPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListPickerViewController.h; sourceTree = "<group>"; };
+		2EA4745F207D0D170053A1A2 /* ListPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListPickerViewController.m; sourceTree = "<group>"; };
 		2EB6FCD0207A3FE000860762 /* PickerCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerCollectionView.h; sourceTree = "<group>"; };
 		2EB6FCD1207A3FE000860762 /* PickerCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerCollectionView.m; sourceTree = "<group>"; };
 		2EB6FCD6207A443000860762 /* PickerViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerViewModel.h; sourceTree = "<group>"; };
@@ -549,6 +558,19 @@
 			path = UserControl;
 			sourceTree = "<group>";
 		};
+		2EA47457207D0BF40053A1A2 /* AddRoom */ = {
+			isa = PBXGroup;
+			children = (
+				2EA47458207D0C540053A1A2 /* AddRoomViewController.h */,
+				2EA47459207D0C540053A1A2 /* AddRoomViewController.m */,
+				2EA4745B207D0C6C0053A1A2 /* AddRoomViewModel.h */,
+				2EA4745C207D0C6C0053A1A2 /* AddRoomViewModel.m */,
+				2EA4745E207D0D170053A1A2 /* ListPickerViewController.h */,
+				2EA4745F207D0D170053A1A2 /* ListPickerViewController.m */,
+			);
+			path = AddRoom;
+			sourceTree = "<group>";
+		};
 		2EB6FCD9207A44EE00860762 /* PickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,6 +873,7 @@
 		84FAEF85205AAD3800BF112C /* Room */ = {
 			isa = PBXGroup;
 			children = (
+				2EA47457207D0BF40053A1A2 /* AddRoom */,
 				84FAEF9F205ABE3C00BF112C /* RoomCollectionView.h */,
 				84FAEFA0205ABE3C00BF112C /* RoomCollectionView.m */,
 				84301D272068C3C2004A857D /* RoomViewModel.h */,
@@ -861,8 +884,6 @@
 				2EB6FCF0207B9C4400860762 /* RoomDataSource.m */,
 				84FAEFA2205AC2BA00BF112C /* RoomCollectionCell.h */,
 				84FAEFA3205AC2BA00BF112C /* RoomCollectionCell.m */,
-				84FAEFEC205E9FA800BF112C /* RoomCollectionReusable.h */,
-				84FAEFED205E9FA800BF112C /* RoomCollectionReusable.m */,
 				84C681B1207B8C9B00DBB77F /* StretchyHeaderCollectionViewLayout.h */,
 				84C681B0207B8C9A00DBB77F /* StretchyHeaderCollectionViewLayout.m */,
 				2EB6FCEC207B96D200860762 /* BannerCollectionViewCell.h */,
@@ -1258,6 +1279,7 @@
 				2E4841A820792FE600207A17 /* TypeSelectCollectionViewCell.m in Sources */,
 				84301D292068C3C2004A857D /* RoomViewModel.m in Sources */,
 				2E8C07CF20667BE5004D296A /* BaseCollectionViewCell.m in Sources */,
+				2EA47460207D0D170053A1A2 /* ListPickerViewController.m in Sources */,
 				84301CC02064A75C004A857D /* USER.m in Sources */,
 				84FAF006205EAF6A00BF112C /* UserBaseController.m in Sources */,
 				2EBD37C7206287E300E3A667 /* SettingCollectionView.m in Sources */,
@@ -1285,6 +1307,7 @@
 				84F1E8C0205A6E7B00828549 /* CategoryController.m in Sources */,
 				84FAF000205EAF6A00BF112C /* ForgetPwdController.m in Sources */,
 				2E4841AC20793E0F00207A17 /* IconChangeViewController.m in Sources */,
+				2EA4745A207D0C540053A1A2 /* AddRoomViewController.m in Sources */,
 				2EC3420E20616496007F4B8C /* ControlController.m in Sources */,
 				84301C932064A68E004A857D /* COMMAND.m in Sources */,
 				84301CBD2064A74F004A857D /* TRIGGER.m in Sources */,
@@ -1292,6 +1315,7 @@
 				84F1E8C3205A6E9600828549 /* SettingController.m in Sources */,
 				2EC341F520600EBA007F4B8C /* CategoryCollectionViewCell.m in Sources */,
 				84301C902064A67E004A857D /* CENTRAL_CONTROL.m in Sources */,
+				2EA4745D207D0C6C0053A1A2 /* AddRoomViewModel.m in Sources */,
 				2EC341FF206156C1007F4B8C /* DeviceDataDelegate.m in Sources */,
 				84F1E8B6205A6D9F00828549 /* MainTabBarController.m in Sources */,
 				2E8C07CB20667628004D296A /* SpanCollectionViewCell.m in Sources */,
