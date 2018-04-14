@@ -74,7 +74,7 @@
 
 
 #pragma mark-测试调试使用
--(void)insertRoom:(fetchBlock)block{
+-(void)insertRoom:(ROOM*)room callback:(fetchBlock)block{
     // sysDataBlock_ = [block copy];
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
     NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
@@ -82,15 +82,22 @@
     UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000*1000;
     UInt64 recordTime1 = [[NSDate date] timeIntervalSince1970]*1000*1000;
     
-    NSString *sqlRoom=[NSString stringWithFormat:@"insert into ROOM(_id,NAME,TYPE,ICON_PATH,FLOOR,STAR) values(%llu,'房间53',2,'icon_fj_kt',1,0)",recordTime];//,\"
-    NSString *sqlFloor=[NSString stringWithFormat:@"insert into FLOOR(_id,FLOOR,NAME,CAD_PATH) values(%llu,1,'1F','')",recordTime];;
+    NSString *sqlRoom=[NSString stringWithFormat:@"insert into ROOM(_id,NAME,TYPE,ICON_PATH,FLOOR,STAR) values(%llu,'%@',%ld,'%@',%ld,%ld)", recordTime,room.NAME,room.TYPE,room.iconPath,room.FLOOR,room.STAR];//,\"
+    NSString *sqlFloor=[NSString stringWithFormat:@"insert into FLOOR(_id,FLOOR,NAME,CAD_PATH) values(%llu,%ld,'%ldF','')",recordTime,room.FLOOR,room.FLOOR];
+    if (room.FLOOR==-100) {
+        sqlFloor=[NSString stringWithFormat:@"insert into FLOOR(_id,FLOOR,NAME,CAD_PATH) values(%llu,%ld,'%@','')",recordTime,room.FLOOR,@"未设"];
+    }
     NSString *session=[NSString stringWithFormat:@"%llu",recordTime1];
     NSDictionary *dict=@{@"cmd":@"2001",@"session":session,@"id":@"0",@"table":@"ROOM",@"sqls":@[sqlRoom,sqlFloor]};
    // __block __weak typeof(self) weakSelf= self;
+    __block ROOM *saveRoom=room;
+    room.ID=[NSString stringWithFormat:@"%llu",recordTime];
+    
     [[ServiceMgr share] sendMessage:dict withTopic:topic withResponse:receive withSuccess:^(NSDictionary *dict) {
-        
         if ([dict objectForKey:@"code"]&&[[dict objectForKey:@"code"]integerValue]==0)  {
-            block(@[@""]);
+            if([saveRoom jr_save]){
+                block(@[]);
+            }
         }
     }];
 }

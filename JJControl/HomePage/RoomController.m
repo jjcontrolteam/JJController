@@ -50,14 +50,20 @@
 
 - (void)addRoom{
     AddRoomViewController *addRoomVC = [[AddRoomViewController alloc] init];
+    __weak typeof(self) weakself=self;
     addRoomVC.addRoomBlock = ^(ROOM *room) {
-        [_vmodel insertRoom:^(NSArray *data) {
-            
+        [_vmodel insertRoom:room callback:^(NSArray *data) {
+            if (data) {
+                [weakself reloadData];
+            }
         }];
     };
     [self.navigationController pushViewController:addRoomVC animated:YES];
 }
 
+-(void)reloadData{
+    [conview fetchData];
+}
 /*
 #pragma mark - Navigation
 

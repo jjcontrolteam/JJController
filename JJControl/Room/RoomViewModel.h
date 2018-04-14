@@ -7,10 +7,10 @@
 //
 
 #import "BaseViewModel.h"
-
+@class ROOM;
 @interface RoomViewModel : BaseViewModel
 -(void)fetchSceneData:(fetchBlock)block;
 -(void)fetchDeviceData:(fetchBlock)block;
 -(void)fetchConectData:(fetchBlock)block;
--(void)insertRoom:(fetchBlock)block;
+-(void)insertRoom:(ROOM*)room callback:(fetchBlock)block;
 @end

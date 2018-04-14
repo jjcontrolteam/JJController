@@ -10,9 +10,9 @@
 #import "ListPickerViewController.h"
 #import "ROOM.h"
 
-#define FLOOR_ITEMS @[@"1",@"2",@"3",@"4",@"5"]
-#define ROOM_ICONS @[@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktld.png",@"JJControlResource.bundle/icon_sb_ktdd.png"]
-#define ROOM_NAMES @[@"默认",@"卧室",@"客厅",@"书房"]
+#define FLOOR_ITEMS @[@"未设",@"1",@"2",@"3",@"4",@"5"]
+#define ROOM_ICONS @[@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktld.png",@"JJControlResource.bundle/icon_sb_ktdd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png",@"JJControlResource.bundle/icon_sb_ktsd.png"]
+#define ROOM_NAMES @[@"默认",@"卧室",@"客厅",@"餐厅",@"厨房",@"婴儿房",@"书房",@"健身房",@"影音室",@"棋牌室",@"酒窑",@"浴室",@"卫生间",@"主人卧室",@"客卧",@"佣人卧室"]
 
 
 @interface AddRoomViewController (){
@@ -139,13 +139,18 @@
 }
 
 - (void)homeIconButtonTapped{
+ 
     ListPickerViewController *listPickerVC = [ListPickerViewController pickerWithTitle:nil withItems:ROOM_NAMES currentRows:@[@(_currentIconRow)]];
     listPickerVC.selectedBlock = ^(NSArray *selectedRows) {
         NSInteger row = [[selectedRows objectAtIndex:0] integerValue];
         _currentIconRow = row;
-        _room.iconPath = [ROOM_ICONS objectAtIndex:row];
-        _iconImage.image = [UIImage imageNamed:_room.iconPath];
+        NSString *fileName=[[ROOM_ICONS objectAtIndex:row] stringByReplacingOccurrencesOfString:@"JJControlResource.bundle/" withString:@""];
+        fileName=[fileName stringByReplacingOccurrencesOfString:@".png" withString:@""];
+        _room.iconPath =fileName;
+        _room.TYPE=row;
+        _iconImage.image = [UIImage imageNamed:[ROOM_ICONS objectAtIndex:row]];
         _homeNameField.text = [ROOM_NAMES objectAtIndex:row];
+  
     };
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     UINavigationController *nav=(UINavigationController *)window.rootViewController;
@@ -155,10 +160,17 @@
 - (void)floorButtonTapped{
     ListPickerViewController *listPickerVC = [ListPickerViewController pickerWithTitle:nil withItems:FLOOR_ITEMS currentRows:@[@(_currentFloorRow)]];
     listPickerVC.selectedBlock = ^(NSArray *selectedRows) {
-        NSInteger row = [[selectedRows objectAtIndex:0] integerValue];
-        _currentFloorRow = row;
-        _room.FLOOR = [[FLOOR_ITEMS objectAtIndex:row] integerValue];
-        _floor.text = [NSString stringWithFormat:@"F%@",@(_room.FLOOR)];
+        NSInteger index = [[selectedRows objectAtIndex:0] integerValue];
+        _currentFloorRow = index;
+        if(index==0){
+            _room.FLOOR = -100;
+            _floor.text = @"未设";
+            
+        }else{
+            _room.FLOOR = [[FLOOR_ITEMS objectAtIndex:index] integerValue];
+            _floor.text = [NSString stringWithFormat:@"%@F",@(_room.FLOOR)];
+        }
+         
     };
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     UINavigationController *nav=(UINavigationController *)window.rootViewController;
@@ -171,10 +183,11 @@
 
 - (void)ensure{
     _room.NAME = _homeNameField.text;
-    [self.navigationController popViewControllerAnimated:YES];
     if(self.addRoomBlock){
         self.addRoomBlock(_room);
     }
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {

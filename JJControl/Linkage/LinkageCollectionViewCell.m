@@ -36,7 +36,7 @@
         make.left.mas_equalTo(self.contentView).offset(CELL_LEFT_MARGIN);
         make.top.mas_equalTo(self.contentView).offset(CELL_TOP_MARGIN);
         make.bottom.mas_equalTo(self.contentView).offset(-CELL_BOTTOM_MARGIN);
-        make.width.height.mas_equalTo(SCREEN_WIDTH / 12.0);
+        make.width.height.mas_equalTo(SCREEN_WIDTH / 20.0);
     }];
     
     _lbName =[[UILabel alloc]init];

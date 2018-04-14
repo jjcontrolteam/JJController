@@ -8,7 +8,7 @@
 
 #import "LinkageViewModel.h"
 #import "LinkageModel.h"
-
+#import "LINKAGE.h"
 @interface LinkageViewModel(){
     NSMutableArray *_blockArray;
 }
@@ -25,7 +25,7 @@
 
 -(void)fetchData:(fetchBlock)block{
     [_blockArray addObject:@[@"开灯"]];
-
+    
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (int i = 0; i < 5; i++) {
         LinkageModel *linkage = [[LinkageModel alloc] init];
