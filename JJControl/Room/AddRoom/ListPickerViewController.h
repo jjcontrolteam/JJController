@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^SelectedBlock)(NSInteger index);
+typedef void(^SelectedBlock)(NSArray* selectedRows);
 
 @interface ListPickerViewController : UIViewController
 
-+ (instancetype)pickerWithTitle:(NSString *)title withItems:(NSArray *)items currentRow:(NSInteger)currentRow;
++ (instancetype)pickerWithTitle:(NSString *)title withItems:(NSArray *)items currentRows:(NSArray *)currentRows;
 
+@property (nonatomic, assign) BOOL isMulti;
 @property (nonatomic, copy) SelectedBlock selectedBlock;
 
 @end

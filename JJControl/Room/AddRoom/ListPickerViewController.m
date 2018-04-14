@@ -13,25 +13,29 @@
     NSArray *_array;
     UIView *_listPickerView;
     NSString *_title;
-    NSInteger _currentRow;
+    NSMutableArray *_currentRows;
 }
 
 @end
 
 @implementation ListPickerViewController
 
-- (instancetype)initWithTitle:(NSString *)title withItems:(NSArray *)items currentRow:(NSInteger)currentRow{
+- (instancetype)initWithTitle:(NSString *)title withItems:(NSArray *)items currentRows:(NSArray *)currentRows{
     if(self = [super init]){
         _title = title;
-        _currentRow = currentRow;
+        _currentRows = [[NSMutableArray alloc] init];
+        for (NSInteger i = 0 ; i < currentRows.count; i++) {
+            [_currentRows addObject:currentRows[i]];
+        }
+        _isMulti = NO;
         _array = [[NSMutableArray alloc]initWithArray:items];
     }
     
     return self;
 }
 
-+ (instancetype)pickerWithTitle:(NSString *)title withItems:(NSArray *)items currentRow:(NSInteger)currentRow{
-    ListPickerViewController *pickerVC = [[[self class] alloc] initWithTitle:title withItems:items currentRow:currentRow];
++ (instancetype)pickerWithTitle:(NSString *)title withItems:(NSArray *)items currentRows:(NSArray *)currentRows{
+    ListPickerViewController *pickerVC = [[[self class] alloc] initWithTitle:title withItems:items currentRows:currentRows];
     pickerVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     return pickerVC;
 }
@@ -86,21 +90,25 @@
         make.right.top.bottom.mas_equalTo(topView);
         make.width.mas_equalTo(@100);
     }];
-    
-    [pickerView selectRow:_currentRow inComponent:0 animated:YES];
+    if(_isMulti){
+        for (NSInteger i = 0; i < _array.count; i++) {
+            [pickerView selectRow:[_currentRows[i] integerValue] inComponent:i animated:YES];
+        }
+    }else{
+        [pickerView selectRow:[_currentRows[0] integerValue] inComponent:0 animated:YES];
+    }
 }
-
  
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 1;
+    return _isMulti ? _array.count : 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return _array.count;
+    return _isMulti ? [[_array objectAtIndex:component] count]  : _array.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    return [_array objectAtIndex:row];
+    return _isMulti ? [[_array objectAtIndex:component] objectAtIndex:row] : [_array objectAtIndex:row];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -111,12 +119,8 @@
     }
 }
 
-
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    _currentRow = row;
-    if(self.selectedBlock){
-        self.selectedBlock(_currentRow);
-    }
+    _currentRows[component] = @(row);
 }
 
 - (void)cancelButtonTapped{
@@ -125,12 +129,10 @@
 
 - (void)ensureButtonTapped{
     if(self.selectedBlock){
-        self.selectedBlock(_currentRow);
+        self.selectedBlock(_currentRows);
     }
     [self dismissViewControllerAnimated:YES completion:nil];
-
 }
- 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

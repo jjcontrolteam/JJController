@@ -29,7 +29,8 @@
     return self;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    id theme = _items[indexPath.row];
+    id theme = _isMultiSection ? _items[indexPath.section][indexPath.row] : _items[indexPath.row];
+
     if (callBlock) {
         callBlock(theme, indexPath);
     }

@@ -8,6 +8,10 @@
 
 #import "BaseCollectionView.h"
 
+typedef void(^HomeCellTappedBlock)(id data);
+
 @interface HomeCollectionView : BaseCollectionView
+
+@property (nonatomic, copy) HomeCellTappedBlock cellTappedBlock;
 
 @end

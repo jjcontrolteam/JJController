@@ -35,13 +35,14 @@
     layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH);
     conview = [[RoomCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:_vmodel];
     [self.view addSubview:conview];
-   
     
 }
+
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [conview reloadData];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

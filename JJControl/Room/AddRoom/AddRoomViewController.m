@@ -109,7 +109,6 @@
         make.left.right.mas_equalTo(self.view);
     }];
 
-    
     //楼层选择
     UILabel *floorLabel = [[UILabel alloc] init];
     floorLabel.text = @"楼层选择";
@@ -140,12 +139,13 @@
 }
 
 - (void)homeIconButtonTapped{
-    ListPickerViewController *listPickerVC = [ListPickerViewController pickerWithTitle:nil withItems:ROOM_NAMES currentRow:_currentIconRow];
-    listPickerVC.selectedBlock = ^(NSInteger index) {
-        _currentIconRow = index;
-        _room.iconPath = [ROOM_ICONS objectAtIndex:index];
+    ListPickerViewController *listPickerVC = [ListPickerViewController pickerWithTitle:nil withItems:ROOM_NAMES currentRows:@[@(_currentIconRow)]];
+    listPickerVC.selectedBlock = ^(NSArray *selectedRows) {
+        NSInteger row = [[selectedRows objectAtIndex:0] integerValue];
+        _currentIconRow = row;
+        _room.iconPath = [ROOM_ICONS objectAtIndex:row];
         _iconImage.image = [UIImage imageNamed:_room.iconPath];
-        _homeNameField.text = [ROOM_NAMES objectAtIndex:index];
+        _homeNameField.text = [ROOM_NAMES objectAtIndex:row];
     };
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     UINavigationController *nav=(UINavigationController *)window.rootViewController;
@@ -153,10 +153,11 @@
 }
 
 - (void)floorButtonTapped{
-    ListPickerViewController *listPickerVC = [ListPickerViewController pickerWithTitle:nil withItems:FLOOR_ITEMS currentRow:_currentFloorRow];
-    listPickerVC.selectedBlock = ^(NSInteger index) {
-        _currentFloorRow = index;
-        _room.FLOOR = [[FLOOR_ITEMS objectAtIndex:index] integerValue];
+    ListPickerViewController *listPickerVC = [ListPickerViewController pickerWithTitle:nil withItems:FLOOR_ITEMS currentRows:@[@(_currentFloorRow)]];
+    listPickerVC.selectedBlock = ^(NSArray *selectedRows) {
+        NSInteger row = [[selectedRows objectAtIndex:0] integerValue];
+        _currentFloorRow = row;
+        _room.FLOOR = [[FLOOR_ITEMS objectAtIndex:row] integerValue];
         _floor.text = [NSString stringWithFormat:@"F%@",@(_room.FLOOR)];
     };
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];

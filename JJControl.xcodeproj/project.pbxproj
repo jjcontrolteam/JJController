@@ -59,6 +59,13 @@
 		2EC3420820615ACE007F4B8C /* DeviceCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3420720615ACE007F4B8C /* DeviceCollectionReusableView.m */; };
 		2EC3420B206161BB007F4B8C /* DeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3420A206161BB007F4B8C /* DeviceController.m */; };
 		2EC3420E20616496007F4B8C /* ControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3420D20616496007F4B8C /* ControlController.m */; };
+		2EF882DA2081F03E00F13104 /* LinkageCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF882D92081F03E00F13104 /* LinkageCollectionView.m */; };
+		2EF882DD2081F06800F13104 /* LinkageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF882DC2081F06800F13104 /* LinkageViewController.m */; };
+		2EF882E02081F08700F13104 /* LinkageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF882DF2081F08700F13104 /* LinkageViewModel.m */; };
+		2EF882E32081F41D00F13104 /* LinkageCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF882E22081F41D00F13104 /* LinkageCollectionReusableView.m */; };
+		2EF882E62081F47400F13104 /* LinkageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF882E52081F47400F13104 /* LinkageCollectionViewCell.m */; };
+		2EF882E92081FA7800F13104 /* LinkageDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF882E82081FA7800F13104 /* LinkageDataDelegate.m */; };
+		2EF882EC2082131F00F13104 /* LinkageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF882EB2082131F00F13104 /* LinkageModel.m */; };
 		3EA40562274736440E682BDD /* libPods-JJControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E718575862E4A786EFD47144 /* libPods-JJControl.a */; };
 		84301C58206284A5004A857D /* VerifyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301C57206284A5004A857D /* VerifyController.m */; };
 		84301C822064A35D004A857D /* DBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84301C812064A35C004A857D /* DBHelper.m */; };
@@ -268,6 +275,20 @@
 		2EC3420A206161BB007F4B8C /* DeviceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceController.m; sourceTree = "<group>"; };
 		2EC3420C20616496007F4B8C /* ControlController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlController.h; sourceTree = "<group>"; };
 		2EC3420D20616496007F4B8C /* ControlController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControlController.m; sourceTree = "<group>"; };
+		2EF882D82081F03E00F13104 /* LinkageCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageCollectionView.h; sourceTree = "<group>"; };
+		2EF882D92081F03E00F13104 /* LinkageCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageCollectionView.m; sourceTree = "<group>"; };
+		2EF882DB2081F06800F13104 /* LinkageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageViewController.h; sourceTree = "<group>"; };
+		2EF882DC2081F06800F13104 /* LinkageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageViewController.m; sourceTree = "<group>"; };
+		2EF882DE2081F08700F13104 /* LinkageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageViewModel.h; sourceTree = "<group>"; };
+		2EF882DF2081F08700F13104 /* LinkageViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageViewModel.m; sourceTree = "<group>"; };
+		2EF882E12081F41D00F13104 /* LinkageCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageCollectionReusableView.h; sourceTree = "<group>"; };
+		2EF882E22081F41D00F13104 /* LinkageCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageCollectionReusableView.m; sourceTree = "<group>"; };
+		2EF882E42081F47400F13104 /* LinkageCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageCollectionViewCell.h; sourceTree = "<group>"; };
+		2EF882E52081F47400F13104 /* LinkageCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageCollectionViewCell.m; sourceTree = "<group>"; };
+		2EF882E72081FA7800F13104 /* LinkageDataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageDataDelegate.h; sourceTree = "<group>"; };
+		2EF882E82081FA7800F13104 /* LinkageDataDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageDataDelegate.m; sourceTree = "<group>"; };
+		2EF882EA2082131F00F13104 /* LinkageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageModel.h; sourceTree = "<group>"; };
+		2EF882EB2082131F00F13104 /* LinkageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageModel.m; sourceTree = "<group>"; };
 		6CCF6077A4B32890BA60222A /* Pods-JJControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJControl/Pods-JJControl.release.xcconfig"; sourceTree = "<group>"; };
 		7A49B1E052B158A11924C475 /* Pods-JJControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJControl/Pods-JJControl.debug.xcconfig"; sourceTree = "<group>"; };
 		84301C56206284A5004A857D /* VerifyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerifyController.h; sourceTree = "<group>"; };
@@ -666,6 +687,27 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		2EF882D72081EFBD00F13104 /* Linkage */ = {
+			isa = PBXGroup;
+			children = (
+				2EF882DB2081F06800F13104 /* LinkageViewController.h */,
+				2EF882DC2081F06800F13104 /* LinkageViewController.m */,
+				2EF882D82081F03E00F13104 /* LinkageCollectionView.h */,
+				2EF882D92081F03E00F13104 /* LinkageCollectionView.m */,
+				2EF882DE2081F08700F13104 /* LinkageViewModel.h */,
+				2EF882DF2081F08700F13104 /* LinkageViewModel.m */,
+				2EF882E12081F41D00F13104 /* LinkageCollectionReusableView.h */,
+				2EF882E22081F41D00F13104 /* LinkageCollectionReusableView.m */,
+				2EF882E42081F47400F13104 /* LinkageCollectionViewCell.h */,
+				2EF882E52081F47400F13104 /* LinkageCollectionViewCell.m */,
+				2EF882E72081FA7800F13104 /* LinkageDataDelegate.h */,
+				2EF882E82081FA7800F13104 /* LinkageDataDelegate.m */,
+				2EF882EA2082131F00F13104 /* LinkageModel.h */,
+				2EF882EB2082131F00F13104 /* LinkageModel.m */,
+			);
+			path = Linkage;
+			sourceTree = "<group>";
+		};
 		84301C832064A5AA004A857D /* JJModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -748,6 +790,7 @@
 		84B1ABF42050DE08005F028A /* JJControl */ = {
 			isa = PBXGroup;
 			children = (
+				2EF882D72081EFBD00F13104 /* Linkage */,
 				84C681A3207B887200DBB77F /* Home */,
 				2E48417B207698A700207A17 /* CommonCollectionViewCell */,
 				2E8BFFC9206BDAAE002751C7 /* UserControl */,
@@ -806,6 +849,8 @@
 				84C681AE207B88DB00DBB77F /* HomeCollectionCell.m */,
 				84C681B3207B8CBC00DBB77F /* HomeReusableView.h */,
 				84C681B4207B8CBC00DBB77F /* HomeReusableView.m */,
+				84C681B1207B8C9B00DBB77F /* StretchyHeaderCollectionViewLayout.h */,
+				84C681B0207B8C9A00DBB77F /* StretchyHeaderCollectionViewLayout.m */,
 			);
 			name = Home;
 			path = JJControl/Home;
@@ -884,8 +929,6 @@
 				2EB6FCF0207B9C4400860762 /* RoomDataSource.m */,
 				84FAEFA2205AC2BA00BF112C /* RoomCollectionCell.h */,
 				84FAEFA3205AC2BA00BF112C /* RoomCollectionCell.m */,
-				84C681B1207B8C9B00DBB77F /* StretchyHeaderCollectionViewLayout.h */,
-				84C681B0207B8C9A00DBB77F /* StretchyHeaderCollectionViewLayout.m */,
 				2EB6FCEC207B96D200860762 /* BannerCollectionViewCell.h */,
 				2EB6FCED207B96D200860762 /* BannerCollectionViewCell.m */,
 				84FAEFEC205E9FA800BF112C /* FloorCollectionReusable.h */,
@@ -1233,14 +1276,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EF882EC2082131F00F13104 /* LinkageModel.m in Sources */,
 				84C6817920791C9000DBB77F /* MyAlertView.m in Sources */,
 				2E48418F2078C12100207A17 /* TimingViewController.m in Sources */,
 				84301D0B2067F165004A857D /* DeviceViewModel.m in Sources */,
+				2EF882E32081F41D00F13104 /* LinkageCollectionReusableView.m in Sources */,
 				84FAEFA4205AC2BA00BF112C /* RoomCollectionCell.m in Sources */,
 				2EC3420B206161BB007F4B8C /* DeviceController.m in Sources */,
 				84FAEFEB205E9C8200BF112C /* RoomDataDelegate.m in Sources */,
 				84301C822064A35D004A857D /* DBHelper.m in Sources */,
 				84C681B5207B8CBC00DBB77F /* HomeReusableView.m in Sources */,
+				2EF882E62081F47400F13104 /* LinkageCollectionViewCell.m in Sources */,
 				2E8C07C520667225004D296A /* SettingDataSource.m in Sources */,
 				2EBD37CD2062886900E3A667 /* SettingCollectionViewCell.m in Sources */,
 				84301D052067E6A0004A857D /* BaseViewModel.m in Sources */,
@@ -1273,6 +1319,7 @@
 				84301CA52064A6DD004A857D /* LOG_TABLE.m in Sources */,
 				2EC34202206156E8007F4B8C /* DeviceCollectionViewCell.m in Sources */,
 				84FAE8FA20566BF900BF112C /* JJCtrlConfig.m in Sources */,
+				2EF882E92081FA7800F13104 /* LinkageDataDelegate.m in Sources */,
 				2E4841932078C19100207A17 /* EditTimingViewController.m in Sources */,
 				2EBD37DA2062966B00E3A667 /* DeviceSettingCollectionViewCell.m in Sources */,
 				84301D0E2067FA5A004A857D /* CategoryViewModel.m in Sources */,
@@ -1297,6 +1344,7 @@
 				84301CA82064A6ED004A857D /* PANEL_KEY.m in Sources */,
 				84F1E8BA205A6E1C00828549 /* HomeController.m in Sources */,
 				84C681A9207B88A800DBB77F /* HomeViewModel.m in Sources */,
+				2EF882DA2081F03E00F13104 /* LinkageCollectionView.m in Sources */,
 				2E48417A2076842A00207A17 /* DeviceSettingModel.m in Sources */,
 				84F1E9172060A7DA00828549 /* CategoryCellModel.m in Sources */,
 				84301C962064A69B004A857D /* DATA_VERSION.m in Sources */,
@@ -1321,6 +1369,7 @@
 				2E8C07CB20667628004D296A /* SpanCollectionViewCell.m in Sources */,
 				84C681AC207B88C100DBB77F /* HomeDataDelegate.m in Sources */,
 				84301CBA2064A741004A857D /* TIMING.m in Sources */,
+				2EF882E02081F08700F13104 /* LinkageViewModel.m in Sources */,
 				84FAEF8C205AB40B00BF112C /* BaseDataDelegate.m in Sources */,
 				84301C8D2064A66D004A857D /* BIND.m in Sources */,
 				84301CB12064A71A004A857D /* SCENE.m in Sources */,
@@ -1345,6 +1394,7 @@
 				2E4841962078C37B00207A17 /* TimingTableViewCell.m in Sources */,
 				2EBD37D1206293B100E3A667 /* DeviceSettingController.m in Sources */,
 				84301C8A2064A660004A857D /* android_metadata.m in Sources */,
+				2EF882DD2081F06800F13104 /* LinkageViewController.m in Sources */,
 				84301C9F2064A6C4004A857D /* FLOOR.m in Sources */,
 				2E4841A520792E3800207A17 /* TypeSelectViewModel.m in Sources */,
 				84FAE8C92056158300BF112C /* BDUMD5Crypt.m in Sources */,

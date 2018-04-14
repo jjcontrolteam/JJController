@@ -89,6 +89,10 @@ static NSString *reusableindentifer=@"HomeCollectionReusable";
 }
 - (void)chooseCell:(id)data withIndexPath:indexPath{
     NSLog(@"%@",data);
+    if(self.cellTappedBlock){
+        self.cellTappedBlock(data);
+    }
+    
 }
 
 @end

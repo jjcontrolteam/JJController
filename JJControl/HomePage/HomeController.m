@@ -10,6 +10,9 @@
 #import "StretchyHeaderCollectionViewLayout.h"
 #import "HomeCollectionView.h"
 #import "HomeViewModel.h"
+#import "LINKAGE.h"
+#import "LinkageViewController.h"
+
 @interface HomeController ()
 {
     HomeCollectionView *conview;
@@ -31,6 +34,14 @@
     HomeViewModel *vmodel=[[HomeViewModel alloc]init];
     conview = [[HomeCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:stretchyLayout withViewModel:vmodel];
     [self.view addSubview:conview];
+    __weak typeof(self) weakSelf = self;
+    conview.cellTappedBlock = ^(id data) {
+        if([data isKindOfClass:[LINKAGE class]]){
+            LinkageViewController *linkageVC = [[LinkageViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:linkageVC];
+            [weakSelf presentViewController:nav animated:YES completion:nil];
+        }
+    };
      
 }
 
