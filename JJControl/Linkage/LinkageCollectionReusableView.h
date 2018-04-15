@@ -8,9 +8,9 @@
 
 
 static NSString *headerIdentifier = @"LinkageCollectionReusableView";
-
+typedef void(^HeaderTappedBlock)(UICollectionReusableView *reusableView);
 @interface LinkageCollectionReusableView : UICollectionReusableView
-
-- (void)setData:(id)data;
+@property(nonatomic,copy) HeaderTappedBlock tapBlock;
+- (void)setData:(NSDictionary *)data withIndex:(NSInteger)index;
 
 @end

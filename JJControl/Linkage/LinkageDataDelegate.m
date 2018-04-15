@@ -13,6 +13,8 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if(section == 0){
         return CGSizeMake(SCREEN_WIDTH, 20);
+    }else if(section == 2){
+        return CGSizeMake(SCREEN_WIDTH, 44);
     }else{
         return CGSizeMake(SCREEN_WIDTH, 50);
     }

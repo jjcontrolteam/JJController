@@ -40,12 +40,18 @@
 }
 
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
-    [cell setCellData:data];
+    [self.viewModel updateCell:cell withData:data];
 }
 
 - (void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath*)indexPath{
     LinkageCollectionReusableView *header1 = (LinkageCollectionReusableView *)header;
-    [header1 setData:data];
+    [header1 setData:data withIndex:[indexPath section]];
+    
+    header1.tapBlock = ^(UICollectionReusableView *reusableView) {
+        if (self.headerTappedBlock) {
+            self.headerTappedBlock(data,indexPath);
+        }
+    };
 }
 - (void)chooseCell:(id)data withIndexPath:indexPath{
     NSLog(@"%@",data);

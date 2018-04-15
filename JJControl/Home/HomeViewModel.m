@@ -10,6 +10,7 @@
 #import "DEVICE.h"
 #import "SCENE.h"
 #import "LINKAGE.h"
+#import "HomeReusableView.h"
 @interface HomeViewModel(){
    
 }
@@ -38,4 +39,5 @@
     
     block(links);
 }
+
 @end

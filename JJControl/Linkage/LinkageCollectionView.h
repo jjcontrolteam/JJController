@@ -9,9 +9,9 @@
 #import "BaseCollectionView.h"
 
 typedef void(^CellTappedBlock)(id data, NSIndexPath * indexPath);
-
+typedef void(^HeaderActionBlock)(id data, NSIndexPath * indexPath);
 @interface LinkageCollectionView : BaseCollectionView
 
 @property (nonatomic, copy) CellTappedBlock cellTappedBlock;
-
+@property (nonatomic, copy) HeaderActionBlock headerTappedBlock;
 @end

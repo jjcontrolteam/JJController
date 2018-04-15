@@ -9,9 +9,9 @@
 #import "BaseCollectionView.h"
 
 typedef void(^HomeCellTappedBlock)(id data);
-
+typedef void(^HomeAddTappedBlock)(NSInteger index);
 @interface HomeCollectionView : BaseCollectionView
 
 @property (nonatomic, copy) HomeCellTappedBlock cellTappedBlock;
-
+@property (nonatomic, copy) HomeAddTappedBlock addTappedBlock;
 @end

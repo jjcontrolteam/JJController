@@ -11,14 +11,20 @@
 #import "LinkageViewModel.h"
 #import "ListPickerViewController.h"
 #import "LinkageModel.h"
-
+#import "AddLinkController.h"
 @interface LinkageViewController (){
     LinkageCollectionView *conview;
 }
 @end
 
 @implementation LinkageViewController
-
+-(instancetype)init:(NSInteger)index{//index 0,场景，1为设备2为联动
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -48,6 +54,11 @@
             [weakSelf presentViewController:listPickerVC animated:YES completion:nil];
         }
     };
+    conview.headerTappedBlock = ^(id data, NSIndexPath *indexPath) {
+        NSLog(@"%ld--%ld",[indexPath row],[indexPath section]);
+        AddLinkController *addlink=[[AddLinkController alloc]init];
+        [weakSelf.navigationController pushViewController:addlink animated:YES];
+    };
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -55,11 +66,11 @@
 }
 
 - (void)sure{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)cancel{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

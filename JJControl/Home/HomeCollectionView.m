@@ -50,7 +50,7 @@ static NSString *reusableindentifer=@"HomeCollectionReusable";
     if ([header isKindOfClass:[HomeReusableView class]]) {
         HomeReusableView *headerView = (HomeReusableView *)header;
         if (data) {
-             [headerView setIconName:data];
+             [headerView.iconView setImage:[UIImage imageNamed: data]];
         }
         __block __weak typeof(self) weakSelf=self;
         HomeViewModel *hvm=(HomeViewModel*)self.viewModel;
@@ -80,6 +80,12 @@ static NSString *reusableindentifer=@"HomeCollectionReusable";
                     ddd.items = [NSMutableArray arrayWithArray:data];
                     [weakSelf reloadData];
                 }];
+            }
+        };
+        
+        headerView.addBlock = ^(NSInteger index) {
+            if (_addTappedBlock) {
+                self.addTappedBlock(index);
             }
         };
        

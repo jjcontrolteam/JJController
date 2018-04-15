@@ -12,7 +12,7 @@
 #import "HomeViewModel.h"
 #import "LINKAGE.h"
 #import "LinkageViewController.h"
-
+#import "AddRoomViewController.h"
 @interface HomeController ()
 {
     HomeCollectionView *conview;
@@ -38,11 +38,28 @@
     conview.cellTappedBlock = ^(id data) {
         if([data isKindOfClass:[LINKAGE class]]){
             LinkageViewController *linkageVC = [[LinkageViewController alloc] init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:linkageVC];
-            [weakSelf presentViewController:nav animated:YES completion:nil];
+            [weakSelf.navigationController pushViewController:linkageVC animated:YES];
+        }
+    };
+    conview.addTappedBlock = ^(NSInteger index) {
+        if (index==0) {
+            AddRoomViewController *roomctrl=[[AddRoomViewController alloc]init];
+            [weakSelf.navigationController pushViewController:roomctrl animated:YES];
+        }else{
+            LinkageViewController *linkctrl=[[LinkageViewController alloc]init];
+            linkctrl.linkageType=LinkageTypeAdd;
+            [weakSelf.navigationController pushViewController:linkctrl animated:YES];
         }
     };
      
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning {

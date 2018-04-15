@@ -7,15 +7,10 @@
 //
 
 #import "LinkageCollectionViewCell.h"
-#import "LinkageModel.h"
 
-@interface LinkageCollectionViewCell(){
-    UIImageView *_imgView;
-    UILabel *_lbName;
-    UILabel *_lbLocate;
-    
-    UILabel *_lbModel;  //变为   立即
-    UILabel *_lbState;  //有人   打开
+
+@interface LinkageCollectionViewCell()<UITextFieldDelegate>{
+    UIView *line;
 }
 @end
 
@@ -30,26 +25,43 @@
 
 - (void)createSubviews{
     
-    _imgView = [[UIImageView alloc]init];
-    [self.contentView addSubview:_imgView];
-    [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIImageView *tmpimgView = [[UIImageView alloc]init];
+    [self.contentView addSubview:tmpimgView];
+    [tmpimgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.contentView).offset(CELL_LEFT_MARGIN);
         make.top.mas_equalTo(self.contentView).offset(CELL_TOP_MARGIN);
         make.bottom.mas_equalTo(self.contentView).offset(-CELL_BOTTOM_MARGIN);
         make.width.height.mas_equalTo(SCREEN_WIDTH / 20.0);
     }];
+    self.imgView=tmpimgView;
     
-    _lbName =[[UILabel alloc]init];
-    [self.contentView addSubview:_lbName];
-    [_lbName setTextAlignment:NSTextAlignmentLeft];
-    [_lbName setFont:[UIFont systemFontOfSize:16]];
-    [_lbName setTextColor:[UIColor blackColor]];
-
-    _lbLocate = [[UILabel alloc]init];
-    [self.contentView addSubview:_lbLocate];
-    [_lbLocate setTextAlignment:NSTextAlignmentLeft];
-    [_lbLocate setFont:[UIFont systemFontOfSize:16]];
-    [_lbLocate setTextColor:[UIColor blackColor]];
+    UILabel *tmplbName =[[UILabel alloc]init];
+    [self.contentView addSubview:tmplbName];
+    [tmplbName setTextAlignment:NSTextAlignmentLeft];
+    [tmplbName setFont:[UIFont systemFontOfSize:16]];
+    [tmplbName setTextColor:[UIColor blackColor]];
+    self.lbName=tmplbName;
+    
+    UITextField *nameField_ = [[UITextField alloc]initWithFrame:CGRectZero];
+    nameField_.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 4, 0)];
+    //设置显示模式为永远显示(默认不显示 必须设置 否则没有效果)
+    nameField_.leftViewMode = UITextFieldViewModeAlways;
+    [nameField_ setTextColor:[UIColor blackColor]];
+    [nameField_ setBackgroundColor:[UIColor clearColor]];
+    [nameField_ setDelegate:self];
+    [self.contentView addSubview:nameField_];
+    self.lbNameField=nameField_;
+    
+    line = [[UIView alloc]initWithFrame:CGRectZero];
+    [self.contentView addSubview:line];
+    [line setBackgroundColor:[UIColor colorWithRed:0.2471 green:0.6706 blue:0.4196 alpha:1.0]];
+    
+    UILabel *tmplbLocate = [[UILabel alloc]init];
+    [self.contentView addSubview:tmplbLocate];
+    [tmplbLocate setTextAlignment:NSTextAlignmentLeft];
+    [tmplbLocate setFont:[UIFont systemFontOfSize:16]];
+    [tmplbLocate setTextColor:[UIColor blackColor]];
+    self.lbLocate=tmplbLocate;
     
     [_lbName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.contentView.mas_centerY);
@@ -61,20 +73,33 @@
         make.left.mas_equalTo(_imgView.mas_right).offset(CELL_INNER_MARGIN);
     }];
     
+    [_lbNameField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.contentView.mas_centerY);
+        make.left.mas_equalTo(_imgView.mas_right).offset(CELL_INNER_MARGIN);
+        make.width.mas_equalTo(@200);
+    }];
     
-    _lbModel =[[UILabel alloc]init];
-    [self.contentView addSubview:_lbModel];
-    [_lbModel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
-    [_lbModel setTextAlignment:NSTextAlignmentLeft];
-    [_lbModel setFont:[UIFont systemFontOfSize:16]];
-    [_lbModel setTextColor:[UIColor greenColor]];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.contentView).offset(-1);
+        make.left.mas_equalTo(@100);
+        make.height.mas_equalTo(@1);
+    }];
     
-    _lbState =[[UILabel alloc]init];
-    [self.contentView addSubview:_lbState];
-    [_lbState setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
-    [_lbState setTextAlignment:NSTextAlignmentLeft];
-    [_lbState setFont:[UIFont systemFontOfSize:16]];
-    [_lbState setTextColor:[UIColor greenColor]];
+    UILabel *tmplbModel =[[UILabel alloc]init];
+    [self.contentView addSubview:tmplbModel];
+    [tmplbModel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    [tmplbModel setTextAlignment:NSTextAlignmentLeft];
+    [tmplbModel setFont:[UIFont systemFontOfSize:16]];
+    [tmplbModel setTextColor:[UIColor greenColor]];
+    self.lbModel=tmplbModel;
+    
+    UILabel *tmplbState =[[UILabel alloc]init];
+    [self.contentView addSubview:tmplbState];
+    [tmplbState setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    [tmplbState setTextAlignment:NSTextAlignmentLeft];
+    [tmplbState setFont:[UIFont systemFontOfSize:16]];
+    [tmplbState setTextColor:[UIColor greenColor]];
+    self.lbState=tmplbState;
     
     [_lbState mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.contentView);
@@ -86,57 +111,21 @@
     }];
 }
 
-- (void)setCellData:(id)cellData{
-    if([cellData isKindOfClass:[NSString class]]){
-        //联动名称:cellData
-        _imgView.hidden = YES;
-
-        _lbLocate.hidden = YES;
-        _lbState.hidden = YES;
-        _lbModel.hidden = YES;
-        [_lbName mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.contentView).offset(CELL_TOP_MARGIN);
-            make.bottom.mas_equalTo(self.contentView).offset(-CELL_BOTTOM_MARGIN);
-            make.left.mas_equalTo(self.contentView).offset(CELL_LEFT_MARGIN);
-        }];
-        _lbName.text = [NSString stringWithFormat:@"联动名称: %@", cellData];
-
-    }else{
-        _imgView.hidden = NO;
-        _lbLocate.hidden = NO;
-        _lbState.hidden = NO;
-        _lbModel.hidden = NO;
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if([string  isEqualToString:@"\n"])
+    {
+        [textField resignFirstResponder];
         
-        _imgView.image = [UIImage imageNamed:@"JJControlResource.bundle/right.png"];
-        [_lbName mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(self.contentView.mas_centerY);
-            make.left.mas_equalTo(_imgView.mas_right).offset(CELL_INNER_MARGIN);
-        }];
-
-        _lbName.text = @"红外感应";
-        _lbLocate.text = @"二层卫生间";
-        _lbModel.text = @"立即";
-        _lbState.text = @"打开";
-        
-        LinkageModel *model = cellData;
-        _imgView.hidden = NO;
-        _lbLocate.hidden = NO;
-        _lbState.hidden = NO;
-        _lbModel.hidden = NO;
-
-        [_lbName mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(self.contentView.mas_centerY);
-            make.left.mas_equalTo(_imgView.mas_right).offset(CELL_INNER_MARGIN);
-        }];
-
-        _imgView.image = [UIImage imageNamed:model.iconPic];
-        _lbName.text = model.title;
-        _lbLocate.text = model.room;
-        _lbModel.text = model.mode;
-        _lbState.text = model.state;
-        
+        return NO;
     }
+    NSMutableString *newtxt = [NSMutableString stringWithString:textField.text];
+    [newtxt replaceCharactersInRange:range withString:string];
+    if (newtxt.length > 11)
+        return NO;
+    
+    return YES;
+    
 }
-
 @end
 
