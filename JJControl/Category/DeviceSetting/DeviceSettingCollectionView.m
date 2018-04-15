@@ -39,7 +39,7 @@
 }
 
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
-    [cell setCellData:data];
+    [self.viewModel updateCell:cell withData:data];
 }
 
 - (void)chooseCell:(id)data withIndexPath:(NSIndexPath*)indexPath{

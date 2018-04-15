@@ -41,13 +41,13 @@
 }
 
 - (void)bindCell:(id)cell withData:(id)data withIndexPath:(NSIndexPath *)indexPath{
-    [cell setCellData:data];
+    [self.viewModel updateCell:cell withData:data];
 }
 
 - (void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath*)indexPath{
-
+    
     FloorCollectionReusable *header1 = (FloorCollectionReusable *)header;
-    [header1 setData:data];
+    [self.viewModel updateHeaderOrFooter:header1 withData:data];
     
     //    if ([header isKindOfClass:[RoomCollectionReusable class]]) {
 //        RoomCollectionReusable *headerView = (RoomCollectionReusable *)header;

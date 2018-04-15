@@ -8,7 +8,8 @@
 
 #import "DeviceSettingViewModel.h"
 #import "DeviceModel.h"
-
+#import "DeviceSettingModel.h"
+#import "DeviceSettingCollectionViewCell.h"
 @implementation DeviceSettingViewModel
 
 - (void)fetchData:(fetchBlock)block{
@@ -110,6 +111,33 @@
      
 }
 
-
+- (void)updateCell:(UICollectionViewCell *)cell withData:(id)model{
+    DeviceSettingModel *cellData=(DeviceSettingModel*)model;
+    DeviceSettingCollectionViewCell*cellview=(DeviceSettingCollectionViewCell*)cell;
+    if(cellData.pic)
+        [cellview.imgView setImage:[UIImage imageNamed:cellData.pic]];
+    else
+        [cellview.imgView setImage:nil];
+    
+    if(cellData.title)
+        [cellview.lbName setText:cellData.title];
+    else
+        [cellview.lbName setText:nil];
+    
+    if(cellData.details)
+        [cellview.lbDetails setText:cellData.details];
+    else
+        [cellview.lbDetails setText:nil];
+    
+    if(cellData.deviceSettingType == DeviceSettingTypeTitle){
+        [cellview.imgView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(SCREEN_WIDTH / 8.0);
+        }];
+    }else{
+        [cellview.imgView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(SCREEN_WIDTH / 15.0);
+        }];
+    }
+}
 
 @end

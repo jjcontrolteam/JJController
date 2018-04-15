@@ -13,7 +13,7 @@ static NSString *floorReusableindentifer=@"FloorCollectionReusable";
 //typedef void(^RoomSegmentChangedBlock)(NSInteger index);
 @interface FloorCollectionReusable : UICollectionReusableView
 //@property (nonatomic, copy) RoomSegmentChangedBlock segmentChangedBlock;
-
-- (void)setData:(id)data;
+@property(weak,nonatomic) UILabel *floorLabel;
+@property(weak,nonatomic) UILabel *detailsLabel;
 
 @end

@@ -8,8 +8,7 @@
 
 #import "FloorCollectionReusable.h"
 @interface FloorCollectionReusable(){
-    UILabel *_floorLabel;
-    UILabel *_detailsLabel;
+    
 //    UISegmentedControl *segmentCtrl;
 }
 @end
@@ -25,36 +24,35 @@
 
 - (void)createSubviews{
     [self setBackgroundColor:[UIColor lightGrayColor]];
-    _floorLabel = [[UILabel alloc] init];
-    _floorLabel.textColor = [UIColor grayColor];
-    _floorLabel.font = [UIFont systemFontOfSize:25];
-    _floorLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:_floorLabel];
+    UILabel *tmpfloorLabel = [[UILabel alloc] init];
+    tmpfloorLabel.textColor = [UIColor grayColor];
+    tmpfloorLabel.font = [UIFont systemFontOfSize:25];
+    tmpfloorLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:tmpfloorLabel];
+    self.floorLabel=tmpfloorLabel;
     
-    [_floorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [tmpfloorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self);
         make.left.mas_equalTo(self).offset(CELL_LEFT_MARGIN);
         make.width.mas_equalTo(@(SCREEN_WIDTH / 2.0));
     }];
     
-    _detailsLabel = [[UILabel alloc] init];
-    _detailsLabel.textColor = [UIColor grayColor];
-    _detailsLabel.textAlignment = NSTextAlignmentRight;
-    _detailsLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    _detailsLabel.font = [UIFont systemFontOfSize:16];
-    [self addSubview:_detailsLabel];
+    UILabel *tmpdetailsLabel = [[UILabel alloc] init];
+    tmpdetailsLabel.textColor = [UIColor grayColor];
+    tmpdetailsLabel.textAlignment = NSTextAlignmentRight;
+    tmpdetailsLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    tmpdetailsLabel.font = [UIFont systemFontOfSize:16];
+    [self addSubview:tmpdetailsLabel];
+    self.detailsLabel=tmpdetailsLabel;
     
-    [_detailsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [tmpdetailsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self);
         make.right.mas_equalTo(self).offset(-CELL_LEFT_MARGIN);
         make.width.mas_equalTo(@(SCREEN_WIDTH / 2.0));
     }];
 }
 
-- (void)setData:(id)data{
-    _floorLabel.text = data;
-    _detailsLabel.text = @"10/20";
-}
+ 
 
 
 

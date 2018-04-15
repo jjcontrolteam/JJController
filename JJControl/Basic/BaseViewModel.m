@@ -32,4 +32,7 @@
 -(void)updateCell:(UICollectionViewCell*)cell withData:(id)model{
     
 }
+-(void)updateHeaderOrFooter:(UICollectionReusableView*)reusableView withData:(id)model{
+    
+}
 @end

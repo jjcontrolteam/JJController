@@ -7,11 +7,8 @@
 //
 
 #import "RoomCollectionCell.h"
-#import "ROOM.h"
 @interface RoomCollectionCell(){
-    UIImageView *_imgView;
-    UILabel  *_lbName;
-    UILabel *_lbDetails;
+   
 }
 @end
 @implementation RoomCollectionCell
@@ -28,47 +25,50 @@
 - (void)createSubviews{
     self.backgroundColor = [UIColor redColor];
     
-    _imgView = [[UIImageView alloc]init];
-    _imgView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.contentView addSubview:_imgView];
-    [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIImageView *tmpimgView = [[UIImageView alloc]init];
+    tmpimgView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.contentView addSubview:tmpimgView];
+    [tmpimgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.contentView).offset(CELL_LEFT_MARGIN);
         make.bottom.mas_equalTo(self.contentView).offset(-CELL_BOTTOM_MARGIN);
         make.top.mas_equalTo(self.contentView).offset(CELL_TOP_MARGIN);
         make.width.height.mas_equalTo(SCREEN_WIDTH / 12.0);
     }];
+    self.imgView=tmpimgView;
     
-    _lbName = [[UILabel alloc]init];
-    _lbName.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.contentView addSubview:_lbName];
-    [_lbName setTextAlignment:NSTextAlignmentLeft];
-    [_lbName setFont:[UIFont systemFontOfSize:16]];
-    [_lbName setTextColor:[UIColor blackColor]];
+    UILabel *tmplbName = [[UILabel alloc]init];
+    tmplbName.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.contentView addSubview:tmplbName];
+    [tmplbName setTextAlignment:NSTextAlignmentLeft];
+    [tmplbName setFont:[UIFont systemFontOfSize:16]];
+    [tmplbName setTextColor:[UIColor blackColor]];
+    self.lbName=tmplbName;
     
-    _lbDetails = [[UILabel alloc]init];
-    _lbDetails.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.contentView addSubview:_lbDetails];
-    [_lbDetails setTextAlignment:NSTextAlignmentLeft];
-    [_lbDetails setFont:[UIFont systemFontOfSize:16]];
-    [_lbDetails setTextColor:[UIColor blackColor]];
+    UILabel *tmplbDetails = [[UILabel alloc]init];
+    tmplbDetails.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.contentView addSubview:tmplbDetails];
+    [tmplbDetails setTextAlignment:NSTextAlignmentLeft];
+    [tmplbDetails setFont:[UIFont systemFontOfSize:16]];
+    [tmplbDetails setTextColor:[UIColor blackColor]];
+    self.lbDetails=tmplbDetails;
     
-    [_lbName mas_makeConstraints:^(MASConstraintMaker *make) {
+    [tmplbName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.contentView);
         make.left.mas_equalTo(_imgView.mas_right).offset(CELL_LEFT_MARGIN);
     }];
     
-    [_lbDetails mas_makeConstraints:^(MASConstraintMaker *make) {
+    [tmplbDetails mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.contentView);
         make.right.mas_equalTo(self.contentView).offset(- 3 * CELL_RIGHT_MARGIN);
     }];
 }
 
-
+/*
 - (void)setCellData:(ROOM *)cellData{
     NSString *imgname=[NSString stringWithFormat:@"JJControlResource.bundle/%@.png",cellData.iconPath];
     [_imgView setImage:[UIImage imageNamed:imgname]];
     [_lbName setText:cellData.NAME];
     [_lbDetails setText:[NSString stringWithFormat:@"%@",@(cellData.STAR)]];
 
-}
+}*/
 @end

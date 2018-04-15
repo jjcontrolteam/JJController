@@ -10,7 +10,9 @@
 #import "ServiceMgr.h"
 #import "ROOM.h"
 #import "RoomCollectionCell.h"
-
+#import "ROOM.h"
+#import "FloorCollectionReusable.h"
+#import "BannerCollectionViewCell.h"
 @interface RoomViewModel(){
     NSArray<ROOM *> *_floors;
 }
@@ -72,7 +74,28 @@
     block(@[@""]);
 }
 
+-(void)updateCell:(UICollectionViewCell *)cell withData:(id)model{
+    if ([cell isKindOfClass:[RoomCollectionCell class]]) {
+        RoomCollectionCell *cellview=(RoomCollectionCell*)cell;
+        ROOM *room=(ROOM*)model;
+        NSString *imgname=[NSString stringWithFormat:@"JJControlResource.bundle/%@.png",room.iconPath];
+        [cellview.imgView setImage:[UIImage imageNamed:imgname]];
+        [cellview.lbName setText:room.NAME];
+        [cellview.lbDetails setText:[NSString stringWithFormat:@"%@",@(room.STAR)]];
+    }else if ([cell isKindOfClass:[BannerCollectionViewCell class]]) {
+        BannerCollectionViewCell *cellview=(BannerCollectionViewCell*)cell;
+        [cellview setCellData:model];
+    }
+    
+}
 
+-(void)updateHeaderOrFooter:(UICollectionReusableView*)reusableView withData:(id)model{
+  
+    FloorCollectionReusable *floor=(FloorCollectionReusable*)reusableView;
+    NSString *txt=(NSString*)model;
+    floor.floorLabel.text = txt;
+    floor.detailsLabel.text = @"10/20";
+}
 #pragma mark-测试调试使用
 -(void)insertRoom:(ROOM*)room callback:(fetchBlock)block{
     // sysDataBlock_ = [block copy];
