@@ -11,6 +11,6 @@ static NSString *headerIdentifier = @"LinkageCollectionReusableView";
 typedef void(^HeaderTappedBlock)(UICollectionReusableView *reusableView);
 @interface LinkageCollectionReusableView : UICollectionReusableView
 @property(nonatomic,copy) HeaderTappedBlock tapBlock;
-- (void)setData:(NSDictionary *)data withIndex:(NSInteger)index;
+- (void)setData:(NSDictionary *)data;
 
 @end

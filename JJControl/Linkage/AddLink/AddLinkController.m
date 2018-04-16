@@ -12,11 +12,19 @@
 @interface AddLinkController ()
 {
     AddLinkCollectionView *_collectionView;
+    AddLinkViewModel *viewModel;
+    NSInteger index;
 }
 @end
 
 @implementation AddLinkController
-
+-(instancetype)init:(NSInteger)idnex{
+    self=[super init];
+    if (self) {
+        index=idnex;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -24,9 +32,14 @@
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     
     layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 100);
-    AddLinkViewModel *viewModel = [[AddLinkViewModel alloc] init];
+    viewModel = [[AddLinkViewModel alloc] init];
     _collectionView = [[AddLinkCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:viewModel];
      [self.view addSubview:_collectionView];
+    if (index==1) {
+        [_collectionView fetchData];
+    }else{
+        [_collectionView fetchData1];
+    }
     
 }
 

@@ -53,7 +53,7 @@
     if([data objectForKey:@"name"]){
         _titleLabel.text = [data objectForKey:@"name"];
         [_btnView setHidden:NO];
-        [_btnView setImage:[UIImage imageNamed:@"JJControlResource.bundle/add_linkage.png"] forState:UIControlStateNormal];
+        [_btnView setHidden:YES];
     }else{
         _titleLabel.text = @"";
         [_btnView setHidden:YES];

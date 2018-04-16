@@ -10,4 +10,5 @@
 typedef void(^LinkCellTappedBlock)(id data);
 @interface AddLinkCollectionView : BaseCollectionView
 @property (nonatomic, copy) LinkCellTappedBlock cellTappedBlock;
+-(void)fetchData1;
 @end

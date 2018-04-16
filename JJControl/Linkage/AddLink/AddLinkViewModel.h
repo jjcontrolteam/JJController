@@ -9,5 +9,6 @@
 #import "BaseViewModel.h"
 
 @interface AddLinkViewModel : BaseViewModel
-
+-(void)fetchHeaderData1:(fetchHeaderBlock)block;
+-(void)fetchData1:(fetchBlock)block;
 @end

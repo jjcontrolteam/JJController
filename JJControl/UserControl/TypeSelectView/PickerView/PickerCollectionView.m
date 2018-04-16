@@ -27,7 +27,7 @@
     
     [self registerClass:[TypeSelectCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     
-    _dataSource = [[BaseDataSource alloc] initWithItems:@[] cellIdentifier:identifier andCellBack:myDataSourceBlock];
+    _dataSource = [[BaseDataSource alloc] initWithItems:@[] cellIdentifier:@[identifier] andCellBack:myDataSourceBlock];
     self.dataSource = _dataSource;
     
     _delegate = [[BaseDataDelegate alloc] initWithItems:@[] andCallBack:myDelegateBlock];

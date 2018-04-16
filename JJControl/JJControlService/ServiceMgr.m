@@ -119,7 +119,7 @@ static ServiceMgr * _singleton;
                 id  tbmodel=[NSClassFromString(tbclass) mj_objectWithKeyValues:val];
                 
                 if (tbmodel) {
-                    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(tbclass)]];
+                    
                     [tbmodel jr_save];
                     
                 }

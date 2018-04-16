@@ -7,11 +7,12 @@
 //
 
 #import "LinkageCollectionView.h"
-#import "BaseDataSource.h"
+#import "LinkageDataSource.h"
 #import "LinkageDataDelegate.h"
 #import "LinkageCollectionViewCell.h"
 #import "LinkageCollectionReusableView.h"
-
+#import "LinkageNameReusableView.h"
+#import "LinkageTipsReusableView.h"
 @interface LinkageCollectionView(){
 
     BaseDataSource *_dataSource ;
@@ -23,11 +24,13 @@
 
 - (void)buildUI:(id)myDataSourceBlock withHeaderBlock:(id)headerBlock withFooterBlock:(id)footerBlock withDelegate:(id)myDelegateBlock{
     
-    [self setBackgroundColor:[UIColor colorWithWhite:0.33333 alpha:1.0]];
+    [self setBackgroundColor:[UIColor colorWithWhite:0.666666 alpha:1.0]];
     [self registerClass:[LinkageCollectionViewCell class] forCellWithReuseIdentifier:identifier];
     [self registerClass:[LinkageCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerIdentifier];
+    [self registerClass:[LinkageNameReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:linkageNameidentifier];
+    [self registerClass:[LinkageTipsReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:linkagetipsidentifier];
     
-    _dataSource = [[BaseDataSource alloc]initWithItems:@[]  cellIdentifier:identifier withHeaderItem:@[] headerIdentifier:headerIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
+    _dataSource = [[LinkageDataSource alloc]initWithItems:@[]  cellIdentifier:identifier withHeaderItem:@[] headerIdentifier:headerIdentifier andCellBack:myDataSourceBlock andHeaderBack:headerBlock];
     self.dataSource = _dataSource;
     
     _delegate = [[LinkageDataDelegate alloc]initWithItems:@[] andCallBack:myDelegateBlock];
@@ -44,14 +47,24 @@
 }
 
 - (void)bindHeader:(id)header withData:(id)data withIndexPath:(NSIndexPath*)indexPath{
-    LinkageCollectionReusableView *header1 = (LinkageCollectionReusableView *)header;
-    [header1 setData:data withIndex:[indexPath section]];
     
-    header1.tapBlock = ^(UICollectionReusableView *reusableView) {
-        if (self.headerTappedBlock) {
-            self.headerTappedBlock(data,indexPath);
-        }
-    };
+    if ([indexPath section]==0) {
+        LinkageNameReusableView *header1 = (LinkageNameReusableView *)header;
+        [header1 setData:data];
+    } else if ([indexPath section]==2) {
+        LinkageTipsReusableView *header1 = (LinkageTipsReusableView *)header;
+        [header1 setData:data];
+    }else{
+        LinkageCollectionReusableView *header1 = (LinkageCollectionReusableView *)header;
+        [header1 setData:data];
+        header1.tapBlock = ^(UICollectionReusableView *reusableView) {
+            if (self.headerTappedBlock) {
+                self.headerTappedBlock(data,indexPath);
+            }
+        };
+        
+    }
+    
 }
 - (void)chooseCell:(id)data withIndexPath:indexPath{
     NSLog(@"%@",data);

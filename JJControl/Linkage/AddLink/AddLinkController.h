@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AddLinkController : UIViewController
-
+-(instancetype)init:(NSInteger)idnex;
 @end

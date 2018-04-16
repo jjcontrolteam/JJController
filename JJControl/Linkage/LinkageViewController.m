@@ -14,6 +14,7 @@
 #import "AddLinkController.h"
 @interface LinkageViewController (){
     LinkageCollectionView *conview;
+    LinkageViewModel *vmodel;
 }
 @end
 
@@ -34,7 +35,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStyleDone target:self action:@selector(sure)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancel)];
 
-    LinkageViewModel *vmodel=[[LinkageViewModel alloc]init];
+    vmodel=[[LinkageViewModel alloc]init];
     UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
     layout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 400);
     conview = [[LinkageCollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout withViewModel:vmodel];
@@ -56,8 +57,9 @@
     };
     conview.headerTappedBlock = ^(id data, NSIndexPath *indexPath) {
         NSLog(@"%ld--%ld",[indexPath row],[indexPath section]);
-        AddLinkController *addlink=[[AddLinkController alloc]init];
+        AddLinkController *addlink=[[AddLinkController alloc]init:[indexPath section]];
         [weakSelf.navigationController pushViewController:addlink animated:YES];
+        
     };
 }
 - (void)viewDidAppear:(BOOL)animated{
@@ -66,6 +68,9 @@
 }
 
 - (void)sure{
+    [vmodel insertLink:nil withAction:nil withTrrige:nil callback:^(NSArray *data) {
+        
+    }];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

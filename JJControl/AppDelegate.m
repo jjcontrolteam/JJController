@@ -33,8 +33,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
   //  [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
-   
-    
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"ACTIONS")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"CENTRAL_CONTROL")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"DATA_VERSION")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"DEVICE")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"FAMILY")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"FLOOR")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"LINKAGE")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"PANEL_KEY")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"ROOM")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"SCENE")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"SETTING")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"SHARE")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"TIMING")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"TRIGGER")]];
+    [[JRDBMgr shareInstance] registerClazzes:@[NSClassFromString(@"USER")]];
     return YES;
 }
 
