@@ -40,6 +40,14 @@
     }else{
         [_collectionView fetchData1];
     }
+    _collectionView.cellTappedBlock = ^(id data) {
+        if (index==1) {//如果
+            //这里插入trigger条件
+            
+        }else{//就
+            //这里插入action条件
+        }
+    };
     
 }
 

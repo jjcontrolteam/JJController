@@ -19,4 +19,6 @@
 @property(nonatomic,assign) NSInteger  SEQUENCE_ALL;
 @property(nonatomic,assign) NSInteger  SEQUENCE_ROOM;
 @property(nonatomic,copy)   NSString * NAME;
+
+-(NSString*)insertSqlString;
 @end

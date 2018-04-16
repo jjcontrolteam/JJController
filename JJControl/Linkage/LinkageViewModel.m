@@ -29,7 +29,7 @@
 -(void)fetchData:(fetchBlock)block{
    // [_blockArray addObject:@[@"开灯"]];
     
-    NSMutableArray *array = [[NSMutableArray alloc] init];
+  /*  NSMutableArray *array = [[NSMutableArray alloc] init];
     for (int i = 0; i < 5; i++) {
         LinkageModel *linkage = [[LinkageModel alloc] init];
         linkage.iconPic = @"JJControlResource.bundle/right.png";
@@ -55,8 +55,8 @@
         linkage.stateArray = @[@"打开",@"关闭"];
         [array1 addObject:linkage];
     }
-   // [_blockArray addObject:array1];
-     block(@[@[],array,@[],array1]);
+   // [_blockArray addObject:array1];*/
+     block(@[@[],@[],@[],@[]]);
     
 }
 
@@ -74,18 +74,19 @@
     NSString *clientid =  [[NSUserDefaults standardUserDefaults]valueForKey:@"client_id"];
     NSString *topic=[NSString stringWithFormat:@"v1/18/%@/data/request",clientid];
     NSString *receive=[NSString stringWithFormat:@"v1/18/all/data/response"];
-    UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000*1000;
-    NSString *sqlLink=[NSString stringWithFormat:@"insert into LINKAGE(_id,PARENT,ROOM_ID,ENABLE,REVERSAL,TIMES,EXECUTED,HIDE,SEQUENCE_ALL,SEQUENCE_ROOM,NAME) values(%llu,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,'%@')", recordTime,link.PARENT,link.roomID,link.ENABLE,link.REVERSAL,link.TIMES,link.EXECUTED,link.HIDE,link.SEQUENCE_ALL,link.SEQUENCE_ROOM,link.NAME];//,\"
+    NSString *sqlLink=[link insertSqlString];
+    
     action=[[ACTIONS alloc]init];
     action.MODULE=1;
-    action.moduleId=162203570008623;
+    action.moduleId=(long)162203570008623;
     action.PARENT=18;
     action.PARENT2=18;
-    action.targetID=11652348321409;
+    action.targetID=(long)11652348321409;
     action.COMMAND1=@"打开";
     action.COMMAND2=@"";
     action.CONTENT=@"";
-    NSString *sqlAction=[NSString stringWithFormat:@"insert into ACTION(_id,MODULE,moduleId,PARENT,targetID,PARENT2,DELAY,COMMAND1,COMMAND2,CONTENT) values(%llu,%ld,%ld,%ld,%ld,%ld,%ld,'%@','%@','%@')",recordTime,action.MODULE,action.moduleId,action.PARENT,action.targetID,action.PARENT2,action.DELAY,action.COMMAND1,action.COMMAND2,action.CONTENT];
+    NSString *sqlAction=[action insertSqlString];
+    
     trigger=[[TRIGGER alloc]init];
     trigger.PARENT=18;
     trigger.AND_OR=1;
@@ -95,8 +96,8 @@
     trigger.PARENT2=18;
     trigger.TIME_START=@"";
     trigger.TIME_END=@"";
-    NSString *sqlTrigger=[NSString stringWithFormat:@"insert into TRIGGER(_id,LINKAGE_ID,PARENT,AND_OR,FLAG,TYPE,REPEAT,EXECUTED,DEVICE_ID,PARENT2,RANGE,TIME_START,TIME_END) values(%llu,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,'%@','%@')",recordTime,trigger.LINKAGE_ID,trigger.PARENT,trigger.AND_OR,trigger.FLAG,trigger.TYPE,trigger.REPEAT,trigger.EXECUTED,trigger.DEVICE_ID,trigger.PARENT2,trigger.RANGE,trigger.TIME_START,trigger.TIME_END];
-    
+    NSString *sqlTrigger =[trigger insertSqlString];
+    UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000*1000;
     NSString *session=[NSString stringWithFormat:@"%llu",recordTime];
     NSDictionary *dict=@{@"cmd":@"2001",@"session":session,@"id":@"0",@"table":@"LINKAGE",@"sqls":@[sqlLink,sqlTrigger,sqlAction]};
     // __block __weak typeof(self) weakSelf= self;

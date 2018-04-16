@@ -71,7 +71,7 @@ static NSString *headerIdentifier=@"AddLinkCollectionReusable";
 - (void)chooseCell:(id)data withIndexPath:indexPath{
     NSLog(@"%@",data);
     if(self.cellTappedBlock){
-        self.cellTappedBlock(data);
+        self.cellTappedBlock(data);//
     }
 }
 @end

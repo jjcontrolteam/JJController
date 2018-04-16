@@ -21,5 +21,5 @@
 @property(nonatomic,assign) NSInteger  RANGE;
 @property(nonatomic,copy)   NSString * TIME_START;
 @property(nonatomic,copy)   NSString * TIME_END;
-
+-(NSString*)insertSqlString;
 @end

@@ -20,4 +20,5 @@
 @property(nonatomic,copy) NSString * COMMAND2;
 @property(nonatomic,copy) NSString * CONTENT;
 @property(nonatomic,copy)   NSString * ID;
+-(NSString*)insertSqlString;
 @end

@@ -17,4 +17,12 @@
 - (id)jr_customPrimarykeyValue {
     return self.ID;
 }
+
+-(NSString*)insertSqlString{
+     UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000*1000;
+    
+    NSString *sqlAction=[NSString stringWithFormat:@"insert into ACTION(_id,MODULE,moduleId,PARENT,targetID,PARENT2,DELAY,COMMAND1,COMMAND2,CONTENT) values(%llu,%ld,%ld,%ld,%ld,%ld,%ld,'%@','%@','%@')",recordTime,_MODULE,_moduleId,_PARENT,_targetID,_PARENT2,_DELAY,_COMMAND1,_COMMAND2,_CONTENT];
+    return sqlAction;
+}
+
 @end
